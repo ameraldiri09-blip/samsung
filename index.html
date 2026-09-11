@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل هواتف سامسونج الشامل | المهندس عامر الديري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1428a0;
+            --dark-color: #0b1120;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --accent-color: #0284c7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: var(--dark-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 50px 20px 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #93c5fd;
+        }
+
+        .controls-container {
+            max-width: 1200px;
+            margin: -25px auto 30px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background-color: white;
+            color: var(--dark-color);
+            border: 2px solid #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .phone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .phone-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        .phone-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            background-color: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .image-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .card-body {
+            padding: 18px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .phone-card h3 {
+            font-size: 1.15rem;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .specs-list {
+            list-style: none;
+        }
+
+        .specs-list li {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">سامسونج <span>دليل الهواتف</span></div>
+        <div style="color: #cbd5e1; font-size: 0.9rem;">إعداد: <strong>المهندس عامر محمد زاهر الديري</strong></div>
+    </nav>
+
+    <header>
+        <h1>الموسوعة الكاملة لهواتف Samsung Galaxy</h1>
+        <p>دليل شامل لجميع أجهزة سامسونج من الفئات Ultra و Fold و S و A مرتبة ومصنفة</p>
+    </header>
+
+    <div class="controls-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="filterPhones()" placeholder="ابحث عن أي جهاز (مثال: S26 Ultra, A56, Fold 7, S10)...">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCategory('all', this)">جميع الهواتف</button>
+            <button class="filter-btn" onclick="filterCategory('ultra', this)">فئة Ultra</button>
+            <button class="filter-btn" onclick="filterCategory('fold', this)">فئة Fold</button>
+            <button class="filter-btn" onclick="filterCategory('s-series', this)">سلسلة S</button>
+            <button class="filter-btn" onclick="filterCategory('a-series', this)">سلسلة A</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="phone-grid" id="phoneGrid">
+
+            <!-- ULTRA SERIES -->
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2401/gallery/ar-galaxy-s24-s928-sm-s928bztqmea-539305619?$650_519_PNG$" alt="Samsung Galaxy S26 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S26 Ultra</h3>
+                    <ul class="specs-list"><li>أحدث وأقوى إصدارات الفئة الفائقة</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2401/gallery/ar-galaxy-s24-s928-sm-s928bztqmea-539305619?$650_519_PNG$" alt="Samsung Galaxy S25 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S25 Ultra</h3>
+                    <ul class="specs-list"><li>معالج قوي مع كاميرات احترافية وقلم S-Pen</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2401/gallery/ar-galaxy-s24-s928-sm-s928bztqmea-539305619?$650_519_PNG$" alt="Samsung Galaxy S24 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                    <ul class="specs-list"><li>هيكل تيتانيوم وكاميرا 200MP مجهزة بالذكاء الاصطناعي</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2302/gallery/ar-galaxy-s23-s918-sm-s918bzgcmea-534854087?$650_519_PNG$" alt="Samsung Galaxy S23 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S23 Ultra</h3>
+                    <ul class="specs-list"><li>Snapdragon 8 Gen 2 وزوم استثنائي 100X</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2302/gallery/ar-galaxy-s23-s918-sm-s918bzgcmea-534854087?$650_519_PNG$" alt="Samsung Galaxy S22 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S22 Ultra</h3>
+                    <ul class="specs-list"><li>دمج تصميم Note مع S-Pen المدمج</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2302/gallery/ar-galaxy-s23-s918-sm-s918bzgcmea-534854087?$650_519_PNG$" alt="Samsung Galaxy S21 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S21 Ultra</h3>
+                    <ul class="specs-list"><li>أول هاتف S يدعم قلم S-Pen وشاشة 120Hz</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="ultra">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2302/gallery/ar-galaxy-s23-s918-sm-s918bzgcmea-534854087?$650_519_PNG$" alt="Samsung Galaxy S20 Ultra"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Ultra الفائقة</span>
+                    <h3>Samsung Galaxy S20 Ultra</h3>
+                    <ul class="specs-list"><li>أول هاتف يحمل اسم Ultra مع كاميرا 108MP</li></ul>
+                </div>
+            </div>
+
+            <!-- FOLD SERIES -->
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Z Fold 7"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Z Fold 7</h3>
+                    <ul class="specs-list"><li>أحدث إصدارات الأجهزة القابلة للطي</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Z Fold 6"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Z Fold 6</h3>
+                    <ul class="specs-list"><li>تصميم أنيق وخفيف الوزن بشاشة كبيرة</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Z Fold 5"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Z Fold 5</h3>
+                    <ul class="specs-list"><li>مفصلة تحسينية وإغلاق كامل للشاشة</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Z Fold 4"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Z Fold 4</h3>
+                    <ul class="specs-list"><li>تحسين الكاميرات والواجهة المتعددة</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Z Fold 3"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Z Fold 3</h3>
+                    <ul class="specs-list"><li>أول هاتف طي يدعم القلم ومقاومة الماء</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Z Fold 2"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Z Fold 2</h3>
+                    <ul class="specs-list"><li>تطور كبير بالشاشة الخارجية 120Hz</li></ul>
+                </div>
+            </div>
+
+            <div class="phone-card" data-category="fold">
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2407/gallery/ar-galaxy-z-fold6-f956-sm-f956bzkamea-542171501?$650_519_PNG$" alt="Samsung Galaxy Fold"></div>
+                <div class="card-body">
+                    <span class="category-tag">فئة Fold القابلة للطي</span>
+                    <h3>Samsung Galaxy Fold</h3>
+                    <ul class="specs-list"><li>الإصدار الأول لتقنية الشاشات المرنة</li></ul>
+                </div>
+            </div>
+
+            <!-- S SERIES -->
+            <script>
+                const sSeriesNames = [
+                    "Samsung Galaxy S26", "Samsung Galaxy S26 Plus",
+                    "Samsung Galaxy S25", "Samsung Galaxy S25 Plus",
+                    "Samsung Galaxy S24", "Samsung Galaxy S24 Plus", "Samsung Galaxy S24 FE",
+                    "Samsung Galaxy S23", "Samsung Galaxy S23 Plus", "Samsung Galaxy S23 FE",
+                    "Samsung Galaxy S22", "Samsung Galaxy S22 Plus",
+                    "Samsung Galaxy S21", "Samsung Galaxy S21 Plus", "Samsung Galaxy S21 FE",
+                    "Samsung Galaxy S20", "Samsung Galaxy S20 Plus", "Samsung Galaxy S20 FE",
+                    "Samsung Galaxy S10", "Samsung Galaxy S10 Plus", "Samsung Galaxy S10e", "Samsung Galaxy S10 Lite",
+                    "Samsung Galaxy S9", "Samsung Galaxy S9 Plus",
+                    "Samsung Galaxy S8", "Samsung Galaxy S8 Plus",
+                    "Samsung Galaxy S7", "Samsung Galaxy S7 Edge",
+                    "Samsung Galaxy S6", "Samsung Galaxy S6 Edge",
+                    "Samsung Galaxy S5", "Samsung Galaxy S4", "Samsung Galaxy S3", "Samsung Galaxy S2", "Samsung Galaxy S"
+                ];
+
+                const aSeriesNames = [
+                    "Samsung Galaxy A56", "Samsung Galaxy A36", "Samsung Galaxy A16", "Samsung Galaxy A06",
+                    "Samsung Galaxy A55", "Samsung Galaxy A35", "Samsung Galaxy A25", "Samsung Galaxy A15", "Samsung Galaxy A05",
+                    "Samsung Galaxy A54", "Samsung Galaxy A34", "Samsung Galaxy A24", "Samsung Galaxy A14", "Samsung Galaxy A04",
+                    "Samsung Galaxy A73", "Samsung Galaxy A53", "Samsung Galaxy A33", "Samsung Galaxy A23", "Samsung Galaxy A13", "Samsung Galaxy A03",
+                    "Samsung Galaxy A72", "Samsung Galaxy A52", "Samsung Galaxy A52s", "Samsung Galaxy A42", "Samsung Galaxy A32", "Samsung Galaxy A22", "Samsung Galaxy A12", "Samsung Galaxy A02",
+                    "Samsung Galaxy A71", "Samsung Galaxy A51", "Samsung Galaxy A41", "Samsung Galaxy A31", "Samsung Galaxy A21", "Samsung Galaxy A11", "Samsung Galaxy A01",
+                    "Samsung Galaxy A90", "Samsung Galaxy A80", "Samsung Galaxy A70", "Samsung Galaxy A60", "Samsung Galaxy A50", "Samsung Galaxy A40", "Samsung Galaxy A30", "Samsung Galaxy A20", "Samsung Galaxy A10"
+                ];
+            </script>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 | تطوير وإشراف: <strong>المهندس عامر محمد زاهر الديري</strong></p>
+    </footer>
+
+    <script>
+        const phoneGrid = document.getElementById('phoneGrid');
+
+        // Dynamically insert S Series phones
+        sSeriesNames.forEach(name => {
+            const card = document.createElement('div');
+            card.className = 'phone-card';
+            card.setAttribute('data-category', 's-series');
+            card.innerHTML = `
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/2401/gallery/ar-galaxy-s24-sm-s921bzyamea-539304675?$650_519_PNG$" alt="${name}"></div>
+                <div class="card-body">
+                    <span class="category-tag">سلسلة S الرائدة</span>
+                    <h3>${name}</h3>
+                    <ul class="specs-list"><li>من الهواتف الرائدة والأكثر تميزاً في وقتها</li></ul>
+                </div>
+            `;
+            phoneGrid.appendChild(card);
+        });
+
+        // Dynamically insert A Series phones
+        aSeriesNames.forEach(name => {
+            const card = document.createElement('div');
+            card.className = 'phone-card';
+            card.setAttribute('data-category', 'a-series');
+            card.innerHTML = `
+                <div class="image-container"><img src="https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a556bzkbmea/gallery/ar-galaxy-a55-5g-sm-a556-sm-a556bzkbmea-540232490?$650_519_PNG$" alt="${name}"></div>
+                <div class="card-body">
+                    <span class="category-tag">سلسلة A المتوسطة والعملية</span>
+                    <h3>${name}</h3>
+                    <ul class="specs-list"><li>أداء متوازن وبطاريات ممتازة للقيمة مقابل السعر</li></ul>
+                </div>
+            `;
+            phoneGrid.appendChild(card);
+        });
+
+        function filterCategory(category, button) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const cards = document.querySelectorAll('.phone-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterPhones() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.phone-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
