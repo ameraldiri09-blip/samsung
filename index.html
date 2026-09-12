@@ -9,13 +9,15 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         :root {
-            --primary-color: #0284c7;
-            --primary-hover: #0369a1;
-            --dark-color: #0b1120;
-            --light-bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
+            --primary-color: #38bdf8;
+            --primary-hover: #0284c7;
+            --bg-color: #0b1120;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
             --accent-color: #10b981;
+            --accent-hover: #059669;
         }
 
         * {
@@ -26,33 +28,34 @@
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
         nav {
-            background-color: var(--dark-color);
-            padding: 15px 30px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 16px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-bottom: 1px solid var(--card-border);
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
         .logo {
-            color: #ffffff;
-            font-size: 1.2rem;
+            color: var(--text-main);
+            font-size: 1.25rem;
             font-weight: 800;
         }
 
         .logo span {
-            color: #38bdf8;
+            color: var(--primary-color);
         }
 
         .nav-actions {
@@ -62,20 +65,24 @@
         }
 
         .author-tag {
-            color: #cbd5e1;
+            color: var(--text-sub);
             font-size: 0.85rem;
             font-weight: 700;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* زر تسجيل الدخول بقوغل */
         .user-profile {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #ffffff;
+            color: var(--text-main);
             font-size: 0.9rem;
             font-weight: 600;
-            background: rgba(255,255,255,0.1);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 4px 12px;
             border-radius: 20px;
         }
@@ -87,96 +94,109 @@
         }
 
         header {
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            background: radial-gradient(circle at top, #1e3a8a 0%, #0f172a 100%);
             color: white;
-            padding: 40px 20px 30px 20px;
+            padding: 50px 20px 40px 20px;
             text-align: center;
+            border-bottom: 1px solid var(--card-border);
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: 1rem;
-            color: #93c5fd;
+            font-size: 1.05rem;
+            color: var(--text-sub);
         }
 
         .main-brand-selector {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            max-width: 800px;
-            margin: -25px auto 25px auto;
+            gap: 15px;
+            max-width: 1000px;
+            margin: -28px auto 30px auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
+            flex-wrap: wrap;
         }
 
         .brand-btn {
             flex: 1;
-            padding: 15px 25px;
-            font-size: 1.1rem;
+            min-width: 180px;
+            padding: 16px 20px;
+            font-size: 1.05rem;
             font-weight: 800;
-            border: none;
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             color: white;
+            background: var(--card-bg);
+            opacity: 0.7;
         }
 
         .brand-btn.samsung {
-            background: linear-gradient(135deg, #1428a0, #061043);
-            opacity: 0.65;
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
         }
 
         .brand-btn.apple {
-            background: linear-gradient(135deg, #333333, #000000);
-            opacity: 0.65;
+            background: linear-gradient(135deg, #334155, #0f172a);
+        }
+
+        .brand-btn.xiaomi {
+            background: linear-gradient(135deg, #c2410c, #431407);
+        }
+
+        .brand-btn.infinix {
+            background: linear-gradient(135deg, #047857, #064e3b);
         }
 
         .brand-btn.active {
             opacity: 1;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-            outline: 3px solid #38bdf8;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
+            border-color: var(--primary-color);
         }
 
         .controls-container {
             max-width: 1200px;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 25px auto;
             padding: 0 20px;
         }
 
         .search-box {
-            background: white;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            padding: 8px;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 12px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
+            padding: 14px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
         }
 
-        .search-box input:focus {
-            border-color: var(--primary-color);
+        .search-box input::placeholder {
+            color: var(--text-sub);
         }
 
         .sub-filter-buttons {
@@ -187,26 +207,27 @@
         }
 
         .sub-btn {
-            background-color: white;
-            color: var(--dark-color);
-            border: 2px solid #cbd5e1;
+            background-color: var(--card-bg);
+            color: var(--text-sub);
+            border: 1px solid var(--card-border);
             padding: 8px 18px;
             border-radius: 20px;
             font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .sub-btn:hover, .sub-btn.active {
             background-color: var(--primary-color);
-            color: white;
+            color: #0f172a;
             border-color: var(--primary-color);
         }
 
         .results-count {
             text-align: center;
-            margin-bottom: 20px;
-            color: #64748b;
+            margin-bottom: 25px;
+            color: var(--text-sub);
             font-weight: 700;
             font-size: 0.95rem;
         }
@@ -219,36 +240,38 @@
 
         .phone-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
         }
 
         .phone-card {
             background-color: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
             display: flex;
             flex-direction: column;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
             position: relative;
         }
 
         .phone-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            border-color: rgba(56, 189, 248, 0.4);
         }
 
         .image-container {
             width: 100%;
-            height: 160px;
-            background-color: #f8fafc;
+            height: 150px;
+            background: radial-gradient(circle, #334155 0%, #1e293b 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 15px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid var(--card-border);
+            cursor: pointer;
         }
 
         .fallback-img {
@@ -257,17 +280,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            color: #475569;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
             font-weight: bold;
-            font-size: 0.85rem;
-            border-radius: 8px;
+            font-size: 0.9rem;
+            border-radius: 12px;
             text-align: center;
             padding: 10px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
         }
 
         .card-body {
-            padding: 16px;
+            padding: 18px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -276,39 +300,50 @@
 
         .category-tag {
             display: inline-block;
-            background-color: #e0f2fe;
+            background-color: rgba(56, 189, 248, 0.15);
             color: var(--primary-color);
-            padding: 3px 10px;
-            border-radius: 10px;
+            padding: 4px 10px;
+            border-radius: 8px;
             font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             align-self: flex-start;
         }
 
         .category-tag.apple {
-            background-color: #f1f5f9;
-            color: #0f172a;
+            background-color: rgba(241, 245, 249, 0.15);
+            color: #f1f5f9;
+        }
+
+        .category-tag.xiaomi {
+            background-color: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
+        }
+
+        .category-tag.infinix {
+            background-color: rgba(52, 211, 153, 0.15);
+            color: #34d399;
         }
 
         .phone-card h3 {
             font-size: 1.05rem;
-            color: var(--dark-color);
-            margin-bottom: 15px;
+            color: var(--text-main);
+            margin-bottom: 18px;
+            line-height: 1.4;
         }
 
         .card-actions {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
 
         .view-details-btn {
             flex: 2;
-            background-color: #f1f5f9;
-            color: var(--primary-color);
-            border: none;
-            padding: 9px;
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            padding: 10px;
+            border-radius: 10px;
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
@@ -317,16 +352,17 @@
 
         .view-details-btn:hover {
             background-color: var(--primary-color);
-            color: white;
+            color: #0f172a;
+            border-color: var(--primary-color);
         }
 
         .compare-btn {
             flex: 1;
-            background-color: #ecfdf5;
+            background-color: rgba(16, 185, 129, 0.1);
             color: var(--accent-color);
-            border: 1px solid #a7f3d0;
-            padding: 9px;
-            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 10px;
+            border-radius: 10px;
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
@@ -336,19 +372,21 @@
         .compare-btn:hover, .compare-btn.selected {
             background-color: var(--accent-color);
             color: white;
+            border-color: var(--accent-color);
         }
 
-        /* شريط المقارنة العائم */
         .compare-bar {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--dark-color);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: none;
             align-items: center;
             gap: 15px;
@@ -367,17 +405,21 @@
             border-radius: 20px;
             font-weight: 700;
             cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .compare-bar-btn:hover {
+            background: var(--accent-hover);
         }
 
         .clear-compare-btn {
             background: transparent;
-            color: #94a3b8;
+            color: var(--text-sub);
             border: none;
             cursor: pointer;
             font-size: 0.85rem;
         }
 
-        /* النوافذ المنبثقة */
         .modal {
             display: none;
             position: fixed;
@@ -385,8 +427,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(11, 17, 32, 0.75);
-            backdrop-filter: blur(4px);
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -398,7 +440,8 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 20px;
             max-width: 550px;
             width: 100%;
@@ -406,7 +449,8 @@
             overflow-y: auto;
             position: relative;
             animation: modalFadeIn 0.3s ease;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            color: var(--text-main);
         }
 
         .modal-content.wide {
@@ -423,19 +467,24 @@
             top: 15px;
             left: 20px;
             font-size: 1.8rem;
-            color: #64748b;
+            color: var(--text-sub);
             cursor: pointer;
             line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--text-main);
         }
 
         .modal-header {
             padding: 25px 25px 15px 25px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .modal-header h2 {
-            color: var(--dark-color);
-            font-size: 1.4rem;
+            color: var(--text-main);
+            font-size: 1.35rem;
         }
 
         .modal-body {
@@ -444,25 +493,24 @@
 
         .spec-group {
             margin-bottom: 12px;
-            background: #f8fafc;
+            background: rgba(255, 255, 255, 0.03);
             padding: 12px 15px;
-            border-radius: 10px;
+            border-radius: 12px;
             border-right: 4px solid var(--primary-color);
         }
 
         .spec-group strong {
-            color: var(--dark-color);
+            color: var(--primary-color);
             display: block;
             margin-bottom: 4px;
             font-size: 0.9rem;
         }
 
         .spec-group span {
-            color: #475569;
-            font-size: 0.88rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
         }
 
-        /* جدول المقارنة */
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
@@ -470,33 +518,35 @@
         }
 
         .comparison-table th, .comparison-table td {
-            padding: 12px;
-            border: 1px solid #e2e8f0;
+            padding: 14px;
+            border: 1px solid var(--card-border);
             text-align: right;
             font-size: 0.9rem;
         }
 
         .comparison-table th {
-            background-color: #f1f5f9;
-            color: var(--dark-color);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--primary-color);
             font-weight: 700;
         }
 
         .comparison-table td.feature-title {
-            background-color: #f8fafc;
+            background-color: rgba(255, 255, 255, 0.02);
             font-weight: bold;
+            color: var(--text-sub);
             width: 20%;
         }
 
         footer {
-            background-color: var(--dark-color);
+            background-color: #0f172a;
+            border-top: 1px solid var(--card-border);
             color: white;
             text-align: center;
-            padding: 25px 20px;
+            padding: 30px 20px;
         }
 
         footer p {
-            color: #94a3b8;
+            color: var(--text-sub);
             font-size: 0.9rem;
         }
     </style>
@@ -506,13 +556,12 @@
     <nav>
         <div class="logo">الموسوعة الرقمية <span>للهواتف الذكية</span></div>
         <div class="nav-actions">
-            <!-- مكان تسجيل الدخول بـ Google -->
             <div id="g_id_onload"
                 data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
                 data-callback="handleCredentialResponse"
                 data-auto_prompt="false">
             </div>
-            <div class="g_id_signin" data-type="standard" data-size="small" data-theme="outline" data-text="signin_with" data-shape="pill"></div>
+            <div class="g_id_signin" data-type="standard" data-size="small" data-theme="filled_dark" data-text="signin_with" data-shape="pill"></div>
             <div id="userInfo" class="user-profile" style="display: none;"></div>
             
             <div class="author-tag">إعداد المهندس : عامر محمد زاهر الديري</div>
@@ -526,10 +575,16 @@
 
     <div class="main-brand-selector">
         <button class="brand-btn samsung active" id="samsungMainBtn" onclick="switchBrand('samsung')">
-            🌐 قسم سامسونج (Samsung)
+             قسم سامسونج (Samsung)
         </button>
         <button class="brand-btn apple" id="appleMainBtn" onclick="switchBrand('apple')">
-             قسم آيفون (iPhone)
+             قسم آيفون (iPhone)
+        </button>
+        <button class="brand-btn xiaomi" id="xiaomiMainBtn" onclick="switchBrand('xiaomi')">
+             قسم شاومي (Xiaomi)
+        </button>
+        <button class="brand-btn infinix" id="infinixMainBtn" onclick="switchBrand('infinix')">
+             قسم إنفينيكس (Infinix)
         </button>
     </div>
 
@@ -559,6 +614,27 @@
             <button class="sub-btn" onclick="setSubCategory('iphone-13', this)">iPhone 13 Series</button>
             <button class="sub-btn" onclick="setSubCategory('iphone-12', this)">iPhone 12 Series</button>
             <button class="sub-btn" onclick="setSubCategory('iphone-legacy', this)">الأجيال السابقة & SE</button>
+        </div>
+
+        <!-- فئات شاومي الفرعية -->
+        <div class="sub-filter-buttons" id="xiaomiSubFilters" style="display: none;">
+            <button class="sub-btn active" onclick="setSubCategory('all', this)">كل الأجهزة</button>
+            <button class="sub-btn" onclick="setSubCategory('xiaomi-flagship', this)">Xiaomi Flagship</button>
+            <button class="sub-btn" onclick="setSubCategory('xiaomi-t', this)">Xiaomi T Series</button>
+            <button class="sub-btn" onclick="setSubCategory('redmi-note', this)">Redmi Note Series</button>
+            <button class="sub-btn" onclick="setSubCategory('poco-x-f', this)">POCO F / X Series</button>
+            <button class="sub-btn" onclick="setSubCategory('poco-m-c', this)">POCO M / C Series</button>
+            <button class="sub-btn" onclick="setSubCategory('redmi-entry', this)">Redmi Entry Series</button>
+        </div>
+
+        <!-- فئات إنفينيكس الفرعية -->
+        <div class="sub-filter-buttons" id="infinixSubFilters" style="display: none;">
+            <button class="sub-btn active" onclick="setSubCategory('all', this)">كل الأجهزة</button>
+            <button class="sub-btn" onclick="setSubCategory('infinix-zero', this)">Zero Series</button>
+            <button class="sub-btn" onclick="setSubCategory('infinix-note', this)">Note Series</button>
+            <button class="sub-btn" onclick="setSubCategory('infinix-gt', this)">GT Gaming Series</button>
+            <button class="sub-btn" onclick="setSubCategory('infinix-hot', this)">Hot Series</button>
+            <button class="sub-btn" onclick="setSubCategory('infinix-smart', this)">Smart Series</button>
         </div>
     </div>
 
@@ -607,7 +683,6 @@
     <script>
         // قائمة سامسونج الشاملة
         const samsungList = [
-            // Ultra & Flagships
             { id: "s26u", name: "Samsung Galaxy S26 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 5", ram: "16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (144Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
             { id: "s25u", name: "Samsung Galaxy S25 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
             { id: "s24u", name: "Samsung Galaxy S24 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
@@ -615,8 +690,6 @@
             { id: "s22u", name: "Samsung Galaxy S22 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 1", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
             { id: "s21u", name: "Samsung Galaxy S21 Ultra", subCat: "ultra", cpu: "Exynos 2100 / SD 888", ram: "12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
             { id: "s20u", name: "Samsung Galaxy S20 Ultra", subCat: "ultra", cpu: "Exynos 990 / SD 865", ram: "12GB/16GB", storage: "128GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            
-            // Fold & Flip Series
             { id: "zf8u", name: "Samsung Galaxy Z Fold 8 Ultra", subCat: "fold", cpu: "Snapdragon 8 Elite Gen 5", ram: "16GB", storage: "512GB/1TB", screen: "8.0-inch Foldable Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
             { id: "zf8", name: "Samsung Galaxy Z Fold 8", subCat: "fold", cpu: "Snapdragon 8 Elite Gen 5", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual/Triple", bat: "4800 mAh" },
             { id: "zflip8", name: "Samsung Galaxy Z Flip 8", subCat: "fold", cpu: "Snapdragon 8 Elite Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.9-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual", bat: "4300 mAh" },
@@ -632,8 +705,6 @@
             { id: "zflip5", name: "Samsung Galaxy Z Flip 5", subCat: "fold", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
             { id: "zflip4", name: "Samsung Galaxy Z Flip 4", subCat: "fold", cpu: "Snapdragon 8+ Gen 1", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
             { id: "zflip3", name: "Samsung Galaxy Z Flip 3", subCat: "fold", cpu: "Snapdragon 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3300 mAh" },
-            
-            // S Series Standard & Plus
             { id: "s26p", name: "Samsung Galaxy S26 Plus", subCat: "s-series", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
             { id: "s26", name: "Samsung Galaxy S26", subCat: "s-series", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
             { id: "s25p", name: "Samsung Galaxy S25 Plus", subCat: "s-series", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
@@ -655,16 +726,12 @@
             { id: "s10p", name: "Samsung Galaxy S10+", subCat: "s-series", cpu: "Exynos 9820 / SD 855", ram: "8GB/12GB", storage: "128GB/512GB/1TB", screen: "6.4-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "4100 mAh" },
             { id: "s10", name: "Samsung Galaxy S10", subCat: "s-series", cpu: "Exynos 9820 / SD 855", ram: "8GB", storage: "128GB/512GB", screen: "6.1-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
             { id: "s10e", name: "Samsung Galaxy S10e", subCat: "s-series", cpu: "Exynos 9820 / SD 855", ram: "6GB/8GB", storage: "128GB/256GB", screen: "5.8-inch Dynamic AMOLED", cam: "16 MP Dual", bat: "3100 mAh" },
-
-            // Note Series
             { id: "n20u", name: "Samsung Galaxy Note 20 Ultra", subCat: "note-legacy", cpu: "Exynos 990 / SD 865+", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Triple", bat: "4500 mAh" },
             { id: "n20", name: "Samsung Galaxy Note 20", subCat: "note-legacy", cpu: "Exynos 990 / SD 865+", ram: "8GB", storage: "256GB", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP Triple", bat: "4300 mAh" },
             { id: "n10p", name: "Samsung Galaxy Note 10+", subCat: "note-legacy", cpu: "Exynos 9825 / SD 855", ram: "12GB", storage: "256GB/512GB", screen: "6.8-inch Dynamic AMOLED", cam: "12 MP Quad", bat: "4300 mAh" },
             { id: "n10", name: "Samsung Galaxy Note 10", subCat: "note-legacy", cpu: "Exynos 9825 / SD 855", ram: "8GB", storage: "256GB", screen: "6.3-inch Dynamic AMOLED", cam: "12 MP Triple", bat: "3500 mAh" },
             { id: "n10l", name: "Samsung Galaxy Note 10 Lite", subCat: "note-legacy", cpu: "Exynos 9810", ram: "6GB/8GB", storage: "128GB", screen: "6.7-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
             { id: "n9", name: "Samsung Galaxy Note 9", subCat: "note-legacy", cpu: "Exynos 9810 / SD 845", ram: "6GB/8GB", storage: "128GB/512GB", screen: "6.4-inch Super AMOLED", cam: "12 MP Dual", bat: "4000 mAh" },
-
-            // A Series
             { id: "a57", name: "Samsung Galaxy A57 5G", subCat: "a-series", cpu: "Exynos 1680 (4nm)", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super AMOLED+ (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
             { id: "a56", name: "Samsung Galaxy A56 5G", subCat: "a-series", cpu: "Exynos 1580", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP Triple", bat: "5000 mAh" },
             { id: "a55", name: "Samsung Galaxy A55 5G", subCat: "a-series", cpu: "Exynos 1480", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
@@ -682,8 +749,6 @@
             { id: "a07", name: "Samsung Galaxy A07 4G", subCat: "a-series", cpu: "MediaTek Helio G99 (6nm)", ram: "4GB/6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.7-inch PLS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (25W)" },
             { id: "a06", name: "Samsung Galaxy A06", subCat: "a-series", cpu: "MediaTek Helio G85", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD", cam: "50 MP Dual", bat: "5000 mAh" },
             { id: "a05s", name: "Samsung Galaxy A05s", subCat: "a-series", cpu: "Snapdragon 680", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-
-            // M & F Series
             { id: "m55", name: "Samsung Galaxy M55 5G", subCat: "m-series", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
             { id: "m54", name: "Samsung Galaxy M54 5G", subCat: "m-series", cpu: "Exynos 1380", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "108 MP Triple", bat: "6000 mAh" },
             { id: "m35", name: "Samsung Galaxy M35 5G", subCat: "m-series", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
@@ -694,43 +759,30 @@
 
         // قائمة آيفون الشاملة
         const iphoneList = [
-            // iPhone 17 Series
             { id: "i17pm", name: "iPhone 17 Pro Max", subCat: "iphone-17", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB/2TB", screen: "6.9-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4850 mAh" },
             { id: "i17p", name: "iPhone 17 Pro", subCat: "iphone-17", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3700 mAh" },
             { id: "i17air", name: "iPhone 17 Air / Slim", subCat: "iphone-17", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.6-inch Super Retina XDR OLED", cam: "48 MP Single Fusion", bat: "3150 mAh" },
             { id: "i17", name: "iPhone 17", subCat: "iphone-17", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3600 mAh" },
-
-            // iPhone 16 Series
             { id: "i16pm", name: "iPhone 16 Pro Max", subCat: "iphone-16", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.9-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "4685 mAh" },
             { id: "i16p", name: "iPhone 16 Pro", subCat: "iphone-16", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "3582 mAh" },
             { id: "i16plus", name: "iPhone 16 Plus", subCat: "iphone-16", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4674 mAh" },
             { id: "i16", name: "iPhone 16", subCat: "iphone-16", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3561 mAh" },
-
-            // iPhone 15 Series
             { id: "i15pm", name: "iPhone 15 Pro Max", subCat: "iphone-15", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4422 mAh" },
             { id: "i15p", name: "iPhone 15 Pro", subCat: "iphone-15", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3274 mAh" },
             { id: "i15plus", name: "iPhone 15 Plus", subCat: "iphone-15", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4383 mAh" },
             { id: "i15", name: "iPhone 15", subCat: "iphone-15", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3349 mAh" },
-
-            // iPhone 14 Series
             { id: "i14pm", name: "iPhone 14 Pro Max", subCat: "iphone-14", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4323 mAh" },
             { id: "i14p", name: "iPhone 14 Pro", subCat: "iphone-14", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3200 mAh" },
             { id: "i14plus", name: "iPhone 14 Plus", subCat: "iphone-14", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "4325 mAh" },
             { id: "i14", name: "iPhone 14", subCat: "iphone-14", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3279 mAh" },
-
-            // iPhone 13 Series
             { id: "i13pm", name: "iPhone 13 Pro Max", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "4352 mAh" },
             { id: "i13p", name: "iPhone 13 Pro", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "3095 mAh" },
             { id: "i13", name: "iPhone 13", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3240 mAh" },
             { id: "i13mini", name: "iPhone 13 mini", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2438 mAh" },
-
-            // iPhone 12 Series
             { id: "i12pm", name: "iPhone 12 Pro Max", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3687 mAh" },
             { id: "i12p", name: "iPhone 12 Pro", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "2815 mAh" },
             { id: "i12", name: "iPhone 12", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2815 mAh" },
             { id: "i12mini", name: "iPhone 12 mini", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2227 mAh" },
-
-            // Legacy & SE Series
             { id: "ise3", name: "iPhone SE (3rd Gen - 2022)", subCat: "iphone-legacy", cpu: "Apple A15 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "2018 mAh" },
             { id: "ise2", name: "iPhone SE (2nd Gen - 2020)", subCat: "iphone-legacy", cpu: "Apple A13 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "1821 mAh" },
             { id: "i11pm", name: "iPhone 11 Pro Max", subCat: "iphone-legacy", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3969 mAh" },
@@ -742,6 +794,110 @@
             { id: "ix", name: "iPhone X", subCat: "iphone-legacy", cpu: "Apple A11 Bionic", ram: "3GB", storage: "64GB/256GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2716 mAh" },
             { id: "i8p", name: "iPhone 8 Plus", subCat: "iphone-legacy", cpu: "Apple A11 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "5.5-inch Retina HD Display", cam: "12 MP Dual", bat: "2691 mAh" },
             { id: "i8", name: "iPhone 8", subCat: "iphone-legacy", cpu: "Apple A11 Bionic", ram: "2GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "1821 mAh" }
+        ];
+
+        // قائمة شاومي الشاملة
+        const xiaomiList = [
+            { id: "xm_fold4", name: "Xiaomi Mix Fold 4", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.98-inch Foldable LTPO OLED (120Hz)", cam: "50 MP Quad Leica", bat: "5100 mAh (67W)" },
+            { id: "xm_flip", name: "Xiaomi Mix Flip", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.86-inch Foldable LTPO OLED (120Hz)", cam: "50 MP Dual Leica", bat: "4780 mAh (67W)" },
+            { id: "x15u", name: "Xiaomi 15 Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Elite (3nm)", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED (120Hz)", cam: "50 MP Quad Leica", bat: "5300 mAh (90W)" },
+            { id: "x15p", name: "Xiaomi 15 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "6100 mAh (90W)" },
+            { id: "x15", name: "Xiaomi 15", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.36-inch OLED (120Hz)", cam: "50 MP Triple Leica", bat: "5400 mAh (90W)" },
+            { id: "x14u", name: "Xiaomi 14 Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh (90W)" },
+            { id: "x14p", name: "Xiaomi 14 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4880 mAh (120W)" },
+            { id: "x14", name: "Xiaomi 14", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "8GB/12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "4610 mAh (90W)" },
+            { id: "x13u", name: "Xiaomi 13 Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh (90W)" },
+            { id: "x13p", name: "Xiaomi 13 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4820 mAh (120W)" },
+            { id: "x13", name: "Xiaomi 13", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.36-inch AMOLED", cam: "50 MP Triple Leica", bat: "4500 mAh (67W)" },
+            { id: "x12su", name: "Xiaomi 12S Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8+ Gen 1", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.73-inch LTPO2 AMOLED", cam: "50 MP Triple Leica 1-inch", bat: "4860 mAh (67W)" },
+            { id: "x12p", name: "Xiaomi 12 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple", bat: "4600 mAh (120W)" },
+            { id: "x12", name: "Xiaomi 12", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.28-inch AMOLED", cam: "50 MP Triple", bat: "4500 mAh (67W)" },
+            { id: "xm_mi9", name: "Xiaomi Mi 9 (Legacy)", subCat: "xiaomi-flagship", cpu: "Snapdragon 855", ram: "6GB/8GB", storage: "64GB/128GB", screen: "6.39-inch Super AMOLED", cam: "48 MP Triple", bat: "3300 mAh (27W)" },
+            { id: "x14pro", name: "Xiaomi 14T Pro", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 9300+", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED (144Hz)", cam: "50 MP Triple Leica", bat: "5000 mAh (120W)" },
+            { id: "x14t", name: "Xiaomi 14T", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 8300-Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (144Hz)", cam: "50 MP Triple Leica", bat: "5000 mAh (67W)" },
+            { id: "x13pro", name: "Xiaomi 13T Pro", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 9200+", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED (144Hz)", cam: "50 MP Triple Leica", bat: "5000 mAh (120W)" },
+            { id: "x13t", name: "Xiaomi 13T", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 8200-Ultra", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch AMOLED (144Hz)", cam: "50 MP Triple Leica", bat: "5000 mAh (67W)" },
+            { id: "x12tpro", name: "Xiaomi 12T Pro", subCat: "xiaomi-t", cpu: "Snapdragon 8+ Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "200 MP Triple", bat: "5000 mAh (120W)" },
+            { id: "x12t", name: "Xiaomi 12T", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 8100-Ultra", ram: "8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (120W)" },
+            { id: "x11tpro", name: "Xiaomi 11T Pro", subCat: "xiaomi-t", cpu: "Snapdragon 888", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (120W)" },
+            { id: "x11t", name: "Xiaomi 11T", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 1200", ram: "8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (67W)" },
+            { id: "rn14pro_p", name: "Xiaomi Redmi Note 14 Pro+", subCat: "redmi-note", cpu: "Snapdragon 7s Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz Curved)", cam: "50 MP Triple OIS", bat: "6200 mAh (90W)" },
+            { id: "rn14pro", name: "Xiaomi Redmi Note 14 Pro", subCat: "redmi-note", cpu: "MediaTek Dimensity 7300 Ultra", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "50 MP Triple OIS", bat: "5500 mAh (45W)" },
+            { id: "rn14", name: "Xiaomi Redmi Note 14 5G", subCat: "redmi-note", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED (120Hz)", cam: "50 MP Dual OIS", bat: "5110 mAh (45W)" },
+            { id: "rn13pro_p", name: "Xiaomi Redmi Note 13 Pro+", subCat: "redmi-note", cpu: "MediaTek Dimensity 7200-Ultra", ram: "8GB/12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
+            { id: "rn13pro", name: "Xiaomi Redmi Note 13 Pro 5G", subCat: "redmi-note", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "200 MP Triple OIS", bat: "5100 mAh (67W)" },
+            { id: "rn13", name: "Xiaomi Redmi Note 13 4G", subCat: "redmi-note", cpu: "Snapdragon 685", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
+            { id: "rn12pro_p", name: "Xiaomi Redmi Note 12 Pro+", subCat: "redmi-note", cpu: "MediaTek Dimensity 1080", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch OLED (120Hz)", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
+            { id: "rn12pro", name: "Xiaomi Redmi Note 12 Pro 5G", subCat: "redmi-note", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (67W)" },
+            { id: "rn12", name: "Xiaomi Redmi Note 12 4G", subCat: "redmi-note", cpu: "Snapdragon 685", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED (120Hz)", cam: "50 MP Triple", bat: "5000 mAh (33W)" },
+            { id: "rn11pro", name: "Xiaomi Redmi Note 11 Pro 5G", subCat: "redmi-note", cpu: "Snapdragon 695", ram: "6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch Super AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (67W)" },
+            { id: "rn10pro", name: "Xiaomi Redmi Note 10 Pro", subCat: "redmi-note", cpu: "Snapdragon 732G", ram: "6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Quad", bat: "5020 mAh (33W)" },
+            { id: "rn8pro", name: "Xiaomi Redmi Note 8 Pro (Legacy)", subCat: "redmi-note", cpu: "MediaTek Helio G90T", ram: "6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.53-inch IPS LCD", cam: "64 MP Quad", bat: "4500 mAh (18W)" },
+            { id: "pf6pro", name: "Xiaomi POCO F6 Pro", subCat: "poco-x-f", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED (120Hz 2K)", cam: "50 MP Triple OIS", bat: "5000 mAh (120W)" },
+            { id: "pf6", name: "Xiaomi POCO F6", subCat: "poco-x-f", cpu: "Snapdragon 8s Gen 3", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "50 MP Dual OIS", bat: "5000 mAh (90W)" },
+            { id: "pf5pro", name: "Xiaomi POCO F5 Pro", subCat: "poco-x-f", cpu: "Snapdragon 8+ Gen 1", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz 2K)", cam: "64 MP Triple OIS", bat: "5160 mAh (67W)" },
+            { id: "pf5", name: "Xiaomi POCO F5", subCat: "poco-x-f", cpu: "Snapdragon 7+ Gen 2", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
+            { id: "pf4gt", name: "Xiaomi POCO F4 GT", subCat: "poco-x-f", cpu: "Snapdragon 8 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "64 MP Triple", bat: "4700 mAh (120W)" },
+            { id: "pf3", name: "Xiaomi POCO F3", subCat: "poco-x-f", cpu: "Snapdragon 870 5G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "48 MP Triple", bat: "4520 mAh (33W)" },
+            { id: "pf1", name: "Xiaomi POCOPHONE F1 (Legacy Legend)", subCat: "poco-x-f", cpu: "Snapdragon 845", ram: "6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.18-inch IPS LCD", cam: "12 MP Dual", bat: "4000 mAh (18W)" },
+            { id: "px6pro", name: "Xiaomi POCO X6 Pro 5G", subCat: "poco-x-f", cpu: "MediaTek Dimensity 8300-Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
+            { id: "px6", name: "Xiaomi POCO X6 5G", subCat: "poco-x-f", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "64 MP Triple OIS", bat: "5100 mAh (67W)" },
+            { id: "px5pro", name: "Xiaomi POCO X5 Pro 5G", subCat: "poco-x-f", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (67W)" },
+            { id: "px4pro", name: "Xiaomi POCO X4 Pro 5G", subCat: "poco-x-f", cpu: "Snapdragon 695", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (67W)" },
+            { id: "px3pro", name: "Xiaomi POCO X3 Pro", subCat: "poco-x-f", cpu: "Snapdragon 860", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch IPS LCD (120Hz)", cam: "48 MP Quad", bat: "5160 mAh (33W)" },
+            { id: "pm6pro", name: "Xiaomi POCO M6 Pro 4G", subCat: "poco-m-c", cpu: "MediaTek Helio G99 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED (120Hz)", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
+            { id: "pm6", name: "Xiaomi POCO M6 5G", subCat: "poco-m-c", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "pm5s", name: "Xiaomi POCO M5s", subCat: "poco-m-c", cpu: "MediaTek Helio G95", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.43-inch AMOLED", cam: "64 MP Quad", bat: "5000 mAh (33W)" },
+            { id: "pm4pro", name: "Xiaomi POCO M4 Pro 5G", subCat: "poco-m-c", cpu: "MediaTek Dimensity 810", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
+            { id: "pc65", name: "Xiaomi POCO C65", subCat: "poco-m-c", cpu: "MediaTek Helio G85", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "pc75", name: "Xiaomi POCO C75", subCat: "poco-m-c", cpu: "MediaTek Helio G81 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.88-inch IPS LCD (120Hz)", cam: "50 MP Dual", bat: "5160 mAh (18W)" },
+            { id: "r14c", name: "Xiaomi Redmi 14C", subCat: "redmi-entry", cpu: "MediaTek Helio G81 Ultra", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.88-inch IPS LCD (120Hz)", cam: "50 MP Dual", bat: "5160 mAh (18W)" },
+            { id: "r13c", name: "Xiaomi Redmi 13C", subCat: "redmi-entry", cpu: "MediaTek Helio G85", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD (90Hz)", cam: "50 MP Triple", bat: "5000 mAh (18W)" },
+            { id: "r13", name: "Xiaomi Redmi 13 4G", subCat: "redmi-entry", cpu: "MediaTek Helio G91 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.79-inch IPS LCD (90Hz)", cam: "108 MP Dual", bat: "5030 mAh (33W)" },
+            { id: "r12", name: "Xiaomi Redmi 12 4G", subCat: "redmi-entry", cpu: "MediaTek Helio G88", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.79-inch IPS LCD (90Hz)", cam: "50 MP Triple", bat: "5000 mAh (18W)" },
+            { id: "r10c", name: "Xiaomi Redmi 10C", subCat: "redmi-entry", cpu: "Snapdragon 680 4G", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "ra3", name: "Xiaomi Redmi A3", subCat: "redmi-entry", cpu: "MediaTek Helio G36", ram: "3GB/4GB/6GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD (90Hz)", cam: "8 MP Dual", bat: "5000 mAh (10W)" },
+            { id: "ra2", name: "Xiaomi Redmi A2+", subCat: "redmi-entry", cpu: "MediaTek Helio G36", ram: "2GB/3GB/4GB", storage: "32GB/64GB", screen: "6.52-inch IPS LCD", cam: "8 MP Dual", bat: "5000 mAh (10W)" }
+        ];
+
+        // قائمة إنفينيكس الشاملة (Infinix List)
+        const infinixList = [
+            // Zero Series
+            { id: "inf_zflip", name: "Infinix Zero Flip 5G", subCat: "infinix-zero", cpu: "MediaTek Dimensity 8020", ram: "8GB", storage: "512GB", screen: "6.9-inch Foldable LTPO AMOLED (120Hz)", cam: "50 MP Dual OIS", bat: "4720 mAh (70W)" },
+            { id: "inf_z40u", name: "Infinix Zero 40 5G", subCat: "infinix-zero", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "12GB", storage: "256GB/512GB", screen: "6.74-inch AMOLED (144Hz Curved)", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "inf_z404g", name: "Infinix Zero 40 4G", subCat: "infinix-zero", cpu: "MediaTek Helio G100", ram: "8GB", storage: "512GB", screen: "6.74-inch AMOLED (120Hz Curved)", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "inf_z305g", name: "Infinix Zero 30 5G", subCat: "infinix-zero", cpu: "MediaTek Dimensity 8020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED (144Hz Curved)", cam: "108 MP Triple OIS", bat: "5000 mAh (68W)" },
+            { id: "inf_z304g", name: "Infinix Zero 30 4G", subCat: "infinix-zero", cpu: "MediaTek Helio G99 Ultra", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED (120Hz Curved)", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "inf_zultra", name: "Infinix Zero Ultra", subCat: "infinix-zero", cpu: "MediaTek Dimensity 920", ram: "8GB", storage: "256GB", screen: "6.8-inch AMOLED (120Hz)", cam: "200 MP Triple OIS", bat: "4500 mAh (180W)" },
+            { id: "inf_z205g", name: "Infinix Zero 20", subCat: "infinix-zero", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch AMOLED (90Hz)", cam: "108 MP Triple", bat: "4500 mAh (45W)" },
+
+            // Note Series
+            { id: "inf_n40pro", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch AMOLED (120Hz Curved)", cam: "108 MP Triple OIS", bat: "4600 mAh (100W)" },
+            { id: "inf_n40pro5g", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 7020", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED (120Hz Curved)", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "inf_n40pro4g", name: "Infinix Note 40 Pro 4G", subCat: "infinix-note", cpu: "MediaTek Helio G99 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED (120Hz Curved)", cam: "108 MP Triple OIS", bat: "5000 mAh (70W)" },
+            { id: "inf_n40", name: "Infinix Note 40 4G", subCat: "infinix-note", cpu: "MediaTek Helio G99 Ultimate", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "inf_n305g", name: "Infinix Note 30 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 6080", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "inf_n30vip", name: "Infinix Note 30 VIP", subCat: "infinix-note", cpu: "MediaTek Dimensity 8050", ram: "12GB", storage: "256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (68W)" },
+            { id: "inf_n30pro", name: "Infinix Note 30 Pro", subCat: "infinix-note", cpu: "MediaTek Helio G99", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (68W)" },
+            { id: "inf_n12pro", name: "Infinix Note 12 Pro 4G", subCat: "infinix-note", cpu: "MediaTek Helio G99", ram: "8GB", storage: "256GB", screen: "6.7-inch AMOLED", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
+
+            // GT Gaming Series
+            { id: "inf_gt20pro", name: "Infinix GT 20 Pro", subCat: "infinix-gt", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED (144Hz)", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "inf_gt10pro", name: "Infinix GT 10 Pro", subCat: "infinix-gt", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+
+            // Hot Series
+            { id: "inf_h50pro", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", cpu: "MediaTek Helio G100", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch AMOLED (120Hz Curved)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
+            { id: "inf_h505g", name: "Infinix Hot 50 5G", subCat: "infinix-hot", cpu: "MediaTek Dimensity 6300", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD (120Hz)", cam: "48 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "inf_h40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD (120Hz)", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
+            { id: "inf_h40i", name: "Infinix Hot 40i", subCat: "infinix-hot", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "inf_h30", name: "Infinix Hot 30", subCat: "infinix-hot", cpu: "MediaTek Helio G88", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
+            { id: "inf_h30i", name: "Infinix Hot 30i", subCat: "infinix-hot", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB", screen: "6.56-inch IPS LCD (90Hz)", cam: "13 MP Dual", bat: "5000 mAh (18W)" },
+
+            // Smart Series
+            { id: "inf_sm9", name: "Infinix Smart 9", subCat: "infinix-smart", cpu: "MediaTek Helio G81 Ultra", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD (120Hz)", cam: "13 MP Dual", bat: "5000 mAh" },
+            { id: "inf_sm8", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (10W)" },
+            { id: "inf_sm8std", name: "Infinix Smart 8", subCat: "infinix-smart", cpu: "Unisoc T606", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD (90Hz)", cam: "13 MP Dual", bat: "5000 mAh (10W)" },
+            { id: "inf_sm7", name: "Infinix Smart 7", subCat: "infinix-smart", cpu: "Unisoc SC9863A", ram: "3GB/4GB", storage: "64GB", screen: "6.6-inch IPS LCD", cam: "13 MP Dual", bat: "5000 mAh" }
         ];
 
         let currentBrand = 'samsung'; 
@@ -756,21 +912,40 @@
 
             const samsungBtn = document.getElementById('samsungMainBtn');
             const appleBtn = document.getElementById('appleMainBtn');
+            const xiaomiBtn = document.getElementById('xiaomiMainBtn');
+            const infinixBtn = document.getElementById('infinixMainBtn');
+
             const samsungSub = document.getElementById('samsungSubFilters');
             const appleSub = document.getElementById('appleSubFilters');
+            const xiaomiSub = document.getElementById('xiaomiSubFilters');
+            const infinixSub = document.getElementById('infinixSubFilters');
+
+            samsungBtn.classList.remove('active');
+            appleBtn.classList.remove('active');
+            xiaomiBtn.classList.remove('active');
+            infinixBtn.classList.remove('active');
+
+            samsungSub.style.display = 'none';
+            appleSub.style.display = 'none';
+            xiaomiSub.style.display = 'none';
+            infinixSub.style.display = 'none';
 
             if (brand === 'samsung') {
                 samsungBtn.classList.add('active');
-                appleBtn.classList.remove('active');
                 samsungSub.style.display = 'flex';
-                appleSub.style.display = 'none';
                 resetSubButtons(samsungSub);
-            } else {
+            } else if (brand === 'apple') {
                 appleBtn.classList.add('active');
-                samsungBtn.classList.remove('active');
                 appleSub.style.display = 'flex';
-                samsungSub.style.display = 'none';
                 resetSubButtons(appleSub);
+            } else if (brand === 'xiaomi') {
+                xiaomiBtn.classList.add('active');
+                xiaomiSub.style.display = 'flex';
+                resetSubButtons(xiaomiSub);
+            } else if (brand === 'infinix') {
+                infinixBtn.classList.add('active');
+                infinixSub.style.display = 'flex';
+                resetSubButtons(infinixSub);
             }
             renderGrid();
         }
@@ -794,15 +969,34 @@
             const phoneGrid = document.getElementById('phoneGrid');
             phoneGrid.innerHTML = '';
             
-            activeDataList = (currentBrand === 'samsung') ? samsungList : iphoneList;
+            if (currentBrand === 'samsung') {
+                activeDataList = samsungList;
+            } else if (currentBrand === 'apple') {
+                activeDataList = iphoneList;
+            } else if (currentBrand === 'xiaomi') {
+                activeDataList = xiaomiList;
+            } else if (currentBrand === 'infinix') {
+                activeDataList = infinixList;
+            }
 
             activeDataList.forEach((phone, index) => {
                 const card = document.createElement('div');
                 card.className = 'phone-card';
                 card.setAttribute('data-subcat', phone.subCat);
 
-                const tagText = currentBrand === 'samsung' ? 'Samsung Galaxy' : 'Apple iPhone';
-                const tagClass = currentBrand === 'apple' ? 'apple' : '';
+                let tagText = 'Samsung Galaxy';
+                let tagClass = '';
+                if (currentBrand === 'apple') {
+                    tagText = 'Apple iPhone';
+                    tagClass = 'apple';
+                } else if (currentBrand === 'xiaomi') {
+                    tagText = 'Xiaomi';
+                    tagClass = 'xiaomi';
+                } else if (currentBrand === 'infinix') {
+                    tagText = 'Infinix';
+                    tagClass = 'infinix';
+                }
+
                 const isCompared = compareList.some(item => item.id === phone.id);
 
                 card.innerHTML = `
@@ -848,14 +1042,24 @@
                 }
             });
 
-            const brandName = currentBrand === 'samsung' ? 'سامسونج' : 'آيفون';
+            let brandName = 'سامسونج';
+            if (currentBrand === 'apple') brandName = 'آيفون';
+            if (currentBrand === 'xiaomi') brandName = 'شاومي';
+            if (currentBrand === 'infinix') brandName = 'إنفينيكس';
+
             document.getElementById('resultsCount').innerText = `عدد الأجهزة المعروضة في قسم ${brandName}: ${visibleCount} جهاز`;
         }
 
         function openModal(index) {
             const phone = activeDataList[index];
             document.getElementById('modalTitle').innerText = phone.name;
-            document.getElementById('modalCategory').innerText = currentBrand === 'samsung' ? 'Samsung Galaxy' : 'Apple iPhone';
+            
+            let tagText = 'Samsung Galaxy';
+            if (currentBrand === 'apple') tagText = 'Apple iPhone';
+            if (currentBrand === 'xiaomi') tagText = 'Xiaomi';
+            if (currentBrand === 'infinix') tagText = 'Infinix';
+
+            document.getElementById('modalCategory').innerText = tagText;
 
             const modalBody = document.getElementById('modalBody');
             modalBody.innerHTML = `
@@ -891,7 +1095,7 @@
         /* إدارة المقارنة */
         function toggleCompare(id, event) {
             event.stopPropagation();
-            const allPhones = [...samsungList, ...iphoneList];
+            const allPhones = [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList];
             const phone = allPhones.find(p => p.id === id);
 
             const index = compareList.findIndex(item => item.id === id);
@@ -997,7 +1201,7 @@
             }
         }
 
-        /* معالجة تسجيل الدخول بـ Google (اختیاري) */
+        /* معالجة تسجيل الدخول بـ Google */
         function parseJwt (token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
