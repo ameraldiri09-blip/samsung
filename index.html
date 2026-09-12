@@ -345,7 +345,7 @@
 
     <div class="controls-container">
         <div class="search-box">
-            <input type="text" id="searchInput" oninput="applyFilters()" placeholder="ابحث عن جهاز (Z8 Ultra, A57, S26 Ultra)...">
+            <input type="text" id="searchInput" oninput="applyFilters()" placeholder="ابحث عن جهاز (Z8 Ultra, A07, A57, S26 Ultra)...">
         </div>
         <div class="filter-buttons">
             <button class="filter-btn active" onclick="setCategory('all', this)">الكل</button>
@@ -387,113 +387,114 @@
         };
 
         const ultraPhones = [
-            { name: "Samsung Galaxy S26 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 5", screen: "6.8-inch Dynamic AMOLED 2X (144Hz, QHD+)", cam: "200 MP + 50 MP + 50 MP + 50 MP", bat: "5000 mAh (65W Fast Charging)" },
-            { name: "Samsung Galaxy S25 Ultra", cpu: "Qualcomm Snapdragon 8 Elite for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP + 10 MP + 50 MP", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S24 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S23 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S22 Ultra", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S21 Ultra", cpu: "Exynos 2100 / Snapdragon 888", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy S20 Ultra", cpu: "Exynos 990 / Snapdragon 865", screen: "6.9-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 48 MP + 12 MP + TOF", bat: "5000 mAh (45W Fast Charging)" }
+            { name: "Samsung Galaxy S26 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 5", ram: "12GB / 16GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0 Pro)", screen: "6.8-inch Dynamic AMOLED 2X (144Hz, QHD+)", cam: "200 MP + 50 MP + 50 MP + 50 MP", bat: "5000 mAh (65W Fast Charging)" },
+            { name: "Samsung Galaxy S25 Ultra", cpu: "Qualcomm Snapdragon 8 Elite for Galaxy", ram: "12GB / 16GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP + 10 MP + 50 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S24 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", ram: "12GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S23 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", ram: "8GB / 12GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S22 Ultra", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB / 12GB LPDDR5", storage: "128GB / 256GB / 512GB / 1TB (UFS 3.1)", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S21 Ultra", cpu: "Exynos 2100 / Snapdragon 888", ram: "12GB / 16GB LPDDR5", storage: "128GB / 256GB / 512GB (UFS 3.1)", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy S20 Ultra", cpu: "Exynos 990 / Snapdragon 865", ram: "12GB / 16GB LPDDR5", storage: "128GB / 512GB (UFS 3.0)", screen: "6.9-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 48 MP + 12 MP + TOF", bat: "5000 mAh (45W Fast Charging)" }
         ];
 
         const foldPhones = [
-            { name: "Samsung Galaxy Z Fold 8 Ultra", cpu: "Qualcomm Snapdragon 8 Elite Gen 2", screen: "8.0-inch Main / 6.5 Cover Dynamic AMOLED 2X", cam: "200 MP + 50 MP + 50 MP", bat: "4600 mAh (65W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 8", cpu: "Qualcomm Snapdragon 8 Elite Gen 2", screen: "7.6-inch Main / 6.3 Cover Dynamic AMOLED 2X", cam: "50 MP + 12 MP + 10 MP", bat: "4400 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 7", cpu: "Qualcomm Snapdragon 8 Elite", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 6", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 5", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 4", cpu: "Qualcomm Snapdragon 8+ Gen 1", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 3", cpu: "Qualcomm Snapdragon 888 5G", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "12 MP + 12 MP + 12 MP", bat: "4400 mAh" },
-            { name: "Samsung Galaxy Z Fold 2", cpu: "Qualcomm Snapdragon 865+", screen: "7.6-inch Foldable Dynamic AMOLED 2X / 6.23 Cover", cam: "12 MP + 12 MP + 12 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy Fold", cpu: "Qualcomm Snapdragon 855", screen: "7.3-inch Foldable Dynamic AMOLED / 4.6 Cover", cam: "12 MP + 12 MP + 16 MP", bat: "4380 mAh" }
+            { name: "Samsung Galaxy Z Fold 8 Ultra", cpu: "Qualcomm Snapdragon 8 Elite Gen 2", ram: "16GB LPDDR5X Ultra", storage: "512GB / 1TB (UFS 4.0 Pro)", screen: "8.0-inch Main / 6.5 Cover Dynamic AMOLED 2X", cam: "200 MP + 50 MP + 50 MP", bat: "4600 mAh (65W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 8", cpu: "Qualcomm Snapdragon 8 Elite Gen 2", ram: "12GB / 16GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "7.6-inch Main / 6.3 Cover Dynamic AMOLED 2X", cam: "50 MP + 12 MP + 10 MP", bat: "4400 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 7", cpu: "Qualcomm Snapdragon 8 Elite", ram: "12GB / 16GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 6", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", ram: "12GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 5", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", ram: "12GB LPDDR5X", storage: "256GB / 512GB / 1TB (UFS 4.0)", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 4", cpu: "Qualcomm Snapdragon 8+ Gen 1", ram: "12GB LPDDR5", storage: "256GB / 512GB / 1TB (UFS 3.1)", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 3", cpu: "Qualcomm Snapdragon 888 5G", ram: "12GB LPDDR5", storage: "256GB / 512GB (UFS 3.1)", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "12 MP + 12 MP + 12 MP", bat: "4400 mAh" },
+            { name: "Samsung Galaxy Z Fold 2", cpu: "Qualcomm Snapdragon 865+", ram: "12GB LPDDR5", storage: "256GB / 512GB (UFS 3.1)", screen: "7.6-inch Foldable Dynamic AMOLED 2X / 6.23 Cover", cam: "12 MP + 12 MP + 12 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy Fold", cpu: "Qualcomm Snapdragon 855", ram: "12GB LPDDR4X", storage: "512GB (UFS 3.0)", screen: "7.3-inch Foldable Dynamic AMOLED / 4.6 Cover", cam: "12 MP + 12 MP + 16 MP", bat: "4380 mAh" }
         ];
 
         const sSeriesList = [
-            { name: "Samsung Galaxy S26 Plus", cpu: "Exynos 2600 / Snapdragon 8 Gen 5", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4900 mAh" },
-            { name: "Samsung Galaxy S26", cpu: "Exynos 2600 / Snapdragon 8 Gen 5", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy S25 Plus", cpu: "Exynos 2500 / Snapdragon 8 Elite", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4900 mAh" },
-            { name: "Samsung Galaxy S25", cpu: "Exynos 2500 / Snapdragon 8 Elite", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy S24 FE", cpu: "Samsung Exynos 2400e", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 8 MP + 12 MP", bat: "4700 mAh" },
-            { name: "Samsung Galaxy S24 Plus", cpu: "Exynos 2400 / Snapdragon 8 Gen 3", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4900 mAh" },
-            { name: "Samsung Galaxy S24", cpu: "Exynos 2400 / Snapdragon 8 Gen 3", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy S23 FE", cpu: "Exynos 2200 / Snapdragon 8 Gen 1", screen: "6.4-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 8 MP + 12 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy S23 Plus", cpu: "Qualcomm Snapdragon 8 Gen 2", screen: "6.6-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4700 mAh" },
-            { name: "Samsung Galaxy S23", cpu: "Qualcomm Snapdragon 8 Gen 2", screen: "6.1-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "3900 mAh" },
-            { name: "Samsung Galaxy S22 Plus", cpu: "Exynos 2200 / Snapdragon 8 Gen 1", screen: "6.6-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy S22", cpu: "Exynos 2200 / Snapdragon 8 Gen 1", screen: "6.1-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "3700 mAh" },
-            { name: "Samsung Galaxy S21 FE", cpu: "Exynos 2100 / Snapdragon 888", screen: "6.4-inch Dynamic AMOLED 2X (120Hz)", cam: "12 MP + 8 MP + 12 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy S21 Plus", cpu: "Exynos 2100 / Snapdragon 888", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP", bat: "4800 mAh" },
-            { name: "Samsung Galaxy S21", cpu: "Exynos 2100 / Snapdragon 888", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy S20 FE", cpu: "Exynos 990 / Snapdragon 865", screen: "6.5-inch Super AMOLED (120Hz)", cam: "12 MP + 8 MP + 12 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy S20 Plus", cpu: "Exynos 990 / Snapdragon 865", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP + TOF", bat: "4500 mAh" },
-            { name: "Samsung Galaxy S20", cpu: "Exynos 990 / Snapdragon 865", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy S10 Lite", cpu: "Qualcomm Snapdragon 855", screen: "6.7-inch Super AMOLED Plus", cam: "48 MP + 12 MP + 5 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy S10e", cpu: "Exynos 9820 / Snapdragon 855", screen: "5.8-inch Dynamic AMOLED", cam: "12 MP + 16 MP", bat: "3100 mAh" },
-            { name: "Samsung Galaxy S10 Plus", cpu: "Exynos 9820 / Snapdragon 855", screen: "6.4-inch Dynamic AMOLED", cam: "12 MP + 12 MP + 16 MP", bat: "4100 mAh" },
-            { name: "Samsung Galaxy S10", cpu: "Exynos 9820 / Snapdragon 855", screen: "6.1-inch Dynamic AMOLED", cam: "12 MP + 12 MP + 16 MP", bat: "3400 mAh" },
-            { name: "Samsung Galaxy S9 Plus", cpu: "Exynos 9810 / Snapdragon 845", screen: "6.2-inch Super AMOLED", cam: "12 MP + 12 MP", bat: "3500 mAh" },
-            { name: "Samsung Galaxy S9", cpu: "Exynos 9810 / Snapdragon 845", screen: "5.8-inch Super AMOLED", cam: "12 MP", bat: "3000 mAh" },
-            { name: "Samsung Galaxy S8 Plus", cpu: "Exynos 8895 / Snapdragon 835", screen: "6.2-inch Super AMOLED", cam: "12 MP", bat: "3500 mAh" },
-            { name: "Samsung Galaxy S8", cpu: "Exynos 8895 / Snapdragon 835", screen: "5.8-inch Super AMOLED", cam: "12 MP", bat: "3000 mAh" },
-            { name: "Samsung Galaxy S7 Edge", cpu: "Exynos 8890 / Snapdragon 820", screen: "5.5-inch Super AMOLED", cam: "12 MP", bat: "3600 mAh" },
-            { name: "Samsung Galaxy S7", cpu: "Exynos 8890 / Snapdragon 820", screen: "5.1-inch Super AMOLED", cam: "12 MP", bat: "3000 mAh" },
-            { name: "Samsung Galaxy S6 Edge", cpu: "Samsung Exynos 7420", screen: "5.1-inch Super AMOLED", cam: "16 MP", bat: "2600 mAh" },
-            { name: "Samsung Galaxy S6", cpu: "Samsung Exynos 7420", screen: "5.1-inch Super AMOLED", cam: "16 MP", bat: "2550 mAh" },
-            { name: "Samsung Galaxy S5", cpu: "Qualcomm Snapdragon 801", screen: "5.1-inch Super AMOLED", cam: "16 MP", bat: "2800 mAh" },
-            { name: "Samsung Galaxy S4", cpu: "Exynos 5410 / Snapdragon 600", screen: "5.0-inch Super AMOLED", cam: "13 MP", bat: "2600 mAh" },
-            { name: "Samsung Galaxy S3", cpu: "Exynos 4412 Quad", screen: "4.8-inch Super AMOLED", cam: "8 MP", bat: "2100 mAh" },
-            { name: "Samsung Galaxy S2", cpu: "Exynos 4210 Dual", screen: "4.3-inch Super AMOLED Plus", cam: "8 MP", bat: "1650 mAh" },
-            { name: "Samsung Galaxy S", cpu: "ARM Cortex-A8", screen: "4.0-inch Super AMOLED", cam: "5 MP", bat: "1500 mAh" }
+            { name: "Samsung Galaxy S26 Plus", cpu: "Exynos 2600 / Snapdragon 8 Gen 5", ram: "12GB LPDDR5X", storage: "256GB / 512GB (UFS 4.0)", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4900 mAh" },
+            { name: "Samsung Galaxy S26", cpu: "Exynos 2600 / Snapdragon 8 Gen 5", ram: "12GB LPDDR5X", storage: "128GB (UFS 3.1) / 256GB / 512GB (UFS 4.0)", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy S25 Plus", cpu: "Exynos 2500 / Snapdragon 8 Elite", ram: "12GB LPDDR5X", storage: "256GB / 512GB (UFS 4.0)", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4900 mAh" },
+            { name: "Samsung Galaxy S25", cpu: "Exynos 2500 / Snapdragon 8 Elite", ram: "12GB LPDDR5X", storage: "128GB (UFS 3.1) / 256GB / 512GB (UFS 4.0)", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy S24 FE", cpu: "Samsung Exynos 2400e", ram: "8GB LPDDR5X", storage: "128GB / 256GB / 512GB (UFS 3.1 / UFS 4.0)", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 8 MP + 12 MP", bat: "4700 mAh" },
+            { name: "Samsung Galaxy S24 Plus", cpu: "Exynos 2400 / Snapdragon 8 Gen 3", ram: "12GB LPDDR5X", storage: "256GB / 512GB (UFS 4.0)", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4900 mAh" },
+            { name: "Samsung Galaxy S24", cpu: "Exynos 2400 / Snapdragon 8 Gen 3", ram: "8GB LPDDR5X", storage: "128GB (UFS 3.1) / 256GB / 512GB (UFS 4.0)", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy S23 FE", cpu: "Exynos 2200 / Snapdragon 8 Gen 1", ram: "8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.4-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 8 MP + 12 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy S23 Plus", cpu: "Qualcomm Snapdragon 8 Gen 2", ram: "8GB LPDDR5X", storage: "256GB / 512GB (UFS 4.0)", screen: "6.6-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4700 mAh" },
+            { name: "Samsung Galaxy S23", cpu: "Qualcomm Snapdragon 8 Gen 2", ram: "8GB LPDDR5X", storage: "128GB (UFS 3.1) / 256GB / 512GB (UFS 4.0)", screen: "6.1-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "3900 mAh" },
+            { name: "Samsung Galaxy S22 Plus", cpu: "Exynos 2200 / Snapdragon 8 Gen 1", ram: "8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.6-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy S22", cpu: "Exynos 2200 / Snapdragon 8 Gen 1", ram: "8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.1-inch Dynamic AMOLED 2X (120Hz)", cam: "50 MP + 10 MP + 12 MP", bat: "3700 mAh" },
+            { name: "Samsung Galaxy S21 FE", cpu: "Exynos 2100 / Snapdragon 888", ram: "6GB / 8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.4-inch Dynamic AMOLED 2X (120Hz)", cam: "12 MP + 8 MP + 12 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy S21 Plus", cpu: "Exynos 2100 / Snapdragon 888", ram: "8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP", bat: "4800 mAh" },
+            { name: "Samsung Galaxy S21", cpu: "Exynos 2100 / Snapdragon 888", ram: "8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy S20 FE", cpu: "Exynos 990 / Snapdragon 865", ram: "6GB / 8GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.5-inch Super AMOLED (120Hz)", cam: "12 MP + 8 MP + 12 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy S20 Plus", cpu: "Exynos 990 / Snapdragon 865", ram: "8GB / 12GB LPDDR5", storage: "128GB / 256GB / 512GB (UFS 3.0)", screen: "6.7-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP + TOF", bat: "4500 mAh" },
+            { name: "Samsung Galaxy S20", cpu: "Exynos 990 / Snapdragon 865", ram: "8GB / 12GB LPDDR5", storage: "128GB (UFS 3.0)", screen: "6.2-inch Dynamic AMOLED 2X (120Hz)", cam: "64 MP + 12 MP + 12 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy S10 Lite", cpu: "Qualcomm Snapdragon 855", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 512GB (UFS 2.1)", screen: "6.7-inch Super AMOLED Plus", cam: "48 MP + 12 MP + 5 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy S10e", cpu: "Exynos 9820 / Snapdragon 855", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.1)", screen: "5.8-inch Dynamic AMOLED", cam: "12 MP + 16 MP", bat: "3100 mAh" },
+            { name: "Samsung Galaxy S10 Plus", cpu: "Exynos 9820 / Snapdragon 855", ram: "8GB / 12GB LPDDR4X", storage: "128GB / 512GB / 1TB (UFS 2.1)", screen: "6.4-inch Dynamic AMOLED", cam: "12 MP + 12 MP + 16 MP", bat: "4100 mAh" },
+            { name: "Samsung Galaxy S10", cpu: "Exynos 9820 / Snapdragon 855", ram: "8GB LPDDR4X", storage: "128GB / 512GB (UFS 2.1)", screen: "6.1-inch Dynamic AMOLED", cam: "12 MP + 12 MP + 16 MP", bat: "3400 mAh" },
+            { name: "Samsung Galaxy S9 Plus", cpu: "Exynos 9810 / Snapdragon 845", ram: "6GB LPDDR4X", storage: "64GB / 128GB / 256GB (UFS 2.1)", screen: "6.2-inch Super AMOLED", cam: "12 MP + 12 MP", bat: "3500 mAh" },
+            { name: "Samsung Galaxy S9", cpu: "Exynos 9810 / Snapdragon 845", ram: "4GB LPDDR4X", storage: "64GB / 128GB / 256GB (UFS 2.1)", screen: "5.8-inch Super AMOLED", cam: "12 MP", bat: "3000 mAh" },
+            { name: "Samsung Galaxy S8 Plus", cpu: "Exynos 8895 / Snapdragon 835", ram: "4GB / 6GB LPDDR4X", storage: "64GB / 128GB (UFS 2.1)", screen: "6.2-inch Super AMOLED", cam: "12 MP", bat: "3500 mAh" },
+            { name: "Samsung Galaxy S8", cpu: "Exynos 8895 / Snapdragon 835", ram: "4GB LPDDR4X", storage: "64GB (UFS 2.1)", screen: "5.8-inch Super AMOLED", cam: "12 MP", bat: "3000 mAh" },
+            { name: "Samsung Galaxy S7 Edge", cpu: "Exynos 8890 / Snapdragon 820", ram: "4GB LPDDR4", storage: "32GB / 64GB / 128GB (UFS 2.0)", screen: "5.5-inch Super AMOLED", cam: "12 MP", bat: "3600 mAh" },
+            { name: "Samsung Galaxy S7", cpu: "Exynos 8890 / Snapdragon 820", ram: "4GB LPDDR4", storage: "32GB / 64GB (UFS 2.0)", screen: "5.1-inch Super AMOLED", cam: "12 MP", bat: "3000 mAh" },
+            { name: "Samsung Galaxy S6 Edge", cpu: "Samsung Exynos 7420", ram: "3GB LPDDR4", storage: "32GB / 64GB / 128GB (UFS 2.0)", screen: "5.1-inch Super AMOLED", cam: "16 MP", bat: "2600 mAh" },
+            { name: "Samsung Galaxy S6", cpu: "Samsung Exynos 7420", ram: "3GB LPDDR4", storage: "32GB / 64GB / 128GB (UFS 2.0)", screen: "5.1-inch Super AMOLED", cam: "16 MP", bat: "2550 mAh" },
+            { name: "Samsung Galaxy S5", cpu: "Qualcomm Snapdragon 801", ram: "2GB LPDDR3", storage: "16GB / 32GB (eMMC 5.0)", screen: "5.1-inch Super AMOLED", cam: "16 MP", bat: "2800 mAh" },
+            { name: "Samsung Galaxy S4", cpu: "Exynos 5410 / Snapdragon 600", ram: "2GB LPDDR3", storage: "16GB / 32GB / 64GB (eMMC 4.5)", screen: "5.0-inch Super AMOLED", cam: "13 MP", bat: "2600 mAh" },
+            { name: "Samsung Galaxy S3", cpu: "Exynos 4412 Quad", ram: "1GB / 2GB LPDDR2", storage: "16GB / 32GB / 64GB (eMMC)", screen: "4.8-inch Super AMOLED", cam: "8 MP", bat: "2100 mAh" },
+            { name: "Samsung Galaxy S2", cpu: "Exynos 4210 Dual", ram: "1GB LPDDR2", storage: "16GB / 32GB (eMMC)", screen: "4.3-inch Super AMOLED Plus", cam: "8 MP", bat: "1650 mAh" },
+            { name: "Samsung Galaxy S", cpu: "ARM Cortex-A8", ram: "512MB LPDDR1", storage: "8GB / 16GB (OneNAND)", screen: "4.0-inch Super AMOLED", cam: "5 MP", bat: "1500 mAh" }
         ];
 
         const aSeriesList = [
-            { name: "Samsung Galaxy A57", cpu: "Samsung Exynos 1680", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy A37", cpu: "Qualcomm Snapdragon 7 Gen 4", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A17", cpu: "Exynos 1380 / MediaTek Dimensity 6400", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A56", cpu: "Samsung Exynos 1580", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A36", cpu: "Qualcomm Snapdragon 6 Gen 3", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A16", cpu: "Exynos 1330 / MediaTek Dimensity 6300", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A06", cpu: "MediaTek Helio G85", screen: "6.7-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A55", cpu: "Samsung Exynos 1480", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A35", cpu: "Samsung Exynos 1380", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A25", cpu: "Samsung Exynos 1280", screen: "6.5-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A15", cpu: "MediaTek Helio G99 / Dimensity 6100+", screen: "6.5-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A05", cpu: "MediaTek Helio G85", screen: "6.7-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A54", cpu: "Samsung Exynos 1380", screen: "6.4-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A34", cpu: "MediaTek Dimensity 1080", screen: "6.6-inch Super AMOLED (120Hz)", cam: "48 MP + 8 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A24", cpu: "MediaTek Helio G99", screen: "6.5-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A14", cpu: "Exynos 1330 / Dimensity 700", screen: "6.6-inch PLS LCD (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A04", cpu: "MediaTek Helio P35", screen: "6.5-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A73", cpu: "Qualcomm Snapdragon 778G 5G", screen: "6.7-inch Super AMOLED Plus (120Hz)", cam: "108 MP + 12 MP + 5 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A53", cpu: "Samsung Exynos 1280", screen: "6.5-inch Super AMOLED (120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A33", cpu: "Samsung Exynos 1280", screen: "6.4-inch Super AMOLED (90Hz)", cam: "48 MP + 8 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A23", cpu: "Qualcomm Snapdragon 680 4G", screen: "6.6-inch PLS LCD (90Hz)", cam: "50 MP + 5 MP + 2 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A13", cpu: "Samsung Exynos 850", screen: "6.6-inch TFT LCD", cam: "50 MP + 5 MP + 2 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A03", cpu: "Unisoc T606", screen: "6.5-inch PLS TFT", cam: "48 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A72", cpu: "Qualcomm Snapdragon 720G", screen: "6.7-inch Super AMOLED (90Hz)", cam: "64 MP + 8 MP + 12 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A52s", cpu: "Qualcomm Snapdragon 778G 5G", screen: "6.5-inch Super AMOLED (120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy A52", cpu: "Qualcomm Snapdragon 720G / 750G", screen: "6.5-inch Super AMOLED (90Hz/120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy A42", cpu: "Qualcomm Snapdragon 750G 5G", screen: "6.6-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A32", cpu: "MediaTek Helio G80 / Dimensity 720", screen: "6.4-inch Super AMOLED (90Hz)", cam: "64 MP + 8 MP + 5 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A22", cpu: "MediaTek Helio G80 / Dimensity 700", screen: "6.4-inch Super AMOLED (90Hz)", cam: "48 MP + 8 MP + 2 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A12", cpu: "MediaTek Helio P35 / Exynos 850", screen: "6.5-inch PLS IPS", cam: "48 MP + 5 MP + 2 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A02", cpu: "MediaTek MT6739W", screen: "6.5-inch PLS IPS", cam: "13 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A71", cpu: "Qualcomm Snapdragon 730 / 765G", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy A51", cpu: "Samsung Exynos 9611", screen: "6.5-inch Super AMOLED", cam: "48 MP + 12 MP + 5 MP + 5 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy A41", cpu: "MediaTek Helio P65", screen: "6.1-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP", bat: "3500 mAh" },
-            { name: "Samsung Galaxy A31", cpu: "MediaTek Helio P65", screen: "6.4-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP + 5 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A21", cpu: "MediaTek Helio P35", screen: "6.5-inch IPS LCD", cam: "16 MP + 8 MP + 2 MP + 2 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy A11", cpu: "Qualcomm Snapdragon 450", screen: "6.4-inch PLS TFT", cam: "13 MP + 5 MP + 2 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy A01", cpu: "Qualcomm Snapdragon 439", screen: "5.7-inch PLS TFT", cam: "13 MP + 2 MP", bat: "3000 mAh" },
-            { name: "Samsung Galaxy A90", cpu: "Qualcomm Snapdragon 855 5G", screen: "6.7-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy A80", cpu: "Qualcomm Snapdragon 730", screen: "6.7-inch Super AMOLED (Rotating Cam)", cam: "48 MP + 8 MP + TOF 3D", bat: "3700 mAh" },
-            { name: "Samsung Galaxy A70", cpu: "Qualcomm Snapdragon 675", screen: "6.7-inch Super AMOLED", cam: "32 MP + 8 MP + 5 MP", bat: "4500 mAh" },
-            { name: "Samsung Galaxy A60", cpu: "Qualcomm Snapdragon 675", screen: "6.3-inch PLS TFT", cam: "32 MP + 8 MP + 5 MP", bat: "3500 mAh" },
-            { name: "Samsung Galaxy A50", cpu: "Samsung Exynos 9610", screen: "6.4-inch Super AMOLED", cam: "25 MP + 8 MP + 5 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy A40", cpu: "Samsung Exynos 7904", screen: "5.9-inch Super AMOLED", cam: "16 MP + 5 MP", bat: "3100 mAh" },
-            { name: "Samsung Galaxy A30", cpu: "Samsung Exynos 7904", screen: "6.4-inch Super AMOLED", cam: "16 MP + 5 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy A20", cpu: "Samsung Exynos 7884", screen: "6.4-inch Super AMOLED", cam: "13 MP + 5 MP", bat: "4000 mAh" },
-            { name: "Samsung Galaxy A10", cpu: "Samsung Exynos 7884", screen: "6.2-inch IPS LCD", cam: "13 MP", bat: "3400 mAh" }
+            { name: "Samsung Galaxy A57", cpu: "Samsung Exynos 1680", ram: "8GB / 12GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy A37", cpu: "Qualcomm Snapdragon 7 Gen 4", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A17", cpu: "Exynos 1380 / MediaTek Dimensity 6400", ram: "4GB / 6GB / 8GB", storage: "128GB / 256GB (UFS 2.2)", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A07", cpu: "MediaTek Helio G99 / Dimensity 6300", ram: "4GB / 6GB LPDDR4X", storage: "64GB / 128GB (eMMC 5.1 / UFS 2.2)", screen: "6.7-inch PLS LCD (90Hz)", cam: "50 MP + 2 MP", bat: "5000 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy A56", cpu: "Samsung Exynos 1580", ram: "8GB / 12GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A36", cpu: "Qualcomm Snapdragon 6 Gen 3", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A16", cpu: "Exynos 1330 / MediaTek Dimensity 6300", ram: "4GB / 6GB / 8GB", storage: "128GB / 256GB (UFS 2.2)", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A06", cpu: "MediaTek Helio G85", ram: "4GB / 6GB LPDDR4X", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.7-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A55", cpu: "Samsung Exynos 1480", ram: "8GB / 12GB LPDDR5", storage: "128GB / 256GB (UFS 3.1)", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A35", cpu: "Samsung Exynos 1380", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A25", cpu: "Samsung Exynos 1280", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.5-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A15", cpu: "MediaTek Helio G99 / Dimensity 6100+", ram: "4GB / 6GB / 8GB", storage: "128GB / 256GB (UFS 2.2)", screen: "6.5-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A05", cpu: "MediaTek Helio G85", ram: "4GB / 6GB LPDDR4X", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.7-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A54", cpu: "Samsung Exynos 1380", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.4-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A34", cpu: "MediaTek Dimensity 1080", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.6-inch Super AMOLED (120Hz)", cam: "48 MP + 8 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A24", cpu: "MediaTek Helio G99", ram: "4GB / 6GB / 8GB", storage: "128GB (UFS 2.2)", screen: "6.5-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A14", cpu: "Exynos 1330 / Dimensity 700", ram: "4GB / 6GB", storage: "64GB / 128GB (UFS 2.2)", screen: "6.6-inch PLS LCD (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A04", cpu: "MediaTek Helio P35", ram: "3GB / 4GB / 6GB", storage: "32GB / 64GB / 128GB (eMMC 5.1)", screen: "6.5-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A73", cpu: "Qualcomm Snapdragon 778G 5G", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.7-inch Super AMOLED Plus (120Hz)", cam: "108 MP + 12 MP + 5 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A53", cpu: "Samsung Exynos 1280", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.5-inch Super AMOLED (120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A33", cpu: "Samsung Exynos 1280", ram: "6GB / 8GB LPDDR4X", storage: "128GB / 256GB (UFS 2.2)", screen: "6.4-inch Super AMOLED (90Hz)", cam: "48 MP + 8 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A23", cpu: "Qualcomm Snapdragon 680 4G", ram: "4GB / 6GB / 8GB", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.6-inch PLS LCD (90Hz)", cam: "50 MP + 5 MP + 2 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A13", cpu: "Samsung Exynos 850", ram: "3GB / 4GB / 6GB", storage: "32GB / 64GB / 128GB (eMMC 5.1)", screen: "6.6-inch TFT LCD", cam: "50 MP + 5 MP + 2 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A03", cpu: "Unisoc T606", ram: "3GB / 4GB", storage: "32GB / 64GB / 128GB (eMMC 5.1)", screen: "6.5-inch PLS TFT", cam: "48 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A72", cpu: "Qualcomm Snapdragon 720G", ram: "6GB / 8GB", storage: "128GB / 256GB (UFS 2.1)", screen: "6.7-inch Super AMOLED (90Hz)", cam: "64 MP + 8 MP + 12 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A52s", cpu: "Qualcomm Snapdragon 778G 5G", ram: "6GB / 8GB", storage: "128GB / 256GB (UFS 2.1)", screen: "6.5-inch Super AMOLED (120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy A52", cpu: "Qualcomm Snapdragon 720G / 750G", ram: "4GB / 6GB / 8GB", storage: "128GB / 256GB (UFS 2.1)", screen: "6.5-inch Super AMOLED (90Hz/120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy A42", cpu: "Qualcomm Snapdragon 750G 5G", ram: "4GB / 6GB / 8GB", storage: "128GB (UFS 2.1)", screen: "6.6-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A32", cpu: "MediaTek Helio G80 / Dimensity 720", ram: "4GB / 6GB / 8GB", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.4-inch Super AMOLED (90Hz)", cam: "64 MP + 8 MP + 5 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A22", cpu: "MediaTek Helio G80 / Dimensity 700", ram: "4GB / 6GB", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.4-inch Super AMOLED (90Hz)", cam: "48 MP + 8 MP + 2 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A12", cpu: "MediaTek Helio P35 / Exynos 850", ram: "3GB / 4GB / 6GB", storage: "32GB / 64GB / 128GB (eMMC 5.1)", screen: "6.5-inch PLS IPS", cam: "48 MP + 5 MP + 2 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A02", cpu: "MediaTek MT6739W", ram: "2GB / 3GB", storage: "32GB / 64GB (eMMC 5.1)", screen: "6.5-inch PLS IPS", cam: "13 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A71", cpu: "Qualcomm Snapdragon 730 / 765G", ram: "6GB / 8GB", storage: "128GB (UFS 2.1)", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy A51", cpu: "Samsung Exynos 9611", ram: "4GB / 6GB / 8GB", storage: "64GB / 128GB (UFS 2.0)", screen: "6.5-inch Super AMOLED", cam: "48 MP + 12 MP + 5 MP + 5 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy A41", cpu: "MediaTek Helio P65", ram: "4GB", storage: "64GB (eMMC 5.1)", screen: "6.1-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP", bat: "3500 mAh" },
+            { name: "Samsung Galaxy A31", cpu: "MediaTek Helio P65", ram: "4GB / 6GB", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.4-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A21", cpu: "MediaTek Helio P35", ram: "3GB", storage: "32GB (eMMC 5.1)", screen: "6.5-inch IPS LCD", cam: "16 MP + 8 MP + 2 MP + 2 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy A11", cpu: "Qualcomm Snapdragon 450", ram: "2GB / 3GB", storage: "32GB (eMMC 5.1)", screen: "6.4-inch PLS TFT", cam: "13 MP + 5 MP + 2 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy A01", cpu: "Qualcomm Snapdragon 439", ram: "2GB", storage: "16GB / 32GB (eMMC 5.1)", screen: "5.7-inch PLS TFT", cam: "13 MP + 2 MP", bat: "3000 mAh" },
+            { name: "Samsung Galaxy A90", cpu: "Qualcomm Snapdragon 855 5G", ram: "6GB / 8GB", storage: "128GB (UFS 3.0)", screen: "6.7-inch Super AMOLED", cam: "48 MP + 8 MP + 5 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy A80", cpu: "Qualcomm Snapdragon 730", ram: "8GB", storage: "128GB (UFS 2.1)", screen: "6.7-inch Super AMOLED (Rotating Cam)", cam: "48 MP + 8 MP + TOF 3D", bat: "3700 mAh" },
+            { name: "Samsung Galaxy A70", cpu: "Qualcomm Snapdragon 675", ram: "6GB / 8GB", storage: "128GB (UFS 2.0)", screen: "6.7-inch Super AMOLED", cam: "32 MP + 8 MP + 5 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy A60", cpu: "Qualcomm Snapdragon 675", ram: "6GB", storage: "64GB / 128GB (eMMC 5.1)", screen: "6.3-inch PLS TFT", cam: "32 MP + 8 MP + 5 MP", bat: "3500 mAh" },
+            { name: "Samsung Galaxy A50", cpu: "Samsung Exynos 9610", ram: "4GB / 6GB", storage: "64GB / 128GB (UFS 2.1)", screen: "6.4-inch Super AMOLED", cam: "25 MP + 8 MP + 5 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy A40", cpu: "Samsung Exynos 7904", ram: "4GB", storage: "64GB (eMMC 5.1)", screen: "5.9-inch Super AMOLED", cam: "16 MP + 5 MP", bat: "3100 mAh" },
+            { name: "Samsung Galaxy A30", cpu: "Samsung Exynos 7904", ram: "3GB / 4GB", storage: "32GB / 64GB (eMMC 5.1)", screen: "6.4-inch Super AMOLED", cam: "16 MP + 5 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy A20", cpu: "Samsung Exynos 7884", ram: "3GB", storage: "32GB (eMMC 5.1)", screen: "6.4-inch Super AMOLED", cam: "13 MP + 5 MP", bat: "4000 mAh" },
+            { name: "Samsung Galaxy A10", cpu: "Samsung Exynos 7884", ram: "2GB", storage: "32GB (eMMC 5.1)", screen: "6.2-inch IPS LCD", cam: "13 MP", bat: "3400 mAh" }
         ];
 
         const allPhonesData = [];
@@ -594,6 +595,14 @@
 
             const modalBody = document.getElementById('modalBody');
             modalBody.innerHTML = `
+                <div class="spec-group">
+                    <strong>الذاكرة العشوائية (RAM):</strong>
+                    <span>${phone.ram}</span>
+                </div>
+                <div class="spec-group">
+                    <strong>المساحة والتخزين (Storage & Type):</strong>
+                    <span>${phone.storage}</span>
+                </div>
                 <div class="spec-group">
                     <strong>المعالج (Processor):</strong>
                     <span>${phone.cpu}</span>
