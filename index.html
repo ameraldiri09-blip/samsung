@@ -345,12 +345,12 @@
 
     <div class="controls-container">
         <div class="search-box">
-            <input type="text" id="searchInput" oninput="applyFilters()" placeholder="ابحث عن جهاز (S26 Ultra, A56, Fold 7, S10)...">
+            <input type="text" id="searchInput" oninput="applyFilters()" placeholder="ابحث عن جهاز (Z8 Ultra, A57, S26 Ultra)...">
         </div>
         <div class="filter-buttons">
             <button class="filter-btn active" onclick="setCategory('all', this)">الكل</button>
             <button class="filter-btn" onclick="setCategory('ultra', this)">فئة Ultra</button>
-            <button class="filter-btn" onclick="setCategory('fold', this)">فئة Fold</button>
+            <button class="filter-btn" onclick="setCategory('fold', this)">فئة Fold / Z</button>
             <button class="filter-btn" onclick="setCategory('s-series', this)">سلسلة S</button>
             <button class="filter-btn" onclick="setCategory('a-series', this)">سلسلة A</button>
         </div>
@@ -387,23 +387,25 @@
         };
 
         const ultraPhones = [
-            { name: "Samsung Galaxy S26 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 5", screen: "6.8-inch Dynamic AMOLED 2X (144Hz, QHD+)", cam: "200 MP + 50 MP (Periscope) + 50 MP (Telephoto) + 50 MP (Ultrawide)", bat: "5000 mAh (65W Fast Charging)" },
-            { name: "Samsung Galaxy S25 Ultra", cpu: "Qualcomm Snapdragon 8 Elite for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP (Periscope) + 10 MP (Telephoto) + 50 MP (Ultrawide)", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S24 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP (Periscope) + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S23 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 10 MP (Periscope) + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S22 Ultra", cpu: "Snapdragon 8 Gen 1 / Samsung Exynos 2200", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP (Periscope) + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "5000 mAh (45W Fast Charging)" },
-            { name: "Samsung Galaxy S21 Ultra", cpu: "Samsung Exynos 2100 / Snapdragon 888", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP (Periscope) + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "5000 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy S20 Ultra", cpu: "Samsung Exynos 990 / Snapdragon 865", screen: "6.9-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 48 MP (Periscope) + 12 MP (Ultrawide) + 0.3 MP TOF 3D", bat: "5000 mAh (45W Fast Charging)" }
+            { name: "Samsung Galaxy S26 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 5", screen: "6.8-inch Dynamic AMOLED 2X (144Hz, QHD+)", cam: "200 MP + 50 MP + 50 MP + 50 MP", bat: "5000 mAh (65W Fast Charging)" },
+            { name: "Samsung Galaxy S25 Ultra", cpu: "Qualcomm Snapdragon 8 Elite for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP + 10 MP + 50 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S24 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 50 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S23 Ultra", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "200 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S22 Ultra", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy S21 Ultra", cpu: "Exynos 2100 / Snapdragon 888", screen: "6.8-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 10 MP + 10 MP + 12 MP", bat: "5000 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy S20 Ultra", cpu: "Exynos 990 / Snapdragon 865", screen: "6.9-inch Dynamic AMOLED 2X (120Hz, QHD+)", cam: "108 MP + 48 MP + 12 MP + TOF", bat: "5000 mAh (45W Fast Charging)" }
         ];
 
         const foldPhones = [
-            { name: "Samsung Galaxy Z Fold 7", cpu: "Qualcomm Snapdragon 8 Elite", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 6", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 5", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 4", cpu: "Qualcomm Snapdragon 8+ Gen 1", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP (Telephoto) + 12 MP (Ultrawide)", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 3", cpu: "Qualcomm Snapdragon 888 5G", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "12 MP + 12 MP (Telephoto) + 12 MP (Ultrawide)", bat: "4400 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Z Fold 2", cpu: "Qualcomm Snapdragon 865+", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.23 Cover", cam: "12 MP + 12 MP (Telephoto) + 12 MP (Ultrawide)", bat: "4500 mAh (25W Fast Charging)" },
-            { name: "Samsung Galaxy Fold", cpu: "Qualcomm Snapdragon 855", screen: "7.3-inch Foldable Dynamic AMOLED / 4.6 Cover", cam: "12 MP + 12 MP (Telephoto) + 16 MP (Ultrawide)", bat: "4380 mAh (15W Fast Charging)" }
+            { name: "Samsung Galaxy Z Fold 8 Ultra", cpu: "Qualcomm Snapdragon 8 Elite Gen 2", screen: "8.0-inch Main / 6.5 Cover Dynamic AMOLED 2X", cam: "200 MP + 50 MP + 50 MP", bat: "4600 mAh (65W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 8", cpu: "Qualcomm Snapdragon 8 Elite Gen 2", screen: "7.6-inch Main / 6.3 Cover Dynamic AMOLED 2X", cam: "50 MP + 12 MP + 10 MP", bat: "4400 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 7", cpu: "Qualcomm Snapdragon 8 Elite", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 6", cpu: "Qualcomm Snapdragon 8 Gen 3 for Galaxy", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.3 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 5", cpu: "Qualcomm Snapdragon 8 Gen 2 for Galaxy", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 4", cpu: "Qualcomm Snapdragon 8+ Gen 1", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "50 MP + 10 MP + 12 MP", bat: "4400 mAh (25W Fast Charging)" },
+            { name: "Samsung Galaxy Z Fold 3", cpu: "Qualcomm Snapdragon 888 5G", screen: "7.6-inch Foldable Dynamic AMOLED 2X (120Hz) / 6.2 Cover", cam: "12 MP + 12 MP + 12 MP", bat: "4400 mAh" },
+            { name: "Samsung Galaxy Z Fold 2", cpu: "Qualcomm Snapdragon 865+", screen: "7.6-inch Foldable Dynamic AMOLED 2X / 6.23 Cover", cam: "12 MP + 12 MP + 12 MP", bat: "4500 mAh" },
+            { name: "Samsung Galaxy Fold", cpu: "Qualcomm Snapdragon 855", screen: "7.3-inch Foldable Dynamic AMOLED / 4.6 Cover", cam: "12 MP + 12 MP + 16 MP", bat: "4380 mAh" }
         ];
 
         const sSeriesList = [
@@ -441,10 +443,13 @@
             { name: "Samsung Galaxy S4", cpu: "Exynos 5410 / Snapdragon 600", screen: "5.0-inch Super AMOLED", cam: "13 MP", bat: "2600 mAh" },
             { name: "Samsung Galaxy S3", cpu: "Exynos 4412 Quad", screen: "4.8-inch Super AMOLED", cam: "8 MP", bat: "2100 mAh" },
             { name: "Samsung Galaxy S2", cpu: "Exynos 4210 Dual", screen: "4.3-inch Super AMOLED Plus", cam: "8 MP", bat: "1650 mAh" },
-            { name: "Samsung Galaxy S", cpu: "ARM Cortex-A8 (Hummingbird)", screen: "4.0-inch Super AMOLED", cam: "5 MP", bat: "1500 mAh" }
+            { name: "Samsung Galaxy S", cpu: "ARM Cortex-A8", screen: "4.0-inch Super AMOLED", cam: "5 MP", bat: "1500 mAh" }
         ];
 
         const aSeriesList = [
+            { name: "Samsung Galaxy A57", cpu: "Samsung Exynos 1680", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh (45W Fast Charging)" },
+            { name: "Samsung Galaxy A37", cpu: "Qualcomm Snapdragon 7 Gen 4", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A17", cpu: "Exynos 1380 / MediaTek Dimensity 6400", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A56", cpu: "Samsung Exynos 1580", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A36", cpu: "Qualcomm Snapdragon 6 Gen 3", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP + 8 MP + 5 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A16", cpu: "Exynos 1330 / MediaTek Dimensity 6300", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
@@ -457,7 +462,7 @@
             { name: "Samsung Galaxy A54", cpu: "Samsung Exynos 1380", screen: "6.4-inch Super AMOLED (120Hz)", cam: "50 MP + 12 MP + 5 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A34", cpu: "MediaTek Dimensity 1080", screen: "6.6-inch Super AMOLED (120Hz)", cam: "48 MP + 8 MP + 5 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A24", cpu: "MediaTek Helio G99", screen: "6.5-inch Super AMOLED (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
-            { name: "Samsung Galaxy A14", cpu: "Exynos 1330 / Dimensity 700 / Helio G80", screen: "6.6-inch PLS LCD (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
+            { name: "Samsung Galaxy A14", cpu: "Exynos 1330 / Dimensity 700", screen: "6.6-inch PLS LCD (90Hz)", cam: "50 MP + 5 MP + 2 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A04", cpu: "MediaTek Helio P35", screen: "6.5-inch PLS LCD", cam: "50 MP + 2 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A73", cpu: "Qualcomm Snapdragon 778G 5G", screen: "6.7-inch Super AMOLED Plus (120Hz)", cam: "108 MP + 12 MP + 5 MP + 5 MP", bat: "5000 mAh" },
             { name: "Samsung Galaxy A53", cpu: "Samsung Exynos 1280", screen: "6.5-inch Super AMOLED (120Hz)", cam: "64 MP + 12 MP + 5 MP + 5 MP", bat: "5000 mAh" },
@@ -498,7 +503,7 @@
         });
 
         foldPhones.forEach(p => {
-            allPhonesData.push({ ...p, category: "fold", catLabel: "فئة Fold القابلة للطي", img: defaultImgs.fold });
+            allPhonesData.push({ ...p, category: "fold", catLabel: "فئة Fold / Z القابلة للطي", img: defaultImgs.fold });
         });
 
         sSeriesList.forEach(p => {
