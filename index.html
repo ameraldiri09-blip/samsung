@@ -289,7 +289,6 @@
             gap: 20px;
         }
 
-        /* توهج وتحديد RGB لبطاقات الهواتف */
         .phone-card {
             background-color: var(--card-bg);
             border-radius: 18px;
@@ -430,7 +429,6 @@
             box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
 
-        /* شريط المقارنة العائم بتصميم RGB */
         .compare-bar {
             position: fixed;
             bottom: 25px;
@@ -951,7 +949,7 @@
             { id: "inf_h40i", name: "Infinix Hot 40i", subCat: "infinix-hot", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
             { id: "inf_h30", name: "Infinix Hot 30", subCat: "infinix-hot", cpu: "MediaTek Helio G88", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
             { id: "inf_sm9", name: "Infinix Smart 9", subCat: "infinix-smart", cpu: "MediaTek Helio G81 Ultra", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD (120Hz)", cam: "13 MP Dual", bat: "5000 mAh (10W)" },
-            { id: "inf_sm8", name: "Infinix Smart 8", subCat: "infinix-smart", cpu: "Unisoc T606", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD (90Hz)", cam: "13 MP Dual", bat: "5000 mAh (10W)" },
+            { id: "inf_sm8", name: "Infinix Smart 8", subCat: "infinix-smart", cpu: "Unisoc T606", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD (120Hz)", cam: "13 MP Dual", bat: "5000 mAh (10W)" },
             { id: "inf_sm7", name: "Infinix Smart 7", subCat: "infinix-smart", cpu: "Unisoc SC9863A", ram: "4GB", storage: "64GB", screen: "6.6-inch IPS LCD", cam: "13 MP Dual", bat: "5000 mAh (10W)" }
         ];
 
@@ -963,21 +961,17 @@
             currentBrand = brand;
             currentSubCat = 'all';
             
-            // Update Brand Buttons
             document.querySelectorAll('.brand-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`${brand}MainBtn`).classList.add('active');
 
-            // Hide all sub-filters
             document.getElementById('samsungSubFilters').style.display = 'none';
             document.getElementById('appleSubFilters').style.display = 'none';
             document.getElementById('xiaomiSubFilters').style.display = 'none';
             document.getElementById('infinixSubFilters').style.display = 'none';
 
-            // Show selected sub-filters
             const currentSubFilter = document.getElementById(`${brand}SubFilters`);
             currentSubFilter.style.display = 'flex';
 
-            // Reset sub filter active buttons
             currentSubFilter.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
             currentSubFilter.querySelector('.sub-btn').classList.add('active');
 
@@ -1015,6 +1009,16 @@
             renderGrid(filtered);
         }
 
+        function getBrandTagLabel(brand) {
+            switch(brand) {
+                case 'samsung': return 'Samsung';
+                case 'apple': return 'Apple iPhone';
+                case 'xiaomi': return 'Xiaomi / Redmi / POCO';
+                case 'infinix': return 'Infinix';
+                default: return '';
+            }
+        }
+
         function renderGrid(phones) {
             const grid = document.getElementById('phoneGrid');
             const resultsCount = document.getElementById('resultsCount');
@@ -1038,8 +1042,8 @@
                             <h3>${phone.name}</h3>
                             <div class="card-actions">
                                 <button class="view-details-btn" onclick="openSpecsModal('${phone.id}')">المواصفات</button>
-                                <button class="compare-btn ${isSelected ? 'selected' : ''}" onclick="toggleCompare('${phone.id}')">
-                                    ${isSelected ? 'محدد' : 'مقارنة'}
+                                <button class="compare-btn ${isSelected ? 'selected' : ''}" onclick="toggleCompare('${phone.id}', event)">
+                                    ${isSelected ? 'إلغاء' : 'قارن'}
                                 </button>
                             </div>
                         </div>
@@ -1048,43 +1052,14 @@
             }).join('');
         }
 
-        function getBrandTagLabel(brand) {
-            switch(brand) {
-                case 'samsung': return 'سامسونج';
-                case 'apple': return 'آيفون';
-                case 'xiaomi': return 'شاومي';
-                case 'infinix': return 'إنفينيكس';
-                default: return 'هاتف';
-            }
+        function findPhoneById(id) {
+            const allLists = [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList];
+            return allLists.find(p => p.id === id);
         }
 
-        function getPhoneById(id) {
-            return [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList].find(p => p.id === id);
-        }
-
-        function openSpecsModal(id) {
-            const phone = getPhoneById(id);
-            if (!phone) return;
-
-            document.getElementById('modalTitle').textContent = phone.name;
-            document.getElementById('modalCategory').textContent = getBrandTagLabel(currentBrand);
-            document.getElementById('modalCategory').className = `category-tag ${currentBrand}`;
-
-            const body = document.getElementById('modalBody');
-            body.innerHTML = `
-                <div class="spec-group"><strong>المعالج (CPU):</strong> <span>${phone.cpu}</span></div>
-                <div class="spec-group"><strong>الذاكرة العشوائية (RAM):</strong> <span>${phone.ram}</span></div>
-                <div class="spec-group"><strong>ذاكرة التخزين (Storage):</strong> <span>${phone.storage}</span></div>
-                <div class="spec-group"><strong>الشاشة (Screen):</strong> <span>${phone.screen}</span></div>
-                <div class="spec-group"><strong>الكاميرا (Camera):</strong> <span>${phone.cam}</span></div>
-                <div class="spec-group"><strong>البطارية والشحن (Battery):</strong> <span>${phone.bat}</span></div>
-            `;
-
-            document.getElementById('specsModal').classList.add('active');
-        }
-
-        function toggleCompare(id) {
-            const phone = getPhoneById(id);
+        function toggleCompare(id, event) {
+            event.stopPropagation();
+            const phone = findPhoneById(id);
             if (!phone) return;
 
             const index = compareList.findIndex(item => item.id === id);
@@ -1092,7 +1067,7 @@
                 compareList.splice(index, 1);
             } else {
                 if (compareList.length >= 2) {
-                    compareList.shift(); // احتفاظ بأحدث جهازين فقط
+                    compareList.shift(); // الاحتفاظ بآخر جهازين فقط للمقارنة المباشرة
                 }
                 compareList.push(phone);
             }
@@ -1110,9 +1085,9 @@
             } else {
                 bar.classList.add('active');
                 if (compareList.length === 1) {
-                    countText.textContent = `تم اختيار (${compareList[0].name}) - اختر جهازاً ثانياً للمقارنة`;
+                    countText.textContent = `تم اختيار جهاز واحد: ${compareList[0].name} (اختر جهازاً ثانياً للمقارنة)`;
                 } else {
-                    countText.textContent = `جاهز للمقارنة: (${compareList[0].name}) ضد (${compareList[1].name})`;
+                    countText.textContent = `المقارنة بين: ${compareList[0].name} و ${compareList[1].name}`;
                 }
             }
         }
@@ -1123,21 +1098,60 @@
             applyFilters();
         }
 
+        function openSpecsModal(id) {
+            const phone = findPhoneById(id);
+            if (!phone) return;
+
+            document.getElementById('modalTitle').textContent = phone.name;
+            document.getElementById('modalCategory').textContent = getBrandTagLabel(currentBrand);
+
+            const body = document.getElementById('modalBody');
+            body.innerHTML = `
+                <div class="spec-group"><strong>المعالج (CPU)</strong><span>${phone.cpu}</span></div>
+                <div class="spec-group"><strong>الذاكرة العشوائية (RAM)</strong><span>${phone.ram}</span></div>
+                <div class="spec-group"><strong>سعة التخزين (Storage)</strong><span>${phone.storage}</span></div>
+                <div class="spec-group"><strong>الشاشة</strong><span>${phone.screen}</span></div>
+                <div class="spec-group"><strong>الكاميرا</strong><span>${phone.cam}</span></div>
+                <div class="spec-group"><strong>البطارية</strong><span>${phone.bat}</span></div>
+            `;
+
+            document.getElementById('specsModal').classList.add('active');
+        }
+
+        // استخراج أرقام لاستخدامها في المقارنة وتحديد الأفضل
+        function extractNumber(str) {
+            if (!str) return 0;
+            const match = str.match(/(\d+(\.\d+)?)/);
+            return match ? parseFloat(match[0]) : 0;
+        }
+
         function openCompareModal() {
             if (compareList.length < 2) {
-                alert('يرجى اختيار جهازين للمقارنة بينهما.');
+                alert('الرجاء اختيار جهازين للمقارنة.');
                 return;
             }
 
             const p1 = compareList[0];
             const p2 = compareList[1];
 
+            // تحديد الأفضلية لكل ميزة رقمياً أو بالاعتماد على القيم
+            const ram1 = extractNumber(p1.ram);
+            const ram2 = extractNumber(p2.ram);
+            const bat1 = extractNumber(p1.bat);
+            const bat2 = extractNumber(p2.bat);
+            const cam1 = extractNumber(p1.cam);
+            const cam2 = extractNumber(p2.cam);
+
+            const ramWinner = ram1 > ram2 ? 0 : (ram2 > ram1 ? 1 : -1);
+            const batWinner = bat1 > bat2 ? 0 : (bat2 > bat1 ? 1 : -1);
+            const camWinner = cam1 > cam2 ? 0 : (cam2 > cam1 ? 1 : -1);
+
             const body = document.getElementById('compareModalBody');
             body.innerHTML = `
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th class="feature-title">المواصفة</th>
+                            <th>المواصفة</th>
                             <th>${p1.name}</th>
                             <th>${p2.name}</th>
                         </tr>
@@ -1149,9 +1163,9 @@
                             <td>${p2.cpu}</td>
                         </tr>
                         <tr>
-                            <td class="feature-title">الرام</td>
-                            <td>${p1.ram}</td>
-                            <td>${p2.ram}</td>
+                            <td class="feature-title">الذاكرة (RAM)</td>
+                            <td class="${ramWinner === 0 ? 'winner-cell' : ''}">${p1.ram} ${ramWinner === 0 ? '<br><span class="winner-badge">الأفضل</span>' : ''}</td>
+                            <td class="${ramWinner === 1 ? 'winner-cell' : ''}">${p2.ram} ${ramWinner === 1 ? '<br><span class="winner-badge">الأفضل</span>' : ''}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">التخزين</td>
@@ -1165,19 +1179,19 @@
                         </tr>
                         <tr>
                             <td class="feature-title">الكاميرا</td>
-                            <td>${p1.cam}</td>
-                            <td>${p2.cam}</td>
+                            <td class="${camWinner === 0 ? 'winner-cell' : ''}">${p1.cam} ${camWinner === 0 ? '<br><span class="winner-badge">الأفضل</span>' : ''}</td>
+                            <td class="${camWinner === 1 ? 'winner-cell' : ''}">${p2.cam} ${camWinner === 1 ? '<br><span class="winner-badge">الأفضل</span>' : ''}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">البطارية</td>
-                            <td>${p1.bat}</td>
-                            <td>${p2.bat}</td>
+                            <td class="${batWinner === 0 ? 'winner-cell' : ''}">${p1.bat} ${batWinner === 0 ? '<br><span class="winner-badge">الأفضل</span>' : ''}</td>
+                            <td class="${batWinner === 1 ? 'winner-cell' : ''}">${p2.bat} ${batWinner === 1 ? '<br><span class="winner-badge">الأفضل</span>' : ''}</td>
                         </tr>
                     </tbody>
                 </table>
             `;
 
-            document.getElementById('compareModal').classList.add('active');
+            document.getElementById('compareModalModal') || document.getElementById('compareModal').classList.add('active');
         }
 
         function closeModal(modalId) {
@@ -1190,30 +1204,8 @@
             }
         }
 
-        // Google Sign-In Handler
-        function handleCredentialResponse(response) {
-            const responsePayload = parseJwt(response.credential);
-            const userInfo = document.getElementById('userInfo');
-            userInfo.style.display = 'flex';
-            userInfo.innerHTML = `
-                <img src="${responsePayload.picture}" alt="${responsePayload.name}">
-                <span>${responsePayload.name}</span>
-            `;
-            document.querySelector('.g_id_signin').style.display = 'none';
-        }
-
-        function parseJwt(token) {
-            var base64Url = token.split('.')[1];
-            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-            return JSON.parse(jsonPayload);
-        }
-
-        // Initial Load
         window.onload = function() {
-            applyFilters();
+            switchBrand('samsung');
         };
     </script>
 </body>
