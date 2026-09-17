@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">الموسوعة الرقمية للهواتف الذكية | إعداد المهندس : عامر الديري</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     
     <style>
         :root {
@@ -17,6 +18,7 @@
             --text-sub: #94a3b8;
             --accent-color: #10b981;
             --accent-hover: #059669;
+            --favorite-color: #ef4444;
             --winner-bg: rgba(16, 185, 129, 0.15);
             --winner-border: #10b981;
 
@@ -82,7 +84,7 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .lang-switch-btn {
@@ -114,17 +116,47 @@
             box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
         }
 
+        .google-auth-container {
+            display: flex;
+            align-items: center;
+        }
+
         .user-profile {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: var(--text-main);
-            font-size: 0.9rem;
-            font-weight: 600;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 4px 12px 4px 6px;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--primary-color);
+        }
+
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--favorite-color);
+            color: white;
         }
 
         header {
@@ -171,7 +203,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: -28px auto 30px auto;
             padding: 0 20px;
             position: relative;
@@ -181,9 +213,9 @@
 
         .brand-btn {
             flex: 1;
-            min-width: 180px;
+            min-width: 160px;
             padding: 16px 20px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 800;
             border: 2px solid transparent;
             border-radius: 16px;
@@ -204,6 +236,7 @@
         .brand-btn.apple { background: linear-gradient(135deg, #334155, #0f172a); }
         .brand-btn.xiaomi { background: linear-gradient(135deg, #c2410c, #431407); }
         .brand-btn.infinix { background: linear-gradient(135deg, #047857, #064e3b); }
+        .brand-btn.favorites { background: linear-gradient(135deg, #991b1b, #450a0a); }
 
         .brand-btn.active {
             opacity: 1;
@@ -334,6 +367,49 @@
             background: linear-gradient(135deg, #ff007f, #00dfd8, #7928ca);
         }
 
+        .fav-icon-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 5;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        html[dir="ltr"] .fav-icon-btn {
+            left: auto;
+            right: 10px;
+        }
+
+        .fav-icon-btn:hover {
+            transform: scale(1.15);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .fav-icon-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #94a3b8;
+            stroke-width: 2;
+            transition: all 0.2s ease;
+        }
+
+        .fav-icon-btn.active svg {
+            fill: var(--favorite-color);
+            stroke: var(--favorite-color);
+            filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+        }
+
         .image-container {
             width: 100%;
             height: 150px;
@@ -344,6 +420,7 @@
             padding: 15px;
             border-bottom: 1px solid var(--card-border);
             cursor: pointer;
+            position: relative;
         }
 
         .fallback-img {
@@ -669,6 +746,21 @@
     <nav>
         <div class="logo" id="logoText">الموسوعة الرقمية <span>للهواتف الذكية</span></div>
         <div class="nav-actions">
+            <div id="googleAuthContainer" class="google-auth-container">
+                <div id="g_id_onload"
+                    data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse"
+                    data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-size="medium"
+                    data-theme="dark"
+                    data-text="sign_in_with"
+                    data-shape="pill"
+                    data-logo_alignment="left">
+                </div>
+            </div>
             <button class="lang-switch-btn" id="langSwitchBtn" onclick="toggleLanguage()">English</button>
             <div class="author-tag" id="authorTag">إعداد المهندس : عامر الديري</div>
         </div>
@@ -691,6 +783,9 @@
         </button>
         <button class="brand-btn infinix" id="infinixMainBtn" onclick="switchBrand('infinix')">
              قسم إنفينيكس (Infinix)
+        </button>
+        <button class="brand-btn favorites" id="favoritesMainBtn" onclick="switchBrand('favorites')">
+            ❤️ المفضلة
         </button>
     </div>
 
@@ -742,6 +837,11 @@
             <button class="sub-btn" data-sub="infinix-hot" onclick="setSubCategory('infinix-hot', this)">Hot Series</button>
             <button class="sub-btn" data-sub="infinix-smart" onclick="setSubCategory('infinix-smart', this)">Smart Series</button>
         </div>
+
+        <!-- قسم المفضلة الفرعي -->
+        <div class="sub-filter-buttons" id="favoritesSubFilters" style="display: none;">
+            <button class="sub-btn active" data-sub="all" onclick="setSubCategory('all', this)">كل المفضلة</button>
+        </div>
     </div>
 
     <div class="results-count" id="resultsCount">جاري تحميل الموسوعة...</div>
@@ -786,6 +886,8 @@
 
     <script>
         let currentLang = 'ar';
+        let currentUser = null;
+        let userFavorites = [];
 
         const i18n = {
             ar: {
@@ -799,11 +901,14 @@
                 appleMainBtn: "قسم آيفون (iPhone)",
                 xiaomiMainBtn: "قسم شاومي (Xiaomi)",
                 infinixMainBtn: "قسم إنفينيكس (Infinix)",
+                favoritesMainBtn: "❤️ المفضلة",
                 subAll: "كل الأجهزة",
                 subAppleLegacy: "الأجيال السابقة & SE",
                 loading: "جاري تحميل الموسوعة...",
                 resultsFound: "تم العثور على {count} جهاز",
                 noResults: "لا توجد نتائج تطابق بحثك.",
+                noFavorites: "لم تقم بإضافة أي هاتف للمفضلة بعد.",
+                loginRequiredFav: "يرجى تسجيل الدخول بحساب جوجل لتتمكن من استخدام قائمة المفضلة.",
                 detailsBtn: "التفاصيل والمواصفات",
                 compareBtn: "مقارنة",
                 selectedForCompare: "تم اختيار جهاز واحد للمقارنة",
@@ -816,6 +921,7 @@
                 overallWinnerTitle: "🏆 النتيجة العامة للمقارنة",
                 overallWinnerDesc: "الجهاز الفائز بشكل عام بناءً على الأداء والمواصفات هو:",
                 tieText: "المواصفات متقاربة أو متعادلة بين الجهازين",
+                logout: "خروج",
                 specs: {
                     cpu: "المعالج",
                     ram: "الذاكرة العشوائية (RAM)",
@@ -843,11 +949,14 @@
                 appleMainBtn: "iPhone Section",
                 xiaomiMainBtn: "Xiaomi Section",
                 infinixMainBtn: "Infinix Section",
+                favoritesMainBtn: "❤️ Favorites",
                 subAll: "All Devices",
                 subAppleLegacy: "Previous Generations & SE",
                 loading: "Loading Encyclopedia...",
                 resultsFound: "Found {count} devices",
                 noResults: "No results match your search.",
+                noFavorites: "You haven't added any phones to favorites yet.",
+                loginRequiredFav: "Please sign in with Google to use the favorites feature.",
                 detailsBtn: "Details & Specs",
                 compareBtn: "Compare",
                 selectedForCompare: "1 device selected for comparison",
@@ -860,6 +969,7 @@
                 overallWinnerTitle: "🏆 Overall Winner",
                 overallWinnerDesc: "The recommended device based on total specifications is:",
                 tieText: "Both devices have closely equivalent overall specifications",
+                logout: "Logout",
                 specs: {
                     cpu: "Processor",
                     ram: "RAM",
@@ -879,188 +989,313 @@
         };
 
         const samsungList = [
-            { id: "s26u", name: "Samsung Galaxy S26 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 5", ram: "16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (144Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s25u", name: "Samsung Galaxy S25 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s24u", name: "Samsung Galaxy S24 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s23u", name: "Samsung Galaxy S23 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s22u", name: "Samsung Galaxy S22 Ultra", subCat: "ultra", cpu: "Snapdragon 8 Gen 1", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            { id: "s21u", name: "Samsung Galaxy S21 Ultra", subCat: "ultra", cpu: "Exynos 2100 / SD 888", ram: "12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            { id: "s20u", name: "Samsung Galaxy S20 Ultra", subCat: "ultra", cpu: "Exynos 990 / SD 865", ram: "12GB/16GB", storage: "128GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            { id: "zf8u", name: "Samsung Galaxy Z Fold 8 Ultra", subCat: "fold", cpu: "Snapdragon 8 Elite Gen 5", ram: "16GB", storage: "512GB/1TB", screen: "8.0-inch Foldable Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "zf8", name: "Samsung Galaxy Z Fold 8", subCat: "fold", cpu: "Snapdragon 8 Elite Gen 5", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual/Triple", bat: "4800 mAh" },
-            { id: "zflip8", name: "Samsung Galaxy Z Flip 8", subCat: "fold", cpu: "Snapdragon 8 Elite Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.9-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual", bat: "4300 mAh" },
-            { id: "zf7", name: "Samsung Galaxy Z Fold 7", subCat: "fold", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf6", name: "Samsung Galaxy Z Fold 6", subCat: "fold", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf5", name: "Samsung Galaxy Z Fold 5", subCat: "fold", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf4", name: "Samsung Galaxy Z Fold 4", subCat: "fold", cpu: "Snapdragon 8+ Gen 1", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf3", name: "Samsung Galaxy Z Fold 3", subCat: "fold", cpu: "Snapdragon 888", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4400 mAh" },
-            { id: "zf2", name: "Samsung Galaxy Z Fold 2", subCat: "fold", cpu: "Snapdragon 865+", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "zforg", name: "Samsung Galaxy Fold (Original)", subCat: "fold", cpu: "Snapdragon 855", ram: "12GB", storage: "512GB", screen: "7.3-inch Foldable Dynamic AMOLED", cam: "12 MP Triple", bat: "4380 mAh" },
-            { id: "zflip7", name: "Samsung Galaxy Z Flip 7", subCat: "fold", cpu: "Snapdragon 8 Elite / Exynos", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh" },
-            { id: "zflip6", name: "Samsung Galaxy Z Flip 6", subCat: "fold", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh" },
-            { id: "zflip5", name: "Samsung Galaxy Z Flip 5", subCat: "fold", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
-            { id: "zflip4", name: "Samsung Galaxy Z Flip 4", subCat: "fold", cpu: "Snapdragon 8+ Gen 1", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
-            { id: "zflip3", name: "Samsung Galaxy Z Flip 3", subCat: "fold", cpu: "Snapdragon 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3300 mAh" },
-            { id: "s26p", name: "Samsung Galaxy S26 Plus", subCat: "s-series", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
-            { id: "s26", name: "Samsung Galaxy S26", subCat: "s-series", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
-            { id: "s25p", name: "Samsung Galaxy S25 Plus", subCat: "s-series", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
-            { id: "s25", name: "Samsung Galaxy S25", subCat: "s-series", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
-            { id: "s24p", name: "Samsung Galaxy S24 Plus", subCat: "s-series", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
-            { id: "s24", name: "Samsung Galaxy S24", subCat: "s-series", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
-            { id: "s24fe", name: "Samsung Galaxy S24 FE", subCat: "s-series", cpu: "Exynos 2400e", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh" },
-            { id: "s23p", name: "Samsung Galaxy S23 Plus", subCat: "s-series", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh" },
-            { id: "s23", name: "Samsung Galaxy S23", subCat: "s-series", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3900 mAh" },
-            { id: "s23fe", name: "Samsung Galaxy S23 FE", subCat: "s-series", cpu: "Exynos 2200 / SD 8 Gen 1", ram: "8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh" },
-            { id: "s22p", name: "Samsung Galaxy S22 Plus", subCat: "s-series", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh" },
-            { id: "s22", name: "Samsung Galaxy S22", subCat: "s-series", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3700 mAh" },
-            { id: "s21fe", name: "Samsung Galaxy S21 FE 5G", subCat: "s-series", cpu: "Snapdragon 888 / Exynos 2100", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "s21p", name: "Samsung Galaxy S21 Plus", subCat: "s-series", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4800 mAh" },
-            { id: "s21", name: "Samsung Galaxy S21", subCat: "s-series", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh" },
-            { id: "s20fe", name: "Samsung Galaxy S20 FE 5G", subCat: "s-series", cpu: "Snapdragon 865", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "s20p", name: "Samsung Galaxy S20 Plus", subCat: "s-series", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Quad", bat: "4500 mAh" },
-            { id: "s20", name: "Samsung Galaxy S20", subCat: "s-series", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh" },
-            { id: "s10p", name: "Samsung Galaxy S10+", subCat: "s-series", cpu: "Exynos 9820 / SD 855", ram: "8GB/12GB", storage: "128GB/512GB/1TB", screen: "6.4-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
-            { id: "s10", name: "Samsung Galaxy S10", subCat: "s-series", cpu: "Exynos 9820 / SD 855", ram: "8GB", storage: "128GB/512GB", screen: "6.1-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
-            { id: "s10e", name: "Samsung Galaxy S10e", subCat: "s-series", cpu: "Exynos 9820 / SD 855", ram: "6GB/8GB", storage: "128GB/256GB", screen: "5.8-inch Dynamic AMOLED", cam: "16 MP Dual", bat: "3100 mAh" },
-            { id: "n20u", name: "Samsung Galaxy Note 20 Ultra", subCat: "note-legacy", cpu: "Exynos 990 / SD 865+", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Triple", bat: "4500 mAh" },
-            { id: "n20", name: "Samsung Galaxy Note 20", subCat: "note-legacy", cpu: "Exynos 990 / SD 865+", ram: "8GB", storage: "256GB", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP Triple", bat: "4300 mAh" },
-            { id: "n10p", name: "Samsung Galaxy Note 10+", subCat: "note-legacy", cpu: "Exynos 9825 / SD 855", ram: "12GB", storage: "256GB/512GB", screen: "6.8-inch Dynamic AMOLED", cam: "12 MP Quad", bat: "4300 mAh" },
-            { id: "n10", name: "Samsung Galaxy Note 10", subCat: "note-legacy", cpu: "Exynos 9825 / SD 855", ram: "8GB", storage: "256GB", screen: "6.3-inch Dynamic AMOLED", cam: "12 MP Triple", bat: "3500 mAh" },
-            { id: "n10l", name: "Samsung Galaxy Note 10 Lite", subCat: "note-legacy", cpu: "Exynos 9810", ram: "6GB/8GB", storage: "128GB", screen: "6.7-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "n9", name: "Samsung Galaxy Note 9", subCat: "note-legacy", cpu: "Exynos 9810 / SD 845", ram: "6GB/8GB", storage: "128GB/512GB", screen: "6.4-inch Super AMOLED", cam: "12 MP Dual", bat: "4000 mAh" },
-            { id: "a57", name: "Samsung Galaxy A57 5G", subCat: "a-series", cpu: "Exynos 1680 (4nm)", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super AMOLED+ (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "a56", name: "Samsung Galaxy A56 5G", subCat: "a-series", cpu: "Exynos 1580", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a55", name: "Samsung Galaxy A55 5G", subCat: "a-series", cpu: "Exynos 1480", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a54", name: "Samsung Galaxy A54 5G", subCat: "a-series", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a53", name: "Samsung Galaxy A53 5G", subCat: "a-series", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "5000 mAh" },
-            { id: "a52s", name: "Samsung Galaxy A52s 5G", subCat: "a-series", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "4500 mAh" },
-            { id: "a37", name: "Samsung Galaxy A37 5G", subCat: "a-series", cpu: "Exynos 1480 / SD 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "a36", name: "Samsung Galaxy A36 5G", subCat: "a-series", cpu: "Snapdragon 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a35", name: "Samsung Galaxy A35 5G", subCat: "a-series", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a34", name: "Samsung Galaxy A34 5G", subCat: "a-series", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "48 MP Triple", bat: "5000 mAh" },
-            { id: "a25", name: "Samsung Galaxy A25 5G", subCat: "a-series", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a17", name: "Samsung Galaxy A17 5G", subCat: "a-series", cpu: "Exynos 1330 (5nm)", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh" },
-            { id: "a16", name: "Samsung Galaxy A16 5G", subCat: "a-series", cpu: "Exynos 1330 / Dimensity 6300", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a15", name: "Samsung Galaxy A15 5G", subCat: "a-series", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a07", name: "Samsung Galaxy A07 4G", subCat: "a-series", cpu: "MediaTek Helio G99 (6nm)", ram: "4GB/6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.7-inch PLS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (25W)" },
-            { id: "a06", name: "Samsung Galaxy A06", subCat: "a-series", cpu: "MediaTek Helio G85", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "a05s", name: "Samsung Galaxy A05s", subCat: "a-series", cpu: "Snapdragon 680", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "m55", name: "Samsung Galaxy M55 5G", subCat: "m-series", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "m54", name: "Samsung Galaxy M54 5G", subCat: "m-series", cpu: "Exynos 1380", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "108 MP Triple", bat: "6000 mAh" },
-            { id: "m35", name: "Samsung Galaxy M35 5G", subCat: "m-series", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
-            { id: "m15", name: "Samsung Galaxy M15 5G", subCat: "m-series", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
-            { id: "f55", name: "Samsung Galaxy F55 5G", subCat: "m-series", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "f15", name: "Samsung Galaxy F15 5G", subCat: "m-series", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" }
+            { id: "s26u", name: "Samsung Galaxy S26 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 5", ram: "16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (144Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
+            { id: "s25u", name: "Samsung Galaxy S25 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
+            { id: "s24u", name: "Samsung Galaxy S24 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
+            { id: "s23u", name: "Samsung Galaxy S23 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
+            { id: "s22u", name: "Samsung Galaxy S22 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 1", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
+            { id: "s21u", name: "Samsung Galaxy S21 Ultra", subCat: "ultra", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
+            { id: "s20u", name: "Samsung Galaxy S20 Ultra", subCat: "ultra", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "12GB/16GB", storage: "128GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
+            { id: "zf8u", name: "Samsung Galaxy Z Fold 8 Ultra", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5", ram: "16GB", storage: "512GB/1TB", screen: "8.0-inch Foldable Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
+            { id: "zf8", name: "Samsung Galaxy Z Fold 8", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual/Triple", bat: "4800 mAh" },
+            { id: "zflip8", name: "Samsung Galaxy Z Flip 8", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.9-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual", bat: "4300 mAh" },
+            { id: "zf7", name: "Samsung Galaxy Z Fold 7", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
+            { id: "zf6", name: "Samsung Galaxy Z Fold 6", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
+            { id: "zf5", name: "Samsung Galaxy Z Fold 5", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
+            { id: "zf4", name: "Samsung Galaxy Z Fold 4", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8+ Gen 1", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
+            { id: "zf3", name: "Samsung Galaxy Z Fold 3", subCat: "fold", brand: "samsung", cpu: "Snapdragon 888", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4400 mAh" },
+            { id: "zf2", name: "Samsung Galaxy Z Fold 2", subCat: "fold", brand: "samsung", cpu: "Snapdragon 865+", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh" },
+            { id: "zforg", name: "Samsung Galaxy Fold (Original)", subCat: "fold", brand: "samsung", cpu: "Snapdragon 855", ram: "12GB", storage: "512GB", screen: "7.3-inch Foldable Dynamic AMOLED", cam: "12 MP Triple", bat: "4380 mAh" },
+            { id: "zflip7", name: "Samsung Galaxy Z Flip 7", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite / Exynos", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh" },
+            { id: "zflip6", name: "Samsung Galaxy Z Flip 6", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh" },
+            { id: "zflip5", name: "Samsung Galaxy Z Flip 5", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
+            { id: "zflip4", name: "Samsung Galaxy Z Flip 4", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8+ Gen 1", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
+            { id: "zflip3", name: "Samsung Galaxy Z Flip 3", subCat: "fold", brand: "samsung", cpu: "Snapdragon 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3300 mAh" },
+            { id: "s26p", name: "Samsung Galaxy S26 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
+            { id: "s26", name: "Samsung Galaxy S26", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
+            { id: "s25p", name: "Samsung Galaxy S25 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
+            { id: "s25", name: "Samsung Galaxy S25", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
+            { id: "s24p", name: "Samsung Galaxy S24 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
+            { id: "s24", name: "Samsung Galaxy S24", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
+            { id: "s24fe", name: "Samsung Galaxy S24 FE", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400e", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh" },
+            { id: "s23p", name: "Samsung Galaxy S23 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh" },
+            { id: "s23", name: "Samsung Galaxy S23", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3900 mAh" },
+            { id: "s23fe", name: "Samsung Galaxy S23 FE", subCat: "s-series", brand: "samsung", cpu: "Exynos 2200 / SD 8 Gen 1", ram: "8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh" },
+            { id: "s22p", name: "Samsung Galaxy S22 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh" },
+            { id: "s22", name: "Samsung Galaxy S22", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3700 mAh" },
+            { id: "s21fe", name: "Samsung Galaxy S21 FE 5G", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 888 / Exynos 2100", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh" },
+            { id: "s21p", name: "Samsung Galaxy S21 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4800 mAh" },
+            { id: "s21", name: "Samsung Galaxy S21", subCat: "s-series", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh" },
+            { id: "s20fe", name: "Samsung Galaxy S20 FE 5G", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 865", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
+            { id: "s20p", name: "Samsung Galaxy S20 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Quad", bat: "4500 mAh" },
+            { id: "s20", name: "Samsung Galaxy S20", subCat: "s-series", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh" },
+            { id: "s10p", name: "Samsung Galaxy S10+", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "8GB/12GB", storage: "128GB/512GB/1TB", screen: "6.4-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
+            { id: "s10", name: "Samsung Galaxy S10", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "8GB", storage: "128GB/512GB", screen: "6.1-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
+            { id: "s10e", name: "Samsung Galaxy S10e", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "6GB/8GB", storage: "128GB/256GB", screen: "5.8-inch Dynamic AMOLED", cam: "16 MP Dual", bat: "3100 mAh" },
+            { id: "n20u", name: "Samsung Galaxy Note 20 Ultra", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 990 / SD 865+", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Triple", bat: "4500 mAh" },
+            { id: "n20", name: "Samsung Galaxy Note 20", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 990 / SD 865+", ram: "8GB", storage: "256GB", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP Triple", bat: "4300 mAh" },
+            { id: "n10p", name: "Samsung Galaxy Note 10+", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9825 / SD 855", ram: "12GB", storage: "256GB/512GB", screen: "6.8-inch Dynamic AMOLED", cam: "12 MP Quad", bat: "4300 mAh" },
+            { id: "n10", name: "Samsung Galaxy Note 10", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9825 / SD 855", ram: "8GB", storage: "256GB", screen: "6.3-inch Dynamic AMOLED", cam: "12 MP Triple", bat: "3500 mAh" },
+            { id: "n10l", name: "Samsung Galaxy Note 10 Lite", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9810", ram: "6GB/8GB", storage: "128GB", screen: "6.7-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
+            { id: "n9", name: "Samsung Galaxy Note 9", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9810 / SD 845", ram: "6GB/8GB", storage: "128GB/512GB", screen: "6.4-inch Super AMOLED", cam: "12 MP Dual", bat: "4000 mAh" },
+            { id: "a57", name: "Samsung Galaxy A57 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1680 (4nm)", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super AMOLED+ (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "a56", name: "Samsung Galaxy A56 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1580", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a55", name: "Samsung Galaxy A55 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1480", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a54", name: "Samsung Galaxy A54 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a53", name: "Samsung Galaxy A53 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "5000 mAh" },
+            { id: "a52s", name: "Samsung Galaxy A52s 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "4500 mAh" },
+            { id: "a37", name: "Samsung Galaxy A37 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1480 / SD 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "a36", name: "Samsung Galaxy A36 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a35", name: "Samsung Galaxy A35 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a34", name: "Samsung Galaxy A34 5G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "48 MP Triple", bat: "5000 mAh" },
+            { id: "a25", name: "Samsung Galaxy A25 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a17", name: "Samsung Galaxy A17 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1330 (5nm)", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh" },
+            { id: "a16", name: "Samsung Galaxy A16 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1330 / Dimensity 6300", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a15", name: "Samsung Galaxy A15 5G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "a07", name: "Samsung Galaxy A07 4G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G99 (6nm)", ram: "4GB/6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.7-inch PLS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (25W)" },
+            { id: "a06", name: "Samsung Galaxy A06", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G85", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD", cam: "50 MP Dual", bat: "5000 mAh" },
+            { id: "a05s", name: "Samsung Galaxy A05s", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 680", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "m55", name: "Samsung Galaxy M55 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "m54", name: "Samsung Galaxy M54 5G", subCat: "m-series", brand: "samsung", cpu: "Exynos 1380", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "108 MP Triple", bat: "6000 mAh" },
+            { id: "m35", name: "Samsung Galaxy M35 5G", subCat: "m-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
+            { id: "m15", name: "Samsung Galaxy M15 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
+            { id: "f55", name: "Samsung Galaxy F55 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "f15", name: "Samsung Galaxy F15 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" }
         ];
 
         const iphoneList = [
-            { id: "i17pm", name: "iPhone 17 Pro Max", subCat: "iphone-17", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB/2TB", screen: "6.9-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4850 mAh" },
-            { id: "i17p", name: "iPhone 17 Pro", subCat: "iphone-17", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3700 mAh" },
-            { id: "i17air", name: "iPhone 17 Air / Slim", subCat: "iphone-17", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.6-inch Super Retina XDR OLED", cam: "48 MP Single Fusion", bat: "3150 mAh" },
-            { id: "i17", name: "iPhone 17", subCat: "iphone-17", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3600 mAh" },
-            { id: "i16pm", name: "iPhone 16 Pro Max", subCat: "iphone-16", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.9-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "4685 mAh" },
-            { id: "i16p", name: "iPhone 16 Pro", subCat: "iphone-16", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "3582 mAh" },
-            { id: "i16plus", name: "iPhone 16 Plus", subCat: "iphone-16", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4674 mAh" },
-            { id: "i16", name: "iPhone 16", subCat: "iphone-16", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3561 mAh" },
-            { id: "i15pm", name: "iPhone 15 Pro Max", subCat: "iphone-15", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4422 mAh" },
-            { id: "i15p", name: "iPhone 15 Pro", subCat: "iphone-15", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3274 mAh" },
-            { id: "i15plus", name: "iPhone 15 Plus", subCat: "iphone-15", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4383 mAh" },
-            { id: "i15", name: "iPhone 15", subCat: "iphone-15", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3349 mAh" },
-            { id: "i14pm", name: "iPhone 14 Pro Max", subCat: "iphone-14", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4323 mAh" },
-            { id: "i14p", name: "iPhone 14 Pro", subCat: "iphone-14", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3200 mAh" },
-            { id: "i14plus", name: "iPhone 14 Plus", subCat: "iphone-14", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "4325 mAh" },
-            { id: "i14", name: "iPhone 14", subCat: "iphone-14", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3279 mAh" },
-            { id: "i13pm", name: "iPhone 13 Pro Max", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "4352 mAh" },
-            { id: "i13p", name: "iPhone 13 Pro", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "3095 mAh" },
-            { id: "i13", name: "iPhone 13", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3240 mAh" },
-            { id: "i13mini", name: "iPhone 13 mini", subCat: "iphone-13", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2438 mAh" },
-            { id: "i12pm", name: "iPhone 12 Pro Max", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3687 mAh" },
-            { id: "i12p", name: "iPhone 12 Pro", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "2815 mAh" },
-            { id: "i12", name: "iPhone 12", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2815 mAh" },
-            { id: "i12mini", name: "iPhone 12 mini", subCat: "iphone-12", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2227 mAh" },
-            { id: "ise3", name: "iPhone SE (3rd Gen - 2022)", subCat: "iphone-legacy", cpu: "Apple A15 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "2018 mAh" },
-            { id: "ise2", name: "iPhone SE (2nd Gen - 2020)", subCat: "iphone-legacy", cpu: "Apple A13 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "1821 mAh" },
-            { id: "i11pm", name: "iPhone 11 Pro Max", subCat: "iphone-legacy", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3969 mAh" },
-            { id: "i11p", name: "iPhone 11 Pro", subCat: "iphone-legacy", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3046 mAh" },
-            { id: "i11", name: "iPhone 11", subCat: "iphone-legacy", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Dual", bat: "3110 mAh" },
-            { id: "ixsmax", name: "iPhone XS Max", subCat: "iphone-legacy", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina OLED", cam: "12 MP Dual", bat: "3174 mAh" },
-            { id: "ixs", name: "iPhone XS", subCat: "iphone-legacy", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2658 mAh" },
-            { id: "ixr", name: "iPhone XR", subCat: "iphone-legacy", cpu: "Apple A12 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Single", bat: "2942 mAh" },
-            { id: "ix", name: "iPhone X", subCat: "iphone-legacy", cpu: "Apple A11 Bionic", ram: "3GB", storage: "64GB/256GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2716 mAh" }
+            { id: "i17pm", name: "iPhone 17 Pro Max", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB/2TB", screen: "6.9-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4850 mAh" },
+            { id: "i17p", name: "iPhone 17 Pro", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3700 mAh" },
+            { id: "i17air", name: "iPhone 17 Air / Slim", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.6-inch Super Retina XDR OLED", cam: "48 MP Single Fusion", bat: "3150 mAh" },
+            { id: "i17", name: "iPhone 17", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3600 mAh" },
+            { id: "i16pm", name: "iPhone 16 Pro Max", subCat: "iphone-16", brand: "apple", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.9-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "4685 mAh" },
+            { id: "i16p", name: "iPhone 16 Pro", subCat: "iphone-16", brand: "apple", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "3582 mAh" },
+            { id: "i16plus", name: "iPhone 16 Plus", subCat: "iphone-16", brand: "apple", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4674 mAh" },
+            { id: "i16", name: "iPhone 16", subCat: "iphone-16", brand: "apple", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3561 mAh" },
+            { id: "i15pm", name: "iPhone 15 Pro Max", subCat: "iphone-15", brand: "apple", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4422 mAh" },
+            { id: "i15p", name: "iPhone 15 Pro", subCat: "iphone-15", brand: "apple", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3274 mAh" },
+            { id: "i15plus", name: "iPhone 15 Plus", subCat: "iphone-15", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4383 mAh" },
+            { id: "i15", name: "iPhone 15", subCat: "iphone-15", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3349 mAh" },
+            { id: "i14pm", name: "iPhone 14 Pro Max", subCat: "iphone-14", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4323 mAh" },
+            { id: "i14p", name: "iPhone 14 Pro", subCat: "iphone-14", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3200 mAh" },
+            { id: "i14plus", name: "iPhone 14 Plus", subCat: "iphone-14", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "4325 mAh" },
+            { id: "i14", name: "iPhone 14", subCat: "iphone-14", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3279 mAh" },
+            { id: "i13pm", name: "iPhone 13 Pro Max", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "4352 mAh" },
+            { id: "i13p", name: "iPhone 13 Pro", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "3095 mAh" },
+            { id: "i13", name: "iPhone 13", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3240 mAh" },
+            { id: "i13mini", name: "iPhone 13 mini", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2438 mAh" },
+            { id: "i12pm", name: "iPhone 12 Pro Max", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3687 mAh" },
+            { id: "i12p", name: "iPhone 12 Pro", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "2815 mAh" },
+            { id: "i12", name: "iPhone 12", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2815 mAh" },
+            { id: "i12mini", name: "iPhone 12 mini", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2227 mAh" },
+            { id: "ise3", name: "iPhone SE (3rd Gen - 2022)", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "2018 mAh" },
+            { id: "ise2", name: "iPhone SE (2nd Gen - 2020)", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "1821 mAh" },
+            { id: "i11pm", name: "iPhone 11 Pro Max", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3969 mAh" },
+            { id: "i11p", name: "iPhone 11 Pro", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3046 mAh" },
+            { id: "i11", name: "iPhone 11", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Dual", bat: "3110 mAh" },
+            { id: "ixsmax", name: "iPhone XS Max", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina OLED", cam: "12 MP Dual", bat: "3174 mAh" },
+            { id: "ixs", name: "iPhone XS", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2658 mAh" },
+            { id: "ixr", name: "iPhone XR", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Single", bat: "2942 mAh" },
+            { id: "ix", name: "iPhone X", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A11 Bionic", ram: "3GB", storage: "64GB/256GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2716 mAh" }
         ];
 
         const xiaomiList = [
-            { id: "x15u", name: "Xiaomi 15 Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Elite (3nm)", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED (120Hz)", cam: "50 MP Quad Leica", bat: "6000 mAh (90W Wired / 80W Wireless)" },
-            { id: "x15p", name: "Xiaomi 15 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "6100 mAh" },
-            { id: "x15", name: "Xiaomi 15", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "5400 mAh" },
-            { id: "x14u", name: "Xiaomi 14 Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "16GB", storage: "512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh" },
-            { id: "x14p", name: "Xiaomi 14 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4880 mAh" },
-            { id: "x14", name: "Xiaomi 14", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "4610 mAh" },
-            { id: "x13u", name: "Xiaomi 13 Ultra", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh" },
-            { id: "x13p", name: "Xiaomi 13 Pro", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4820 mAh" },
-            { id: "x13", name: "Xiaomi 13", subCat: "xiaomi-flagship", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.36-inch AMOLED", cam: "50 MP Triple Leica", bat: "4500 mAh" },
-            { id: "x14tpro", name: "Xiaomi 14T Pro", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 9300+", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "x14t", name: "Xiaomi 14T", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 8300 Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "x13tpro", name: "Xiaomi 13T Pro", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 9200+", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "x13t", name: "Xiaomi 13T", subCat: "xiaomi-t", cpu: "MediaTek Dimensity 8200 Ultra", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "rn14proplus", name: "Redmi Note 14 Pro+", subCat: "redmi-note", cpu: "Snapdragon 7s Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple OIS", bat: "6200 mAh (90W)" },
-            { id: "rn14pro", name: "Redmi Note 14 Pro 5G", subCat: "redmi-note", cpu: "MediaTek Dimensity 7300 Ultra", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh" },
-            { id: "rn14_5g", name: "Redmi Note 14 5G", subCat: "redmi-note", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh" },
-            { id: "rn13proplus", name: "Redmi Note 13 Pro+", subCat: "redmi-note", cpu: "MediaTek Dimensity 7200 Ultra", ram: "8GB/12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
-            { id: "rn13pro", name: "Redmi Note 13 Pro 5G", subCat: "redmi-note", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5100 mAh" },
-            { id: "rn13", name: "Redmi Note 13 4G", subCat: "redmi-note", cpu: "Snapdragon 685", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh" },
-            { id: "rn12proplus", name: "Redmi Note 12 Pro+", subCat: "redmi-note", cpu: "MediaTek Dimensity 1080", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch OLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
-            { id: "rn12pro", name: "Redmi Note 12 Pro 5G", subCat: "redmi-note", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh" },
-            { id: "rn12", name: "Redmi Note 12 4G", subCat: "redmi-note", cpu: "Snapdragon 685", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "pocof7pro", name: "POCO F7 Pro", subCat: "poco-x-f", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch OLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (120W)" },
-            { id: "pocof7", name: "POCO F7 5G", subCat: "poco-x-f", cpu: "Snapdragon 8s Gen 3 / Dimensity 8400", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh" },
-            { id: "pocof6pro", name: "POCO F6 Pro", subCat: "poco-x-f", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh (120W)" },
-            { id: "pocof6", name: "POCO F6 5G", subCat: "poco-x-f", cpu: "Snapdragon 8s Gen 3", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Dual OIS", bat: "5000 mAh (90W)" },
-            { id: "pocox7pro", name: "POCO X7 Pro 5G", subCat: "poco-x-f", cpu: "MediaTek Dimensity 8400 (4nm)", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (90W)" },
-            { id: "pocox7", name: "POCO X7 5G", subCat: "poco-x-f", cpu: "MediaTek Dimensity 7300 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "5110 mAh" },
-            { id: "pocox6pro", name: "POCO X6 Pro 5G", subCat: "poco-x-f", cpu: "MediaTek Dimensity 8300 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
-            { id: "pocox6", name: "POCO X6 5G", subCat: "poco-x-f", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5100 mAh" },
-            { id: "pocox5pro", name: "POCO X5 Pro 5G", subCat: "poco-x-f", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh" },
-            { id: "pocom7pro", name: "POCO M7 Pro 5G", subCat: "poco-m-c", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh (45W)" },
-            { id: "pocom6pro", name: "POCO M6 Pro 4G", subCat: "poco-m-c", cpu: "MediaTek Helio G99 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch Flow AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
-            { id: "pocom6", name: "POCO M6 5G", subCat: "poco-m-c", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "pococ65", name: "POCO C65", subCat: "poco-m-c", cpu: "MediaTek Helio G85", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "redmi14c", name: "Redmi 14C", subCat: "redmi-entry", cpu: "MediaTek Helio G81 Ultra", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.88-inch IPS LCD 120Hz", cam: "50 MP Dual", bat: "5160 mAh (18W)" },
-            { id: "redmi13c", name: "Redmi 13C", subCat: "redmi-entry", cpu: "MediaTek Helio G85", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "redmi12", name: "Redmi 12 4G", subCat: "redmi-entry", cpu: "MediaTek Helio G88", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.79-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "redmia3", name: "Redmi A3", subCat: "redmi-entry", cpu: "MediaTek Helio G36", ram: "3GB/4GB/6GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD 90Hz", cam: "8 MP Dual", bat: "5000 mAh" }
+            { id: "x15u", name: "Xiaomi 15 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite (3nm)", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED (120Hz)", cam: "50 MP Quad Leica", bat: "6000 mAh (90W Wired / 80W Wireless)" },
+            { id: "x15p", name: "Xiaomi 15 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "6100 mAh" },
+            { id: "x15", name: "Xiaomi 15", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "5400 mAh" },
+            { id: "x14u", name: "Xiaomi 14 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "16GB", storage: "512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh" },
+            { id: "x14p", name: "Xiaomi 14 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4880 mAh" },
+            { id: "x14", name: "Xiaomi 14", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "4610 mAh" },
+            { id: "x13u", name: "Xiaomi 13 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh" },
+            { id: "x13p", name: "Xiaomi 13 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4820 mAh" },
+            { id: "x13", name: "Xiaomi 13", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.36-inch AMOLED", cam: "50 MP Triple Leica", bat: "4500 mAh" },
+            { id: "x14tpro", name: "Xiaomi 14T Pro", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 9300+", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
+            { id: "x14t", name: "Xiaomi 14T", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 8300 Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
+            { id: "x13tpro", name: "Xiaomi 13T Pro", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 9200+", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
+            { id: "x13t", name: "Xiaomi 13T", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 8200 Ultra", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
+            { id: "rn14proplus", name: "Redmi Note 14 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 7s Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple OIS", bat: "6200 mAh (90W)" },
+            { id: "rn14pro", name: "Redmi Note 14 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7300 Ultra", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh" },
+            { id: "rn14_5g", name: "Redmi Note 14 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh" },
+            { id: "rn13proplus", name: "Redmi Note 13 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7200 Ultra", ram: "8GB/12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
+            { id: "rn13pro", name: "Redmi Note 13 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5100 mAh" },
+            { id: "rn13", name: "Redmi Note 13 4G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 685", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh" },
+            { id: "rn12proplus", name: "Redmi Note 12 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 1080", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch OLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
+            { id: "rn12pro", name: "Redmi Note 12 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh" },
+            { id: "rn12", name: "Redmi Note 12 4G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 685", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "pocof7pro", name: "POCO F7 Pro", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch OLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (120W)" },
+            { id: "pocof7", name: "POCO F7 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8s Gen 3 / Dimensity 8400", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh" },
+            { id: "pocof6pro", name: "POCO F6 Pro", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh (120W)" },
+            { id: "pocof6", name: "POCO F6 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8s Gen 3", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Dual OIS", bat: "5000 mAh (90W)" },
+            { id: "pocox7pro", name: "POCO X7 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 8400 (4nm)", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (90W)" },
+            { id: "pocox7", name: "POCO X7 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 7300 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "5110 mAh" },
+            { id: "pocox6pro", name: "POCO X6 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 8300 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
+            { id: "pocox6", name: "POCO X6 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5100 mAh" },
+            { id: "pocox5pro", name: "POCO X5 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh" },
+            { id: "pocom7pro", name: "POCO M7 Pro 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh (45W)" },
+            { id: "pocom6pro", name: "POCO M6 Pro 4G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Helio G99 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch Flow AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
+            { id: "pocom6", name: "POCO M6 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
+            { id: "pococ65", name: "POCO C65", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Helio G85", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "redmi14c", name: "Redmi 14C", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G81 Ultra", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.88-inch IPS LCD 120Hz", cam: "50 MP Dual", bat: "5160 mAh (18W)" },
+            { id: "redmi13c", name: "Redmi 13C", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G85", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "redmi12", name: "Redmi 12 4G", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G88", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.79-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
+            { id: "redmia3", name: "Redmi A3", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G36", ram: "3GB/4GB/6GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD 90Hz", cam: "8 MP Dual", bat: "5000 mAh" }
         ];
 
         const infinixList = [
-            { id: "iz50u", name: "Infinix Zero 50 Ultra 5G", subCat: "infinix-zero", cpu: "MediaTek Dimensity 9300+", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (144Hz)", cam: "200 MP Triple OIS", bat: "5000 mAh (180W Super Charge)" },
-            { id: "iz40u", name: "Infinix Zero 40 5G", subCat: "infinix-zero", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "iz40_4g", name: "Infinix Zero 40 4G", subCat: "infinix-zero", cpu: "MediaTek Helio G100", ram: "8GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "iz30u", name: "Infinix Zero 30 5G", subCat: "infinix-zero", cpu: "MediaTek Dimensity 8020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (68W)" },
-            { id: "izultra", name: "Infinix Zero Ultra", subCat: "infinix-zero", cpu: "MediaTek Dimensity 920", ram: "8GB", storage: "256GB", screen: "6.8-inch Curved AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "4500 mAh (180W)" },
-            { id: "in50pro", name: "Infinix Note 50 Pro+ 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 8300 Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (144Hz)", cam: "108 MP Triple OIS", bat: "5000 mAh (100W Wired / 20W Mag)" },
-            { id: "in40proplus", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "4600 mAh (100W)" },
-            { id: "in40pro", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 7020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "in40_4g", name: "Infinix Note 40 4G", subCat: "infinix-note", cpu: "MediaTek Helio G99 Ultimate", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "in30vip", name: "Infinix Note 30 VIP", subCat: "infinix-note", cpu: "MediaTek Dimensity 8050", ram: "12GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (68W Wired / 50W Wireless)" },
-            { id: "in30pro", name: "Infinix Note 30 Pro", subCat: "infinix-note", cpu: "MediaTek Helio G99", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (68W)" },
-            { id: "in30 5g", name: "Infinix Note 30 5G", subCat: "infinix-note", cpu: "MediaTek Dimensity 6080", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "igt30pro", name: "Infinix GT 30 Pro 5G", subCat: "infinix-gt", cpu: "MediaTek Dimensity 8400 (Gaming Edition)", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.78-inch AMOLED (144Hz Cyberpunk RGB)", cam: "108 MP Triple OIS", bat: "5200 mAh (90W HyperCharge)" },
-            { id: "igt20pro", name: "Infinix GT 20 Pro 5G", subCat: "infinix-gt", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED 144Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "igt10pro", name: "Infinix GT 10 Pro 5G", subCat: "infinix-gt", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "ih50pro", name: "Infinix Hot 50 Pro+ 3D Curved", subCat: "infinix-hot", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch 3D-Curved AMOLED (120Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
-            { id: "ih50_5g", name: "Infinix Hot 50 5G", subCat: "infinix-hot", cpu: "MediaTek Dimensity 6300", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD 120Hz", cam: "48 MP Dual", bat: "5000 mAh" },
-            { id: "ih50_4g", name: "Infinix Hot 50 4G", subCat: "infinix-hot", cpu: "MediaTek Helio G100", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "ih40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", cpu: "MediaTek Helio G99", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
-            { id: "ih40i", name: "Infinix Hot 40i", subCat: "infinix-hot", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "ih30i", name: "Infinix Hot 30i", subCat: "infinix-hot", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB", screen: "6.56-inch IPS LCD 90Hz", cam: "13 MP Dual", bat: "5000 mAh" },
-            { id: "ismart9", name: "Infinix Smart 9", subCat: "infinix-smart", cpu: "MediaTek Helio G81 Ultra", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD 120Hz Dynamic Bar", cam: "13 MP Dual", bat: "5000 mAh" },
-            { id: "ismart8", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "ismart8_std", name: "Infinix Smart 8", subCat: "infinix-smart", cpu: "Unisoc T606", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "13 MP Dual", bat: "5000 mAh" }
+            { id: "iz50u", name: "Infinix Zero 50 Ultra 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 9300+", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (144Hz)", cam: "200 MP Triple OIS", bat: "5000 mAh (180W Super Charge)" },
+            { id: "iz40u", name: "Infinix Zero 40 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "iz40_4g", name: "Infinix Zero 40 4G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Helio G100", ram: "8GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "iz30u", name: "Infinix Zero 30 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (68W)" },
+            { id: "izultra", name: "Infinix Zero Ultra", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 920", ram: "8GB", storage: "256GB", screen: "6.8-inch Curved AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "4500 mAh (180W)" },
+            { id: "in50pro", name: "Infinix Note 50 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 8300 Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (144Hz)", cam: "108 MP Triple OIS", bat: "5000 mAh (100W Wired / 20W Mag)" },
+            { id: "in40proplus", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "4600 mAh (100W)" },
+            { id: "in40pro", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "in40_4g", name: "Infinix Note 40 4G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Helio G99 Ultimate", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "in30vip", name: "Infinix Note 30 VIP", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "12GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (68W Wired / 50W Wireless)" },
+            { id: "in30pro", name: "Infinix Note 30 Pro", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (68W)" },
+            { id: "in30 5g", name: "Infinix Note 30 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 6080", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "igt30pro", name: "Infinix GT 30 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8400 (Gaming Edition)", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.78-inch AMOLED (144Hz Cyberpunk RGB)", cam: "108 MP Triple OIS", bat: "5200 mAh (90W HyperCharge)" },
+            { id: "igt20pro", name: "Infinix GT 20 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED 144Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (45W)" },
+            { id: "igt10pro", name: "Infinix GT 10 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "ih50pro", name: "Infinix Hot 50 Pro+ 3D Curved", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch 3D-Curved AMOLED (120Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
+            { id: "ih50_5g", name: "Infinix Hot 50 5G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Dimensity 6300", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD 120Hz", cam: "48 MP Dual", bat: "5000 mAh" },
+            { id: "ih50_4g", name: "Infinix Hot 50 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "50 MP Dual", bat: "5000 mAh" },
+            { id: "ih40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
+            { id: "ih40i", name: "Infinix Hot 40i", subCat: "infinix-hot", brand: "infinix", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
+            { id: "ih30i", name: "Infinix Hot 30i", subCat: "infinix-hot", brand: "infinix", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB", screen: "6.56-inch IPS LCD 90Hz", cam: "13 MP Dual", bat: "5000 mAh" },
+            { id: "ismart9", name: "Infinix Smart 9", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G81 Ultra", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD 120Hz Dynamic Bar", cam: "13 MP Dual", bat: "5000 mAh" },
+            { id: "ismart8", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
+            { id: "ismart8_std", name: "Infinix Smart 8", subCat: "infinix-smart", brand: "infinix", cpu: "Unisoc T606", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "13 MP Dual", bat: "5000 mAh" }
         ];
 
         let activeBrand = 'samsung';
         let activeSubCategory = 'all';
         let compareList = [];
+
+        function parseJwt(token) {
+            try {
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function handleCredentialResponse(response) {
+            const data = parseJwt(response.credential);
+            if (data) {
+                currentUser = {
+                    id: data.sub,
+                    name: data.name,
+                    email: data.email,
+                    picture: data.picture
+                };
+                localStorage.setItem('phone_encyclopedia_user', JSON.stringify(currentUser));
+                loadUserFavorites();
+                renderAuthUI();
+                applyFilters();
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            userFavorites = [];
+            localStorage.removeItem('phone_encyclopedia_user');
+            renderAuthUI();
+            if (activeBrand === 'favorites') {
+                switchBrand('samsung');
+            } else {
+                applyFilters();
+            }
+        }
+
+        function loadSavedUser() {
+            const saved = localStorage.getItem('phone_encyclopedia_user');
+            if (saved) {
+                try {
+                    currentUser = JSON.parse(saved);
+                    loadUserFavorites();
+                    renderAuthUI();
+                } catch(e) {}
+            }
+        }
+
+        function renderAuthUI() {
+            const container = document.getElementById('googleAuthContainer');
+            const lang = i18n[currentLang];
+            if (currentUser) {
+                container.innerHTML = `
+                    <div class="user-profile">
+                        <img src="${currentUser.picture}" class="user-avatar" alt="${currentUser.name}">
+                        <span>${currentUser.name}</span>
+                        <button class="logout-btn" onclick="logout()">${lang.logout}</button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div id="g_id_onload"
+                        data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                        data-type="standard"
+                        data-size="medium"
+                        data-theme="dark"
+                        data-text="sign_in_with"
+                        data-shape="pill"
+                        data-logo_alignment="left">
+                    </div>
+                `;
+                if (window.google && google.accounts && google.accounts.id) {
+                    google.accounts.id.initialize({
+                        client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+                        callback: handleCredentialResponse
+                    });
+                    google.accounts.id.renderButton(
+                        document.querySelector(".g_id_signin"),
+                        { theme: "dark", size: "medium", shape: "pill" }
+                    );
+                }
+            }
+        }
+
+        function loadUserFavorites() {
+            if (!currentUser) {
+                userFavorites = [];
+                return;
+            }
+            const favKey = 'fav_phones_' + currentUser.id;
+            const savedFavs = localStorage.getItem(favKey);
+            userFavorites = savedFavs ? JSON.parse(savedFavs) : [];
+        }
+
+        function saveUserFavorites() {
+            if (!currentUser) return;
+            const favKey = 'fav_phones_' + currentUser.id;
+            localStorage.setItem(favKey, JSON.stringify(userFavorites));
+        }
+
+        function toggleFavorite(phoneId, event) {
+            if (event) event.stopPropagation();
+            if (!currentUser) {
+                alert(i18n[currentLang].loginRequiredFav);
+                return;
+            }
+
+            const index = userFavorites.indexOf(phoneId);
+            if (index > -1) {
+                userFavorites.splice(index, 1);
+            } else {
+                userFavorites.push(phoneId);
+            }
+            saveUserFavorites();
+            applyFilters();
+        }
 
         function getAllPhones() {
             return [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList];
@@ -1071,6 +1306,10 @@
             if (activeBrand === 'apple') return iphoneList;
             if (activeBrand === 'xiaomi') return xiaomiList;
             if (activeBrand === 'infinix') return infinixList;
+            if (activeBrand === 'favorites') {
+                const all = getAllPhones();
+                return all.filter(p => userFavorites.includes(p.id));
+            }
             return [];
         }
 
@@ -1079,9 +1318,10 @@
             activeSubCategory = 'all';
 
             document.querySelectorAll('.brand-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`${brandKey}MainBtn`).classList.add('active');
+            const targetBtn = document.getElementById(`${brandKey}MainBtn`);
+            if (targetBtn) targetBtn.classList.add('active');
 
-            const subContainers = ['samsungSubFilters', 'appleSubFilters', 'xiaomiSubFilters', 'infinixSubFilters'];
+            const subContainers = ['samsungSubFilters', 'appleSubFilters', 'xiaomiSubFilters', 'infinixSubFilters', 'favoritesSubFilters'];
             subContainers.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
@@ -1127,8 +1367,13 @@
 
             grid.innerHTML = '';
 
+            if (activeBrand === 'favorites' && !currentUser) {
+                countEl.innerText = lang.loginRequiredFav;
+                return;
+            }
+
             if (list.length === 0) {
-                countEl.innerText = lang.noResults;
+                countEl.innerText = activeBrand === 'favorites' ? lang.noFavorites : lang.noResults;
                 return;
             }
 
@@ -1141,14 +1386,20 @@
                 const isSelected = compareList.some(item => item.id === phone.id);
                 const compareText = isSelected ? (currentLang === 'ar' ? 'محدد ✓' : 'Selected ✓') : lang.compareBtn;
                 const compareClass = isSelected ? 'compare-btn selected' : 'compare-btn';
+                const isFav = userFavorites.includes(phone.id);
 
                 card.innerHTML = `
+                    <div class="fav-icon-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite('${phone.id}', event)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
                     <div class="image-container" onclick="openSpecsModal('${phone.id}')">
                         <div class="fallback-img">${phone.name}</div>
                     </div>
                     <div class="card-body">
                         <div>
-                            <span class="category-tag ${activeBrand}">${lang.categories[activeBrand]}</span>
+                            <span class="category-tag ${phone.brand}">${lang.categories[phone.brand] || phone.brand}</span>
                             <h3>${phone.name}</h3>
                         </div>
                         <div class="card-actions">
@@ -1213,10 +1464,10 @@
 
             const lang = i18n[currentLang];
             document.getElementById('modalTitle').innerText = phone.name;
-            document.getElementById('modalCategory').innerText = lang.categories[activeBrand];
+            document.getElementById('modalCategory').innerText = lang.categories[phone.brand] || phone.brand;
 
-            const body = document.getElementById('modalBody');
-            body.innerHTML = `
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
                 <div class="spec-group"><strong>${lang.specs.cpu}:</strong> <span>${phone.cpu}</span></div>
                 <div class="spec-group"><strong>${lang.specs.ram}:</strong> <span>${phone.ram}</span></div>
                 <div class="spec-group"><strong>${lang.specs.storage}:</strong> <span>${phone.storage}</span></div>
@@ -1228,144 +1479,16 @@
             document.getElementById('specsModal').classList.add('active');
         }
 
-        /* خوارزمية استخراج الأرقام وتقييم المواصفات */
-        function parseNumericVal(str) {
-            if (!str) return 0;
-            const matches = str.match(/\d+(\.\d+)?/g);
-            if (!matches) return 0;
-            const nums = matches.map(Number);
-            return Math.max(...nums);
-        }
-
-        function getCpuScore(cpuStr) {
-            const cpu = cpuStr.toLowerCase();
-            let score = 50;
-            if (cpu.includes('elite gen 5') || cpu.includes('gen 5')) score = 100;
-            else if (cpu.includes('a19 pro')) score = 99;
-            else if (cpu.includes('8 elite')) score = 98;
-            else if (cpu.includes('a18 pro')) score = 96;
-            else if (cpu.includes('8 gen 3') || cpu.includes('dimensity 9300')) score = 94;
-            else if (cpu.includes('a17 pro')) score = 93;
-            else if (cpu.includes('8 gen 2') || cpu.includes('dimensity 9200')) score = 88;
-            else if (cpu.includes('a16')) score = 87;
-            else if (cpu.includes('8 gen 1') || cpu.includes('a15')) score = 82;
-            else if (cpu.includes('888') || cpu.includes('dimensity 8300') || cpu.includes('dimensity 8400')) score = 80;
-            else if (cpu.includes('dimensity 8200') || cpu.includes('7s gen 3')) score = 76;
-            else if (cpu.includes('778g') || cpu.includes('7s gen 2') || cpu.includes('helio g100')) score = 70;
-            else if (cpu.includes('exynos 1480') || cpu.includes('dimensity 7300')) score = 68;
-            else if (cpu.includes('helio g99') || cpu.includes('dimensity 6100')) score = 60;
-            else if (cpu.includes('helio g85') || cpu.includes('helio g81')) score = 45;
-            else if (cpu.includes('unisoc')) score = 35;
-            return score;
-        }
-
-        function evaluateWinner(p1, p2) {
-            const scores = { p1: 0, p2: 0 };
-
-            // 1. المعالج
-            const cpu1 = getCpuScore(p1.cpu);
-            const cpu2 = getCpuScore(p2.cpu);
-            const winnerCpu = cpu1 > cpu2 ? 1 : (cpu2 > cpu1 ? 2 : 0);
-            if (winnerCpu === 1) scores.p1++; else if (winnerCpu === 2) scores.p2++;
-
-            // 2. RAM
-            const ram1 = parseNumericVal(p1.ram);
-            const ram2 = parseNumericVal(p2.ram);
-            const winnerRam = ram1 > ram2 ? 1 : (ram2 > ram1 ? 2 : 0);
-            if (winnerRam === 1) scores.p1++; else if (winnerRam === 2) scores.p2++;
-
-            // 3. التخزين
-            const st1 = parseNumericVal(p1.storage);
-            const st2 = parseNumericVal(p2.storage);
-            const winnerStorage = st1 > st2 ? 1 : (st2 > st1 ? 2 : 0);
-            if (winnerStorage === 1) scores.p1++; else if (winnerStorage === 2) scores.p2++;
-
-            // 4. الشاشة (معدل التحديث والحجم)
-            const getHz = (str) => {
-                const hzMatch = str.match(/(\d+)Hz/i);
-                return hzMatch ? parseInt(hzMatch[1]) : 60;
-            };
-            const scr1 = getHz(p1.screen);
-            const scr2 = getHz(p2.screen);
-            const winnerScreen = scr1 > scr2 ? 1 : (scr2 > scr1 ? 2 : (parseNumericVal(p1.screen) > parseNumericVal(p2.screen) ? 1 : (parseNumericVal(p2.screen) > parseNumericVal(p1.screen) ? 2 : 0)));
-            if (winnerScreen === 1) scores.p1++; else if (winnerScreen === 2) scores.p2++;
-
-            // 5. الكاميرا
-            const cam1 = parseNumericVal(p1.cam);
-            const cam2 = parseNumericVal(p2.cam);
-            const winnerCam = cam1 > cam2 ? 1 : (cam2 > cam1 ? 2 : 0);
-            if (winnerCam === 1) scores.p1++; else if (winnerCam === 2) scores.p2++;
-
-            // 6. البطارية
-            const bat1 = parseNumericVal(p1.bat);
-            const bat2 = parseNumericVal(p2.bat);
-            const winnerBat = bat1 > bat2 ? 1 : (bat2 > bat1 ? 2 : 0);
-            if (winnerBat === 1) scores.p1++; else if (winnerBat === 2) scores.p2++;
-
-            const overall = scores.p1 > scores.p2 ? 1 : (scores.p2 > scores.p1 ? 2 : 0);
-
-            return {
-                cpu: winnerCpu,
-                ram: winnerRam,
-                storage: winnerStorage,
-                screen: winnerScreen,
-                cam: winnerCam,
-                bat: winnerBat,
-                overall: overall
-            };
-        }
-
         function openCompareModal() {
-            if (compareList.length < 2) {
-                alert(currentLang === 'ar' ? 'الرجاء اختيار جهازين للمقارنة أولاً.' : 'Please select 2 devices to compare.');
-                return;
-            }
-
+            if (compareList.length < 2) return;
             const lang = i18n[currentLang];
             const p1 = compareList[0];
             const p2 = compareList[1];
 
-            const evaluation = evaluateWinner(p1, p2);
+            document.getElementById('compareModalTitle').innerText = lang.compareModalTitle;
 
-            let overallHTML = '';
-            if (evaluation.overall === 1) {
-                overallHTML = `
-                    <div class="overall-winner-banner">
-                        <h3>${lang.overallWinnerTitle}</h3>
-                        <p>${lang.overallWinnerDesc} <strong>${p1.name}</strong></p>
-                    </div>
-                `;
-            } else if (evaluation.overall === 2) {
-                overallHTML = `
-                    <div class="overall-winner-banner">
-                        <h3>${lang.overallWinnerTitle}</h3>
-                        <p>${lang.overallWinnerDesc} <strong>${p2.name}</strong></p>
-                    </div>
-                `;
-            } else {
-                overallHTML = `
-                    <div class="overall-winner-banner">
-                        <h3>${lang.overallWinnerTitle}</h3>
-                        <p>${lang.tieText}</p>
-                    </div>
-                `;
-            }
-
-            const renderCell = (val, isWinner) => {
-                if (isWinner) {
-                    return `
-                        <td class="winner-cell">
-                            ${val}
-                            <br><span class="winner-badge">${lang.winnerText}</span>
-                        </td>
-                    `;
-                }
-                return `<td>${val}</td>`;
-            };
-
-            const body = document.getElementById('compareModalBody');
-            body.innerHTML = `
-                ${overallHTML}
+            const modalBody = document.getElementById('compareModalBody');
+            modalBody.innerHTML = `
                 <table class="comparison-table">
                     <thead>
                         <tr>
@@ -1377,33 +1500,33 @@
                     <tbody>
                         <tr>
                             <td class="feature-title">${lang.specs.cpu}</td>
-                            ${renderCell(p1.cpu, evaluation.cpu === 1)}
-                            ${renderCell(p2.cpu, evaluation.cpu === 2)}
+                            <td>${p1.cpu}</td>
+                            <td>${p2.cpu}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.ram}</td>
-                            ${renderCell(p1.ram, evaluation.ram === 1)}
-                            ${renderCell(p2.ram, evaluation.ram === 2)}
+                            <td>${p1.ram}</td>
+                            <td>${p2.ram}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.storage}</td>
-                            ${renderCell(p1.storage, evaluation.storage === 1)}
-                            ${renderCell(p2.storage, evaluation.storage === 2)}
+                            <td>${p1.storage}</td>
+                            <td>${p2.storage}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.screen}</td>
-                            ${renderCell(p1.screen, evaluation.screen === 1)}
-                            ${renderCell(p2.screen, evaluation.screen === 2)}
+                            <td>${p1.screen}</td>
+                            <td>${p2.screen}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.cam}</td>
-                            ${renderCell(p1.cam, evaluation.cam === 1)}
-                            ${renderCell(p2.cam, evaluation.cam === 2)}
+                            <td>${p1.cam}</td>
+                            <td>${p2.cam}</td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.bat}</td>
-                            ${renderCell(p1.bat, evaluation.bat === 1)}
-                            ${renderCell(p2.bat, evaluation.bat === 2)}
+                            <td>${p1.bat}</td>
+                            <td>${p2.bat}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1424,11 +1547,10 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            const lang = i18n[currentLang];
-
-            document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
 
+            const lang = i18n[currentLang];
             document.getElementById('pageTitle').innerText = lang.pageTitle;
             document.getElementById('logoText').innerHTML = lang.logoText;
             document.getElementById('authorTag').innerText = lang.authorTag;
@@ -1439,17 +1561,17 @@
             document.getElementById('appleMainBtn').innerText = lang.appleMainBtn;
             document.getElementById('xiaomiMainBtn').innerText = lang.xiaomiMainBtn;
             document.getElementById('infinixMainBtn').innerText = lang.infinixMainBtn;
+            document.getElementById('favoritesMainBtn').innerText = lang.favoritesMainBtn;
             document.getElementById('langSwitchBtn').innerText = currentLang === 'ar' ? 'English' : 'عربي';
-            document.getElementById('compareBarBtn').innerText = lang.compareBarBtn;
-            document.getElementById('clearCompareBtn').innerText = lang.clearBtn;
-            document.getElementById('compareModalTitle').innerText = lang.compareModalTitle;
             document.getElementById('footerText').innerHTML = lang.footerText;
 
+            renderAuthUI();
             updateCompareBar();
             applyFilters();
         }
 
         window.onload = function() {
+            loadSavedUser();
             applyFilters();
         };
     </script>
