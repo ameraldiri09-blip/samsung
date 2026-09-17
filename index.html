@@ -513,6 +513,7 @@
             box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
 
+        /* تعديل كلاس شريط المقارنة لإلغاء الألوان العائمة والحدود الملونة */
         .compare-bar {
             position: fixed;
             bottom: 25px;
@@ -520,12 +521,11 @@
             transform: translateX(-50%);
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            border-image: linear-gradient(90deg, #ff007f, #00dfd8, #7928ca) 1;
+            border: 1px solid var(--card-border);
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
-            box-shadow: 0 0 25px rgba(0, 223, 216, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             display: none;
             align-items: center;
             gap: 15px;
