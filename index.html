@@ -1479,54 +1479,163 @@
             document.getElementById('specsModal').classList.add('active');
         }
 
+        // دالة استخراج الأرقام للمقارنة
+        function extractNumber(str) {
+            if (!str) return 0;
+            const match = str.match(/\d+/);
+            return match ? parseInt(match[0], 10) : 0;
+        }
+
+        // دالة تقييم وتقويم الأفضلية بين جهازين
+        function evaluateWinner(p1, p2) {
+            let p1Score = 0;
+            let p2Score = 0;
+
+            const wins = {
+                cpu: 0,
+                ram: 0,
+                storage: 0,
+                screen: 0,
+                cam: 0,
+                bat: 0
+            };
+
+            // الذاكرة العشوائية RAM
+            const ram1 = extractNumber(p1.ram);
+            const ram2 = extractNumber(p2.ram);
+            if (ram1 > ram2) { wins.ram = 1; p1Score++; }
+            else if (ram2 > ram1) { wins.ram = 2; p2Score++; }
+
+            // الكاميرا Camera
+            const cam1 = extractNumber(p1.cam);
+            const cam2 = extractNumber(p2.cam);
+            if (cam1 > cam2) { wins.cam = 1; p1Score++; }
+            else if (cam2 > cam1) { wins.cam = 2; p2Score++; }
+
+            // البطارية Battery
+            const bat1 = extractNumber(p1.bat);
+            const bat2 = extractNumber(p2.bat);
+            if (bat1 > bat2) { wins.bat = 1; p1Score++; }
+            else if (bat2 > bat1) { wins.bat = 2; p2Score++; }
+
+            // الشاشة Refresh rate or size
+            const hz1 = extractNumber(p1.screen.includes('Hz') ? p1.screen.split('Hz')[0].slice(-3) : '60');
+            const hz2 = extractNumber(p2.screen.includes('Hz') ? p2.screen.split('Hz')[0].slice(-3) : '60');
+            if (hz1 > hz2) { wins.screen = 1; p1Score++; }
+            else if (hz2 > hz1) { wins.screen = 2; p2Score++; }
+
+            let overallWinner = null;
+            if (p1Score > p2Score) overallWinner = p1;
+            else if (p2Score > p1Score) overallWinner = p2;
+
+            return { wins, overallWinner };
+        }
+
         function openCompareModal() {
             if (compareList.length < 2) return;
             const lang = i18n[currentLang];
             const p1 = compareList[0];
             const p2 = compareList[1];
 
+            const evaluation = evaluateWinner(p1, p2);
+            const wins = evaluation.wins;
+            const overallWinner = evaluation.overallWinner;
+
             document.getElementById('compareModalTitle').innerText = lang.compareModalTitle;
 
+            let bannerHtml = '';
+            if (overallWinner) {
+                bannerHtml = `
+                    <div class="overall-winner-banner">
+                        <h3>${lang.overallWinnerTitle}</h3>
+                        <p>${lang.overallWinnerDesc} <strong>${overallWinner.name}</strong> ⭐️</p>
+                    </div>
+                `;
+            } else {
+                bannerHtml = `
+                    <div class="overall-winner-banner" style="border-color: #38bdf8;">
+                        <h3 style="color: #38bdf8;">⚖️ ${lang.overallWinnerTitle}</h3>
+                        <p>${lang.tieText}</p>
+                    </div>
+                `;
+            }
+
             const modalBody = document.getElementById('compareModalBody');
-            modalBody.innerHTML = `
+            modalBody.innerHTML = bannerHtml + `
                 <table class="comparison-table">
                     <thead>
                         <tr>
                             <th>${lang.specs.feature}</th>
-                            <th>${p1.name}</th>
-                            <th>${p2.name}</th>
+                            <th>${p1.name} ${overallWinner && overallWinner.id === p1.id ? '⭐' : ''}</th>
+                            <th>${p2.name} ${overallWinner && overallWinner.id === p2.id ? '⭐' : ''}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="feature-title">${lang.specs.cpu}</td>
-                            <td>${p1.cpu}</td>
-                            <td>${p2.cpu}</td>
+                            <td class="${wins.cpu === 1 ? 'winner-cell' : ''}">
+                                ${p1.cpu}
+                                ${wins.cpu === 1 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
+                            <td class="${wins.cpu === 2 ? 'winner-cell' : ''}">
+                                ${p2.cpu}
+                                ${wins.cpu === 2 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.ram}</td>
-                            <td>${p1.ram}</td>
-                            <td>${p2.ram}</td>
+                            <td class="${wins.ram === 1 ? 'winner-cell' : ''}">
+                                ${p1.ram}
+                                ${wins.ram === 1 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
+                            <td class="${wins.ram === 2 ? 'winner-cell' : ''}">
+                                ${p2.ram}
+                                ${wins.ram === 2 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.storage}</td>
-                            <td>${p1.storage}</td>
-                            <td>${p2.storage}</td>
+                            <td class="${wins.storage === 1 ? 'winner-cell' : ''}">
+                                ${p1.storage}
+                                ${wins.storage === 1 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
+                            <td class="${wins.storage === 2 ? 'winner-cell' : ''}">
+                                ${p2.storage}
+                                ${wins.storage === 2 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.screen}</td>
-                            <td>${p1.screen}</td>
-                            <td>${p2.screen}</td>
+                            <td class="${wins.screen === 1 ? 'winner-cell' : ''}">
+                                ${p1.screen}
+                                ${wins.screen === 1 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
+                            <td class="${wins.screen === 2 ? 'winner-cell' : ''}">
+                                ${p2.screen}
+                                ${wins.screen === 2 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.cam}</td>
-                            <td>${p1.cam}</td>
-                            <td>${p2.cam}</td>
+                            <td class="${wins.cam === 1 ? 'winner-cell' : ''}">
+                                ${p1.cam}
+                                ${wins.cam === 1 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
+                            <td class="${wins.cam === 2 ? 'winner-cell' : ''}">
+                                ${p2.cam}
+                                ${wins.cam === 2 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
                         </tr>
                         <tr>
                             <td class="feature-title">${lang.specs.bat}</td>
-                            <td>${p1.bat}</td>
-                            <td>${p2.bat}</td>
+                            <td class="${wins.bat === 1 ? 'winner-cell' : ''}">
+                                ${p1.bat}
+                                ${wins.bat === 1 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
+                            <td class="${wins.bat === 2 ? 'winner-cell' : ''}">
+                                ${p2.bat}
+                                ${wins.bat === 2 ? `<br><span class="winner-badge">${lang.winnerText}</span>` : ''}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
