@@ -746,6 +746,36 @@
             color: var(--text-sub);
             font-size: 0.9rem;
         }
+        /* إجبار container الحساب وزر جوجل على التكيف مع الهواتف */
+.google-auth-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.g_id_signin {
+    max-width: 100%;
+}
+
+/* تحسين استجابة الهواتف المحمولة */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px 15px;
+        justify-content: center;
+    }
+    
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .google-auth-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
