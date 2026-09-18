@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">الموسوعة الرقمية للهواتف الذكية | </title>
+    <title id="pageTitle">الموسوعة الرقمية للهواتف الذكية</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     
@@ -746,36 +746,37 @@
             color: var(--text-sub);
             font-size: 0.9rem;
         }
+
         /* إجبار container الحساب وزر جوجل على التكيف مع الهواتف */
-.google-auth-container {
-    max-width: 100%;
-    overflow: hidden;
-}
+        .google-auth-container {
+            max-width: 100%;
+            overflow: hidden;
+        }
 
-.g_id_signin {
-    max-width: 100%;
-}
+        .g_id_signin {
+            max-width: 100%;
+        }
 
-/* تحسين استجابة الهواتف المحمولة */
-@media (max-width: 600px) {
-    nav {
-        padding: 10px 15px;
-        justify-content: center;
-    }
-    
-    .nav-actions {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+        /* تحسين استجابة الهواتف المحمولة */
+        @media (max-width: 600px) {
+            nav {
+                padding: 10px 15px;
+                justify-content: center;
+            }
+            
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
 
-    .google-auth-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-}
+            .google-auth-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -799,7 +800,6 @@
                 </div>
             </div>
             <button class="lang-switch-btn" id="langSwitchBtn" onclick="toggleLanguage()">English</button>
-            <div class="author-tag" id="authorTag">إعداد المهندس : عامر الديري</div>
         </div>
     </nav>
 
@@ -918,7 +918,7 @@
     </div>
 
     <footer>
-        <p id="footerText">جميع الحقوق محفوظة &copy; 2026 | الموسوعة الرقمية للهواتف الذكية | إعداد المهندس : عامر محمد زاهر الديري</p>
+        <p id="footerText">شلو</p>
     </footer>
 
     <script>
@@ -931,9 +931,8 @@
 
         const i18n = {
             ar: {
-                pageTitle: "الموسوعة الرقمية للهواتف الذكية | إعداد المهندس : عامر الديري",
+                pageTitle: "الموسوعة الرقمية للهواتف الذكية",
                 logoText: 'الموسوعة الرقمية <span>للهواتف الذكية</span>',
-                authorTag: "إعداد المهندس : عامر الديري",
                 headerTitle: "الموسوعة الرقمية للهواتف الذكية",
                 headerDesc: "تصفح جميع الهواتف الذكية، واستعرض المواصفات كاملة أو قارن بين أي جهازين فوراً",
                 searchPlaceholder: "ابحث عن اسم الهاتف...",
@@ -956,7 +955,7 @@
                 compareBarBtn: "عرض المقارنة الآن",
                 clearBtn: "إلغاء",
                 compareModalTitle: "مقارنة المواصفات وتحليل الأفضلية",
-                footerText: "جميع الحقوق محفوظة &copy; 2026 | الموسوعة الرقمية للهواتف الذكية | إعداد المهندس : عامر محمد زاهر الديري",
+                footerText: "شلو",
                 winnerText: "الأفضل ⭐",
                 overallWinnerTitle: "🏆 النتيجة العامة للمقارنة",
                 overallWinnerDesc: "الجهاز الفائز بشكل عام بناءً على الأداء والمواصفات هو:",
@@ -987,9 +986,8 @@
                 }
             },
             en: {
-                pageTitle: "Digital Smartphone Encyclopedia | Eng. Amer Aldiri",
+                pageTitle: "Digital Smartphone Encyclopedia",
                 logoText: 'Digital <span>Smartphone Encyclopedia</span>',
-                authorTag: "By Eng. Amer Aldiri",
                 headerTitle: "Digital Smartphone Encyclopedia",
                 headerDesc: "Browse all smartphones, view complete specs, or compare any two devices instantly",
                 searchPlaceholder: "Search phone name...",
@@ -1012,7 +1010,7 @@
                 compareBarBtn: "Compare Now",
                 clearBtn: "Clear",
                 compareModalTitle: "Specification Comparison & Analysis",
-                footerText: "All Rights Reserved &copy; 2026 | Digital Smartphone Encyclopedia | Prepared by Eng. Amer Mohammed Zaher Aldiri",
+                footerText: "شلو",
                 winnerText: "Best Option ⭐",
                 overallWinnerTitle: "🏆 Overall Winner",
                 overallWinnerDesc: "The recommended device based on total specifications is:",
@@ -1205,83 +1203,97 @@
             { id: "inf_n40proplus", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "4600 mAh (100W + 20W MagCharge)" },
             { id: "inf_n40pro", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
             { id: "inf_n40", name: "Infinix Note 40 4G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Helio G99 Ultimate", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_n30", name: "Infinix Note 30 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 6080", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_gt30pro", name: "Infinix GT 30 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8300 Gaming Edition", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch AMOLED (144Hz)", cam: "108 MP Triple", bat: "5000 mAh (68W Cyber Charge)" },
             { id: "inf_gt20pro", name: "Infinix GT 20 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_gt10pro", name: "Infinix GT 10 Pro", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_hot50pro", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
-            { id: "inf_hot50_5g", name: "Infinix Hot 50 5G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Dimensity 6300", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD 120Hz", cam: "48 MP Dual", bat: "5000 mAh (18W)" },
-            { id: "inf_hot40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
-            { id: "inf_hot40i", name: "Infinix Hot 40i", subCat: "infinix-hot", brand: "infinix", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
-            { id: "inf_smart9", name: "Infinix Smart 9", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G81", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD 120Hz", cam: "13 MP Dual", bat: "5000 mAh" },
-            { id: "inf_smart8", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" }
+            { id: "inf_gt10pro", name: "Infinix GT 10 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "inf_h50", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
+            { id: "inf_h50_5g", name: "Infinix Hot 50 5G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Dimensity 6300", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD 120Hz", cam: "48 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "inf_h40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
+            { id: "inf_h40i", name: "Infinix Hot 40i", subCat: "infinix-hot", brand: "infinix", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
+            { id: "inf_s9hd", name: "Infinix Smart 9 HD", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G81", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD (120Hz)", cam: "13 MP Dual", bat: "5000 mAh" },
+            { id: "inf_s8", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (10W)" }
         ];
 
         const allPhones = [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList];
 
-        function parseJwt(token) {
-            try {
-                const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
-                return JSON.parse(jsonPayload);
-            } catch (e) {
-                return null;
-            }
-        }
-
         function handleCredentialResponse(response) {
-            const responsePayload = parseJwt(response.credential);
-            if(responsePayload) {
+            try {
+                const responsePayload = parseJwt(response.credential);
                 currentUser = {
                     name: responsePayload.name,
                     email: responsePayload.email,
                     picture: responsePayload.picture
                 };
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 loadUserFavorites();
-                updateAuthUI();
+                renderAuthUI();
+                applyFilters();
+            } catch (e) {
+                console.error("Auth error:", e);
+            }
+        }
+
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+
+        function getUserFavKey() {
+            return currentUser ? `user_favs_${currentUser.email}` : null;
+        }
+
+        function loadUserFavorites() {
+            if (!currentUser) {
+                userFavorites = [];
+                return;
+            }
+            const saved = localStorage.getItem(getUserFavKey());
+            userFavorites = saved ? JSON.parse(saved) : [];
+        }
+
+        function saveUserFavorites() {
+            if (currentUser) {
+                localStorage.setItem(getUserFavKey(), JSON.stringify(userFavorites));
+            }
+        }
+
+        function toggleFavorite(phoneId, event) {
+            if (event) event.stopPropagation();
+            if (!currentUser) {
+                alert(i18n[currentLang].loginRequiredFav);
+                return;
+            }
+
+            const index = userFavorites.indexOf(phoneId);
+            if (index > -1) {
+                userFavorites.splice(index, 1);
+            } else {
+                userFavorites.push(phoneId);
+            }
+            saveUserFavorites();
+            applyFilters();
+        }
+
+        function logout() {
+            currentUser = null;
+            userFavorites = [];
+            renderAuthUI();
+            if (currentBrand === 'favorites') {
+                switchBrand('samsung');
+            } else {
                 applyFilters();
             }
         }
 
-        function loadUserFavorites() {
-            if (currentUser && currentUser.email) {
-                const storedFavs = localStorage.getItem('favs_' + currentUser.email);
-                userFavorites = storedFavs ? JSON.parse(storedFavs) : [];
-            } else {
-                userFavorites = [];
-            }
-        }
-
-        function saveUserFavorites() {
-            if (currentUser && currentUser.email) {
-                localStorage.setItem('favs_' + currentUser.email, JSON.stringify(userFavorites));
-            }
-        }
-
-        function checkStoredUser() {
-            const storedUser = localStorage.getItem('currentUser');
-            if (storedUser) {
-                try {
-                    currentUser = JSON.parse(storedUser);
-                    loadUserFavorites();
-                    updateAuthUI();
-                } catch(e) {
-                    currentUser = null;
-                }
-            }
-        }
-
-        function updateAuthUI() {
+        function renderAuthUI() {
             const container = document.getElementById('googleAuthContainer');
             if (currentUser) {
                 container.innerHTML = `
                     <div class="user-profile">
-                        <img class="user-avatar" src="${currentUser.picture}" alt="${currentUser.name}" referrerpolicy="no-referrer">
-                        <span>${currentUser.name.split(' ')[0]}</span>
+                        <img src="${currentUser.picture}" alt="Avatar" class="user-avatar">
+                        <span>${currentUser.name}</span>
                         <button class="logout-btn" onclick="logout()">${i18n[currentLang].logout}</button>
                     </div>
                 `;
@@ -1307,159 +1319,153 @@
                         callback: handleCredentialResponse
                     });
                     google.accounts.id.renderButton(
-                        document.querySelector(".g_id_signin"),
-                        { theme: "dark", size: "medium", type: "standard", shape: "pill", logo_alignment: "left" }
+                        container.querySelector('.g_id_signin'),
+                        { theme: "dark", size: "medium", shape: "pill", text: "sign_in_with" }
                     );
                 }
             }
         }
 
-        function logout() {
-            currentUser = null;
-            userFavorites = [];
-            localStorage.removeItem('currentUser');
-            if (window.google && google.accounts && google.accounts.id) {
-                google.accounts.id.disableAutoSelect();
-            }
-            updateAuthUI();
-            if (currentBrand === 'favorites') {
-                switchBrand('samsung');
-            } else {
-                applyFilters();
-            }
-        }
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langSwitchBtn').innerText = currentLang === 'ar' ? 'English' : 'عربي';
 
-        function toggleFavorite(event, phoneId) {
-            event.stopPropagation();
-            if (!currentUser) {
-                alert(i18n[currentLang].loginRequiredFav);
-                return;
-            }
-            const index = userFavorites.indexOf(phoneId);
-            if (index > -1) {
-                userFavorites.splice(index, 1);
-            } else {
-                userFavorites.push(phoneId);
-            }
-            saveUserFavorites();
+            const langData = i18n[currentLang];
+            document.title = langData.pageTitle;
+            document.getElementById('logoText').innerHTML = langData.logoText;
+            document.getElementById('headerTitle').innerText = langData.headerTitle;
+            document.getElementById('headerDesc').innerText = langData.headerDesc;
+            document.getElementById('searchInput').placeholder = langData.searchPlaceholder;
+            
+            document.getElementById('samsungMainBtn').innerText = langData.samsungMainBtn;
+            document.getElementById('appleMainBtn').innerText = langData.appleMainBtn;
+            document.getElementById('xiaomiMainBtn').innerText = langData.xiaomiMainBtn;
+            document.getElementById('infinixMainBtn').innerText = langData.infinixMainBtn;
+            document.getElementById('favoritesMainBtn').innerText = langData.favoritesMainBtn;
+
+            document.getElementById('compareBarBtn').innerText = langData.compareBarBtn;
+            document.getElementById('clearCompareBtn').innerText = langData.clearBtn;
+            document.getElementById('compareModalTitle').innerText = langData.compareModalTitle;
+            document.getElementById('footerText').innerText = langData.footerText;
+
+            renderAuthUI();
+            updateCompareBar();
             applyFilters();
         }
 
-        function switchBrand(brandKey) {
-            currentBrand = brandKey;
+        function switchBrand(brand) {
+            currentBrand = brand;
             currentSubCat = 'all';
 
             document.querySelectorAll('.brand-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById(brandKey + 'MainBtn');
-            if (activeBtn) activeBtn.classList.add('active');
+            document.getElementById(`${brand}MainBtn`).classList.add('active');
 
-            const subFilters = ['samsungSubFilters', 'appleSubFilters', 'xiaomiSubFilters', 'infinixSubFilters', 'favoritesSubFilters'];
-            subFilters.forEach(id => {
+            const filterContainers = ['samsungSubFilters', 'appleSubFilters', 'xiaomiSubFilters', 'infinixSubFilters', 'favoritesSubFilters'];
+            filterContainers.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
 
-            const currentSubGroup = document.getElementById(brandKey + 'SubFilters');
-            if (currentSubGroup) {
-                currentSubGroup.style.display = 'flex';
-                currentSubGroup.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
-                const firstBtn = currentSubGroup.querySelector('[data-sub="all"]');
+            const activeContainer = document.getElementById(`${brand}SubFilters`);
+            if (activeContainer) {
+                activeContainer.style.display = 'flex';
+                activeContainer.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
+                const firstBtn = activeContainer.querySelector('[data-sub="all"]');
                 if (firstBtn) firstBtn.classList.add('active');
             }
 
             applyFilters();
         }
 
-        function setSubCategory(subCatKey, btnElement) {
-            currentSubCat = subCatKey;
+        function setSubCategory(subCat, btnElement) {
+            currentSubCat = subCat;
             const parent = btnElement.parentElement;
             parent.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
             btnElement.classList.add('active');
             applyFilters();
         }
 
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
-            let sourceArray = [];
-
+        function getActivePhoneList() {
+            if (currentBrand === 'samsung') return samsungList;
+            if (currentBrand === 'apple') return iphoneList;
+            if (currentBrand === 'xiaomi') return xiaomiList;
+            if (currentBrand === 'infinix') return infinixList;
             if (currentBrand === 'favorites') {
-                if (!currentUser) {
-                    const grid = document.getElementById('phoneGrid');
-                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 40px; font-size: 1.1rem;">${i18n[currentLang].loginRequiredFav}</div>`;
-                    document.getElementById('resultsCount').innerText = '';
-                    return;
-                }
-                sourceArray = allPhones.filter(phone => userFavorites.includes(phone.id));
-            } else if (currentBrand === 'samsung') sourceArray = samsungList;
-            else if (currentBrand === 'apple') sourceArray = iphoneList;
-            else if (currentBrand === 'xiaomi') sourceArray = xiaomiList;
-            else if (currentBrand === 'infinix') sourceArray = infinixList;
-
-            let filtered = sourceArray;
-
-            if (currentBrand !== 'favorites' && currentSubCat !== 'all') {
-                filtered = filtered.filter(item => item.subCat === currentSubCat);
+                return allPhones.filter(phone => userFavorites.includes(phone.id));
             }
+            return samsungList;
+        }
 
-            if (searchTerm !== '') {
-                filtered = filtered.filter(item => item.name.toLowerCase().includes(searchTerm));
-            }
+        function applyFilters() {
+            const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+            const list = getActivePhoneList();
+
+            const filtered = list.filter(phone => {
+                const matchSub = (currentSubCat === 'all') || (phone.subCat === currentSubCat);
+                const matchSearch = phone.name.toLowerCase().includes(searchValue);
+                return matchSub && matchSearch;
+            });
 
             renderGrid(filtered);
         }
 
         function renderGrid(phones) {
             const grid = document.getElementById('phoneGrid');
-            const countText = document.getElementById('resultsCount');
+            const countEl = document.getElementById('resultsCount');
+            grid.innerHTML = '';
 
-            if (phones.length === 0) {
-                if (currentBrand === 'favorites') {
-                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 40px; font-size: 1.1rem;">${i18n[currentLang].noFavorites}</div>`;
-                } else {
-                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 40px; font-size: 1.1rem;">${i18n[currentLang].noResults}</div>`;
-                }
-                countText.innerText = "";
+            if (currentBrand === 'favorites' && !currentUser) {
+                countEl.innerText = i18n[currentLang].loginRequiredFav;
                 return;
             }
 
-            countText.innerText = i18n[currentLang].resultsFound.replace('{count}', phones.length);
-            
-            let html = '';
+            if (phones.length === 0) {
+                countEl.innerText = currentBrand === 'favorites' ? i18n[currentLang].noFavorites : i18n[currentLang].noResults;
+                return;
+            }
+
+            countEl.innerText = i18n[currentLang].resultsFound.replace('{count}', phones.length);
+
             phones.forEach(phone => {
                 const isSelected = compareList.some(item => item.id === phone.id);
                 const isFav = userFavorites.includes(phone.id);
-                const categoryLabel = i18n[currentLang].categories[phone.brand] || phone.brand;
+                const card = document.createElement('div');
+                card.className = 'phone-card';
 
-                html += `
-                    <div class="phone-card">
-                        <button class="fav-icon-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${phone.id}')" title="المفضلة">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                            </svg>
-                        </button>
-                        <div class="image-container" onclick="openSpecsModal('${phone.id}')">
-                            <div class="fallback-img">${phone.name}</div>
+                const brandLabel = i18n[currentLang].categories[phone.brand] || phone.brand;
+
+                card.innerHTML = `
+                    <button class="fav-icon-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite('${phone.id}', event)" title="المفضلة">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </button>
+                    <div class="image-container" onclick="openSpecsModal('${phone.id}')">
+                        <div class="fallback-img">${phone.name}</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="category-tag">${brandLabel}</span>
+                            <h3>${phone.name}</h3>
                         </div>
-                        <div class="card-body">
-                            <div>
-                                <span class="category-tag">${categoryLabel}</span>
-                                <h3>${phone.name}</h3>
-                            </div>
-                            <div class="card-actions">
-                                <button class="view-details-btn" onclick="openSpecsModal('${phone.id}')">${i18n[currentLang].detailsBtn}</button>
-                                <button class="compare-btn ${isSelected ? 'selected' : ''}" onclick="toggleCompare('${phone.id}', this)">
-                                    ${isSelected ? '✓' : i18n[currentLang].compareBtn}
-                                </button>
-                            </div>
+                        <div class="card-actions">
+                            <button class="view-details-btn" onclick="openSpecsModal('${phone.id}')">${i18n[currentLang].detailsBtn}</button>
+                            <button class="compare-btn ${isSelected ? 'selected' : ''}" onclick="toggleCompare('${phone.id}', this)">
+                                ${isSelected ? '✓ ' + i18n[currentLang].compareBtn : '+ ' + i18n[currentLang].compareBtn}
+                            </button>
                         </div>
                     </div>
                 `;
+                grid.appendChild(card);
             });
-            grid.innerHTML = html;
         }
 
-        function toggleCompare(phoneId, buttonEl) {
+        function toggleCompare(phoneId, button) {
             const phone = allPhones.find(p => p.id === phoneId);
+            if (!phone) return;
+
             const index = compareList.findIndex(item => item.id === phoneId);
 
             if (index > -1) {
@@ -1501,138 +1507,187 @@
             const phone = allPhones.find(p => p.id === phoneId);
             if (!phone) return;
 
+            const modal = document.getElementById('specsModal');
             document.getElementById('modalTitle').innerText = phone.name;
             document.getElementById('modalCategory').innerText = i18n[currentLang].categories[phone.brand] || phone.brand;
 
-            const modalBody = document.getElementById('modalBody');
-            const t = i18n[currentLang].specs;
+            const specs = i18n[currentLang].specs;
 
-            modalBody.innerHTML = `
-                <div class="spec-group"><strong>${t.cpu}</strong><span>${phone.cpu}</span></div>
-                <div class="spec-group"><strong>${t.ram}</strong><span>${phone.ram}</span></div>
-                <div class="spec-group"><strong>${t.storage}</strong><span>${phone.storage}</span></div>
-                <div class="spec-group"><strong>${t.screen}</strong><span>${phone.screen}</span></div>
-                <div class="spec-group"><strong>${t.cam}</strong><span>${phone.cam}</span></div>
-                <div class="spec-group"><strong>${t.bat}</strong><span>${phone.bat}</span></div>
+            document.getElementById('modalBody').innerHTML = `
+                <div class="spec-group"><strong>${specs.cpu}:</strong> <span>${phone.cpu}</span></div>
+                <div class="spec-group"><strong>${specs.ram}:</strong> <span>${phone.ram}</span></div>
+                <div class="spec-group"><strong>${specs.storage}:</strong> <span>${phone.storage}</span></div>
+                <div class="spec-group"><strong>${specs.screen}:</strong> <span>${phone.screen}</span></div>
+                <div class="spec-group"><strong>${specs.cam}:</strong> <span>${phone.cam}</span></div>
+                <div class="spec-group"><strong>${specs.bat}:</strong> <span>${phone.bat}</span></div>
             `;
 
-            document.getElementById('specsModal').classList.add('active');
+            modal.classList.add('active');
         }
 
-        function parseNum(str) {
+        function openCompareModal() {
+            if (compareList.length === 0) return;
+
+            const modal = document.getElementById('compareModal');
+            const body = document.getElementById('compareModalBody');
+            const specs = i18n[currentLang].specs;
+            const adv = i18n[currentLang].advantages;
+
+            if (compareList.length === 1) {
+                const phone = compareList[0];
+                body.innerHTML = `
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th class="feature-title">${specs.feature}</th>
+                                <th>${phone.name}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="feature-title">${specs.cpu}</td><td>${phone.cpu}</td></tr>
+                            <tr><td class="feature-title">${specs.ram}</td><td>${phone.ram}</td></tr>
+                            <tr><td class="feature-title">${specs.storage}</td><td>${phone.storage}</td></tr>
+                            <tr><td class="feature-title">${specs.screen}</td><td>${phone.screen}</td></tr>
+                            <tr><td class="feature-title">${specs.cam}</td><td>${phone.cam}</td></tr>
+                            <tr><td class="feature-title">${specs.bat}</td><td>${phone.bat}</td></tr>
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                const p1 = compareList[0];
+                const p2 = compareList[1];
+
+                const scores = evaluateWinner(p1, p2);
+                let overallBanner = '';
+
+                if (scores.p1 > scores.p2) {
+                    overallBanner = `
+                        <div class="overall-winner-banner">
+                            <h3>${i18n[currentLang].overallWinnerTitle}</h3>
+                            <p>${i18n[currentLang].overallWinnerDesc} <strong>${p1.name}</strong></p>
+                        </div>
+                    `;
+                } else if (scores.p2 > scores.p1) {
+                    overallBanner = `
+                        <div class="overall-winner-banner">
+                            <h3>${i18n[currentLang].overallWinnerTitle}</h3>
+                            <p>${i18n[currentLang].overallWinnerDesc} <strong>${p2.name}</strong></p>
+                        </div>
+                    `;
+                } else {
+                    overallBanner = `
+                        <div class="overall-winner-banner">
+                            <h3>${i18n[currentLang].overallWinnerTitle}</h3>
+                            <p>${i18n[currentLang].tieText}</p>
+                        </div>
+                    `;
+                }
+
+                body.innerHTML = `
+                    ${overallBanner}
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th class="feature-title">${specs.feature}</th>
+                                <th>${p1.name}</th>
+                                <th>${p2.name}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${renderCompareRow(specs.cpu, p1.cpu, p2.cpu, scores.details.cpu, adv.cpu)}
+                            ${renderCompareRow(specs.ram, p1.ram, p2.ram, scores.details.ram, adv.ram)}
+                            ${renderCompareRow(specs.storage, p1.storage, p2.storage, scores.details.storage, adv.storage)}
+                            ${renderCompareRow(specs.screen, p1.screen, p2.screen, scores.details.screen, adv.screen)}
+                            ${renderCompareRow(specs.cam, p1.cam, p2.cam, scores.details.cam, adv.cam)}
+                            ${renderCompareRow(specs.bat, p1.bat, p2.bat, scores.details.bat, adv.bat)}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            modal.classList.add('active');
+        }
+
+        function renderCompareRow(featureTitle, val1, val2, winner, advantageReason) {
+            const winnerBadge = `<span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${advantageReason}</span>`;
+            const cell1Class = winner === 1 ? 'winner-cell' : '';
+            const cell2Class = winner === 2 ? 'winner-cell' : '';
+
+            return `
+                <tr>
+                    <td class="feature-title">${featureTitle}</td>
+                    <td class="${cell1Class}">
+                        ${val1}
+                        ${winner === 1 ? winnerBadge : ''}
+                    </td>
+                    <td class="${cell2Class}">
+                        ${val2}
+                        ${winner === 2 ? winnerBadge : ''}
+                    </td>
+                </tr>
+            `;
+        }
+
+        function extractNumber(str) {
             const match = str.match(/\d+/);
             return match ? parseInt(match[0], 10) : 0;
         }
 
-        function compareSpecs(val1, val2, type) {
-            let num1 = parseNum(val1);
-            let num2 = parseNum(val2);
+        function evaluateWinner(p1, p2) {
+            let p1Score = 0;
+            let p2Score = 0;
+            const details = { cpu: 0, ram: 0, storage: 0, screen: 0, cam: 0, bat: 0 };
 
-            if (type === 'cpu') {
-                if (val1.includes('Elite') || val1.includes('Gen 5') || val1.includes('A19') || val1.includes('Dimensity 9')) num1 += 50;
-                if (val2.includes('Elite') || val2.includes('Gen 5') || val2.includes('A19') || val2.includes('Dimensity 9')) num2 += 50;
-                if (val1.includes('Gen 3') || val1.includes('A18') || val1.includes('A17')) num1 += 30;
-                if (val2.includes('Gen 3') || val2.includes('A18') || val2.includes('A17')) num2 += 30;
-            }
+            // تقييم المعالج (اختبار مبسط يعتمد على الجيل أو الرتبة)
+            const getCpuRank = (p) => {
+                const name = p.name.toLowerCase();
+                const cpu = p.cpu.toLowerCase();
 
-            if (num1 > num2) return 1;
-            if (num2 > num1) return 2;
-            return 0;
-        }
+                if (name.includes('s26 ultra') || cpu.includes('8 gen 5')) return 100;
+                if (name.includes('iphone 17 pro max') || cpu.includes('a19 pro')) return 99;
+                if (cpu.includes('8 elite')) return 98;
+                if (cpu.includes('a18 pro')) return 97;
+                if (cpu.includes('8 gen 3') || cpu.includes('dimensity 9300')) return 92;
+                if (cpu.includes('a17 pro') || cpu.includes('8 gen 2')) return 88;
+                if (cpu.includes('8+ gen 1') || cpu.includes('a16 bionic')) return 82;
+                if (cpu.includes('helio g99') || cpu.includes('dimensity 6100')) return 50;
+                return 60;
+            };
 
-        function openCompareModal() {
-            if (compareList.length < 2) {
-                alert(currentLang === 'ar' ? 'يرجى اختيار جهازين للمقارنة.' : 'Please select 2 devices to compare.');
-                return;
-            }
+            const cpu1 = getCpuRank(p1);
+            const cpu2 = getCpuRank(p2);
+            if (cpu1 > cpu2) { details.cpu = 1; p1Score += 2; }
+            else if (cpu2 > cpu1) { details.cpu = 2; p2Score += 2; }
 
-            const p1 = compareList[0];
-            const p2 = compareList[1];
-            const t = i18n[currentLang].specs;
-            const adv = i18n[currentLang].advantages;
-            const winnerBadge = i18n[currentLang].winnerText;
+            // الذاكرة العشوائية
+            const ram1 = extractNumber(p1.ram);
+            const ram2 = extractNumber(p2.ram);
+            if (ram1 > ram2) { details.ram = 1; p1Score++; }
+            else if (ram2 > ram1) { details.ram = 2; p2Score++; }
 
-            const specKeys = [
-                { key: 'cpu', label: t.cpu, advText: adv.cpu },
-                { key: 'ram', label: t.ram, advText: adv.ram },
-                { key: 'storage', label: t.storage, advText: adv.storage },
-                { key: 'screen', label: t.screen, advText: adv.screen },
-                { key: 'cam', label: t.cam, advText: adv.cam },
-                { key: 'bat', label: t.bat, advText: adv.bat }
-            ];
+            // الشاشة (دعم معدل التحديث)
+            const getHz = (str) => {
+                const match = str.match(/(\d+)Hz/i);
+                return match ? parseInt(match[1], 10) : 60;
+            };
+            const hz1 = getHz(p1.screen);
+            const hz2 = getHz(p2.screen);
+            if (hz1 > hz2) { details.screen = 1; p1Score++; }
+            else if (hz2 > hz1) { details.screen = 2; p2Score++; }
 
-            let score1 = 0;
-            let score2 = 0;
-            let rowsHtml = '';
+            // الكاميرا
+            const cam1 = extractNumber(p1.cam);
+            const cam2 = extractNumber(p2.cam);
+            if (cam1 > cam2) { details.cam = 1; p1Score++; }
+            else if (cam2 > cam1) { details.cam = 2; p2Score++; }
 
-            specKeys.forEach(spec => {
-                const res = compareSpecs(p1[spec.key], p2[spec.key], spec.key);
-                let cell1Class = '';
-                let cell2Class = '';
-                let cell1Extra = '';
-                let cell2Extra = '';
+            // البطارية
+            const bat1 = extractNumber(p1.bat);
+            const bat2 = extractNumber(p2.bat);
+            if (bat1 > bat2) { details.bat = 1; p1Score++; }
+            else if (bat2 > bat1) { details.bat = 2; p2Score++; }
 
-                if (res === 1) {
-                    score1++;
-                    cell1Class = 'winner-cell';
-                    cell1Extra = `<br><span class="winner-badge">${winnerBadge}</span><span class="advantage-text">💡 ${spec.advText}</span>`;
-                } else if (res === 2) {
-                    score2++;
-                    cell2Class = 'winner-cell';
-                    cell2Extra = `<br><span class="winner-badge">${winnerBadge}</span><span class="advantage-text">💡 ${spec.advText}</span>`;
-                }
-
-                rowsHtml += `
-                    <tr>
-                        <td class="feature-title">${spec.label}</td>
-                        <td class="${cell1Class}">${p1[spec.key]}${cell1Extra}</td>
-                        <td class="${cell2Class}">${p2[spec.key]}${cell2Extra}</td>
-                    </tr>
-                `;
-            });
-
-            let overallBanner = '';
-            if (score1 > score2) {
-                overallBanner = `
-                    <div class="overall-winner-banner">
-                        <h3>${i18n[currentLang].overallWinnerTitle}</h3>
-                        <p>${i18n[currentLang].overallWinnerDesc} <strong>${p1.name}</strong></p>
-                    </div>
-                `;
-            } else if (score2 > score1) {
-                overallBanner = `
-                    <div class="overall-winner-banner">
-                        <h3>${i18n[currentLang].overallWinnerTitle}</h3>
-                        <p>${i18n[currentLang].overallWinnerDesc} <strong>${p2.name}</strong></p>
-                    </div>
-                `;
-            } else {
-                overallBanner = `
-                    <div class="overall-winner-banner">
-                        <h3>🤝 ${i18n[currentLang].overallWinnerTitle}</h3>
-                        <p>${i18n[currentLang].tieText}</p>
-                    </div>
-                `;
-            }
-
-            const bodyHtml = `
-                ${overallBanner}
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 20%;">${t.feature}</th>
-                            <th style="width: 40%;">${p1.name}</th>
-                            <th style="width: 40%;">${p2.name}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${rowsHtml}
-                    </tbody>
-                </table>
-            `;
-
-            document.getElementById('compareModalBody').innerHTML = bodyHtml;
-            document.getElementById('compareModal').classList.add('active');
+            return { p1: p1Score, p2: p2Score, details };
         }
 
         function closeModal(modalId) {
@@ -1645,40 +1700,8 @@
             }
         }
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-            document.getElementById('pageTitle').innerText = i18n[currentLang].pageTitle;
-            document.getElementById('logoText').innerHTML = i18n[currentLang].logoText;
-            document.getElementById('authorTag').innerText = i18n[currentLang].authorTag;
-            document.getElementById('headerTitle').innerText = i18n[currentLang].headerTitle;
-            document.getElementById('headerDesc').innerText = i18n[currentLang].headerDesc;
-            document.getElementById('searchInput').placeholder = i18n[currentLang].searchPlaceholder;
-            document.getElementById('langSwitchBtn').innerText = currentLang === 'ar' ? 'English' : 'عربي';
-
-            document.getElementById('samsungMainBtn').innerText = i18n[currentLang].samsungMainBtn;
-            document.getElementById('appleMainBtn').innerText = i18n[currentLang].appleMainBtn;
-            document.getElementById('xiaomiMainBtn').innerText = i18n[currentLang].xiaomiMainBtn;
-            document.getElementById('infinixMainBtn').innerText = i18n[currentLang].infinixMainBtn;
-            document.getElementById('favoritesMainBtn').innerText = i18n[currentLang].favoritesMainBtn;
-
-            document.querySelectorAll('[data-sub="all"]').forEach(btn => btn.innerText = i18n[currentLang].subAll);
-            document.querySelectorAll('[data-sub="iphone-legacy"]').forEach(btn => btn.innerText = i18n[currentLang].subAppleLegacy);
-
-            document.getElementById('compareBarBtn').innerText = i18n[currentLang].compareBarBtn;
-            document.getElementById('clearCompareBtn').innerText = i18n[currentLang].clearBtn;
-            document.getElementById('compareModalTitle').innerText = i18n[currentLang].compareModalTitle;
-            document.getElementById('footerText').innerHTML = i18n[currentLang].footerText;
-
-            updateAuthUI();
-            updateCompareBar();
-            applyFilters();
-        }
-
         window.onload = function () {
-            checkStoredUser();
+            renderAuthUI();
             applyFilters();
         };
     </script>
