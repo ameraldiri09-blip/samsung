@@ -48,37 +48,26 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            padding-top: 65px; /* إزاحة المحتوى لعدم الاختفاء تحت الهيدر الثابت */
         }
 
+        /* شريط علوي ثابت أنيق ونظيف */
         nav {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(12px);
-            padding: 16px 30px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             border-bottom: 2px solid transparent;
             border-image: var(--rgb-border) 1;
             animation: rotateRGB 6s linear infinite;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .logo {
-            color: var(--text-main);
-            font-size: 1.25rem;
-            font-weight: 800;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-        }
-
-        .logo span {
-            color: var(--primary-color);
-            background: linear-gradient(90deg, #38bdf8, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            height: 60px;
         }
 
         .nav-actions {
@@ -103,17 +92,6 @@
         .lang-switch-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-        }
-
-        .author-tag {
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
         }
 
         .google-auth-container {
@@ -159,10 +137,11 @@
             color: white;
         }
 
+        /* الهيدر الرئيسي المتناسق مع تصميم الهاتف */
         header {
             background: radial-gradient(circle at top, #1e3a8a 0%, #0f172a 100%);
             color: white;
-            padding: 50px 20px 40px 20px;
+            padding: 30px 20px 35px 20px;
             text-align: center;
             border-bottom: 1px solid var(--card-border);
             position: relative;
@@ -187,78 +166,77 @@
         }
 
         header h1 {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: -0.5px;
             text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
         header p {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--text-sub);
         }
 
         .main-brand-selector {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             max-width: 1100px;
-            margin: -28px auto 30px auto;
-            padding: 0 20px;
+            margin: -20px auto 25px auto;
+            padding: 0 15px;
             position: relative;
             z-index: 10;
             flex-wrap: wrap;
         }
 
         .brand-btn {
-            flex: 1;
-            min-width: 160px;
-            padding: 16px 20px;
-            font-size: 1rem;
+            flex: 1 1 calc(50% - 10px);
+            min-width: 130px;
+            padding: 12px 14px;
+            font-size: 0.9rem;
             font-weight: 800;
             border: 2px solid transparent;
-            border-radius: 16px;
+            border-radius: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             color: white;
             background: var(--card-bg);
-            opacity: 0.75;
-            position: relative;
+            opacity: 0.8;
         }
 
         .brand-btn.samsung { background: linear-gradient(135deg, #1e3a8a, #0f172a); }
         .brand-btn.apple { background: linear-gradient(135deg, #334155, #0f172a); }
         .brand-btn.xiaomi { background: linear-gradient(135deg, #c2410c, #431407); }
         .brand-btn.infinix { background: linear-gradient(135deg, #047857, #064e3b); }
-        .brand-btn.favorites { background: linear-gradient(135deg, #991b1b, #450a0a); }
+        .brand-btn.favorites { background: linear-gradient(135deg, #991b1b, #450a0a); flex: 1 1 100%; }
 
         .brand-btn.active {
             opacity: 1;
-            transform: translateY(-4px);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 10px rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.6), 0 0 8px rgba(236, 72, 153, 0.4);
             border-color: #38bdf8;
         }
 
         .controls-container {
             max-width: 1200px;
-            margin: 0 auto 25px auto;
-            padding: 0 20px;
+            margin: 0 auto 20px auto;
+            padding: 0 15px;
         }
 
         .search-box {
             background: var(--card-bg);
-            padding: 4px;
-            border-radius: 16px;
+            padding: 2px;
+            border-radius: 14px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
             background-clip: padding-box;
             border: 2px solid transparent;
@@ -269,19 +247,19 @@
             position: absolute;
             top: -2px; bottom: -2px; left: -2px; right: -2px;
             background: linear-gradient(90deg, #ff007f, #00dfd8, #7928ca);
-            border-radius: 18px;
+            border-radius: 16px;
             z-index: -1;
             opacity: 0.7;
         }
 
         .search-box input {
             width: 100%;
-            padding: 14px 20px;
+            padding: 12px 16px;
             background: var(--card-bg);
             border: none;
-            border-radius: 14px;
+            border-radius: 12px;
             color: var(--text-main);
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
         }
 
@@ -290,7 +268,7 @@
         .sub-filter-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
         }
 
@@ -298,10 +276,10 @@
             background-color: var(--card-bg);
             color: var(--text-sub);
             border: 1px solid var(--card-border);
-            padding: 8px 18px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -315,30 +293,30 @@
 
         .results-count {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: var(--text-sub);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto 80px auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .phone-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
         }
 
         .phone-card {
             background-color: var(--card-bg);
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             border: 2px solid transparent;
@@ -349,7 +327,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 18px;
+            border-radius: 16px;
             padding: 2px;
             background: linear-gradient(135deg, rgba(255,0,127,0.3), rgba(0,223,216,0.3), rgba(121,40,202,0.3));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -359,12 +337,8 @@
         }
 
         .phone-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 0 10px rgba(236, 72, 153, 0.3);
-        }
-
-        .phone-card:hover::before {
-            background: linear-gradient(135deg, #ff007f, #00dfd8, #7928ca);
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
 
         .fav-icon-btn {
@@ -375,13 +349,12 @@
             background: rgba(15, 23, 42, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.2s ease;
             backdrop-filter: blur(4px);
         }
 
@@ -390,34 +363,27 @@
             right: 10px;
         }
 
-        .fav-icon-btn:hover {
-            transform: scale(1.15);
-            background: rgba(15, 23, 42, 0.9);
-        }
-
         .fav-icon-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: none;
             stroke: #94a3b8;
             stroke-width: 2;
-            transition: all 0.2s ease;
         }
 
         .fav-icon-btn.active svg {
             fill: var(--favorite-color);
             stroke: var(--favorite-color);
-            filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
         }
 
         .image-container {
             width: 100%;
-            height: 150px;
+            height: 140px;
             background: radial-gradient(circle, #334155 0%, #1e293b 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 12px;
             border-bottom: 1px solid var(--card-border);
             cursor: pointer;
             position: relative;
@@ -432,16 +398,15 @@
             background: rgba(255, 255, 255, 0.03);
             color: var(--text-main);
             font-weight: bold;
-            font-size: 0.9rem;
-            border-radius: 12px;
+            font-size: 0.85rem;
+            border-radius: 10px;
             text-align: center;
-            padding: 10px;
+            padding: 8px;
             border: 1px dashed rgba(255, 255, 255, 0.1);
-            text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
         }
 
         .card-body {
-            padding: 18px;
+            padding: 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -452,25 +417,25 @@
             display: inline-block;
             background-color: rgba(56, 189, 248, 0.15);
             color: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             align-self: flex-start;
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         .phone-card h3 {
-            font-size: 1.05rem;
+            font-size: 0.98rem;
             color: var(--text-main);
-            margin-bottom: 18px;
-            line-height: 1.4;
+            margin-bottom: 14px;
+            line-height: 1.35;
         }
 
         .card-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         .view-details-btn {
@@ -478,19 +443,17 @@
             background-color: rgba(255, 255, 255, 0.05);
             color: var(--text-main);
             border: 1px solid var(--card-border);
-            padding: 10px;
-            border-radius: 10px;
+            padding: 8px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
         .view-details-btn:hover {
             background: linear-gradient(90deg, #38bdf8, #3b82f6);
             color: #ffffff;
             border-color: transparent;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         .compare-btn {
@@ -498,37 +461,39 @@
             background-color: rgba(16, 185, 129, 0.1);
             color: var(--accent-color);
             border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 10px;
-            border-radius: 10px;
+            padding: 8px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
         .compare-btn:hover, .compare-btn.selected {
             background-color: var(--accent-color);
             color: white;
             border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
 
+        /* شريط المقارنة العائم */
         .compare-bar {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             display: none;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             z-index: 900;
+            width: 90%;
+            max-width: 450px;
+            justify-content: space-between;
         }
 
         .compare-bar.active { display: flex; }
@@ -537,17 +502,11 @@
             background: linear-gradient(90deg, #10b981, #059669);
             color: white;
             border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 6px 14px;
+            border-radius: 16px;
             font-weight: 700;
+            font-size: 0.82rem;
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
-        }
-
-        .compare-bar-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.7);
         }
 
         .clear-compare-btn {
@@ -555,9 +514,10 @@
             color: var(--text-sub);
             border: none;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
+        /* النوافذ المنبثقة (المواصفات والمقارنة) */
         .modal {
             display: none;
             position: fixed;
@@ -567,10 +527,10 @@
             height: 100%;
             background: rgba(11, 17, 32, 0.85);
             backdrop-filter: blur(8px);
-            z-index: 1000;
+            z-index: 1100;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .modal.active { display: flex; }
@@ -578,63 +538,53 @@
         .modal-content {
             background: var(--card-bg);
             border: 2px solid #38bdf8;
-            border-radius: 20px;
-            max-width: 550px;
+            border-radius: 16px;
+            max-width: 500px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            animation: modalFadeIn 0.3s ease;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
             color: var(--text-main);
         }
 
         .modal-content.wide {
-            max-width: 900px;
+            max-width: 850px;
             border-color: #a855f7;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 1.8rem;
+            top: 12px;
+            left: 15px;
+            font-size: 1.6rem;
             color: var(--text-sub);
             cursor: pointer;
             line-height: 1;
-            transition: color 0.2s;
         }
 
         html[dir="ltr"] .close-modal {
             left: auto;
-            right: 20px;
+            right: 15px;
         }
 
-        .close-modal:hover { color: var(--text-main); }
-
         .modal-header {
-            padding: 25px 25px 15px 25px;
+            padding: 20px 20px 12px 20px;
             border-bottom: 1px solid var(--card-border);
         }
 
         .modal-header h2 {
             color: var(--text-main);
-            font-size: 1.35rem;
+            font-size: 1.2rem;
         }
 
-        .modal-body { padding: 25px; }
+        .modal-body { padding: 18px; }
 
         .spec-group {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             background: rgba(255, 255, 255, 0.03);
-            padding: 12px 15px;
-            border-radius: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
             border-right: 4px solid var(--primary-color);
         }
 
@@ -646,26 +596,33 @@
         .spec-group strong {
             color: var(--primary-color);
             display: block;
-            margin-bottom: 4px;
-            font-size: 0.9rem;
+            margin-bottom: 3px;
+            font-size: 0.85rem;
         }
 
         .spec-group span {
             color: var(--text-main);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+
+        /* الجدول المقارن التفاعلي */
+        .comparison-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
         }
 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 8px;
+            min-width: 500px;
         }
 
         .comparison-table th, .comparison-table td {
-            padding: 14px;
+            padding: 10px;
             border: 1px solid var(--card-border);
             text-align: right;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
         }
 
         html[dir="ltr"] .comparison-table th, html[dir="ltr"] .comparison-table td {
@@ -682,31 +639,29 @@
             background-color: rgba(255, 255, 255, 0.02);
             font-weight: bold;
             color: var(--text-sub);
-            width: 22%;
+            width: 25%;
         }
 
         .winner-cell {
             background-color: var(--winner-bg) !important;
             border: 2px solid var(--winner-border) !important;
-            position: relative;
         }
 
         .winner-badge {
             display: inline-block;
             background: var(--accent-color);
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-            margin-top: 6px;
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
         }
 
         .advantage-text {
             display: block;
-            margin-top: 4px;
-            font-size: 0.78rem;
+            margin-top: 3px;
+            font-size: 0.72rem;
             color: #34d399;
             font-weight: 600;
         }
@@ -714,23 +669,22 @@
         .overall-winner-banner {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.3));
             border: 2px solid var(--accent-color);
-            border-radius: 14px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
         }
 
         .overall-winner-banner h3 {
             color: var(--accent-color);
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 800;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .overall-winner-banner p {
             color: var(--text-main);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
         footer {
@@ -739,15 +693,14 @@
             border-image: linear-gradient(90deg, #ff007f, #00dfd8, #7928ca) 1;
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 20px 15px;
         }
 
         footer p {
             color: var(--text-sub);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* إجبار container الحساب وزر جوجل على التكيف مع الهواتف */
         .google-auth-container {
             max-width: 100%;
             overflow: hidden;
@@ -757,32 +710,24 @@
             max-width: 100%;
         }
 
-        /* تحسين استجابة الهواتف المحمولة */
         @media (max-width: 600px) {
             nav {
-                padding: 10px 15px;
-                justify-content: center;
+                padding: 8px 12px;
             }
-            
-            .nav-actions {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 8px;
+            .brand-btn {
+                min-width: 45%;
+                font-size: 0.82rem;
             }
-
-            .google-auth-container {
-                width: 100%;
-                display: flex;
-                justify-content: center;
+            header h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- الهيدر العلوي الثابت الذي يحتوي فقط على تسجيل الدخول واللغة -->
     <nav>
-        <div class="logo" id="logoText">الموسوعة الرقمية <span>للهواتف الذكية</span></div>
         <div class="nav-actions">
             <div id="googleAuthContainer" class="google-auth-container">
                 <div id="g_id_onload"
@@ -803,6 +748,7 @@
         </div>
     </nav>
 
+    <!-- الهيدر الرئيسي مع ظهور العنوان مرة واحدة فقط بشكل رايق وبسيط -->
     <header>
         <h1 id="headerTitle">الموسوعة الرقمية للهواتف الذكية</h1>
         <p id="headerDesc">تصفح جميع الهواتف الذكية، واستعرض المواصفات كاملة أو قارن بين أي جهازين فوراً</p>
@@ -932,7 +878,6 @@
         const i18n = {
             ar: {
                 pageTitle: "الموسوعة الرقمية للهواتف الذكية",
-                logoText: 'الموسوعة الرقمية <span>للهواتف الذكية</span>',
                 headerTitle: "الموسوعة الرقمية للهواتف الذكية",
                 headerDesc: "تصفح جميع الهواتف الذكية، واستعرض المواصفات كاملة أو قارن بين أي جهازين فوراً",
                 searchPlaceholder: "ابحث عن اسم الهاتف...",
@@ -987,7 +932,6 @@
             },
             en: {
                 pageTitle: "Digital Smartphone Encyclopedia",
-                logoText: 'Digital <span>Smartphone Encyclopedia</span>',
                 headerTitle: "Digital Smartphone Encyclopedia",
                 headerDesc: "Browse all smartphones, view complete specs, or compare any two devices instantly",
                 searchPlaceholder: "Search phone name...",
@@ -1202,89 +1146,47 @@
             { id: "inf_n50pro", name: "Infinix Note 50 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7300 (4nm)", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "108 MP Triple OIS", bat: "5000 mAh (100W)" },
             { id: "inf_n40proplus", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "4600 mAh (100W + 20W MagCharge)" },
             { id: "inf_n40pro", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_n40", name: "Infinix Note 40 4G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Helio G99 Ultimate", ram: "8GB", storage: "256GB", screen: "6.78-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
             { id: "inf_gt20pro", name: "Infinix GT 20 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_gt10pro", name: "Infinix GT 10 Pro", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_hot50proplus", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
-            { id: "inf_hot50pro", name: "Infinix Hot 50 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch AMOLED 120Hz", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
-            { id: "inf_hot50_5g", name: "Infinix Hot 50 5G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Dimensity 6300", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD 120Hz", cam: "48 MP Dual", bat: "5000 mAh (18W)" },
-            { id: "inf_hot40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
-            { id: "inf_hot40i", name: "Infinix Hot 40i", subCat: "infinix-hot", brand: "infinix", cpu: "Unisoc T606", ram: "4GB/8GB", storage: "128GB/256GB", screen: "6.56-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (18W)" },
-            { id: "inf_smart9", name: "Infinix Smart 9", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G81", ram: "3GB/4GB", storage: "64GB/128GB", screen: "6.7-inch IPS LCD 120Hz", cam: "13 MP Dual", bat: "5000 mAh" },
-            { id: "inf_smart8", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (10W)" }
+            { id: "inf_gt10pro", name: "Infinix GT 10 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
+            { id: "inf_h50", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
+            { id: "inf_h40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
+            { id: "inf_sm8pro", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" }
         ];
 
         const allPhones = [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList];
 
-        function parseJwt(token) {
-            try {
-                const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
-                return JSON.parse(jsonPayload);
-            } catch (e) {
-                return null;
-            }
-        }
-
         function handleCredentialResponse(response) {
-            const data = parseJwt(response.credential);
-            if (data) {
-                // حفظ التوكن وبيانات المستخدم لاسترجاعها عند إعادة تحميل الصفحة
-                localStorage.setItem('google_id_token', response.credential);
-                localStorage.setItem('user_data', JSON.stringify(data));
-                
-                currentUser = data;
-                loadUserData();
-                renderAuthUI();
-                applyFilters();
-            }
-        }
-
-        // استرجاع جلسة التسجيل عند تحفيز الصفحة أو عمل Refresh
-        function checkSavedSession() {
-            const savedUser = localStorage.getItem('user_data');
-            if (savedUser) {
-                try {
-                    currentUser = JSON.parse(savedUser);
-                    loadUserData();
-                    renderAuthUI();
-                } catch (e) {
-                    console.error("Error restoring session:", e);
-                }
-            }
-        }
-
-        function logout() {
-            currentUser = null;
-            userFavorites = [];
-            
-            // حذف البيانات المحفوظة لمنع تسجيل الدخول التلقائي بعد الخروج الصريح
-            localStorage.removeItem('google_id_token');
-            localStorage.removeItem('user_data');
-            
-            if (window.google && google.accounts && google.accounts.id) {
-                google.accounts.id.disableAutoSelect();
-            }
+            const responsePayload = parseJwt(response.credential);
+            currentUser = {
+                id: responsePayload.sub,
+                name: responsePayload.name,
+                email: responsePayload.email,
+                picture: responsePayload.picture
+            };
+            loadUserFavorites();
             renderAuthUI();
             if (currentBrand === 'favorites') {
-                switchBrand('samsung');
-            } else {
-                applyFilters();
+                renderGrid();
             }
+        }
+
+        function parseJwt(token) {
+            let base64Url = token.split('.')[1];
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
         }
 
         function renderAuthUI() {
             const container = document.getElementById('googleAuthContainer');
-            const t = i18n[currentLang];
             if (currentUser) {
                 container.innerHTML = `
                     <div class="user-profile">
                         <img src="${currentUser.picture}" alt="${currentUser.name}" class="user-avatar">
-                        <span>${currentUser.name}</span>
-                        <button class="logout-btn" onclick="logout()">${t.logout}</button>
+                        <span>${currentUser.name.split(' ')[0]}</span>
+                        <button class="logout-btn" onclick="logout()">${i18n[currentLang].logout}</button>
                     </div>
                 `;
             } else {
@@ -1310,48 +1212,51 @@
                     });
                     google.accounts.id.renderButton(
                         document.querySelector(".g_id_signin"),
-                        { theme: "dark", size: "medium", type: "standard", shape: "pill", text: "sign_in_with", logo_alignment: "left" }
+                        { theme: "dark", size: "medium", type: "standard", shape: "pill" }
                     );
                 }
             }
         }
 
-        function getUserFavKey() {
-            return currentUser ? `favs_${currentUser.sub}` : 'favs_guest';
+        function logout() {
+            currentUser = null;
+            userFavorites = [];
+            renderAuthUI();
+            if (currentBrand === 'favorites') {
+                renderGrid();
+            } else {
+                renderGrid();
+            }
         }
 
-        function loadUserData() {
+        function loadUserFavorites() {
             if (!currentUser) {
                 userFavorites = [];
                 return;
             }
-            const key = getUserFavKey();
-            const saved = localStorage.getItem(key);
+            const saved = localStorage.getItem('fav_' + currentUser.id);
             userFavorites = saved ? JSON.parse(saved) : [];
         }
 
-        function saveUserData() {
+        function saveUserFavorites() {
             if (!currentUser) return;
-            const key = getUserFavKey();
-            localStorage.setItem(key, JSON.stringify(userFavorites));
+            localStorage.setItem('fav_' + currentUser.id, JSON.stringify(userFavorites));
         }
 
-        function toggleFavorite(id, event) {
-            event.stopPropagation();
-            const t = i18n[currentLang];
+        function toggleFavorite(phoneId, event) {
+            if (event) event.stopPropagation();
             if (!currentUser) {
-                alert(t.loginRequiredFav);
+                alert(i18n[currentLang].loginRequiredFav);
                 return;
             }
-
-            const idx = userFavorites.indexOf(id);
-            if (idx > -1) {
-                userFavorites.splice(idx, 1);
+            const index = userFavorites.indexOf(phoneId);
+            if (index > -1) {
+                userFavorites.splice(index, 1);
             } else {
-                userFavorites.push(id);
+                userFavorites.push(phoneId);
             }
-            saveUserData();
-            applyFilters();
+            saveUserFavorites();
+            renderGrid();
         }
 
         function toggleLanguage() {
@@ -1359,39 +1264,26 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             
-            document.getElementById('langSwitchBtn').innerText = currentLang === 'ar' ? 'English' : 'العربية';
+            document.getElementById('langSwitchBtn').innerText = currentLang === 'ar' ? 'English' : 'عربي';
+            document.title = i18n[currentLang].pageTitle;
+            document.getElementById('headerTitle').innerText = i18n[currentLang].headerTitle;
+            document.getElementById('headerDesc').innerText = i18n[currentLang].headerDesc;
+            document.getElementById('searchInput').placeholder = i18n[currentLang].searchPlaceholder;
             
-            updateStaticTranslations();
+            document.getElementById('samsungMainBtn').innerHTML = i18n[currentLang].samsungMainBtn;
+            document.getElementById('appleMainBtn').innerHTML = i18n[currentLang].appleMainBtn;
+            document.getElementById('xiaomiMainBtn').innerHTML = i18n[currentLang].xiaomiMainBtn;
+            document.getElementById('infinixMainBtn').innerHTML = i18n[currentLang].infinixMainBtn;
+            document.getElementById('favoritesMainBtn').innerHTML = i18n[currentLang].favoritesMainBtn;
+
+            document.getElementById('compareBarBtn').innerText = i18n[currentLang].compareBarBtn;
+            document.getElementById('clearCompareBtn').innerText = i18n[currentLang].clearBtn;
+            document.getElementById('compareModalTitle').innerText = i18n[currentLang].compareModalTitle;
+            document.getElementById('footerText').innerText = i18n[currentLang].footerText;
+
             renderAuthUI();
-            applyFilters();
-        }
-
-        function updateStaticTranslations() {
-            const t = i18n[currentLang];
-            document.getElementById('pageTitle').innerText = t.pageTitle;
-            document.getElementById('logoText').innerHTML = t.logoText;
-            document.getElementById('headerTitle').innerText = t.headerTitle;
-            document.getElementById('headerDesc').innerText = t.headerDesc;
-            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
-            
-            document.getElementById('samsungMainBtn').innerText = t.samsungMainBtn;
-            document.getElementById('appleMainBtn').innerText = t.appleMainBtn;
-            document.getElementById('xiaomiMainBtn').innerText = t.xiaomiMainBtn;
-            document.getElementById('infinixMainBtn').innerText = t.infinixMainBtn;
-            document.getElementById('favoritesMainBtn').innerText = t.favoritesMainBtn;
-
-            document.getElementById('compareBarBtn').innerText = t.compareBarBtn;
-            document.getElementById('clearCompareBtn').innerText = t.clearBtn;
-            document.getElementById('compareModalTitle').innerText = t.compareModalTitle;
-            document.getElementById('footerText').innerText = t.footerText;
-
-            const legacyBtns = document.querySelectorAll('[data-sub="iphone-legacy"]');
-            legacyBtns.forEach(btn => btn.innerText = t.subAppleLegacy);
-
-            const allBtns = document.querySelectorAll('.sub-btn[data-sub="all"]');
-            allBtns.forEach(btn => btn.innerText = t.subAll);
-
-            updateCompareBarText();
+            updateCompareBar();
+            renderGrid();
         }
 
         function switchBrand(brand) {
@@ -1399,92 +1291,89 @@
             currentSubCat = 'all';
 
             document.querySelectorAll('.brand-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`${brand}MainBtn`).classList.add('active');
+            document.getElementById(brand + 'MainBtn').classList.add('active');
 
-            const subFilters = ['samsung', 'apple', 'xiaomi', 'infinix', 'favorites'];
-            subFilters.forEach(b => {
-                const el = document.getElementById(`${b}SubFilters`);
-                if (el) el.style.display = b === brand ? 'flex' : 'none';
-            });
+            document.getElementById('samsungSubFilters').style.display = 'none';
+            document.getElementById('appleSubFilters').style.display = 'none';
+            document.getElementById('xiaomiSubFilters').style.display = 'none';
+            document.getElementById('infinixSubFilters').style.display = 'none';
+            document.getElementById('favoritesSubFilters').style.display = 'none';
 
-            const activeSubContainer = document.getElementById(`${brand}SubFilters`);
+            const activeSubContainer = document.getElementById(brand + 'SubFilters');
             if (activeSubContainer) {
-                activeSubContainer.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
-                const firstBtn = activeSubContainer.querySelector('.sub-btn[data-sub="all"]');
-                if (firstBtn) firstBtn.classList.add('active');
+                activeSubContainer.style.display = 'flex';
+                activeSubContainer.querySelectorAll('.sub-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-sub') === 'all') btn.classList.add('active');
+                });
             }
 
-            applyFilters();
+            document.getElementById('searchInput').value = '';
+            renderGrid();
         }
 
-        function setSubCategory(subCat, btn) {
+        function setSubCategory(subCat, btnElement) {
             currentSubCat = subCat;
-            const parent = btn.parentElement;
+            const parent = btnElement.parentElement;
             parent.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            applyFilters();
+            btnElement.classList.add('active');
+            renderGrid();
         }
 
         function applyFilters() {
-            const query = document.getElementById('searchInput').value.trim().toLowerCase();
-            const t = i18n[currentLang];
-
-            if (currentBrand === 'favorites' && !currentUser) {
-                document.getElementById('resultsCount').innerText = t.loginRequiredFav;
-                document.getElementById('phoneGrid').innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 50px 0; font-size: 1.1rem;">
-                        ${t.loginRequiredFav}
-                    </div>
-                `;
-                return;
-            }
-
-            let sourceList = [];
-            if (currentBrand === 'samsung') sourceList = samsungList;
-            else if (currentBrand === 'apple') sourceList = iphoneList;
-            else if (currentBrand === 'xiaomi') sourceList = xiaomiList;
-            else if (currentBrand === 'infinix') sourceList = infinixList;
-            else if (currentBrand === 'favorites') {
-                sourceList = allPhones.filter(p => userFavorites.includes(p.id));
-            }
-
-            let filtered = sourceList;
-
-            if (currentSubCat !== 'all' && currentBrand !== 'favorites') {
-                filtered = filtered.filter(phone => phone.subCat === currentSubCat);
-            }
-
-            if (query !== '') {
-                filtered = filtered.filter(phone => 
-                    phone.name.toLowerCase().includes(query) || 
-                    phone.cpu.toLowerCase().includes(query)
-                );
-            }
-
-            renderGrid(filtered);
+            renderGrid();
         }
 
-        function renderGrid(phones) {
-            const grid = document.getElementById('phoneGrid');
-            const countEl = document.getElementById('resultsCount');
-            const t = i18n[currentLang];
+        function getFilteredList() {
+            let list = [];
+            if (currentBrand === 'samsung') list = samsungList;
+            else if (currentBrand === 'apple') list = iphoneList;
+            else if (currentBrand === 'xiaomi') list = xiaomiList;
+            else if (currentBrand === 'infinix') list = infinixList;
+            else if (currentBrand === 'favorites') {
+                list = allPhones.filter(p => userFavorites.includes(p.id));
+            }
 
-            if (phones.length === 0) {
-                countEl.innerText = currentBrand === 'favorites' ? t.noFavorites : t.noResults;
-                grid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 50px 0; font-size: 1.1rem;">
-                        ${currentBrand === 'favorites' ? t.noFavorites : t.noResults}
-                    </div>
-                `;
+            if (currentSubCat !== 'all') {
+                list = list.filter(p => p.subCat === currentSubCat);
+            }
+
+            const searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (searchVal) {
+                list = list.filter(p => p.name.toLowerCase().includes(searchVal));
+            }
+
+            return list;
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('phoneGrid');
+            const countElem = document.getElementById('resultsCount');
+
+            if (currentBrand === 'favorites' && !currentUser) {
+                countElem.innerText = i18n[currentLang].loginRequiredFav;
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 40px; font-weight: bold;">${i18n[currentLang].loginRequiredFav}</div>`;
                 return;
             }
 
-            countEl.innerText = t.resultsFound.replace('{count}', phones.length);
+            const list = getFilteredList();
 
-            grid.innerHTML = phones.map(phone => {
-                const isSelected = compareList.some(item => item.id === phone.id);
+            if (list.length === 0) {
+                if (currentBrand === 'favorites') {
+                    countElem.innerText = i18n[currentLang].noFavorites;
+                } else {
+                    countElem.innerText = i18n[currentLang].noResults;
+                }
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 40px; font-weight: bold;">${countElem.innerText}</div>`;
+                return;
+            }
+
+            countElem.innerText = i18n[currentLang].resultsFound.replace('{count}', list.length);
+
+            grid.innerHTML = list.map(phone => {
+                const isSelected = compareList.includes(phone.id);
                 const isFav = userFavorites.includes(phone.id);
-                const brandLabel = t.categories[phone.brand] || phone.brand;
+                const categoryText = i18n[currentLang].categories[phone.brand] || phone.brand;
 
                 return `
                     <div class="phone-card">
@@ -1498,14 +1387,12 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <span class="category-tag">${brandLabel}</span>
+                                <span class="category-tag">${categoryText}</span>
                                 <h3>${phone.name}</h3>
                             </div>
                             <div class="card-actions">
-                                <button class="view-details-btn" onclick="openSpecsModal('${phone.id}')">${t.detailsBtn}</button>
-                                <button class="compare-btn ${isSelected ? 'selected' : ''}" onclick="toggleCompare('${phone.id}', this)">
-                                    ${isSelected ? '✓' : '+'} ${t.compareBtn}
-                                </button>
+                                <button class="view-details-btn" onclick="openSpecsModal('${phone.id}')">${i18n[currentLang].detailsBtn}</button>
+                                <button class="compare-btn ${isSelected ? 'selected' : ''}" onclick="toggleCompare('${phone.id}')">${i18n[currentLang].compareBtn}</button>
                             </div>
                         </div>
                     </div>
@@ -1513,43 +1400,253 @@
             }).join('');
         }
 
+        function toggleCompare(id) {
+            const index = compareList.indexOf(id);
+            if (index > -1) {
+                compareList.splice(index, 1);
+            } else {
+                if (compareList.length >= 2) {
+                    compareList.shift();
+                }
+                compareList.push(id);
+            }
+            updateCompareBar();
+            renderGrid();
+        }
+
+        function clearCompareList() {
+            compareList = [];
+            updateCompareBar();
+            renderGrid();
+        }
+
+        function updateCompareBar() {
+            const bar = document.getElementById('compareBar');
+            const countTxt = document.getElementById('compareCount');
+
+            if (compareList.length === 0) {
+                bar.classList.remove('active');
+            } else {
+                bar.classList.add('active');
+                if (compareList.length === 1) {
+                    countTxt.innerText = i18n[currentLang].selectedForCompare;
+                } else {
+                    countTxt.innerText = i18n[currentLang].selectedTwoForCompare;
+                }
+            }
+        }
+
         function openSpecsModal(id) {
             const phone = allPhones.find(p => p.id === id);
             if (!phone) return;
 
-            const t = i18n[currentLang];
             document.getElementById('modalTitle').innerText = phone.name;
-            document.getElementById('modalCategory').innerText = t.categories[phone.brand] || phone.brand;
+            document.getElementById('modalCategory').innerText = i18n[currentLang].categories[phone.brand] || phone.brand;
 
-            const bodyHtml = `
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
                 <div class="spec-group">
-                    <strong>${t.specs.cpu}</strong>
+                    <strong>${i18n[currentLang].specs.cpu}</strong>
                     <span>${phone.cpu}</span>
                 </div>
                 <div class="spec-group">
-                    <strong>${t.specs.ram}</strong>
+                    <strong>${i18n[currentLang].specs.ram}</strong>
                     <span>${phone.ram}</span>
                 </div>
                 <div class="spec-group">
-                    <strong>${t.specs.storage}</strong>
+                    <strong>${i18n[currentLang].specs.storage}</strong>
                     <span>${phone.storage}</span>
                 </div>
                 <div class="spec-group">
-                    <strong>${t.specs.screen}</strong>
+                    <strong>${i18n[currentLang].specs.screen}</strong>
                     <span>${phone.screen}</span>
                 </div>
                 <div class="spec-group">
-                    <strong>${t.specs.cam}</strong>
+                    <strong>${i18n[currentLang].specs.cam}</strong>
                     <span>${phone.cam}</span>
                 </div>
                 <div class="spec-group">
-                    <strong>${t.specs.bat}</strong>
+                    <strong>${i18n[currentLang].specs.bat}</strong>
                     <span>${phone.bat}</span>
                 </div>
             `;
 
-            document.getElementById('modalBody').innerHTML = bodyHtml;
             document.getElementById('specsModal').classList.add('active');
+        }
+
+        function openCompareModal() {
+            if (compareList.length === 0) return;
+
+            const phones = compareList.map(id => allPhones.find(p => p.id === id));
+            const body = document.getElementById('compareModalBody');
+
+            if (phones.length === 1) {
+                const p = phones[0];
+                body.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3>${p.name}</h3>
+                        <p style="color: var(--text-sub); margin-top: 10px;">اختر هاتفاً آخر من القائمة لإجراء المقارنة الشاملة وتحديد الأفضلية.</p>
+                    </div>
+                `;
+            } else {
+                const p1 = phones[0];
+                const p2 = phones[1];
+
+                const evaluation = evaluateComparison(p1, p2);
+
+                body.innerHTML = `
+                    <div class="overall-winner-banner">
+                        <h3>${i18n[currentLang].overallWinnerTitle}</h3>
+                        <p>${evaluation.overallText}</p>
+                    </div>
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th class="feature-title">${i18n[currentLang].specs.feature}</th>
+                                    <th>${p1.name}</th>
+                                    <th>${p2.name}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="feature-title">${i18n[currentLang].specs.cpu}</td>
+                                    <td class="${evaluation.cpuWinner === 1 ? 'winner-cell' : ''}">
+                                        ${p1.cpu}
+                                        ${evaluation.cpuWinner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.cpu}</span>` : ''}
+                                    </td>
+                                    <td class="${evaluation.cpuWinner === 2 ? 'winner-cell' : ''}">
+                                        ${p2.cpu}
+                                        ${evaluation.cpuWinner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.cpu}</span>` : ''}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="feature-title">${i18n[currentLang].specs.ram}</td>
+                                    <td class="${evaluation.ramWinner === 1 ? 'winner-cell' : ''}">
+                                        ${p1.ram}
+                                        ${evaluation.ramWinner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.ram}</span>` : ''}
+                                    </td>
+                                    <td class="${evaluation.ramWinner === 2 ? 'winner-cell' : ''}">
+                                        ${p2.ram}
+                                        ${evaluation.ramWinner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.ram}</span>` : ''}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="feature-title">${i18n[currentLang].specs.storage}</td>
+                                    <td class="${evaluation.storageWinner === 1 ? 'winner-cell' : ''}">
+                                        ${p1.storage}
+                                        ${evaluation.storageWinner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.storage}</span>` : ''}
+                                    </td>
+                                    <td class="${evaluation.storageWinner === 2 ? 'winner-cell' : ''}">
+                                        ${p2.storage}
+                                        ${evaluation.storageWinner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.storage}</span>` : ''}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="feature-title">${i18n[currentLang].specs.screen}</td>
+                                    <td class="${evaluation.screenWinner === 1 ? 'winner-cell' : ''}">
+                                        ${p1.screen}
+                                        ${evaluation.screenWinner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.screen}</span>` : ''}
+                                    </td>
+                                    <td class="${evaluation.screenWinner === 2 ? 'winner-cell' : ''}">
+                                        ${p2.screen}
+                                        ${evaluation.screenWinner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.screen}</span>` : ''}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="feature-title">${i18n[currentLang].specs.cam}</td>
+                                    <td class="${evaluation.camWinner === 1 ? 'winner-cell' : ''}">
+                                        ${p1.cam}
+                                        ${evaluation.camWinner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.cam}</span>` : ''}
+                                    </td>
+                                    <td class="${evaluation.camWinner === 2 ? 'winner-cell' : ''}">
+                                        ${p2.cam}
+                                        ${evaluation.camWinner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.cam}</span>` : ''}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="feature-title">${i18n[currentLang].specs.bat}</td>
+                                    <td class="${evaluation.batWinner === 1 ? 'winner-cell' : ''}">
+                                        ${p1.bat}
+                                        ${evaluation.batWinner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.bat}</span>` : ''}
+                                    </td>
+                                    <td class="${evaluation.batWinner === 2 ? 'winner-cell' : ''}">
+                                        ${p2.bat}
+                                        ${evaluation.batWinner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages.bat}</span>` : ''}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            document.getElementById('compareModal').classList.add('active');
+        }
+
+        function evaluateComparison(p1, p2) {
+            let p1Score = 0;
+            let p2Score = 0;
+
+            const extractNum = (str) => {
+                const match = str.match(/\d+/);
+                return match ? parseInt(match[0], 10) : 0;
+            };
+
+            let cpuWinner = 0;
+            const p1CpuGen = extractNum(p1.cpu);
+            const p2CpuGen = extractNum(p2.cpu);
+            if (p1CpuGen > p2CpuGen) { cpuWinner = 1; p1Score += 2; }
+            else if (p2CpuGen > p1CpuGen) { cpuWinner = 2; p2Score += 2; }
+
+            let ramWinner = 0;
+            const p1Ram = extractNum(p1.ram);
+            const p2Ram = extractNum(p2.ram);
+            if (p1Ram > p2Ram) { ramWinner = 1; p1Score++; }
+            else if (p2Ram > p1Ram) { ramWinner = 2; p2Score++; }
+
+            let storageWinner = 0;
+            const p1Storage = extractNum(p1.storage);
+            const p2Storage = extractNum(p2.storage);
+            if (p1Storage > p2Storage) { storageWinner = 1; p1Score++; }
+            else if (p2Storage > p1Storage) { storageWinner = 2; p2Score++; }
+
+            let screenWinner = 0;
+            const p1Hz = p1.screen.includes('144Hz') ? 144 : (p1.screen.includes('120Hz') ? 120 : 60);
+            const p2Hz = p2.screen.includes('144Hz') ? 144 : (p2.screen.includes('120Hz') ? 120 : 60);
+            if (p1Hz > p2Hz) { screenWinner = 1; p1Score++; }
+            else if (p2Hz > p1Hz) { screenWinner = 2; p2Score++; }
+
+            let camWinner = 0;
+            const p1Cam = extractNum(p1.cam);
+            const p2Cam = extractNum(p2.cam);
+            if (p1Cam > p2Cam) { camWinner = 1; p1Score++; }
+            else if (p2Cam > p1Cam) { camWinner = 2; p2Score++; }
+
+            let batWinner = 0;
+            const p1Bat = extractNum(p1.bat);
+            const p2Bat = extractNum(p2.bat);
+            if (p1Bat > p2Bat) { batWinner = 1; p1Score++; }
+            else if (p2Bat > p1Bat) { batWinner = 2; p2Score++; }
+
+            let overallText = "";
+            if (p1Score > p2Score) {
+                overallText = `${i18n[currentLang].overallWinnerDesc} <strong>${p1.name}</strong>`;
+            } else if (p2Score > p1Score) {
+                overallText = `${i18n[currentLang].overallWinnerDesc} <strong>${p2.name}</strong>`;
+            } else {
+                overallText = i18n[currentLang].tieText;
+            }
+
+            return {
+                cpuWinner,
+                ramWinner,
+                storageWinner,
+                screenWinner,
+                camWinner,
+                batWinner,
+                overallText
+            };
         }
 
         function closeModal(modalId) {
@@ -1562,251 +1659,9 @@
             }
         }
 
-        function toggleCompare(id, btnElement) {
-            const phone = allPhones.find(p => p.id === id);
-            if (!phone) return;
-
-            const index = compareList.findIndex(item => item.id === id);
-
-            if (index > -1) {
-                compareList.splice(index, 1);
-            } else {
-                if (compareList.length >= 2) {
-                    compareList.shift();
-                }
-                compareList.push(phone);
-            }
-
-            updateCompareBar();
-            applyFilters();
-        }
-
-        function updateCompareBarText() {
-            const t = i18n[currentLang];
-            const countEl = document.getElementById('compareCount');
-            if (compareList.length === 1) {
-                countEl.innerText = t.selectedForCompare;
-            } else if (compareList.length === 2) {
-                countEl.innerText = t.selectedTwoForCompare;
-            }
-        }
-
-        function updateCompareBar() {
-            const bar = document.getElementById('compareBar');
-            updateCompareBarText();
-
-            if (compareList.length > 0) {
-                bar.classList.add('active');
-            } else {
-                bar.classList.remove('active');
-            }
-        }
-
-        function clearCompareList() {
-            compareList = [];
-            updateCompareBar();
-            applyFilters();
-        }
-
-        function parseNum(str) {
-            if (!str) return 0;
-            const match = str.match(/\d+/);
-            return match ? parseInt(match[0], 10) : 0;
-        }
-
-        function getCpuScore(cpuStr) {
-            if (!cpuStr) return 0;
-            let score = 0;
-            const c = cpuStr.toLowerCase();
-
-            if (c.includes('a19 pro')) score = 100;
-            else if (c.includes('snapdragon 8 elite') || c.includes('gen 5')) score = 98;
-            else if (c.includes('a18 pro')) score = 95;
-            else if (c.includes('a19 bionic')) score = 94;
-            else if (c.includes('dimensity 9300') || c.includes('dimensity 9400')) score = 93;
-            else if (c.includes('snapdragon 8 gen 3') || c.includes('8s gen 3')) score = 91;
-            else if (c.includes('a17 pro')) score = 90;
-            else if (c.includes('dimensity 9200')) score = 88;
-            else if (c.includes('snapdragon 8 gen 2')) score = 87;
-            else if (c.includes('a16 bionic')) score = 85;
-            else if (c.includes('dimensity 8300') || c.includes('dimensity 8400')) score = 83;
-            else if (c.includes('exynos 2400')) score = 82;
-            else if (c.includes('snapdragon 8+ gen 1') || c.includes('8 gen 1')) score = 80;
-            else if (c.includes('a15 bionic')) score = 79;
-            else if (c.includes('dimensity 8200')) score = 78;
-            else if (c.includes('snapdragon 7s gen 3') || c.includes('7 gen 1')) score = 72;
-            else if (c.includes('a14 bionic')) score = 71;
-            else if (c.includes('exynos 1580') || c.includes('exynos 1480')) score = 68;
-            else if (c.includes('dimensity 7300') || c.includes('dimensity 7200') || c.includes('dimensity 7020')) score = 65;
-            else if (c.includes('snapdragon 778g') || c.includes('7s gen 2')) score = 64;
-            else if (c.includes('helio g100') || c.includes('helio g99')) score = 52;
-            else if (c.includes('dimensity 6300') || c.includes('dimensity 6100')) score = 50;
-            else if (c.includes('exynos 1380') || c.includes('exynos 1280')) score = 49;
-            else score = parseNum(cpuStr) || 40;
-
-            return score;
-        }
-
-        function analyzeComparison(p1, p2) {
-            let p1Score = 0;
-            let p2Score = 0;
-
-            const winners = {
-                cpu: null,
-                ram: null,
-                storage: null,
-                screen: null,
-                cam: null,
-                bat: null
-            };
-
-            const cpu1 = getCpuScore(p1.cpu);
-            const cpu2 = getCpuScore(p2.cpu);
-            if (cpu1 > cpu2) { winners.cpu = 1; p1Score += 2; }
-            else if (cpu2 > cpu1) { winners.cpu = 2; p2Score += 2; }
-
-            const ram1 = parseNum(p1.ram);
-            const ram2 = parseNum(p2.ram);
-            if (ram1 > ram2) { winners.ram = 1; p1Score += 1; }
-            else if (ram2 > ram1) { winners.ram = 2; p2Score += 1; }
-
-            const st1 = p1.storage.includes('1TB') ? 1000 : (p1.storage.includes('512GB') ? 512 : 256);
-            const st2 = p2.storage.includes('1TB') ? 1000 : (p2.storage.includes('512GB') ? 512 : 256);
-            if (st1 > st2) { winners.storage = 1; p1Score += 1; }
-            else if (st2 > st1) { winners.storage = 2; p2Score += 1; }
-
-            const hz1 = p1.screen.includes('144Hz') ? 144 : (p1.screen.includes('120Hz') ? 120 : (p1.screen.includes('90Hz') ? 90 : 60));
-            const hz2 = p2.screen.includes('144Hz') ? 144 : (p2.screen.includes('120Hz') ? 120 : (p2.screen.includes('90Hz') ? 90 : 60));
-            if (hz1 > hz2) { winners.screen = 1; p1Score += 1; }
-            else if (hz2 > hz1) { winners.screen = 2; p2Score += 1; }
-
-            const cam1 = parseNum(p1.cam);
-            const cam2 = parseNum(p2.cam);
-            if (cam1 > cam2) { winners.cam = 1; p1Score += 1.5; }
-            else if (cam2 > cam1) { winners.cam = 2; p2Score += 1.5; }
-
-            const bat1 = parseNum(p1.bat);
-            const bat2 = parseNum(p2.bat);
-            if (bat1 > bat2) { winners.bat = 1; p1Score += 1; }
-            else if (bat2 > bat1) { winners.bat = 2; p2Score += 1; }
-
-            let overall = 0;
-            if (p1Score > p2Score + 0.5) overall = 1;
-            else if (p2Score > p1Score + 0.5) overall = 2;
-
-            return { winners, overall };
-        }
-
-        function openCompareModal() {
-            if (compareList.length === 0) return;
-
-            const modalBody = document.getElementById('compareModalBody');
-            const t = i18n[currentLang];
-
-            if (compareList.length === 1) {
-                const phone = compareList[0];
-                modalBody.innerHTML = `
-                    <div style="text-align: center; padding: 20px;">
-                        <h3>${phone.name}</h3>
-                        <p style="color: var(--text-sub); margin-top: 10px;">اختر جهازاً ثانياً من القائمة لإجراء المقارنة الشاملة بينهما.</p>
-                    </div>
-                `;
-            } else {
-                const p1 = compareList[0];
-                const p2 = compareList[1];
-                const analysis = analyzeComparison(p1, p2);
-                const w = analysis.winners;
-
-                let overallBanner = '';
-                if (analysis.overall === 1) {
-                    overallBanner = `
-                        <div class="overall-winner-banner">
-                            <h3>${t.overallWinnerTitle}</h3>
-                            <p>${t.overallWinnerDesc} <strong>${p1.name}</strong></p>
-                        </div>
-                    `;
-                } else if (analysis.overall === 2) {
-                    overallBanner = `
-                        <div class="overall-winner-banner">
-                            <h3>${t.overallWinnerTitle}</h3>
-                            <p>${t.overallWinnerDesc} <strong>${p2.name}</strong></p>
-                        </div>
-                    `;
-                } else {
-                    overallBanner = `
-                        <div class="overall-winner-banner" style="border-color: #38bdf8; background: rgba(56, 189, 248, 0.15);">
-                            <h3 style="color: #38bdf8;">⚖️ ${t.overallWinnerTitle}</h3>
-                            <p>${t.tieText}</p>
-                        </div>
-                    `;
-                }
-
-                const createCell = (text, isWinner, advText) => {
-                    if (isWinner) {
-                        return `
-                            <td class="winner-cell">
-                                ${text}
-                                <div><span class="winner-badge">${t.winnerText}</span></div>
-                                <span class="advantage-text">💡 ${advText}</span>
-                            </td>
-                        `;
-                    }
-                    return `<td>${text}</td>`;
-                };
-
-                modalBody.innerHTML = `
-                    ${overallBanner}
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>${t.specs.feature}</th>
-                                <th>${p1.name}</th>
-                                <th>${p2.name}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="feature-title">${t.specs.cpu}</td>
-                                ${createCell(p1.cpu, w.cpu === 1, t.advantages.cpu)}
-                                ${createCell(p2.cpu, w.cpu === 2, t.advantages.cpu)}
-                            </tr>
-                            <tr>
-                                <td class="feature-title">${t.specs.ram}</td>
-                                ${createCell(p1.ram, w.ram === 1, t.advantages.ram)}
-                                ${createCell(p2.ram, w.ram === 2, t.advantages.ram)}
-                            </tr>
-                            <tr>
-                                <td class="feature-title">${t.specs.storage}</td>
-                                ${createCell(p1.storage, w.storage === 1, t.advantages.storage)}
-                                ${createCell(p2.storage, w.storage === 2, t.advantages.storage)}
-                            </tr>
-                            <tr>
-                                <td class="feature-title">${t.specs.screen}</td>
-                                ${createCell(p1.screen, w.screen === 1, t.advantages.screen)}
-                                ${createCell(p2.screen, w.screen === 2, t.advantages.screen)}
-                            </tr>
-                            <tr>
-                                <td class="feature-title">${t.specs.cam}</td>
-                                ${createCell(p1.cam, w.cam === 1, t.advantages.cam)}
-                                ${createCell(p2.cam, w.cam === 2, t.advantages.cam)}
-                            </tr>
-                            <tr>
-                                <td class="feature-title">${t.specs.bat}</td>
-                                ${createCell(p1.bat, w.bat === 1, t.advantages.bat)}
-                                ${createCell(p2.bat, w.bat === 2, t.advantages.bat)}
-                            </tr>
-                        </tbody>
-                    </table>
-                `;
-            }
-
-            document.getElementById('compareModal').classList.add('active');
-        }
-
         window.onload = function() {
-            checkSavedSession();
-            updateStaticTranslations();
-            applyFilters();
+            renderAuthUI();
+            renderGrid();
         };
     </script>
 </body>
