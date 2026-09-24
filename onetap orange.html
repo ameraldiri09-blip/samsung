@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>OneTap | مثبّت التطبيقات بملف واحد</title>
+<meta name="description" content="اختر تطبيقاتك ونزّل سكربتًا واحدًا يثبّتها كلها تلقائيًا على ويندوز وماك من المصادر الرسمية.">
+<link rel="canonical" href="https://ameraldiri09-blip.github.io/samsung/onetap.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OneTap">
+<meta property="og:title" content="OneTap | مثبّت التطبيقات بملف واحد">
+<meta property="og:description" content="اختر تطبيقاتك ونزّل سكربتًا واحدًا يثبّتها كلها تلقائيًا على ويندوز وماك من المصادر الرسمية.">
+<meta property="og:url" content="https://ameraldiri09-blip.github.io/samsung/onetap.html">
+<meta property="og:image" content="https://ameraldiri09-blip.github.io/samsung/icon-192.png">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OneTap | One-file app installer">
+<meta name="twitter:description" content="Pick your apps and get one script that installs them all automatically on Windows and macOS from official sources.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"OneTap","url":"https://ameraldiri09-blip.github.io/samsung/onetap.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Windows, macOS","inLanguage":["ar","en","tr","fr","es"],"description":"Pick your apps and get one script that installs them all automatically on Windows and macOS from official sources."}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230a0a0a%27/><path d=%27M27 32H73M50 32V70%27 stroke=%27%23ff7a1a%27 stroke-width=%2711%27 stroke-linecap=%27round%27 fill=%27none%27/><ellipse cx=%2750%27 cy=%2780%27 rx=%2723%27 ry=%265.5%27 fill=%27none%27 stroke=%27%23ff7a1a%27 stroke-width=%274%27 opacity=%27.6%27/></svg>">
+<style>
+:root{box-sizing:border-box;
+--bg:#0a0a0a;--card:#141414;--tx:#f5f1ec;--mut:#9a9187;--ac:#ff7a1a;--acg:linear-gradient(135deg,#ff9440,#f26a0a);--acx:#120a02;--gold:#ff9a4d;--glow:rgba(255,122,26,.12);--tint:rgba(255,122,26,.12);--bd:#262626;--ok:#ffa15c}
+:root[data-theme="light"]{--bg:#f7f5f2;--card:#ffffff;--tx:#111111;--mut:#6c665f;--ac:#d9560a;--acg:linear-gradient(135deg,#f2762a,#d9560a);--acx:#ffffff;--gold:#f07a1f;--glow:rgba(255,122,26,.10);--tint:#fff0e6;--bd:#e8e3dc;--ok:#d9560a}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:radial-gradient(900px 420px at 50% -80px,var(--glow),transparent) no-repeat,var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.5;padding-top:100px;padding-bottom:24px;transition:padding .25s}
+body.has-sel{padding-bottom:92px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.wrap{max-width:920px;margin:0 auto;padding:0 14px}
+.top{position:fixed;top:0;inset-inline:0;z-index:20;background:var(--card);border-bottom:2px solid var(--gold);padding-top:env(safe-area-inset-top,0px)}
+.in{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.wm{height:26px;width:auto;display:block;overflow:visible}
+.wm path,.wm circle,.wm ellipse{fill:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.w1{stroke:var(--tx)}
+.w2{stroke:var(--gold)}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:38px;height:38px;border-radius:10px;background:var(--ac);color:var(--acx);display:grid;place-items:center}
+.brand b{unicode-bidi:isolate;display:block;font-size:1.1rem;line-height:1.2}
+.brand small{color:var(--mut);font-size:.76rem}
+#theme{width:38px;height:38px;border:1px solid var(--bd);background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--mut)}
+.tl{display:flex;gap:8px;padding:0 0 10px}
+.tl .seg{margin:0;flex:none}
+.tl .seg button{padding:7px 12px;font-size:.88rem}
+.tl #q{width:auto;flex:1;min-width:0;padding:8px 12px}
+.intro{padding:28px 2px 6px}
+.intro h1{margin:0 0 6px;font-size:1.65rem;line-height:1.3;letter-spacing:-.01em}
+.intro p{margin:0;color:var(--mut);max-width:560px}
+.tools{padding:14px 0 0}
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px}
+.seg{display:flex;gap:3px;padding:3px;margin-bottom:8px;background:var(--bg);border:1px solid var(--bd);border-radius:10px}
+.seg button{flex:1;padding:8px;border:0;background:transparent;border-radius:8px;color:var(--mut)}
+.seg button.on{background:var(--acg);color:var(--acx);font-weight:600}
+#q{width:100%;padding:11px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 1px 3px;scrollbar-width:none}
+.chips::-webkit-scrollbar,.packs::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:6px 13px;border:1px solid var(--bd);background:transparent;border-radius:8px;font-size:.87rem;white-space:nowrap;color:var(--mut)}
+.chip.on{background:var(--tint);color:var(--ac);border-color:var(--ac);font-weight:600}
+h3{margin:24px 2px 10px;font-size:.82rem;font-weight:600;color:var(--mut)}
+.packs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.pack{flex:none;padding:8px 15px;border-radius:8px;border:1px solid var(--bd);background:var(--card);font-size:.88rem}
+.pack:hover{border-color:var(--ac);color:var(--ac)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.card{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--bd);border-radius:12px;background:var(--card);text-align:start;position:relative;min-width:0;transition:border-color .12s,background .12s}
+.card:hover:not(:disabled){border-color:var(--mut)}
+.card .av{position:relative;overflow:hidden;flex:none;width:38px;height:38px;border-radius:9px;display:grid;place-items:center;background:var(--tint);color:var(--ac);font-weight:700}
+.card .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.9rem}
+.card .nm small{display:block;color:var(--mut);font-size:.7rem}
+.card.on{border-color:var(--ac);background:var(--tint)}
+.card.on .av{background:var(--ac);color:var(--acx)}
+.av i{font-style:normal;display:grid;place-items:center;width:100%;height:100%}
+.av i svg{width:58%;height:58%}
+.av img{position:absolute;inset:0;width:100%;height:100%;padding:7px;opacity:0}
+.card .av.ok,.card.on .av.ok{background:#fff!important;box-shadow:inset 0 0 0 1px var(--bd)}
+.av.ok i{display:none}
+.av.ok img{opacity:1}
+.card.on:after{content:"";position:absolute;top:9px;inset-inline-end:11px;width:5px;height:9px;border:solid var(--ac);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.card:disabled{opacity:.4;cursor:not-allowed}
+.add{display:flex;gap:8px}
+.add input{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;direction:ltr}
+.btn{padding:10px 18px;border-radius:10px;border:1px solid var(--bd);background:var(--card)}
+.btn:hover{border-color:var(--mut)}
+.btn.pri{background:var(--acg);color:var(--acx);border-color:var(--ac);font-weight:600}
+.btn.pri:hover{filter:brightness(1.08)}
+.hint{color:var(--mut);font-size:.82rem;margin:8px 2px}
+#uopt{margin:10px 0 4px;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg)}
+#uopt .hint{margin:0 0 8px}
+.ck{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;cursor:pointer}
+.ck input{margin-top:.3em;accent-color:var(--ac)}
+.hint code,ol code{direction:ltr;unicode-bidi:embed;background:var(--bg);border:1px solid var(--bd);padding:1px 6px;border-radius:5px;font-size:.85em}
+.foot{margin-top:40px;padding:22px 0 8px;border-top:1px solid var(--bd);text-align:center;color:var(--mut);font-size:.85rem}
+.foot p{margin:0 0 4px}
+.foot .fb{font-weight:700;color:var(--tx);unicode-bidi:isolate}
+.foot .fb em{font-style:normal;color:var(--gold)}
+.foot .who{color:var(--tx);font-weight:600;font-size:.92rem}
+.bar{position:fixed;inset-inline:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));z-index:9;transform:translateY(110%);visibility:hidden;transition:transform .25s ease,visibility 0s .25s}
+.bar.show{transform:none;visibility:visible;transition-delay:0s}
+.bar div{display:flex;gap:8px;align-items:center}
+.cnt{margin-inline-end:auto;font-weight:600}
+dialog{width:min(560px,94vw);border:1px solid var(--bd);border-radius:16px;background:var(--card);color:var(--tx);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog strong{font-size:1.05rem}
+textarea{width:100%;height:170px;direction:ltr;text-align:left;font:12px/1.55 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:10px;resize:vertical;margin:10px 0}
+.row{display:flex;gap:8px}.row .btn{flex:1}
+ol{padding-inline-start:20px;color:var(--mut);font-size:.88rem;margin:12px 0 0}
+#msg{color:var(--ok);min-height:1.3em;font-size:.88rem;margin-top:8px}
+.empty{text-align:center;color:var(--mut);padding:36px}
+.acts{display:flex;gap:6px}
+#lang{display:flex;align-items:center;gap:6px;height:38px;padding:0 12px;border:1px solid var(--bd);background:transparent;border-radius:10px;color:var(--mut);font-weight:700;font-size:.8rem;cursor:pointer}
+.card .nm{flex:1;white-space:normal;overflow:visible}
+.card .nm .t{display:flex;align-items:center;gap:6px;font-size:.9rem;font-weight:600}
+.tn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.pp{flex:none;font-size:.62rem;font-weight:600;padding:1px 7px;border-radius:99px;background:var(--tint);color:var(--ac)}
+.card.on .pp{background:var(--card)}
+.card .nm small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--mut);font-size:.72rem;line-height:1.35;margin-top:2px}
+.tk{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:10px;font-size:.88rem;opacity:0;pointer-events:none;transition:.2s;z-index:30;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.dm{margin:10px 0 0}
+.lnk{display:inline-block;margin-top:10px;padding:8px 0;background:none;border:0;color:var(--ac);font-weight:600;font-size:.95rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.gs{display:flex;gap:12px;margin-top:16px}
+.gn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ac);color:var(--acx);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.gb2{flex:1;min-width:0}.gb2 p{margin:2px 0 8px;font-size:.93rem;line-height:1.55}
+.gi text{direction:ltr;unicode-bidi:isolate;text-anchor:start}
+.gi{direction:ltr;unicode-bidi:isolate;width:100%;max-width:320px;height:auto;display:block;background:var(--bg);border:1px solid var(--bd);border-radius:12px}
+dialog.sheet{max-height:90vh;overflow:auto;width:100%;max-width:520px;margin:auto auto 0;border-radius:18px 18px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+@media(min-width:600px){dialog.sheet{margin:auto;border-radius:18px}}
+.lo{display:flex;align-items:center;gap:10px;width:100%;min-height:54px;margin-top:8px;padding:0 16px;border:1px solid var(--bd);border-radius:12px;background:var(--card);font-size:1.02rem;text-align:start}
+.lo span{flex:1}.lo small{color:var(--mut);font-size:.75rem}
+.lo.on{border-color:var(--ac);background:var(--tint);color:var(--ac);font-weight:600}
+.lo.on:after{content:"";width:6px;height:11px;border:solid var(--ac);border-width:0 2px 2px 0;transform:rotate(45deg);margin-inline-start:4px}
+</style>
+</head>
+<body>
+<noscript><p style="padding:16px;text-align:center;font-family:system-ui,sans-serif">OneTap يحتاج تفعيل JavaScript ليعمل · OneTap needs JavaScript enabled to work.</p></noscript>
+<header class="top"><div class="wrap"><div class="in">
+  <div class="brand"><svg class="wm" viewBox="-2 32 396 94" role="img" aria-label="OneTap"><g><circle class="w1" cx="34" cy="70" r="30"/><path class="w1" d="M88 100V60M88 78C88 66 96 60 104 60C114 60 120 67 120 79V100"/><path class="w1" d="M134 80H174A20 20 0 1 0 167 95"/><path class="w2" d="M194 44H254M224 44V100"/><ellipse class="w2" cx="224" cy="111" rx="21" ry="4.5" style="stroke-width:3;opacity:.5"/><ellipse class="w2" cx="224" cy="111" rx="10" ry="2.2" style="stroke-width:3;opacity:.85"/><circle class="w2" cx="287" cy="80" r="20"/><path class="w2" d="M307 60V100"/><path class="w2" d="M344 60V120"/><circle class="w2" cx="364" cy="80" r="20"/></g></svg></div>
+  <span class="acts"><button id="lang" aria-haspopup="dialog" aria-label="Language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span id="lc"></span></button><button id="theme" aria-label="Theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button></span>
+  </div>
+  <div class="tl"><div class="seg"><button id="t-win" class="on">Windows</button><button id="t-mac">macOS</button></div><input id="q" type="search" placeholder="ابحث عن تطبيق…"></div>
+</div></header>
+
+<div class="wrap">
+  <section class="intro"><h1 data-i="h1"></h1><p id="ip"></p><button class="lnk" id="gopen" data-i="gb"></button></section>
+  <div class="tools"><div class="chips" id="chips"></div></div>
+  <h3 data-i="packs"></h3>
+  <div class="packs" id="packs"></div>
+  <div id="list"></div>
+  <h3 data-i="addh"></h3>
+  <div class="add"><input id="cust" dir="ltr"><button class="btn" id="addc" data-i="add"></button></div>
+  <p class="hint" id="chint"></p>
+  <h3 data-i="toolsh"></h3>
+  <div class="tk">
+    <button class="btn" id="bshare" data-i="share"></button>
+    <button class="btn" id="bexp" data-i="exp"></button>
+    <button class="btn" id="bimp" data-i="imp"></button>
+    <button class="btn" id="bupd" data-i="upd"></button>
+    <button class="btn pri" id="binst" data-i="inst" hidden></button>
+    <input type="file" id="imf" accept=".json,application/json" hidden>
+  </div>
+</div>
+
+<footer class="foot"><div class="wrap">
+  <p><span data-i="rights"></span> <span dir="ltr" class="fb">One<em>Tap</em></span></p>
+  <p class="who" data-i="who"></p>
+</div></footer>
+
+<div class="bar"><div class="wrap">
+  <span class="cnt" id="cnt"></span>
+  <button class="btn" id="none" data-i="clr"></button>
+  <button class="btn pri" id="go" data-i="go"></button>
+</div></div>
+<div id="toast"></div>
+
+<dialog id="ldlg" class="sheet">
+  <strong>اللغة · Language</strong>
+  <div id="llist"></div>
+</dialog>
+
+<dialog id="gdlg" class="sheet">
+  <strong data-i="gt"></strong>
+  <div id="gsteps"></div>
+  <div class="row" style="margin-top:16px"><button class="btn" id="gclose" data-i="cl"></button></div>
+</dialog>
+
+<dialog id="dlg">
+  <strong data-i="ready"></strong>
+  <div class="seg dm" id="dm"><button data-m="i" data-i="mi"></button><button data-m="r" data-i="mr"></button><button data-m="u" data-i="mu"></button></div>
+  <div id="uopt" style="display:none"><p class="hint" data-i="uw"></p><label class="ck"><input type="checkbox" id="ugr"><span data-i="ug"></span></label></div>
+  <textarea id="code" readonly></textarea>
+  <div class="row"><button class="btn pri" id="ps" data-i="psb"></button></div>
+  <div id="msg"></div>
+  <button class="btn" id="gb" data-i="gb" style="width:100%;margin-top:6px"></button>
+  <div class="row" style="margin-top:12px"><button class="btn" id="close" data-i="cl"></button></div>
+</dialog>
+
+<script>
+var D={
+"المتصفحات":`Chrome|Google.Chrome|google-chrome
+Firefox|Mozilla.Firefox|firefox
+Brave|Brave.Brave|brave-browser
+Opera|Opera.Opera|opera
+Vivaldi|Vivaldi.Vivaldi|vivaldi
+Tor Browser|TorProject.TorBrowser|tor-browser`,
+"التواصل":`Discord|Discord.Discord|discord
+Telegram|Telegram.TelegramDesktop|telegram
+WhatsApp|WhatsApp.WhatsApp|whatsapp
+Signal|OpenWhisperSystems.Signal|signal
+Zoom|Zoom.Zoom|zoom
+Slack|SlackTechnologies.Slack|slack
+Microsoft Teams|Microsoft.Teams|microsoft-teams
+Viber|Viber.Viber|viber
+Thunderbird|Mozilla.Thunderbird|thunderbird`,
+"الوسائط":`VLC|VideoLAN.VLC|vlc
+Spotify|Spotify.Spotify|spotify
+OBS Studio|OBSProject.OBSStudio|obs
+Audacity|Audacity.Audacity|audacity
+HandBrake|HandBrake.HandBrake|handbrake
+MPV|shinchiro.mpv|mpv
+Kodi|XBMC.Kodi|kodi
+Plex|Plex.Plex|plex
+Streamlabs|Streamlabs.Streamlabs|streamlabs
+Kdenlive|KDE.Kdenlive|kdenlive
+DaVinci Resolve|BlackmagicDesign.DaVinciResolve|davinci-resolve
+FFmpeg|Gyan.FFmpeg|f:ffmpeg`,
+"البرمجة":`VS Code|Microsoft.VisualStudioCode|visual-studio-code
+Cursor|Anysphere.Cursor|cursor
+Git|Git.Git|f:git
+GitHub Desktop|GitHub.GitHubDesktop|github
+Node.js|OpenJS.NodeJS.LTS|f:node
+Python 3|Python.Python.3.12|f:python
+Java JDK 21|EclipseAdoptium.Temurin.21.JDK|temurin@21
+Go|GoLang.Go|f:go
+Rust|Rustlang.Rustup|f:rustup
+.NET SDK 8|Microsoft.DotNet.SDK.8|dotnet-sdk
+CMake|Kitware.CMake|f:cmake
+Docker Desktop|Docker.DockerDesktop|docker
+Postman|Postman.Postman|postman
+Insomnia|Insomnia.Insomnia|insomnia
+DBeaver|dbeaver.dbeaver|dbeaver-community
+PyCharm Community|JetBrains.PyCharm.Community|pycharm-ce
+IntelliJ IDEA Community|JetBrains.IntelliJIDEA.Community|intellij-idea-ce
+Android Studio|Google.AndroidStudio|android-studio
+Sublime Text|SublimeHQ.SublimeText.4|sublime-text
+Notepad++|Notepad++.Notepad++|
+Windows Terminal|Microsoft.WindowsTerminal|
+PuTTY|PuTTY.PuTTY|
+FileZilla|TimKosse.FileZilla.Client|filezilla
+Wireshark|WiresharkFoundation.Wireshark|wireshark
+Unity Hub|Unity.UnityHub|unity-hub`,
+"الأدوات":`7-Zip / Keka|7zip.7zip|keka
+WinRAR|RARLab.WinRAR|
+PowerToys|Microsoft.PowerToys|
+Everything|voidtools.Everything|
+AutoHotkey|AutoHotkey.AutoHotkey|
+Rectangle||rectangle
+Raycast||raycast
+qBittorrent|qBittorrent.qBittorrent|qbittorrent
+AnyDesk|AnyDeskSoftwareGmbH.AnyDesk|anydesk
+TeamViewer|TeamViewer.TeamViewer|teamviewer
+RustDesk|RustDesk.RustDesk|rustdesk
+Dropbox|Dropbox.Dropbox|dropbox
+Google Drive|Google.GoogleDrive|google-drive
+MEGA|Mega.MEGASync|megasync
+Syncthing|Syncthing.Syncthing|syncthing
+ShareX|ShareX.ShareX|
+Rufus|Rufus.Rufus|
+balenaEtcher|Balena.Etcher|balenaetcher
+CCleaner|Piriform.CCleaner|
+CPU-Z|CPUID.CPU-Z|
+Malwarebytes|Malwarebytes.Malwarebytes|malwarebytes
+Bitwarden|Bitwarden.Bitwarden|bitwarden
+KeePassXC|KeePassXCTeam.KeePassXC|keepassxc
+1Password|AgileBits.1Password|1password
+Proton VPN|Proton.ProtonVPN|protonvpn
+NordVPN|NordVPN.NordVPN|nordvpn`,
+"المكتب والتصميم":`LibreOffice|TheDocumentFoundation.LibreOffice|libreoffice
+ONLYOFFICE|ONLYOFFICE.DesktopEditors|onlyoffice
+Adobe Reader|Adobe.Acrobat.Reader.64-bit|adobe-acrobat-reader
+Notion|Notion.Notion|notion
+Obsidian|Obsidian.Obsidian|obsidian
+Joplin|Joplin.Joplin|joplin
+Zotero|DigitalScholar.Zotero|zotero
+Anki|Anki.Anki|anki
+draw.io|JGraph.Draw|drawio
+GIMP|GIMP.GIMP|gimp
+Inkscape|Inkscape.Inkscape|inkscape
+Krita|KDE.Krita|krita
+Blender|BlenderFoundation.Blender|blender
+Figma|Figma.Figma|figma`,
+"الألعاب":`Steam|Valve.Steam|steam
+Epic Games|EpicGames.EpicGamesLauncher|epic-games
+GOG Galaxy|GOG.Galaxy|gog-galaxy
+Battle.net|Blizzard.BattleNet|battle-net
+EA app|ElectronicArts.EADesktop|
+Ubisoft Connect|Ubisoft.Connect|
+Heroic Launcher|HeroicGamesLauncher.HeroicGamesLauncher|heroic
+Minecraft Launcher|Mojang.MinecraftLauncher|minecraft
+MSI Afterburner|Guru3D.Afterburner|`,
+"مكتبات النظام":`Visual C++ Redist 2015+|Microsoft.VCRedist.2015+.x64|
+.NET Desktop Runtime 8|Microsoft.DotNet.DesktopRuntime.8|
+DirectX|Microsoft.DirectX|`
+};
+var PACKS={"الأساسيات":["Chrome","VLC","7-Zip / Keka","Adobe Reader","Telegram","WhatsApp","Zoom"],
+"مبرمج":["VS Code","Git","Node.js","Python 3","Docker Desktop","Postman","Windows Terminal","GitHub Desktop"],
+"لاعب":["Steam","Epic Games","Discord","GOG Galaxy","Battle.net","MSI Afterburner"],
+"صانع محتوى":["OBS Studio","DaVinci Resolve","Audacity","GIMP","Blender","HandBrake","Kdenlive"],
+"مكتب ودراسة":["LibreOffice","Adobe Reader","Notion","Obsidian","Zoom","Thunderbird","Zotero"]};
+var IC={"Chrome":"googlechrome","Edge":"microsoftedge","VLC":"vlcmediaplayer","VS Code":"visualstudiocode","GitHub Desktop":"github","Node.js":"nodedotjs","Python 3":"python","Java JDK 21":"openjdk",".NET SDK 8":"dotnet","Docker Desktop":"docker","PyCharm Community":"pycharm","IntelliJ IDEA Community":"intellijidea","Unity Hub":"unity","7-Zip / Keka":"7zip","balenaEtcher":"etcher","Adobe Reader":"adobeacrobatreader","draw.io":"diagramsdotnet","Notepad++":"notepadplusplus","GOG Galaxy":"gogdotcom","Battle.net":"battledotnet","EA app":"ea","Ubisoft Connect":"ubisoft","Heroic Launcher":"heroicgameslauncher","Minecraft Launcher":"minecraft","CPU-Z":"","PuTTY":"","Visual C++ Redist 2015+":"",".NET Desktop Runtime 8":"","DirectX":""},IOK={},IBAD={};
+var CE={"المتصفحات":"Browsers","التواصل":"Communication","الوسائط":"Media","البرمجة":"Development","الأدوات":"Utilities","المكتب والتصميم":"Office & Design","الألعاب":"Games","مكتبات النظام":"System Libraries"};
+var PE={"الأساسيات":"Essentials","مبرمج":"Developer","لاعب":"Gamer","صانع محتوى":"Creator","مكتب ودراسة":"Office & Study"};
+var POP=["Chrome","Firefox","Discord","Telegram","WhatsApp","Zoom","VLC","Spotify","OBS Studio","VS Code","Git","Python 3","Node.js","Docker Desktop","7-Zip / Keka","WinRAR","PowerToys","qBittorrent","AnyDesk","Google Drive","LibreOffice","Adobe Reader","GIMP","Blender","Steam","Epic Games","Visual C++ Redist 2015+","Notepad++","Bitwarden","Notion"];
+var DESC={"Chrome":"متصفح جوجل السريع|Fast Google browser","Firefox":"متصفح مفتوح المصدر|Open-source browser","Brave":"متصفح يحجب الإعلانات|Ad-blocking browser","Opera":"متصفح مع VPN مدمج|Browser with built-in VPN","Vivaldi":"متصفح قابل للتخصيص|Customizable browser","Tor Browser":"تصفح مجهول الهوية|Anonymous browsing",
+"Discord":"دردشة صوتية ومجتمعات|Voice chat & communities","Telegram":"مراسلة سريعة وآمنة|Fast, secure messaging","WhatsApp":"مراسلة ومكالمات|Messaging & calls","Signal":"مراسلة مشفّرة|Encrypted messaging","Zoom":"اجتماعات فيديو|Video meetings","Slack":"تواصل فرق العمل|Team messaging","Microsoft Teams":"اجتماعات وعمل جماعي|Meetings & collaboration","Viber":"مكالمات ورسائل|Calls & messages","Thunderbird":"برنامج بريد إلكتروني|Email client",
+"VLC":"مشغّل لكل صيغ الفيديو|Plays any video format","Spotify":"بث الموسيقى|Music streaming","OBS Studio":"تسجيل وبث الشاشة|Screen recording & streaming","Audacity":"تحرير الصوت|Audio editor","HandBrake":"تحويل الفيديو|Video converter","MPV":"مشغّل خفيف|Lightweight player","Kodi":"مركز وسائط منزلي|Home media center","Plex":"مكتبة أفلامك الخاصة|Your personal media library","Streamlabs":"بث مباشر|Live streaming","Kdenlive":"مونتاج فيديو مجاني|Free video editor","DaVinci Resolve":"مونتاج احترافي|Pro video editing","FFmpeg":"أدوات تحويل الوسائط|Media conversion tools",
+"VS Code":"أشهر محرر أكواد|Most popular code editor","Cursor":"محرر أكواد بالذكاء الاصطناعي|AI code editor","Git":"إدارة إصدارات الأكواد|Version control","GitHub Desktop":"واجهة Git سهلة|Easy Git interface","Node.js":"بيئة تشغيل JavaScript|JavaScript runtime","Python 3":"لغة برمجة عامة|General-purpose language","Java JDK 21":"أدوات تطوير جافا|Java dev kit","Go":"لغة برمجة من جوجل|Google's language","Rust":"لغة برمجة آمنة وسريعة|Safe, fast language",".NET SDK 8":"أدوات تطوير دوت نت|.NET dev kit","CMake":"بناء مشاريع C++|C++ build system","Docker Desktop":"تشغيل الحاويات|Run containers","Postman":"اختبار واجهات API|API testing","Insomnia":"عميل API خفيف|Lightweight API client","DBeaver":"إدارة قواعد البيانات|Database manager","PyCharm Community":"بيئة تطوير بايثون|Python IDE","IntelliJ IDEA Community":"بيئة تطوير جافا|Java IDE","Android Studio":"تطوير تطبيقات أندرويد|Android app dev","Sublime Text":"محرر نصوص سريع|Fast text editor","Notepad++":"محرر نصوص خفيف|Light text editor","Windows Terminal":"طرفية ويندوز الحديثة|Modern Windows terminal","PuTTY":"اتصال SSH بالخوادم|SSH client","FileZilla":"نقل ملفات FTP|FTP client","Wireshark":"تحليل حركة الشبكة|Network analyzer","Unity Hub":"إدارة مشاريع Unity|Unity project manager",
+"7-Zip / Keka":"ضغط وفك الملفات|Archive manager","WinRAR":"ضغط وفك الملفات|Archive manager","PowerToys":"أدوات إنتاجية لويندوز|Windows productivity tools","Everything":"بحث فوري في الملفات|Instant file search","AutoHotkey":"أتمتة المهام|Task automation","Rectangle":"تنظيم النوافذ|Window manager","Raycast":"مشغّل تطبيقات سريع|Quick launcher","qBittorrent":"تحميل التورنت|Torrent client","AnyDesk":"تحكم عن بُعد|Remote desktop","TeamViewer":"تحكم عن بُعد|Remote desktop","RustDesk":"تحكم عن بُعد مفتوح المصدر|Open-source remote desktop","Dropbox":"تخزين سحابي|Cloud storage","Google Drive":"تخزين سحابي|Cloud storage","MEGA":"تخزين سحابي مشفّر|Encrypted cloud storage","Syncthing":"مزامنة ملفات خاصة|Private file sync","ShareX":"لقطات وتسجيل الشاشة|Screenshots & capture","Rufus":"إنشاء فلاشة تثبيت|Bootable USB maker","balenaEtcher":"كتابة صور النظام|Flash OS images","CCleaner":"تنظيف الجهاز|System cleaner","CPU-Z":"معلومات العتاد|Hardware info","Malwarebytes":"مكافحة البرمجيات الخبيثة|Anti-malware","Bitwarden":"مدير كلمات المرور|Password manager","KeePassXC":"مدير كلمات مرور محلي|Offline password manager","1Password":"مدير كلمات المرور|Password manager","Proton VPN":"شبكة VPN آمنة|Secure VPN","NordVPN":"خدمة VPN|VPN service",
+"LibreOffice":"حزمة مكتبية مجانية|Free office suite","ONLYOFFICE":"حزمة مكتبية|Office suite","Adobe Reader":"قارئ PDF|PDF reader","Notion":"ملاحظات ومشاريع|Notes & projects","Obsidian":"ملاحظات مترابطة|Linked notes","Joplin":"ملاحظات مفتوحة المصدر|Open-source notes","Zotero":"إدارة المراجع البحثية|Reference manager","Anki":"بطاقات الحفظ والدراسة|Flashcards","draw.io":"رسم المخططات|Diagram maker","GIMP":"تحرير الصور|Image editor","Inkscape":"رسم متجهات|Vector graphics","Krita":"رسم رقمي|Digital painting","Blender":"نمذجة وتحريك 3D|3D & animation","Figma":"تصميم واجهات|UI design",
+"Steam":"أكبر متجر ألعاب|Biggest game store","Epic Games":"متجر ألعاب|Game store","GOG Galaxy":"ألعاب بدون DRM|DRM-free games","Battle.net":"ألعاب Blizzard|Blizzard games","EA app":"ألعاب EA|EA games","Ubisoft Connect":"ألعاب Ubisoft|Ubisoft games","Heroic Launcher":"مشغّل ألعاب مفتوح|Open game launcher","Minecraft Launcher":"لعبة ماينكرافت|Minecraft game","MSI Afterburner":"ضبط أداء كرت الشاشة|GPU tuning",
+"Visual C++ Redist 2015+":"مكتبة تشغيل البرامج|Runtime for apps",".NET Desktop Runtime 8":"بيئة تشغيل دوت نت|.NET runtime","DirectX":"مكتبة رسوميات الألعاب|Game graphics library"};
+var T={ar:{title:"OneTap | مثبّت التطبيقات بملف واحد",h1:"ثبّت كل تطبيقاتك بملف واحد",p:"اختر من {n} تطبيقًا، ثم نزّل سكربتًا واحدًا يحمّلها ويثبّتها تلقائيًا من المصادر الرسمية.",q:"ابحث عن تطبيق أو وظيفة…",all:"الكل",sel:"المختارة",packs:"مجموعات جاهزة",pop:"شائع",none:"لا توجد نتائج",cu:"أضفتَها أنت",cnt:"{n} مختار · ≈ {m} د",clr:"مسح",go:"تحميل الكل",addh:"تطبيق غير موجود في القائمة؟",add:"إضافة",hw:"لمعرفة معرّف أي تطبيق نفّذ:",hm:"لمعرفة اسم أي تطبيق نفّذ:",nm:"اسم",toolsh:"أدوات إضافية",share:"نسخ رابط المشاركة",exp:"تصدير القائمة",imp:"استيراد قائمة",upd:"سكربت تحديث الكل",inst:"تثبيت الموقع كتطبيق",ready:"السكربت جاهز",mi:"تثبيت",mr:"إزالة",mu:"تحديث الكل",dl:"تنزيل الملف",cp:"نسخ",cl:"إغلاق",dld:"بدأ التنزيل",cpd:"تم النسخ",lk:"تم نسخ رابط المشاركة",pick:"اختر تطبيقًا واحدًا على الأقل",imd:"تم استيراد القائمة",imx:"ملف غير صالح",exd:"تم تصدير القائمة",rights:"جميع الحقوق محفوظة © 2026",who:"إعداد المهندسين: عامر الديري - ماجد السليمان",stw:"<li>نزّل الملف <code>{f}</code></li><li>شغّله بنقرتين (أو زر أيمن ← تشغيل كمسؤول)</li><li>يتطلب ويندوز 10/11 مع winget</li>",stm:"<li>نزّل الملف <code>{f}</code></li><li>افتح Terminal ونفّذ: <code>bash ~/Downloads/{f}</code></li>"},
+en:{title:"OneTap | One-file app installer",h1:"Install all your apps with one file",p:"Pick from {n} apps, then download a single script that installs them all automatically from official sources.",q:"Search apps or what they do…",all:"All",sel:"Selected",packs:"Ready-made bundles",pop:"Popular",none:"No results",cu:"Added by you",cnt:"{n} selected · ≈ {m} min",clr:"Clear",go:"Download all",addh:"App not in the list?",add:"Add",hw:"To find an app ID run:",hm:"To find an app name run:",nm:"name",toolsh:"More tools",share:"Copy share link",exp:"Export list",imp:"Import list",upd:"Update-all script",inst:"Install site as an app",ready:"Your script is ready",mi:"Install",mr:"Remove",mu:"Update all",dl:"Download file",cp:"Copy",cl:"Close",dld:"Download started",cpd:"Copied",lk:"Share link copied",pick:"Select at least one app",imd:"List imported",imx:"Invalid file",exd:"List exported",rights:"All rights reserved © 2026",who:"Prepared by Engineers: Amer Aldiri - Majed Alsulaiman",stw:"<li>Download <code>{f}</code></li><li>Double-click it (or right-click → Run as administrator)</li><li>Requires Windows 10/11 with winget</li>",stm:"<li>Download <code>{f}</code></li><li>Open Terminal and run: <code>bash ~/Downloads/{f}</code></li>"}};
+
+T.tr={title:"OneTap | Tek dosyada uygulama yükleyici",h1:"Tüm uygulamalarını tek dosyayla kur",p:"{n} uygulama arasından seç, ardından hepsini resmi kaynaklardan otomatik kuran tek bir betik indir.",q:"Uygulama veya işlev ara…",all:"Tümü",sel:"Seçilenler",packs:"Hazır paketler",pop:"Popüler",none:"Sonuç yok",cu:"Senin eklediklerin",cnt:"{n} seçildi · ≈ {m} dk",clr:"Temizle",go:"Hepsini indir",addh:"Uygulama listede yok mu?",add:"Ekle",hw:"Bir uygulamanın kimliğini bulmak için çalıştır:",hm:"Bir uygulamanın adını bulmak için çalıştır:",nm:"ad",toolsh:"Ek araçlar",share:"Paylaşım bağlantısını kopyala",exp:"Listeyi dışa aktar",imp:"Liste içe aktar",upd:"Tümünü güncelle betiği",inst:"Siteyi uygulama olarak yükle",ready:"Betiğin hazır",mi:"Kur",mr:"Kaldır",mu:"Tümünü güncelle",dl:"Dosyayı indir",cp:"Kopyala",cl:"Kapat",dld:"İndirme başladı",cpd:"Kopyalandı",lk:"Paylaşım bağlantısı kopyalandı",pick:"En az bir uygulama seç",imd:"Liste içe aktarıldı",imx:"Geçersiz dosya",exd:"Liste dışa aktarıldı",rights:"Tüm hakları saklıdır © 2026",who:"Hazırlayan Mühendisler: Amer Aldiri - Majed Alsulaiman",stw:"<li><code>{f}</code> dosyasını indir</li><li>Çift tıkla (veya sağ tık → Yönetici olarak çalıştır)</li><li>winget içeren Windows 10/11 gerekir</li>",stm:"<li><code>{f}</code> dosyasını indir</li><li>Terminal'i aç ve çalıştır: <code>bash ~/Downloads/{f}</code></li>"};
+T.fr={title:"OneTap | Installateur d'applications en un fichier",h1:"Installez toutes vos applications avec un seul fichier",p:"Choisissez parmi {n} applications, puis téléchargez un seul script qui les installe automatiquement depuis les sources officielles.",q:"Rechercher une application ou une fonction…",all:"Tout",sel:"Sélection",packs:"Packs prêts à l'emploi",pop:"Populaire",none:"Aucun résultat",cu:"Ajoutées par vous",cnt:"{n} sélectionnée(s) · ≈ {m} min",clr:"Effacer",go:"Tout télécharger",addh:"Application absente de la liste ?",add:"Ajouter",hw:"Pour trouver l'identifiant d'une application, exécutez :",hm:"Pour trouver le nom d'une application, exécutez :",nm:"nom",toolsh:"Outils supplémentaires",share:"Copier le lien de partage",exp:"Exporter la liste",imp:"Importer une liste",upd:"Script de mise à jour globale",inst:"Installer le site comme application",ready:"Votre script est prêt",mi:"Installer",mr:"Supprimer",mu:"Tout mettre à jour",dl:"Télécharger le fichier",cp:"Copier",cl:"Fermer",dld:"Téléchargement lancé",cpd:"Copié",lk:"Lien de partage copié",pick:"Sélectionnez au moins une application",imd:"Liste importée",imx:"Fichier invalide",exd:"Liste exportée",rights:"Tous droits réservés © 2026",who:"Préparé par les ingénieurs : Amer Aldiri - Majed Alsulaiman",stw:"<li>Téléchargez <code>{f}</code></li><li>Double-cliquez dessus (ou clic droit → Exécuter en tant qu'administrateur)</li><li>Nécessite Windows 10/11 avec winget</li>",stm:"<li>Téléchargez <code>{f}</code></li><li>Ouvrez Terminal et exécutez : <code>bash ~/Downloads/{f}</code></li>"};
+T.es={title:"OneTap | Instalador de aplicaciones en un solo archivo",h1:"Instala todas tus aplicaciones con un solo archivo",p:"Elige entre {n} aplicaciones y descarga un único script que las instala automáticamente desde fuentes oficiales.",q:"Buscar aplicación o función…",all:"Todo",sel:"Seleccionadas",packs:"Paquetes listos",pop:"Popular",none:"Sin resultados",cu:"Añadidas por ti",cnt:"{n} seleccionadas · ≈ {m} min",clr:"Borrar",go:"Descargar todo",addh:"¿Tu aplicación no está en la lista?",add:"Añadir",hw:"Para encontrar el ID de una aplicación ejecuta:",hm:"Para encontrar el nombre de una aplicación ejecuta:",nm:"nombre",toolsh:"Más herramientas",share:"Copiar enlace para compartir",exp:"Exportar lista",imp:"Importar lista",upd:"Script para actualizar todo",inst:"Instalar el sitio como app",ready:"Tu script está listo",mi:"Instalar",mr:"Desinstalar",mu:"Actualizar todo",dl:"Descargar archivo",cp:"Copiar",cl:"Cerrar",dld:"Descarga iniciada",cpd:"Copiado",lk:"Enlace copiado",pick:"Selecciona al menos una aplicación",imd:"Lista importada",imx:"Archivo no válido",exd:"Lista exportada",rights:"Todos los derechos reservados © 2026",who:"Preparado por los ingenieros: Amer Aldiri - Majed Alsulaiman",stw:"<li>Descarga <code>{f}</code></li><li>Haz doble clic (o clic derecho → Ejecutar como administrador)</li><li>Requiere Windows 10/11 con winget</li>",stm:"<li>Descarga <code>{f}</code></li><li>Abre Terminal y ejecuta: <code>bash ~/Downloads/{f}</code></li>"};
+T.ar.psb="نسخ الأمر";T.ar.stp="<li>افتح PowerShell (ابحث عنه في قائمة ابدأ)</li><li>الصق الأمر (Ctrl+V) ثم اضغط Enter</li><li>يتطلب winget وهو موجود في ويندوز 10/11</li>";T.ar.sec="إن ظهر تحذير أمان من المتصفح أو ويندوز عند تنزيل الملف، فهذا طبيعي لأي ملف تنفيذي محمّل من الإنترنت. تجنّبه بنسخ الأمر إلى PowerShell، أو بلصق السكربت في Notepad وحفظه بامتداد ‎.bat";
+T.en.psb="Copy command";T.en.stp="<li>Open PowerShell (search for it in the Start menu)</li><li>Paste the command (Ctrl+V) and press Enter</li><li>Requires winget, included in Windows 10/11</li>";T.en.sec="A browser or Windows SmartScreen warning when downloading the file is normal for any executable downloaded from the internet. Avoid it by copying the command into PowerShell, or by pasting the script into Notepad and saving it as .bat";
+T.tr.psb="Komutu kopyala";T.tr.stp="<li>PowerShell'i aç (Başlat menüsünde ara)</li><li>Komutu yapıştır (Ctrl+V) ve Enter'a bas</li><li>Windows 10/11'de bulunan winget gerekir</li>";T.tr.sec="Dosyayı indirirken tarayıcının veya Windows SmartScreen'in uyarı vermesi, internetten indirilen her çalıştırılabilir dosya için normaldir. Komutu PowerShell'e kopyalayarak ya da betiği Not Defteri'ne yapıştırıp .bat olarak kaydederek bundan kaçınabilirsin.";
+T.fr.psb="Copier la commande";T.fr.stp="<li>Ouvrez PowerShell (cherchez-le dans le menu Démarrer)</li><li>Collez la commande (Ctrl+V) puis appuyez sur Entrée</li><li>Nécessite winget, inclus dans Windows 10/11</li>";T.fr.sec="Un avertissement du navigateur ou de Windows SmartScreen au téléchargement est normal pour tout fichier exécutable venant d'Internet. Évitez-le en copiant la commande dans PowerShell, ou en collant le script dans le Bloc-notes puis en l'enregistrant en .bat";
+T.es.psb="Copiar comando";T.es.stp="<li>Abre PowerShell (búscalo en el menú Inicio)</li><li>Pega el comando (Ctrl+V) y pulsa Enter</li><li>Requiere winget, incluido en Windows 10/11</li>";T.es.sec="Un aviso del navegador o de Windows SmartScreen al descargar el archivo es normal en cualquier ejecutable descargado de Internet. Evítalo copiando el comando en PowerShell, o pegando el script en el Bloc de notas y guardándolo como .bat";
+
+T.ar.uw="تحديث الكل يحدّث كل البرامج المثبّتة على جهازك وليس ما اخترته فقط. راجع ما سيتم تحديثه قبل التشغيل.";T.ar.ug="شمل أيضًا البرامج ذاتية التحديث وغير المعروفة الإصدار (أقوى، وقد يغيّر برامج لا تريد لمسها)";T.ar.md="اختر تطبيقاتك ونزّل سكربتًا واحدًا يثبّتها كلها تلقائيًا على ويندوز وماك من المصادر الرسمية.";
+T.en.uw="Update all upgrades every installed program on your computer, not only the ones you picked. Review what will change before running it.";T.en.ug="Also include self-updating apps and apps with unknown versions (more aggressive, may touch apps you did not intend to)";T.en.md="Pick your apps and get one script that installs them all automatically on Windows and macOS from official sources.";
+T.tr.uw="Tümünü güncelle, yalnızca seçtiklerini değil bilgisayarındaki tüm kurulu programları günceller. Çalıştırmadan önce nelerin değişeceğini kontrol et.";T.tr.ug="Kendini güncelleyen ve sürümü bilinmeyen uygulamaları da dahil et (daha agresif, istemediğin uygulamalara dokunabilir)";T.tr.md="Uygulamalarını seç, Windows ve macOS'ta hepsini resmi kaynaklardan otomatik kuran tek bir betik indir.";
+T.fr.uw="« Tout mettre à jour » met à jour tous les programmes installés sur votre ordinateur, pas seulement ceux que vous avez choisis. Vérifiez ce qui va changer avant de lancer.";T.fr.ug="Inclure aussi les applications à mise à jour automatique et de version inconnue (plus agressif, peut toucher des applications non voulues)";T.fr.md="Choisissez vos applications et obtenez un seul script qui les installe automatiquement sur Windows et macOS depuis des sources officielles.";
+T.es.uw="Actualizar todo actualiza todos los programas instalados en tu equipo, no solo los que elegiste. Revisa qué cambiará antes de ejecutarlo.";T.es.ug="Incluir también apps con actualización automática y de versión desconocida (más agresivo, puede tocar apps que no querías)";T.es.md="Elige tus aplicaciones y obtén un solo script que las instala automáticamente en Windows y macOS desde fuentes oficiales.";
+T.ar.cpx="تعذّر النسخ تلقائيًا. انسخ النص يدويًا (Ctrl+C)";T.ar.gb="كيف أحمّل؟ شرح بالصور";T.ar.gt="طريقة التحميل خطوة بخطوة";T.ar.s0="اختر التطبيقات التي تريدها، ثم اضغط «تحميل الكل».";T.ar.s1="اضغط «نسخ الأمر». لا حاجة لتنزيل أي ملف.";T.ar.s2w="افتح PowerShell: اضغط زر ويندوز ثم اكتب PowerShell واضغط Enter.";T.ar.s2m="افتح Terminal: اضغط Cmd + Space ثم اكتب Terminal واضغط Enter.";T.ar.s3="الصق الأمر داخل النافذة بالضغط على {k}.";T.ar.s4w="اضغط Enter وانتظر حتى ينتهي التثبيت. إن ظهرت نافذة تطلب الإذن اضغط «نعم».";T.ar.s4m="اضغط Enter وانتظر. إن طُلبت كلمة السر فاكتبها (لا تظهر أثناء الكتابة) ثم اضغط Enter.";
+T.en.cpx="Couldn't copy automatically. Please copy the text manually (Ctrl+C)";T.en.gb="How do I install? Step-by-step guide";T.en.gt="Install step by step";T.en.s0="Pick the apps you want, then press “Download all”.";T.en.s1="Press “Copy command”. No file download needed.";T.en.s2w="Open PowerShell: press the Windows key, type PowerShell and press Enter.";T.en.s2m="Open Terminal: press Cmd + Space, type Terminal and press Enter.";T.en.s3="Paste the command into the window with {k}.";T.en.s4w="Press Enter and wait for the installs to finish. If a permission prompt appears, click “Yes”.";T.en.s4m="Press Enter and wait. If asked for your password, type it (it stays invisible) and press Enter.";
+T.tr.cpx="Otomatik kopyalanamadı. Metni elle kopyala (Ctrl+C)";T.tr.gb="Nasıl indiririm? Resimli anlatım";T.tr.gt="Adım adım kurulum";T.tr.s0="İstediğin uygulamaları seç, sonra “Hepsini indir”e bas.";T.tr.s1="“Komutu kopyala”ya bas. Dosya indirmene gerek yok.";T.tr.s2w="PowerShell'i aç: Windows tuşuna bas, PowerShell yaz ve Enter'a bas.";T.tr.s2m="Terminal'i aç: Cmd + Space'e bas, Terminal yaz ve Enter'a bas.";T.tr.s3="Komutu {k} ile pencereye yapıştır.";T.tr.s4w="Enter'a bas ve kurulumun bitmesini bekle. İzin penceresi çıkarsa “Evet”e tıkla.";T.tr.s4m="Enter'a bas ve bekle. Parola istenirse yaz (görünmez) ve Enter'a bas.";
+T.fr.cpx="Copie automatique impossible. Copiez le texte à la main (Ctrl+C)";T.fr.gb="Comment installer ? Guide en images";T.fr.gt="Installation pas à pas";T.fr.s0="Choisissez les applications, puis appuyez sur « Tout télécharger ».";T.fr.s1="Appuyez sur « Copier la commande ». Aucun fichier à télécharger.";T.fr.s2w="Ouvrez PowerShell : touche Windows, tapez PowerShell puis Entrée.";T.fr.s2m="Ouvrez Terminal : Cmd + Espace, tapez Terminal puis Entrée.";T.fr.s3="Collez la commande dans la fenêtre avec {k}.";T.fr.s4w="Appuyez sur Entrée et attendez la fin. Si une demande d'autorisation apparaît, cliquez sur « Oui ».";T.fr.s4m="Appuyez sur Entrée et attendez. Si on vous demande le mot de passe, saisissez-le (invisible) puis Entrée.";
+T.es.cpx="No se pudo copiar automáticamente. Copia el texto a mano (Ctrl+C)";T.es.gb="¿Cómo instalo? Guía con imágenes";T.es.gt="Instalación paso a paso";T.es.s0="Elige las aplicaciones y pulsa «Descargar todo».";T.es.s1="Pulsa «Copiar comando». No hace falta descargar ningún archivo.";T.es.s2w="Abre PowerShell: tecla Windows, escribe PowerShell y pulsa Enter.";T.es.s2m="Abre Terminal: Cmd + Espacio, escribe Terminal y pulsa Enter.";T.es.s3="Pega el comando en la ventana con {k}.";T.es.s4w="Pulsa Enter y espera a que termine. Si aparece un aviso de permiso, pulsa «Sí».";T.es.s4m="Pulsa Enter y espera. Si pide la contraseña, escríbela (no se ve) y pulsa Enter.";
+var CN={en:["Browsers","Communication","Media","Development","Utilities","Office & Design","Games","System Libraries"],tr:["Tarayıcılar","İletişim","Medya","Geliştirme","Araçlar","Ofis ve Tasarım","Oyunlar","Sistem Kütüphaneleri"],fr:["Navigateurs","Communication","Multimédia","Développement","Utilitaires","Bureautique et design","Jeux","Bibliothèques système"],es:["Navegadores","Comunicación","Multimedia","Desarrollo","Utilidades","Ofimática y diseño","Juegos","Bibliotecas del sistema"]};
+var PN={en:["Essentials","Developer","Gamer","Creator","Office & Study"],tr:["Temel","Yazılımcı","Oyuncu","İçerik üretici","Ofis ve ders"],fr:["Essentiels","Développeur","Joueur","Créateur","Bureau et études"],es:["Esenciales","Desarrollador","Jugador","Creador","Oficina y estudio"]};
+var G=0,DL={
+tr:"Hızlı Google tarayıcısı;Açık kaynaklı tarayıcı;Reklam engelleyen tarayıcı;Dahili VPN'li tarayıcı;Özelleştirilebilir tarayıcı;Anonim gezinme;Sesli sohbet ve topluluklar;Hızlı ve güvenli mesajlaşma;Mesajlaşma ve aramalar;Şifreli mesajlaşma;Görüntülü toplantılar;Ekip iletişimi;Toplantı ve iş birliği;Arama ve mesajlar;E-posta istemcisi;Her video biçimini oynatır;Müzik akışı;Ekran kaydı ve yayın;Ses düzenleyici;Video dönüştürücü;Hafif oynatıcı;Ev medya merkezi;Kişisel medya kütüphanen;Canlı yayın;Ücretsiz video düzenleyici;Profesyonel video kurgu;Medya dönüştürme araçları;En popüler kod editörü;Yapay zekâlı kod editörü;Sürüm kontrolü;Kolay Git arayüzü;JavaScript çalışma ortamı;Genel amaçlı dil;Java geliştirme kiti;Google'ın dili;Güvenli ve hızlı dil;.NET geliştirme kiti;C++ derleme sistemi;Konteyner çalıştırma;API testi;Hafif API istemcisi;Veritabanı yöneticisi;Python IDE'si;Java IDE'si;Android uygulama geliştirme;Hızlı metin editörü;Hafif metin editörü;Modern Windows terminali;SSH istemcisi;FTP istemcisi;Ağ analizcisi;Unity proje yöneticisi;Arşiv yöneticisi;Arşiv yöneticisi;Windows verimlilik araçları;Anında dosya arama;Görev otomasyonu;Pencere yöneticisi;Hızlı başlatıcı;Torrent istemcisi;Uzak masaüstü;Uzak masaüstü;Açık kaynak uzak masaüstü;Bulut depolama;Bulut depolama;Şifreli bulut depolama;Özel dosya eşitleme;Ekran görüntüsü ve kayıt;Önyüklenebilir USB oluşturucu;İşletim sistemi imajı yazıcı;Sistem temizleyici;Donanım bilgisi;Kötü amaçlı yazılım koruması;Parola yöneticisi;Çevrimdışı parola yöneticisi;Parola yöneticisi;Güvenli VPN;VPN hizmeti;Ücretsiz ofis paketi;Ofis paketi;PDF okuyucu;Not ve projeler;Bağlantılı notlar;Açık kaynak notlar;Kaynak yöneticisi;Bilgi kartları;Diyagram çizici;Görsel düzenleyici;Vektör grafik;Dijital resim;3B ve animasyon;Arayüz tasarımı;En büyük oyun mağazası;Oyun mağazası;DRM'siz oyunlar;Blizzard oyunları;EA oyunları;Ubisoft oyunları;Açık oyun başlatıcı;Minecraft oyunu;Ekran kartı ayarı;Uygulama çalışma kütüphanesi;.NET çalışma ortamı;Oyun grafik kütüphanesi".split(";"),
+fr:"Navigateur Google rapide;Navigateur open source;Navigateur anti-pubs;Navigateur avec VPN intégré;Navigateur personnalisable;Navigation anonyme;Chat vocal et communautés;Messagerie rapide et sûre;Messages et appels;Messagerie chiffrée;Visioconférence;Messagerie d'équipe;Réunions et collaboration;Appels et messages;Client e-mail;Lit tous les formats vidéo;Streaming musical;Capture et diffusion d'écran;Éditeur audio;Convertisseur vidéo;Lecteur léger;Centre multimédia;Votre médiathèque perso;Diffusion en direct;Montage vidéo gratuit;Montage vidéo pro;Outils de conversion média;Éditeur de code n°1;Éditeur de code IA;Gestion de versions;Interface Git simple;Environnement JavaScript;Langage polyvalent;Kit de dev Java;Langage de Google;Langage sûr et rapide;Kit de dev .NET;Système de build C++;Exécuter des conteneurs;Test d'API;Client API léger;Gestionnaire de bases de données;IDE Python;IDE Java;Dev d'apps Android;Éditeur de texte rapide;Éditeur de texte léger;Terminal Windows moderne;Client SSH;Client FTP;Analyseur réseau;Gestionnaire de projets Unity;Gestionnaire d'archives;Gestionnaire d'archives;Outils de productivité Windows;Recherche de fichiers instantanée;Automatisation de tâches;Gestion des fenêtres;Lanceur rapide;Client torrent;Bureau à distance;Bureau à distance;Bureau à distance open source;Stockage cloud;Stockage cloud;Cloud chiffré;Synchro de fichiers privée;Captures et enregistrement d'écran;Créateur de clé USB bootable;Écriture d'images système;Nettoyeur système;Infos matériel;Anti-malware;Gestionnaire de mots de passe;Gestionnaire de mots de passe local;Gestionnaire de mots de passe;VPN sécurisé;Service VPN;Suite bureautique gratuite;Suite bureautique;Lecteur PDF;Notes et projets;Notes liées;Notes open source;Gestion de références;Cartes mémoire;Créateur de schémas;Éditeur d'images;Graphisme vectoriel;Peinture numérique;3D et animation;Design d'interfaces;Plus grande boutique de jeux;Boutique de jeux;Jeux sans DRM;Jeux Blizzard;Jeux EA;Jeux Ubisoft;Lanceur de jeux ouvert;Jeu Minecraft;Réglage de la carte graphique;Bibliothèque d'exécution;Environnement .NET;Bibliothèque graphique de jeux".split(";"),
+es:"Navegador rápido de Google;Navegador de código abierto;Navegador sin anuncios;Navegador con VPN integrada;Navegador personalizable;Navegación anónima;Chat de voz y comunidades;Mensajería rápida y segura;Mensajes y llamadas;Mensajería cifrada;Videoreuniones;Mensajería de equipos;Reuniones y colaboración;Llamadas y mensajes;Cliente de correo;Reproduce cualquier vídeo;Música en streaming;Grabación y emisión de pantalla;Editor de audio;Conversor de vídeo;Reproductor ligero;Centro multimedia;Tu biblioteca multimedia;Transmisión en vivo;Editor de vídeo gratis;Edición de vídeo pro;Herramientas de conversión;El editor de código más popular;Editor de código con IA;Control de versiones;Interfaz Git sencilla;Entorno de JavaScript;Lenguaje de propósito general;Kit de desarrollo Java;Lenguaje de Google;Lenguaje seguro y rápido;Kit de desarrollo .NET;Sistema de compilación C++;Ejecutar contenedores;Pruebas de API;Cliente API ligero;Gestor de bases de datos;IDE de Python;IDE de Java;Desarrollo de apps Android;Editor de texto rápido;Editor de texto ligero;Terminal moderna de Windows;Cliente SSH;Cliente FTP;Analizador de red;Gestor de proyectos Unity;Gestor de archivos comprimidos;Gestor de archivos comprimidos;Herramientas de productividad;Búsqueda instantánea de archivos;Automatización de tareas;Gestor de ventanas;Lanzador rápido;Cliente torrent;Escritorio remoto;Escritorio remoto;Escritorio remoto abierto;Almacenamiento en la nube;Almacenamiento en la nube;Nube cifrada;Sincronización privada;Capturas y grabación;Creador de USB de arranque;Grabador de imágenes de sistema;Limpiador del sistema;Información del hardware;Antimalware;Gestor de contraseñas;Gestor de contraseñas local;Gestor de contraseñas;VPN segura;Servicio VPN;Suite ofimática gratuita;Suite ofimática;Lector de PDF;Notas y proyectos;Notas enlazadas;Notas de código abierto;Gestor de referencias;Tarjetas de estudio;Creador de diagramas;Editor de imágenes;Gráficos vectoriales;Pintura digital;3D y animación;Diseño de interfaces;La mayor tienda de juegos;Tienda de juegos;Juegos sin DRM;Juegos de Blizzard;Juegos de EA;Juegos de Ubisoft;Lanzador de juegos abierto;Juego Minecraft;Ajuste de la tarjeta gráfica;Biblioteca de ejecución;Entorno .NET;Biblioteca gráfica de juegos".split(";")};
+var $=function(i){return document.getElementById(i)},A=[],os="win",sel={},custom=[],cat="all",q="",lang="ar",mode="i",dp=null,tm,ua=false;
+function t(k,o){var s=T[lang][k];for(var x in o)s=s.split("{"+x+"}").join(o[x]);return s}
+function cl(c){return lang=="ar"?c:CN[lang][Object.keys(D).indexOf(c)]}
+function okc(v){return /^[\w.+@\-]+$/.test(v)}
+Object.keys(D).forEach(function(c,ci){D[c].split("\n").forEach(function(r,i){var p=r.split("|"),b=p[2]||"";A.push({g:G++,c:c,ci:ci,i:i,n:p[0],w:p[1]||"",b:b.replace("f:",""),f:b.indexOf("f:")==0,p:POP.indexOf(p[0])>=0?1:0})})});
+A.sort(function(a,b){return a.ci-b.ci||b.p-a.p||a.i-b.i});
+function id(a){return os=="win"?a.w:a.b}
+var GL={globe:"<circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18'/>",chat:"<path d='M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.5A8 8 0 1 1 21 12z'/>",play:"<circle cx='12' cy='12' r='9'/><path d='M10 8.5l6 3.5-6 3.5z'/>",code:"<path d='M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16'/>",sliders:"<path d='M4 7h10M18 7h2M4 17h2M10 17h10'/><circle cx='16' cy='7' r='2'/><circle cx='8' cy='17' r='2'/>",doc:"<path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h6'/>",gamepad:"<path d='M6 8h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.2 2l-1.3-1.5h-7L7.2 16A3 3 0 0 1 2 14v-2a4 4 0 0 1 4-4z'/><path d='M7 11v3M5.5 12.5h3M16 11.5h.01M18 13.5h.01'/>",chip:"<rect x='6' y='6' width='12' height='12' rx='2'/><path d='M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4'/>",term:"<path d='M4 17l6-6-6-6M12 19h8'/>",hash:"<path d='M5 9h14M5 15h14M10 4L8 20M16 4l-2 16'/>",users:"<circle cx='9' cy='8' r='3'/><path d='M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1'/><circle cx='17.5' cy='9' r='2'/><path d='M18 14a4 4 0 0 1 3 4v2'/>",conv:"<path d='M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5'/>",archive:"<rect x='3' y='4' width='18' height='5' rx='1'/><path d='M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4'/>",zap:"<path d='M13 2L4 14h7l-1 8 9-12h-7z'/>",search:"<circle cx='11' cy='11' r='7'/><path d='M21 21l-5-5'/>",split:"<rect x='3' y='4' width='18' height='16' rx='2'/><path d='M12 4v16M3 12h9'/>",usb:"<rect x='7' y='9' width='10' height='13' rx='2'/><path d='M9 9V3h6v6M10.5 5.5h.01M13.5 5.5h.01'/>",disc:"<circle cx='12' cy='12' r='9'/><circle cx='12' cy='12' r='3'/>",cube:"<path d='M12 3l8 4.5v9L12 21l-8-4.5v-9z'/><path d='M12 12l8-4.5M12 12L4 7.5M12 12v9'/>",gauge:"<path d='M4 17a8 8 0 1 1 16 0'/><path d='M12 17l4-5'/>",braces:"<path d='M8 4c-2 0-3 1-3 3v3c0 1.2-.8 2-2 2 1.2 0 2 .8 2 2v3c0 2 1 3 3 3M16 4c2 0 3 1 3 3v3c0 1.2.8 2 2 2-1.2 0-2 .8-2 2v3c0 2-1 3-3 3'/>",x:"<path d='M6 6l12 12M18 6L6 18'/>",gear:"<circle cx='12' cy='12' r='3'/><path d='M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1'/>"};
+var CC={"المتصفحات":["#e8590c","globe"],"التواصل":["#f2751f","chat"],"الوسائط":["#c2410c","play"],"البرمجة":["#d9691a","code"],"الأدوات":["#525252","sliders"],"المكتب والتصميم":["#ea7a2e","doc"],"الألعاب":["#9a3412","gamepad"],"مكتبات النظام":["#737373","chip"]};
+var SP={"Slack":["#4a154b","hash"],"Microsoft Teams":["#5059c9","users"],"HandBrake":["#e0662b","conv"],"VS Code":["#007acc","code"],"Windows Terminal":["#1f2937","term"],"PuTTY":["#0f766e","term"],"WinRAR":["#7c3aed","archive"],"PowerToys":["#2563eb","zap"],"Everything":["#f97316","search"],"Rectangle":["#0ea5e9","split"],"Rufus":["#374151","usb"],"balenaEtcher":["#06b6d4","disc"],"CPU-Z":["#dc2626","chip"],"Adobe Reader":["#dc2626","doc"],"Minecraft Launcher":["#16a34a","cube"],"MSI Afterburner":["#b91c1c","gauge"],"Visual C++ Redist 2015+":["#6d28d9","braces"],".NET Desktop Runtime 8":["#512bd4","chip"],"DirectX":["#059669","x"]};
+function av(n,c){
+  var sl=n in IC?IC[n]:n.toLowerCase().replace(/[^a-z0-9]/g,""),g=SP[n]||CC[c]||["#6b6b6b","gear"],
+  L="<i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>"+GL[g[1]]+"</svg></i>",st=" style='background:"+g[0]+";color:#fff'";
+  if(!sl||IBAD[sl])return"<span class='av'"+st+">"+L+"</span>";
+  return"<span class='av"+(IOK[sl]?" ok":"")+"'"+st+">"+L+"<img data-s='"+sl+"' src='https://cdn.simpleicons.org/"+sl+"' alt='' loading='lazy'></span>";
+}
+$("list").addEventListener("load",function(e){var el=e.target;if(el.tagName=="IMG"){IOK[el.dataset.s]=1;el.parentNode.classList.add("ok")}},true);
+$("list").addEventListener("error",function(e){var el=e.target;if(el.tagName=="IMG"){IBAD[el.dataset.s]=1;el.remove()}},true);
+function count(){var n=custom.length;A.forEach(function(a){if(sel[a.n]&&id(a))n++});return n}
+function save(){try{localStorage.setItem("ot",JSON.stringify(snap()))}catch(e){}}
+function snap(){return{os:os,lang:lang,s:A.filter(function(a){return sel[a.n]}).map(function(a){return a.n}),c:custom}}
+function ld(o){if(o.os=="win"||o.os=="mac")os=o.os;if(T.hasOwnProperty(o.lang))lang=o.lang;sel={};(o.s||[]).forEach(function(n){sel[n]=true});custom=(o.c||[]).filter(okc)}
+function chips(){
+  var h=[["all",t("all")]].concat(Object.keys(D).map(function(c){return[c,cl(c)]}),[["sel",t("sel")]]);
+  $("chips").innerHTML=h.map(function(x){return"<button class='chip"+(cat==x[0]?" on":"")+"' data-c='"+x[0]+"'>"+x[1]+"</button>"}).join("");
+}
+function render(){
+  var h="",cur="",open=0,any=0,qq=q.toLowerCase();
+  A.forEach(function(a){
+    if(!id(a))return;
+    if(cat=="sel"?!sel[a.n]:(cat!="all"&&cat!=a.c))return;
+    var d=(DESC[a.n]||"|").split("|"),ds=lang=="ar"?d[0]:lang=="en"?d[1]:(DL[lang][a.g]||d[1]);
+    if(qq&&(a.n+" "+d.join(" ")+" "+ds).toLowerCase().indexOf(qq)<0)return;
+    if(a.c!=cur){if(open)h+="</div>";cur=a.c;h+="<h3>"+cl(cur)+"</h3><div class='grid'>";open=1}
+    any=1;
+    h+="<button class='card"+(sel[a.n]?" on":"")+"' data-n='"+a.n+"'>"+av(a.n,a.c)+"<span class='nm'><span class='t'><span class='tn'>"+a.n+"</span>"+(a.p?"<b class='pp'>"+t("pop")+"</b>":"")+"</span><small>"+ds+"</small></span></button>";
+  });
+  if(open)h+="</div>";
+  if(!any&&!(custom.length&&(cat=="all"||cat=="sel")))h="<div class='empty'>"+t("none")+"</div>";
+  if(custom.length&&(cat=="all"||cat=="sel")){h+="<h3>"+t("cu")+"</h3><div class='grid'>"+custom.map(function(c,i){return"<button class='card on' data-x='"+i+"'><span class='av'><i>"+c.charAt(0).toUpperCase()+"</i></span><span class='nm'><span class='t'><span class='tn' dir='ltr'>"+c+"</span></span></span></button>"}).join("")+"</div>"}
+  $("list").innerHTML=h;chips();
+  var n=count();$("cnt").textContent=t("cnt",{n:n,m:Math.max(1,Math.round(n*1.5))});
+  document.querySelector(".bar").classList.toggle("show",n>0);document.body.classList.toggle("has-sel",n>0);
+  save();
+}
+function osui(){guide();
+  $("t-win").className=os=="win"?"on":"";$("t-mac").className=os=="mac"?"on":"";
+  $("cust").placeholder=os=="win"?"Zoom.Zoom":"wget";
+  $("chint").innerHTML=t(os=="win"?"hw":"hm")+" <code>"+(os=="win"?"winget":"brew")+" search "+t("nm")+"</code>";
+}
+function ui(){
+  var r=document.documentElement;r.lang=lang;r.dir=lang=="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-i]").forEach(function(e){e.textContent=t(e.dataset.i)});
+  $("ip").innerHTML=t("p",{n:"<b>"+A.length+"</b>"});
+  $("q").placeholder=t("q");lui();document.title=t("title");try{var md=document.querySelector('meta[name="description"]');if(md)md.content=t("md")}catch(e){}
+  $("packs").innerHTML=Object.keys(PACKS).map(function(k){return"<button class='pack' data-k='"+k+"'>"+(lang=="ar"?k:PN[lang][Object.keys(PACKS).indexOf(k)])+"</button>"}).join("");
+  osui();render();dlgui();hh();
+}
+function say(k){if($("dlg").open){$("msg").textContent=t(k)}else{var e=$("toast");e.textContent=t(k);e.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){e.classList.remove("on")},2200)}}
+function cpy(s,k){
+  function ok(){say(k)}
+  function fb(){
+    var host=document.querySelector("dialog[open]")||document.body,x=document.createElement("textarea"),r=false;
+    x.value=s;x.setAttribute("readonly","");x.style.cssText="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0";
+    host.appendChild(x);x.focus();x.select();x.setSelectionRange(0,s.length);
+    try{r=document.execCommand("copy")}catch(e){}
+    x.remove();
+    if(r)ok();else{if($("dlg").open){$("code").focus();$("code").select()}say("cpx")}
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(ok,fb)}else fb();
+}
+function ill(i){
+  var w=os=="win",sh=w?"PowerShell":"Terminal",b="";
+  function F(x,y,ww,h,r,f,st){return"<rect x='"+x+"' y='"+y+"' width='"+ww+"' height='"+h+"' rx='"+r+"' style='fill:"+f+";stroke:"+(st||"none")+"'/>"}
+  function X(x,y,z,f,txt,wt){return"<text x='"+x+"' y='"+y+"' font-size='"+z+"' font-family='ui-monospace,Menlo,Consolas,monospace' font-weight='"+(wt||400)+"' style='fill:"+f+"'>"+txt+"</text>"}
+  function TM(){return F(16,6,188,84,8,"#0a0a0a")+"<circle cx='28' cy='16' r='3' style='fill:#ef4444'/><circle cx='38' cy='16' r='3' style='fill:#f59e0b'/><circle cx='48' cy='16' r='3' style='fill:#ff7a1a'/>"}
+  if(i==0)b=F(14,6,90,28,7,"var(--tint)","var(--ac)")+F(116,6,90,28,7,"var(--card)","var(--bd)")+F(14,40,90,28,7,"var(--card)","var(--bd)")+F(116,40,90,28,7,"var(--tint)","var(--ac)")+F(22,13,14,14,4,"var(--ac)")+F(124,13,14,14,4,"var(--mut)")+F(22,47,14,14,4,"var(--mut)")+F(124,47,14,14,4,"var(--ac)")+F(44,17,44,5,2,"var(--mut)")+F(146,17,44,5,2,"var(--mut)")+F(44,51,44,5,2,"var(--mut)")+F(146,51,44,5,2,"var(--mut)")+F(60,74,100,18,9,"var(--ac)")+F(80,80,60,6,3,"var(--card)");
+  if(i==1)b=F(46,26,128,38,10,"var(--ac)")+"<rect x='62' y='36' width='13' height='16' rx='3' style='fill:none;stroke:#fff;stroke-width:2'/><rect x='67' y='40' width='13' height='16' rx='3' style='fill:var(--ac);stroke:#fff;stroke-width:2'/>"+F(90,43,64,6,3,"#fff")+"<circle cx='150' cy='58' r='12' style='fill:none;stroke:var(--ac);opacity:.5'/><path d='M150 52v26l7-7 5 12 5-2-5-12h9z' style='fill:#fff;stroke:#111;stroke-width:1.5'/>";
+  if(i==2)b=F(24,10,172,28,14,"var(--card)","var(--bd)")+"<circle cx='40' cy='24' r='5' style='fill:none;stroke:var(--mut);stroke-width:2'/><path d='M44 28l5 5' style='stroke:var(--mut);stroke-width:2'/>"+X(56,28,11,"var(--tx)",sh)+F(24,46,172,38,10,"var(--tint)")+F(34,53,24,24,6,w?"#1e40af":"#111")+X(38,70,12,"#fff","&gt;_",700)+X(66,62,11,"var(--tx)",sh,600)+X(66,76,9,"var(--mut)",w?"App":"Utilities")+F(150,55,40,20,6,"var(--card)","var(--bd)")+X(157,69,9,"var(--tx)","Enter",700);
+  if(i==3)b=TM()+X(26,42,9,"#ffb27a",w?"PS&gt;":"~ $")+X(w?54:50,42,9,"#e6ebf5",w?"winget install -e --id …":"brew install --cask …")+F(112,58,84,24,7,"var(--ac)")+X(124,74,11,"var(--acx)",w?"Ctrl + V":"Cmd + V",700);
+  if(i==4)b=TM()+X(26,34,9,"#e6ebf5","[1/3] Chrome")+X(26,48,9,"#e6ebf5","[2/3] Git")+X(26,62,9,"#94a3b8","[3/3] VS Code …")+F(26,72,120,6,3,"#334155")+F(26,72,84,6,3,"#ff7a1a")+"<circle cx='176' cy='68' r='10' style='fill:#ff7a1a'/><path d='M171 68l4 4 7-8' style='fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round'/>"+F(150,22,44,18,6,"var(--ac)")+X(158,35,9,"var(--acx)","Enter",700);
+  return"<svg class='gi' viewBox='0 0 220 96' role='img'>"+b+"</svg>";
+}
+function guide(){
+  var w=os=="win",L=[t("s0"),t("s1"),t(w?"s2w":"s2m"),t("s3",{k:w?"Ctrl + V":"Cmd + V"}),t(w?"s4w":"s4m")],h="";
+  L.forEach(function(x,i){h+="<div class='gs'><span class='gn'>"+(i+1)+"</span><div class='gb2'><p>"+x+"</p>"+ill(i)+"</div></div>"});
+  $("gsteps").innerHTML=h;
+}
+function dlf(name,text,type){var b=new Blob([text],{type:type||"text/plain"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1500)}
+
+function bn(n){return String(n).replace(/[&|<>^%!"()]/g," ")}
+function script(){
+  var L=[],w=os=="win",s;A.forEach(function(a){if(sel[a.n]&&id(a))L.push({n:a.n,id:id(a),f:a.f})});custom.forEach(function(c){L.push({n:c,id:c,f:false})});
+  if(mode=="u")return w?"@echo off\r\nchcp 65001 >nul\r\nwinget upgrade --all"+(ua?" --include-unknown":"")+" --accept-package-agreements --accept-source-agreements\r\necho.\r\necho Done.\r\npause\r\n":"#!/bin/bash\nbrew update\nbrew upgrade\n"+(ua?"brew upgrade --cask --greedy\n":"")+"echo Done.\n";
+  if(!L.length)return(w?"REM ":"# ")+t("pick")+"\n";
+  var v=mode=="i"?"install":"uninstall";
+  if(w){
+    /* winget exit codes treated as success: already installed / not installed (nothing to do) */
+    var okc2=mode=="i"?"-1978335189":"-1978335212";
+    s="@echo off\r\nsetlocal enabledelayedexpansion\r\nchcp 65001 >nul\r\nwhere winget >nul 2>&1 || (echo winget not found. Update App Installer from Microsoft Store. & pause & exit /b 1)\r\nset OK=0\r\nset BAD=0\r\nset FL=\r\necho "+(mode=="i"?"Installing ":"Removing ")+L.length+" apps...\r\n";
+    L.forEach(function(x,i){var n=bn(x.n);s+="echo.\r\necho ["+(i+1)+"/"+L.length+"] "+n+"\r\nwinget "+v+" -e --id "+x.id+(mode=="i"?" --accept-package-agreements --accept-source-agreements":"")+"\r\nset RC=!errorlevel!\r\nif !RC! equ 0 (set /a OK+=1) else if !RC! equ "+okc2+" (set /a OK+=1) else (set /a BAD+=1 & set \"FL=!FL! "+n+";\")\r\n"});
+    return s+"echo.\r\necho ===== Summary: !OK! succeeded, !BAD! failed =====\r\nif !BAD! gtr 0 echo Failed: !FL!\r\npause\r\n";
+  }
+  var c=L.filter(function(x){return!x.f}).map(function(x){return x.id}),f=L.filter(function(x){return x.f}).map(function(x){return x.id}),b="brew "+v;
+  function lp(list,fl){return"for p in "+list.join(" ")+"; do\n  if "+b+fl+" \"$p\"; then OK=$((OK+1)); else BAD=$((BAD+1)); FAILED=\"$FAILED $p\"; fi\ndone\n"}
+  s="#!/bin/bash\n"+(mode=="i"?"command -v brew >/dev/null || /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n":"")+"OK=0; BAD=0; FAILED=\"\"\n";
+  if(c.length)s+=lp(c," --cask");
+  if(f.length)s+=lp(f,"");
+  return s+"echo\necho \"===== Summary: $OK succeeded, $BAD failed =====\"\nif [ \"$BAD\" -gt 0 ]; then echo \"Failed:$FAILED\"; fi\nexit $(( BAD > 0 ? 1 : 0 ))\n";
+}
+function fname(){return({i:"install-apps",r:"uninstall-apps",u:"update-all"})[mode]+(os=="win"?".bat":".sh")}
+function dlgui(){
+  $("uopt").style.display=mode=="u"?"block":"none";$("ugr").checked=ua;
+  $("code").value=os=="win"?(psCmd()||"# "+t("pick")):script();
+  $("dm").querySelectorAll("button").forEach(function(b){b.classList.toggle("on",b.dataset.m==mode)});
+}
+function psCmd(){
+  if(mode=="u")return"winget upgrade --all"+(ua?" --include-unknown":"")+" --accept-package-agreements --accept-source-agreements";
+  var L=[];A.forEach(function(a){if(sel[a.n]&&a.w)L.push(a.w)});custom.forEach(function(c){L.push(c)});
+  if(!L.length)return"";
+  var okc2=mode=="i"?"-1978335189":"-1978335212";
+  return"$f=@(); @("+L.map(function(x){return"'"+x+"'"}).join(",")+") | ForEach-Object { winget "+(mode=="i"?"install":"uninstall")+" -e --id $_"+(mode=="i"?" --accept-package-agreements --accept-source-agreements":"")+"; if ($LASTEXITCODE -notin 0,"+okc2+") { $f += $_ } }; if ($f) { 'Failed: ' + ($f -join ', ') } else { 'Done.' }";
+}
+function openDlg(m){mode=m;$("msg").textContent="";dlgui();$("dlg").showModal()}
+
+$("list").onclick=function(e){var b=e.target.closest("button");if(!b)return;
+  if(b.dataset.n)sel[b.dataset.n]=!sel[b.dataset.n];else if(b.dataset.x)custom.splice(+b.dataset.x,1);
+  render()};
+$("chips").onclick=function(e){var b=e.target.closest("button");if(b){cat=b.dataset.c;render()}};
+$("q").oninput=function(){q=this.value.trim();render()};
+$("packs").onclick=function(e){var b=e.target.closest("button");if(!b)return;PACKS[b.dataset.k].forEach(function(n){sel[n]=true});render()};
+$("none").onclick=function(){sel={};custom=[];cat="all";render()};
+$("addc").onclick=function(){var v=$("cust").value.trim();if(v&&okc(v)&&custom.indexOf(v)<0){custom.push(v);$("cust").value="";render()}};
+$("t-win").onclick=function(){os="win";osui();render();dlgui()};
+$("t-mac").onclick=function(){os="mac";osui();render();dlgui()};
+var LN=[["ar","العربية"],["en","English"],["tr","Türkçe"],["fr","Français"],["es","Español"]];
+function lui(){$("lc").textContent=lang.toUpperCase();$("llist").innerHTML=LN.map(function(x){return"<button class='lo"+(x[0]==lang?" on":"")+"' data-l='"+x[0]+"'><span>"+x[1]+"</span><small>"+x[0].toUpperCase()+"</small></button>"}).join("")}
+$("lang").onclick=function(){lui();$("ldlg").showModal()};
+$("llist").onclick=function(e){var b=e.target.closest("button");if(b){lang=b.dataset.l;$("ldlg").close();ui()}};
+["dlg","ldlg","gdlg"].forEach(function(i){$(i).addEventListener("click",function(e){var r=this.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)this.close()})});
+$("go").onclick=function(){if(!count()){say("pick");return}openDlg("i")};
+$("bupd").onclick=function(){openDlg("u")};
+$("dm").onclick=function(e){var b=e.target.closest("button");if(b){mode=b.dataset.m;$("msg").textContent="";dlgui()}};
+$("close").onclick=function(){$("dlg").close()};
+$("ugr").onchange=function(){ua=this.checked;dlgui()};
+$("ps").onclick=function(){if(mode!="u"&&!count()){say("pick");return}cpy($("code").value,"cpd")};
+$("code").onclick=function(){this.select()};
+$("gopen").onclick=$("gb").onclick=function(){guide();$("gdlg").showModal()};
+$("gclose").onclick=function(){$("gdlg").close()};
+$("bshare").onclick=function(){
+  if(!count()){say("pick");return}
+  var s=snap();cpy(location.href.split("#")[0]+"#o="+os+"&s="+s.s.map(encodeURIComponent).join("~")+(s.c.length?"&c="+s.c.map(encodeURIComponent).join("~"):""),"lk")};
+$("bexp").onclick=function(){dlf("onetap-list.json",JSON.stringify(snap(),null,2),"application/json");say("exd")};
+$("bimp").onclick=function(){$("imf").click()};
+$("imf").onchange=function(){var f=this.files[0],inp=this;if(!f)return;var r=new FileReader();
+  r.onload=function(){try{var o=JSON.parse(r.result);if(!o||typeof o!="object"||!Array.isArray(o.s))throw 0;ld(o);ui();say("imd")}catch(e){say("imx")}inp.value=""};r.readAsText(f)};
+$("theme").onclick=function(){var r=document.documentElement,d=r.dataset.theme!="light";
+  r.dataset.theme=d?"light":"dark";try{localStorage.setItem("th",r.dataset.theme)}catch(e){}};
+function hh(){document.body.style.paddingTop=document.querySelector(".top").offsetHeight+"px"}
+addEventListener("resize",hh);addEventListener("load",hh);
+addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;$("binst").hidden=false});
+addEventListener("appinstalled",function(){$("binst").hidden=true});
+$("binst").onclick=function(){if(dp){dp.prompt();dp=null;$("binst").hidden=true}};
+if("serviceWorker" in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(function(){});
+try{var th=localStorage.getItem("th");if(th)document.documentElement.dataset.theme=th}catch(e){}
+try{var sv=JSON.parse(localStorage.getItem("ot")||"null");if(sv)ld(sv)}catch(e){}
+try{var hs=location.hash.slice(1);if(hs){var m={};hs.split("&").forEach(function(x){var p=x.split("=");m[p[0]]=p[1]||""});
+  ld({os:m.o,s:m.s?m.s.split("~").map(decodeURIComponent):[],c:m.c?m.c.split("~").map(decodeURIComponent):[]})}}catch(e){}
+ui();
+
+</script>
+</body>
+</html>
