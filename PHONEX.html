@@ -97,11 +97,18 @@
             gap: 12px;
         }
 
-        .lang-select {
+        .lang-dropdown {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             background: linear-gradient(135deg, #38bdf8, #8b5cf6);
             color: #ffffff;
             border: none;
-            padding: 6px 12px;
+            padding: 7px 14px;
             border-radius: 20px;
             font-weight: 800;
             font-size: 0.85rem;
@@ -109,21 +116,72 @@
             transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
             font-family: 'Tajawal', sans-serif;
-            appearance: none;
-            -webkit-appearance: none;
-            text-align: center;
-            text-align-last: center;
+            white-space: nowrap;
         }
 
-        .lang-select:hover {
+        .lang-dropdown-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
         }
 
-        .lang-select option {
+        .lang-caret {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.25s ease;
+        }
+
+        .lang-dropdown.open .lang-caret {
+            transform: rotate(180deg);
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            min-width: 150px;
             background: #1e293b;
-            color: #f8fafc;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 6px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            overflow: hidden;
+        }
+
+        html[dir="ltr"] .lang-dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
+        .lang-dropdown.open .lang-dropdown-menu {
+            display: flex;
+        }
+
+        .lang-option {
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: background 0.15s ease;
+            text-align: center;
+        }
+
+        .lang-option:hover {
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        .lang-option.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(139, 92, 246, 0.25));
+            color: var(--primary-color);
         }
 
         .google-auth-container {
@@ -744,7 +802,14 @@
 
         @media (max-width: 600px) {
             nav {
-                padding: 8px 12px;
+                padding: 8px 10px;
+            }
+            .nav-logo-text {
+                display: none;
+            }
+            .lang-dropdown-btn {
+                padding: 6px 10px;
+                font-size: 0.78rem;
             }
             .brand-btn {
                 min-width: 45%;
@@ -791,13 +856,19 @@
                     data-logo_alignment="left">
                 </div>
             </div>
-            <select class="lang-select" id="langSelect" onchange="setLanguage(this.value)">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="tr">Türkçe</option>
-                <option value="es">Español</option>
-            </select>
+            <div class="lang-dropdown" id="langDropdown">
+                <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" onclick="toggleLangMenu(event)">
+                    <span id="langCurrentLabel">العربية</span>
+                    <svg class="lang-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="lang-dropdown-menu" id="langMenu">
+                    <div class="lang-option active" data-lang="ar" onclick="setLanguage('ar')">العربية</div>
+                    <div class="lang-option" data-lang="en" onclick="setLanguage('en')">English</div>
+                    <div class="lang-option" data-lang="fr" onclick="setLanguage('fr')">Français</div>
+                    <div class="lang-option" data-lang="tr" onclick="setLanguage('tr')">Türkçe</div>
+                    <div class="lang-option" data-lang="es" onclick="setLanguage('es')">Español</div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -1801,8 +1872,13 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 
-            const langSelect = document.getElementById('langSelect');
-            if (langSelect) langSelect.value = currentLang;
+            const langNames = { ar: 'العربية', en: 'English', fr: 'Français', tr: 'Türkçe', es: 'Español' };
+            document.getElementById('langCurrentLabel').innerText = langNames[currentLang];
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.lang === currentLang);
+            });
+            closeLangMenu();
+
             document.getElementById('pageTitle').innerText = i18n[currentLang].pageTitle;
             document.getElementById('headerTitle').innerText = i18n[currentLang].headerTitle;
             document.getElementById('headerDesc').innerText = i18n[currentLang].headerDesc;
@@ -1827,6 +1903,22 @@
             updateCompareBar();
             applyFilters();
         }
+
+        function toggleLangMenu(event) {
+            event.stopPropagation();
+            document.getElementById('langDropdown').classList.toggle('open');
+        }
+
+        function closeLangMenu() {
+            document.getElementById('langDropdown').classList.remove('open');
+        }
+
+        document.addEventListener('click', (event) => {
+            const dropdown = document.getElementById('langDropdown');
+            if (dropdown && !dropdown.contains(event.target)) {
+                closeLangMenu();
+            }
+        });
 
         // استعادة الجلسة تلقائياً عند تحميل الصفحة أو تحديثها
         window.addEventListener('DOMContentLoaded', () => {
