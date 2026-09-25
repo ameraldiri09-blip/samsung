@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#2563eb">
+<meta name="theme-color" content="#0a0a0a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -22,25 +22,24 @@
 <meta name="twitter:title" content="OneTap | One-file app installer">
 <meta name="twitter:description" content="Pick your apps and get one script that installs them all automatically on Windows and macOS from official sources.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"OneTap","url":"https://ameraldiri09-blip.github.io/samsung/onetap.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Windows, macOS","inLanguage":["ar","en","tr","fr","es"],"description":"Pick your apps and get one script that installs them all automatically on Windows and macOS from official sources."}</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%232563eb%27/><path d=%27M27 32H73M50 32V70%27 stroke=%27white%27 stroke-width=%2711%27 stroke-linecap=%27round%27 fill=%27none%27/><ellipse cx=%2750%27 cy=%2780%27 rx=%2723%27 ry=%265.5%27 fill=%27none%27 stroke=%27white%27 stroke-width=%274%27 opacity=%27.6%27/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230a0a0a%27/><path d=%27M27 32H73M50 32V70%27 stroke=%27%23ff7a1a%27 stroke-width=%2711%27 stroke-linecap=%27round%27 fill=%27none%27/><ellipse cx=%2750%27 cy=%2780%27 rx=%2723%27 ry=%265.5%27 fill=%27none%27 stroke=%27%23ff7a1a%27 stroke-width=%274%27 opacity=%27.6%27/></svg>">
 <style>
 :root{box-sizing:border-box;
---bg:#f6f7f9;--card:#fff;--tx:#0f172a;--mut:#64748b;--ac:#2563eb;--acx:#fff;--tint:#eaf1ff;--bd:#e2e8f0;--ok:#15803d}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1120;--card:#111a2e;--tx:#e6ebf5;--mut:#8b98b5;--ac:#6b96ff;--acx:#0b1120;--tint:rgba(107,150,255,.14);--bd:#202c47;--ok:#4ade80}}
-:root[data-theme="dark"]{--bg:#0b1120;--card:#111a2e;--tx:#e6ebf5;--mut:#8b98b5;--ac:#6b96ff;--acx:#0b1120;--tint:rgba(107,150,255,.14);--bd:#202c47;--ok:#4ade80}
+--bg:#0a0a0a;--card:#141414;--tx:#f5f1ec;--mut:#9a9187;--ac:#ff7a1a;--acg:linear-gradient(135deg,#ff9440,#f26a0a);--acx:#120a02;--gold:#ff9a4d;--glow:rgba(255,122,26,.12);--tint:rgba(255,122,26,.12);--bd:#262626;--ok:#ffa15c}
+:root[data-theme="light"]{--bg:#f7f5f2;--card:#ffffff;--tx:#111111;--mut:#6c665f;--ac:#d9560a;--acg:linear-gradient(135deg,#f2762a,#d9560a);--acx:#ffffff;--gold:#f07a1f;--glow:rgba(255,122,26,.10);--tint:#fff0e6;--bd:#e8e3dc;--ok:#d9560a}}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*:before,*:after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.5;padding-top:100px;padding-bottom:24px;transition:padding .25s}
+body{margin:0;background:radial-gradient(900px 420px at 50% -80px,var(--glow),transparent) no-repeat,var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.5;padding-top:100px;padding-bottom:24px;transition:padding .25s}
 body.has-sel{padding-bottom:92px}
 button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .wrap{max-width:920px;margin:0 auto;padding:0 14px}
-.top{position:fixed;top:0;inset-inline:0;z-index:20;background:var(--card);border-bottom:1px solid var(--bd);padding-top:env(safe-area-inset-top,0px)}
+.top{position:fixed;top:0;inset-inline:0;z-index:20;background:var(--card);border-bottom:2px solid var(--gold);padding-top:env(safe-area-inset-top,0px)}
 .in{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
 .wm{height:26px;width:auto;display:block;overflow:visible}
 .wm path,.wm circle,.wm ellipse{fill:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
 .w1{stroke:var(--tx)}
-.w2{stroke:var(--ac)}
+.w2{stroke:var(--gold)}
 .brand{display:flex;align-items:center;gap:10px}
 .logo{width:38px;height:38px;border-radius:10px;background:var(--ac);color:var(--acx);display:grid;place-items:center}
 .brand b{unicode-bidi:isolate;display:block;font-size:1.1rem;line-height:1.2}
@@ -57,7 +56,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-off
 .panel{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px}
 .seg{display:flex;gap:3px;padding:3px;margin-bottom:8px;background:var(--bg);border:1px solid var(--bd);border-radius:10px}
 .seg button{flex:1;padding:8px;border:0;background:transparent;border-radius:8px;color:var(--mut)}
-.seg button.on{background:var(--ac);color:var(--acx);font-weight:600}
+.seg button.on{background:var(--acg);color:var(--acx);font-weight:600}
 #q{width:100%;padding:11px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
 .chips{display:flex;gap:6px;overflow-x:auto;padding:10px 1px 3px;scrollbar-width:none}
 .chips::-webkit-scrollbar,.packs::-webkit-scrollbar{display:none}
@@ -87,7 +86,7 @@ h3{margin:24px 2px 10px;font-size:.82rem;font-weight:600;color:var(--mut)}
 .add input{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;direction:ltr}
 .btn{padding:10px 18px;border-radius:10px;border:1px solid var(--bd);background:var(--card)}
 .btn:hover{border-color:var(--mut)}
-.btn.pri{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600}
+.btn.pri{background:var(--acg);color:var(--acx);border-color:var(--ac);font-weight:600}
 .btn.pri:hover{filter:brightness(1.08)}
 .hint{color:var(--mut);font-size:.82rem;margin:8px 2px}
 #uopt{margin:10px 0 4px;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg)}
@@ -98,14 +97,14 @@ h3{margin:24px 2px 10px;font-size:.82rem;font-weight:600;color:var(--mut)}
 .foot{margin-top:40px;padding:22px 0 8px;border-top:1px solid var(--bd);text-align:center;color:var(--mut);font-size:.85rem}
 .foot p{margin:0 0 4px}
 .foot .fb{font-weight:700;color:var(--tx);unicode-bidi:isolate}
-.foot .fb em{font-style:normal;color:var(--ac)}
+.foot .fb em{font-style:normal;color:var(--gold)}
 .foot .who{color:var(--tx);font-weight:600;font-size:.92rem}
 .bar{position:fixed;inset-inline:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));z-index:9;transform:translateY(110%);visibility:hidden;transition:transform .25s ease,visibility 0s .25s}
 .bar.show{transform:none;visibility:visible;transition-delay:0s}
 .bar div{display:flex;gap:8px;align-items:center}
 .cnt{margin-inline-end:auto;font-weight:600}
 dialog{width:min(560px,94vw);border:1px solid var(--bd);border-radius:16px;background:var(--card);color:var(--tx);padding:18px}
-dialog::backdrop{background:rgba(2,6,23,.6)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
 dialog strong{font-size:1.05rem}
 textarea{width:100%;height:170px;direction:ltr;text-align:left;font:12px/1.55 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:10px;resize:vertical;margin:10px 0}
 .row{display:flex;gap:8px}.row .btn{flex:1}
@@ -361,10 +360,10 @@ Object.keys(D).forEach(function(c,ci){D[c].split("\n").forEach(function(r,i){var
 A.sort(function(a,b){return a.ci-b.ci||b.p-a.p||a.i-b.i});
 function id(a){return os=="win"?a.w:a.b}
 var GL={globe:"<circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18'/>",chat:"<path d='M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.5A8 8 0 1 1 21 12z'/>",play:"<circle cx='12' cy='12' r='9'/><path d='M10 8.5l6 3.5-6 3.5z'/>",code:"<path d='M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16'/>",sliders:"<path d='M4 7h10M18 7h2M4 17h2M10 17h10'/><circle cx='16' cy='7' r='2'/><circle cx='8' cy='17' r='2'/>",doc:"<path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h6'/>",gamepad:"<path d='M6 8h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.2 2l-1.3-1.5h-7L7.2 16A3 3 0 0 1 2 14v-2a4 4 0 0 1 4-4z'/><path d='M7 11v3M5.5 12.5h3M16 11.5h.01M18 13.5h.01'/>",chip:"<rect x='6' y='6' width='12' height='12' rx='2'/><path d='M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4'/>",term:"<path d='M4 17l6-6-6-6M12 19h8'/>",hash:"<path d='M5 9h14M5 15h14M10 4L8 20M16 4l-2 16'/>",users:"<circle cx='9' cy='8' r='3'/><path d='M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1'/><circle cx='17.5' cy='9' r='2'/><path d='M18 14a4 4 0 0 1 3 4v2'/>",conv:"<path d='M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5'/>",archive:"<rect x='3' y='4' width='18' height='5' rx='1'/><path d='M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4'/>",zap:"<path d='M13 2L4 14h7l-1 8 9-12h-7z'/>",search:"<circle cx='11' cy='11' r='7'/><path d='M21 21l-5-5'/>",split:"<rect x='3' y='4' width='18' height='16' rx='2'/><path d='M12 4v16M3 12h9'/>",usb:"<rect x='7' y='9' width='10' height='13' rx='2'/><path d='M9 9V3h6v6M10.5 5.5h.01M13.5 5.5h.01'/>",disc:"<circle cx='12' cy='12' r='9'/><circle cx='12' cy='12' r='3'/>",cube:"<path d='M12 3l8 4.5v9L12 21l-8-4.5v-9z'/><path d='M12 12l8-4.5M12 12L4 7.5M12 12v9'/>",gauge:"<path d='M4 17a8 8 0 1 1 16 0'/><path d='M12 17l4-5'/>",braces:"<path d='M8 4c-2 0-3 1-3 3v3c0 1.2-.8 2-2 2 1.2 0 2 .8 2 2v3c0 2 1 3 3 3M16 4c2 0 3 1 3 3v3c0 1.2.8 2 2 2-1.2 0-2 .8-2 2v3c0 2-1 3-3 3'/>",x:"<path d='M6 6l12 12M18 6L6 18'/>",gear:"<circle cx='12' cy='12' r='3'/><path d='M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1'/>"};
-var CC={"المتصفحات":["#2563eb","globe"],"التواصل":["#0ea5e9","chat"],"الوسائط":["#f97316","play"],"البرمجة":["#6366f1","code"],"الأدوات":["#64748b","sliders"],"المكتب والتصميم":["#10b981","doc"],"الألعاب":["#ef4444","gamepad"],"مكتبات النظام":["#8b5cf6","chip"]};
+var CC={"المتصفحات":["#e8590c","globe"],"التواصل":["#f2751f","chat"],"الوسائط":["#c2410c","play"],"البرمجة":["#d9691a","code"],"الأدوات":["#525252","sliders"],"المكتب والتصميم":["#ea7a2e","doc"],"الألعاب":["#9a3412","gamepad"],"مكتبات النظام":["#737373","chip"]};
 var SP={"Slack":["#4a154b","hash"],"Microsoft Teams":["#5059c9","users"],"HandBrake":["#e0662b","conv"],"VS Code":["#007acc","code"],"Windows Terminal":["#1f2937","term"],"PuTTY":["#0f766e","term"],"WinRAR":["#7c3aed","archive"],"PowerToys":["#2563eb","zap"],"Everything":["#f97316","search"],"Rectangle":["#0ea5e9","split"],"Rufus":["#374151","usb"],"balenaEtcher":["#06b6d4","disc"],"CPU-Z":["#dc2626","chip"],"Adobe Reader":["#dc2626","doc"],"Minecraft Launcher":["#16a34a","cube"],"MSI Afterburner":["#b91c1c","gauge"],"Visual C++ Redist 2015+":["#6d28d9","braces"],".NET Desktop Runtime 8":["#512bd4","chip"],"DirectX":["#059669","x"]};
 function av(n,c){
-  var sl=n in IC?IC[n]:n.toLowerCase().replace(/[^a-z0-9]/g,""),g=SP[n]||CC[c]||["#64748b","gear"],
+  var sl=n in IC?IC[n]:n.toLowerCase().replace(/[^a-z0-9]/g,""),g=SP[n]||CC[c]||["#6b6b6b","gear"],
   L="<i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>"+GL[g[1]]+"</svg></i>",st=" style='background:"+g[0]+";color:#fff'";
   if(!sl||IBAD[sl])return"<span class='av'"+st+">"+L+"</span>";
   return"<span class='av"+(IOK[sl]?" ok":"")+"'"+st+">"+L+"<img data-s='"+sl+"' src='https://cdn.simpleicons.org/"+sl+"' alt='' loading='lazy'></span>";
@@ -428,12 +427,12 @@ function ill(i){
   var w=os=="win",sh=w?"PowerShell":"Terminal",b="";
   function F(x,y,ww,h,r,f,st){return"<rect x='"+x+"' y='"+y+"' width='"+ww+"' height='"+h+"' rx='"+r+"' style='fill:"+f+";stroke:"+(st||"none")+"'/>"}
   function X(x,y,z,f,txt,wt){return"<text x='"+x+"' y='"+y+"' font-size='"+z+"' font-family='ui-monospace,Menlo,Consolas,monospace' font-weight='"+(wt||400)+"' style='fill:"+f+"'>"+txt+"</text>"}
-  function TM(){return F(16,6,188,84,8,"#0f172a")+"<circle cx='28' cy='16' r='3' style='fill:#ef4444'/><circle cx='38' cy='16' r='3' style='fill:#f59e0b'/><circle cx='48' cy='16' r='3' style='fill:#22c55e'/>"}
+  function TM(){return F(16,6,188,84,8,"#0a0a0a")+"<circle cx='28' cy='16' r='3' style='fill:#ef4444'/><circle cx='38' cy='16' r='3' style='fill:#f59e0b'/><circle cx='48' cy='16' r='3' style='fill:#ff7a1a'/>"}
   if(i==0)b=F(14,6,90,28,7,"var(--tint)","var(--ac)")+F(116,6,90,28,7,"var(--card)","var(--bd)")+F(14,40,90,28,7,"var(--card)","var(--bd)")+F(116,40,90,28,7,"var(--tint)","var(--ac)")+F(22,13,14,14,4,"var(--ac)")+F(124,13,14,14,4,"var(--mut)")+F(22,47,14,14,4,"var(--mut)")+F(124,47,14,14,4,"var(--ac)")+F(44,17,44,5,2,"var(--mut)")+F(146,17,44,5,2,"var(--mut)")+F(44,51,44,5,2,"var(--mut)")+F(146,51,44,5,2,"var(--mut)")+F(60,74,100,18,9,"var(--ac)")+F(80,80,60,6,3,"var(--card)");
   if(i==1)b=F(46,26,128,38,10,"var(--ac)")+"<rect x='62' y='36' width='13' height='16' rx='3' style='fill:none;stroke:#fff;stroke-width:2'/><rect x='67' y='40' width='13' height='16' rx='3' style='fill:var(--ac);stroke:#fff;stroke-width:2'/>"+F(90,43,64,6,3,"#fff")+"<circle cx='150' cy='58' r='12' style='fill:none;stroke:var(--ac);opacity:.5'/><path d='M150 52v26l7-7 5 12 5-2-5-12h9z' style='fill:#fff;stroke:#111;stroke-width:1.5'/>";
   if(i==2)b=F(24,10,172,28,14,"var(--card)","var(--bd)")+"<circle cx='40' cy='24' r='5' style='fill:none;stroke:var(--mut);stroke-width:2'/><path d='M44 28l5 5' style='stroke:var(--mut);stroke-width:2'/>"+X(56,28,11,"var(--tx)",sh)+F(24,46,172,38,10,"var(--tint)")+F(34,53,24,24,6,w?"#1e40af":"#111")+X(38,70,12,"#fff","&gt;_",700)+X(66,62,11,"var(--tx)",sh,600)+X(66,76,9,"var(--mut)",w?"App":"Utilities")+F(150,55,40,20,6,"var(--card)","var(--bd)")+X(157,69,9,"var(--tx)","Enter",700);
-  if(i==3)b=TM()+X(26,42,9,"#6ee7b7",w?"PS&gt;":"~ $")+X(w?54:50,42,9,"#e6ebf5",w?"winget install -e --id …":"brew install --cask …")+F(112,58,84,24,7,"var(--ac)")+X(124,74,11,"var(--acx)",w?"Ctrl + V":"Cmd + V",700);
-  if(i==4)b=TM()+X(26,34,9,"#e6ebf5","[1/3] Chrome")+X(26,48,9,"#e6ebf5","[2/3] Git")+X(26,62,9,"#94a3b8","[3/3] VS Code …")+F(26,72,120,6,3,"#334155")+F(26,72,84,6,3,"#22c55e")+"<circle cx='176' cy='68' r='10' style='fill:#22c55e'/><path d='M171 68l4 4 7-8' style='fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round'/>"+F(150,22,44,18,6,"var(--ac)")+X(158,35,9,"var(--acx)","Enter",700);
+  if(i==3)b=TM()+X(26,42,9,"#ffb27a",w?"PS&gt;":"~ $")+X(w?54:50,42,9,"#e6ebf5",w?"winget install -e --id …":"brew install --cask …")+F(112,58,84,24,7,"var(--ac)")+X(124,74,11,"var(--acx)",w?"Ctrl + V":"Cmd + V",700);
+  if(i==4)b=TM()+X(26,34,9,"#e6ebf5","[1/3] Chrome")+X(26,48,9,"#e6ebf5","[2/3] Git")+X(26,62,9,"#94a3b8","[3/3] VS Code …")+F(26,72,120,6,3,"#334155")+F(26,72,84,6,3,"#ff7a1a")+"<circle cx='176' cy='68' r='10' style='fill:#ff7a1a'/><path d='M171 68l4 4 7-8' style='fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round'/>"+F(150,22,44,18,6,"var(--ac)")+X(158,35,9,"var(--acx)","Enter",700);
   return"<svg class='gi' viewBox='0 0 220 96' role='img'>"+b+"</svg>";
 }
 function guide(){
@@ -509,7 +508,7 @@ $("bexp").onclick=function(){dlf("onetap-list.json",JSON.stringify(snap(),null,2
 $("bimp").onclick=function(){$("imf").click()};
 $("imf").onchange=function(){var f=this.files[0],inp=this;if(!f)return;var r=new FileReader();
   r.onload=function(){try{var o=JSON.parse(r.result);if(!o||typeof o!="object"||!Array.isArray(o.s))throw 0;ld(o);ui();say("imd")}catch(e){say("imx")}inp.value=""};r.readAsText(f)};
-$("theme").onclick=function(){var r=document.documentElement,d=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+$("theme").onclick=function(){var r=document.documentElement,d=r.dataset.theme!="light";
   r.dataset.theme=d?"light":"dark";try{localStorage.setItem("th",r.dataset.theme)}catch(e){}};
 function hh(){document.body.style.paddingTop=document.querySelector(".top").offsetHeight+"px"}
 addEventListener("resize",hh);addEventListener("load",hh);
