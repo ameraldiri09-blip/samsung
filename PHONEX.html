@@ -1871,6 +1871,7 @@
             currentLang = i18n[lang] ? lang : 'ar';
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            localStorage.setItem('phonexLang', currentLang);
 
             const langNames = { ar: 'العربية', en: 'English', fr: 'Français', tr: 'Türkçe', es: 'Español' };
             document.getElementById('langCurrentLabel').innerText = langNames[currentLang];
@@ -1920,7 +1921,7 @@
             }
         });
 
-        // استعادة الجلسة تلقائياً عند تحميل الصفحة أو تحديثها
+        // استعادة الجلسة واللغة المحفوظة تلقائياً عند تحميل الصفحة أو تحديثها
         window.addEventListener('DOMContentLoaded', () => {
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
@@ -1931,8 +1932,14 @@
                     currentUser = null;
                 }
             }
-            renderAuthUI();
-            applyFilters();
+
+            const savedLang = localStorage.getItem('phonexLang');
+            if (savedLang && i18n[savedLang] && savedLang !== currentLang) {
+                setLanguage(savedLang);
+            } else {
+                renderAuthUI();
+                applyFilters();
+            }
         });
     </script>
 </body>
