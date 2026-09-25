@@ -523,6 +523,35 @@
             line-height: 1.35;
         }
 
+        .price-tag {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 3px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 3px 10px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+
+        .price-approx-star {
+            color: var(--text-sub);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .price-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            max-width: 700px;
+            margin: 6px auto 0;
+            line-height: 1.5;
+        }
+
         .card-actions {
             display: flex;
             gap: 8px;
@@ -876,6 +905,7 @@
     <header>
         <h1 id="headerTitle">PHONEX</h1>
         <p id="headerDesc">تصفح جميع الهواتف الذكية، واستعرض المواصفات كاملة أو قارن بين أي جهازين فوراً</p>
+        <p id="priceNoteText" class="price-note">* الأسعار المعروضة تقريبية للاسترشاد فقط وقد تختلف حسب السوق والموزع والعملة المحلية.</p>
     </header>
 
     <div class="main-brand-selector">
@@ -1025,6 +1055,7 @@
                 clearBtn: "إلغاء",
                 compareModalTitle: "مقارنة المواصفات وتحليل الأفضلية",
                 footerText: "جميع الحقوق محفوظة &copy; 2026 | PHONEX | إعداد المهندس : عامر محمد زاهر الديري",
+                priceNote: "* الأسعار المعروضة تقريبية للاسترشاد فقط وقد تختلف حسب السوق والموزع والعملة المحلية.",
                 winnerText: "الأفضل ⭐",
                 overallWinnerTitle: "🏆 النتيجة العامة للمقارنة",
                 overallWinnerDesc: "الجهاز الفائز بشكل عام بناءً على الأداء والمواصفات هو:",
@@ -1037,6 +1068,7 @@
                     screen: "الشاشة",
                     cam: "الكاميرا الأساسية",
                     bat: "البطارية والشحن",
+                    price: "السعر التقريبي",
                     feature: "المواصفات / الجهاز"
                 },
                 categories: {
@@ -1051,7 +1083,8 @@
                     storage: "خيارات تخزين أكبر تتسع لبيانات أكثر",
                     screen: "شاشة أكبر/أعلى في معدل التحديث والدقة تجربة مشاهدة أفضل",
                     cam: "دقة كاميرا أعلى أو منظومة تصوير متقدمة مع حساس أضخم",
-                    bat: "سعة بطارية أكبر أو سرعة شحن أسرع بعمر أطول"
+                    bat: "سعة بطارية أكبر أو سرعة شحن أسرع بعمر أطول",
+                    price: "سعر تقريبي أقل يعني قيمة أفضل مقابل السعر"
                 }
             },
             en: {
@@ -1079,6 +1112,7 @@
                 clearBtn: "Clear",
                 compareModalTitle: "Specification Comparison & Analysis",
                 footerText: "All Rights Reserved &copy; 2026 | PHONEX | Prepared by Eng. Amer Mohammed Zaher Aldiri",
+                priceNote: "* Prices shown are approximate estimates for guidance only and may vary by market, retailer and local currency.",
                 winnerText: "Best Option ⭐",
                 overallWinnerTitle: "🏆 Overall Winner",
                 overallWinnerDesc: "The recommended device based on total specifications is:",
@@ -1091,6 +1125,7 @@
                     screen: "Display",
                     cam: "Main Camera",
                     bat: "Battery & Charging",
+                    price: "Approx. Price",
                     feature: "Specification / Device"
                 },
                 categories: {
@@ -1105,7 +1140,8 @@
                     storage: "Larger storage configuration available",
                     screen: "Superior display with higher refresh rate / resolution",
                     cam: "Higher resolution or advanced camera system",
-                    bat: "Larger battery capacity or faster charging speeds"
+                    bat: "Larger battery capacity or faster charging speeds",
+                    price: "Lower approximate price means better value for money"
                 }
             },
             fr: {
@@ -1133,6 +1169,7 @@
                 clearBtn: "Effacer",
                 compareModalTitle: "Comparaison des caractéristiques et analyse",
                 footerText: "Tous droits réservés &copy; 2026 | PHONEX | Réalisé par Ing. Amer Mohammed Zaher Aldiri",
+                priceNote: "* Les prix affichés sont des estimations approximatives données à titre indicatif et peuvent varier selon le marché, le revendeur et la devise locale.",
                 winnerText: "Meilleur choix ⭐",
                 overallWinnerTitle: "🏆 Résultat global de la comparaison",
                 overallWinnerDesc: "L'appareil recommandé selon les caractéristiques globales est :",
@@ -1145,6 +1182,7 @@
                     screen: "Écran",
                     cam: "Caméra principale",
                     bat: "Batterie et charge",
+                    price: "Prix approximatif",
                     feature: "Caractéristique / Appareil"
                 },
                 categories: {
@@ -1159,7 +1197,8 @@
                     storage: "Options de stockage plus grandes disponibles",
                     screen: "Écran supérieur avec un taux de rafraîchissement/résolution plus élevé",
                     cam: "Résolution plus élevée ou système de caméra avancé",
-                    bat: "Capacité de batterie plus grande ou charge plus rapide"
+                    bat: "Capacité de batterie plus grande ou charge plus rapide",
+                    price: "Un prix approximatif plus bas signifie un meilleur rapport qualité-prix"
                 }
             },
             tr: {
@@ -1187,6 +1226,7 @@
                 clearBtn: "Temizle",
                 compareModalTitle: "Özellik Karşılaştırması ve Analiz",
                 footerText: "Tüm Hakları Saklıdır &copy; 2026 | PHONEX | Hazırlayan Müh. Amer Mohammed Zaher Aldiri",
+                priceNote: "* Gösterilen fiyatlar yalnızca fikir vermek amacıyla verilmiş yaklaşık değerlerdir; pazara, satıcıya ve yerel para birimine göre değişebilir.",
                 winnerText: "En İyi Seçenek ⭐",
                 overallWinnerTitle: "🏆 Genel Karşılaştırma Sonucu",
                 overallWinnerDesc: "Toplam özelliklere göre önerilen cihaz:",
@@ -1199,6 +1239,7 @@
                     screen: "Ekran",
                     cam: "Ana Kamera",
                     bat: "Batarya ve Şarj",
+                    price: "Yaklaşık Fiyat",
                     feature: "Özellik / Cihaz"
                 },
                 categories: {
@@ -1213,7 +1254,8 @@
                     storage: "Daha büyük depolama seçenekleri mevcut",
                     screen: "Daha yüksek yenileme hızı/çözünürlüğe sahip üstün ekran",
                     cam: "Daha yüksek çözünürlük veya gelişmiş kamera sistemi",
-                    bat: "Daha büyük batarya kapasitesi veya daha hızlı şarj"
+                    bat: "Daha büyük batarya kapasitesi veya daha hızlı şarj",
+                    price: "Daha düşük yaklaşık fiyat, daha iyi fiyat/performans demektir"
                 }
             },
             es: {
@@ -1241,6 +1283,7 @@
                 clearBtn: "Borrar",
                 compareModalTitle: "Comparación de especificaciones y análisis",
                 footerText: "Todos los derechos reservados &copy; 2026 | PHONEX | Preparado por el Ing. Amer Mohammed Zaher Aldiri",
+                priceNote: "* Los precios mostrados son estimaciones aproximadas solo a modo orientativo y pueden variar según el mercado, el vendedor y la moneda local.",
                 winnerText: "Mejor opción ⭐",
                 overallWinnerTitle: "🏆 Resultado general de la comparación",
                 overallWinnerDesc: "El dispositivo recomendado según las especificaciones totales es:",
@@ -1253,6 +1296,7 @@
                     screen: "Pantalla",
                     cam: "Cámara principal",
                     bat: "Batería y carga",
+                    price: "Precio aproximado",
                     feature: "Especificación / Dispositivo"
                 },
                 categories: {
@@ -1267,176 +1311,201 @@
                     storage: "Opciones de almacenamiento más grandes disponibles",
                     screen: "Pantalla superior con mayor tasa de refresco/resolución",
                     cam: "Mayor resolución o sistema de cámara avanzado",
-                    bat: "Mayor capacidad de batería o carga más rápida"
+                    bat: "Mayor capacidad de batería o carga más rápida",
+                    price: "Un precio aproximado más bajo significa mejor relación calidad-precio"
                 }
             }
         };
 
         const samsungList = [
-            { id: "s26u", name: "Samsung Galaxy S26 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 5", ram: "16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (144Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s25u", name: "Samsung Galaxy S25 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s24u", name: "Samsung Galaxy S24 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s23u", name: "Samsung Galaxy S23 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "s22u", name: "Samsung Galaxy S22 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 1", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            { id: "s21u", name: "Samsung Galaxy S21 Ultra", subCat: "ultra", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            { id: "s20u", name: "Samsung Galaxy S20 Ultra", subCat: "ultra", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "12GB/16GB", storage: "128GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh" },
-            { id: "zf8u", name: "Samsung Galaxy Z Fold 8 Ultra", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5", ram: "16GB", storage: "512GB/1TB", screen: "8.0-inch Foldable Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh" },
-            { id: "zf8", name: "Samsung Galaxy Z Fold 8", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual/Triple", bat: "4800 mAh" },
-            { id: "zflip8", name: "Samsung Galaxy Z Flip 8", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.9-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual", bat: "4300 mAh" },
-            { id: "zf7", name: "Samsung Galaxy Z Fold 7", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf6", name: "Samsung Galaxy Z Fold 6", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf5", name: "Samsung Galaxy Z Fold 5", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf4", name: "Samsung Galaxy Z Fold 4", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8+ Gen 1", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh" },
-            { id: "zf3", name: "Samsung Galaxy Z Fold 3", subCat: "fold", brand: "samsung", cpu: "Snapdragon 888", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4400 mAh" },
-            { id: "zf2", name: "Samsung Galaxy Z Fold 2", subCat: "fold", brand: "samsung", cpu: "Snapdragon 865+", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "zforg", name: "Samsung Galaxy Fold (Original)", subCat: "fold", brand: "samsung", cpu: "Snapdragon 855", ram: "12GB", storage: "512GB", screen: "7.3-inch Foldable Dynamic AMOLED", cam: "12 MP Triple", bat: "4380 mAh" },
-            { id: "zflip7", name: "Samsung Galaxy Z Flip 7", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite / Exynos", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh" },
-            { id: "zflip6", name: "Samsung Galaxy Z Flip 6", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh" },
-            { id: "zflip5", name: "Samsung Galaxy Z Flip 5", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
-            { id: "zflip4", name: "Samsung Galaxy Z Flip 4", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8+ Gen 1", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh" },
-            { id: "zflip3", name: "Samsung Galaxy Z Flip 3", subCat: "fold", brand: "samsung", cpu: "Snapdragon 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3300 mAh" },
-            { id: "s26p", name: "Samsung Galaxy S26 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
-            { id: "s26", name: "Samsung Galaxy S26", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
-            { id: "s25p", name: "Samsung Galaxy S25 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
-            { id: "s25", name: "Samsung Galaxy S25", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
-            { id: "s24p", name: "Samsung Galaxy S24 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh" },
-            { id: "s24", name: "Samsung Galaxy S24", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh" },
-            { id: "s24fe", name: "Samsung Galaxy S24 FE", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400e", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh" },
-            { id: "s23p", name: "Samsung Galaxy S23 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh" },
-            { id: "s23", name: "Samsung Galaxy S23", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3900 mAh" },
-            { id: "s23fe", name: "Samsung Galaxy S23 FE", subCat: "s-series", brand: "samsung", cpu: "Exynos 2200 / SD 8 Gen 1", ram: "8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh" },
-            { id: "s22p", name: "Samsung Galaxy S22 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh" },
-            { id: "s22", name: "Samsung Galaxy S22", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3700 mAh" },
-            { id: "s21fe", name: "Samsung Galaxy S21 FE 5G", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 888 / Exynos 2100", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "s21p", name: "Samsung Galaxy S21 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4800 mAh" },
-            { id: "s21", name: "Samsung Galaxy S21", subCat: "s-series", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh" },
-            { id: "s20fe", name: "Samsung Galaxy S20 FE 5G", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 865", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "s20p", name: "Samsung Galaxy S20 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Quad", bat: "4500 mAh" },
-            { id: "s20", name: "Samsung Galaxy S20", subCat: "s-series", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh" },
-            { id: "s10p", name: "Samsung Galaxy S10+", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "8GB/12GB", storage: "128GB/512GB/1TB", screen: "6.4-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
-            { id: "s10", name: "Samsung Galaxy S10", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "8GB", storage: "128GB/512GB", screen: "6.1-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh" },
-            { id: "s10e", name: "Samsung Galaxy S10e", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "6GB/8GB", storage: "128GB/256GB", screen: "5.8-inch Dynamic AMOLED", cam: "16 MP Dual", bat: "3100 mAh" },
-            { id: "n20u", name: "Samsung Galaxy Note 20 Ultra", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 990 / SD 865+", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Triple", bat: "4500 mAh" },
-            { id: "n20", name: "Samsung Galaxy Note 20", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 990 / SD 865+", ram: "8GB", storage: "256GB", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP Triple", bat: "4300 mAh" },
-            { id: "n10p", name: "Samsung Galaxy Note 10+", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9825 / SD 855", ram: "12GB", storage: "256GB/512GB", screen: "6.8-inch Dynamic AMOLED", cam: "12 MP Quad", bat: "4300 mAh" },
-            { id: "n10", name: "Samsung Galaxy Note 10", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9825 / SD 855", ram: "8GB", storage: "256GB", screen: "6.3-inch Dynamic AMOLED", cam: "12 MP Triple", bat: "3500 mAh" },
-            { id: "n10l", name: "Samsung Galaxy Note 10 Lite", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9810", ram: "6GB/8GB", storage: "128GB", screen: "6.7-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh" },
-            { id: "n9", name: "Samsung Galaxy Note 9", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9810 / SD 845", ram: "6GB/8GB", storage: "128GB/512GB", screen: "6.4-inch Super AMOLED", cam: "12 MP Dual", bat: "4000 mAh" },
-            { id: "a57", name: "Samsung Galaxy A57 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1680 (4nm)", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super AMOLED+ (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "a56", name: "Samsung Galaxy A56 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1580", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a55", name: "Samsung Galaxy A55 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1480", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a54", name: "Samsung Galaxy A54 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a53", name: "Samsung Galaxy A53 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "5000 mAh" },
-            { id: "a52s", name: "Samsung Galaxy A52s 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "4500 mAh" },
-            { id: "a37", name: "Samsung Galaxy A37 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1480 / SD 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)" },
-            { id: "a36", name: "Samsung Galaxy A36 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a35", name: "Samsung Galaxy A35 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a34", name: "Samsung Galaxy A34 5G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "48 MP Triple", bat: "5000 mAh" },
-            { id: "a25", name: "Samsung Galaxy A25 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a17", name: "Samsung Galaxy A17 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1330 (5nm)", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh" },
-            { id: "a16", name: "Samsung Galaxy A16 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1330 / Dimensity 6300", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a15", name: "Samsung Galaxy A15 5G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "a07", name: "Samsung Galaxy A07 4G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G99 (6nm)", ram: "4GB/6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.7-inch PLS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (25W)" },
-            { id: "a06", name: "Samsung Galaxy A06", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G85", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "a05s", name: "Samsung Galaxy A05s", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 680", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "m55", name: "Samsung Galaxy M55 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "m54", name: "Samsung Galaxy M54 5G", subCat: "m-series", brand: "samsung", cpu: "Exynos 1380", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "108 MP Triple", bat: "6000 mAh" },
-            { id: "m35", name: "Samsung Galaxy M35 5G", subCat: "m-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
-            { id: "m15", name: "Samsung Galaxy M15 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" },
-            { id: "f55", name: "Samsung Galaxy F55 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "f15", name: "Samsung Galaxy F15 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh" }
+            { id: "s26u", name: "Samsung Galaxy S26 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 5", ram: "16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (144Hz)", cam: "200 MP Quad", bat: "5000 mAh", price: "$1,299" },
+            { id: "s25u", name: "Samsung Galaxy S25 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh", price: "$1,299" },
+            { id: "s24u", name: "Samsung Galaxy S24 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh", price: "$1,299" },
+            { id: "s23u", name: "Samsung Galaxy S23 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "200 MP Quad", bat: "5000 mAh", price: "$1,199" },
+            { id: "s22u", name: "Samsung Galaxy S22 Ultra", subCat: "ultra", brand: "samsung", cpu: "Snapdragon 8 Gen 1", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh", price: "$1,199" },
+            { id: "s21u", name: "Samsung Galaxy S21 Ultra", subCat: "ultra", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.8-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh", price: "$1,199" },
+            { id: "s20u", name: "Samsung Galaxy S20 Ultra", subCat: "ultra", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "12GB/16GB", storage: "128GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Quad", bat: "5000 mAh", price: "$1,399" },
+            { id: "zf8u", name: "Samsung Galaxy Z Fold 8 Ultra", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5", ram: "16GB", storage: "512GB/1TB", screen: "8.0-inch Foldable Dynamic AMOLED 2X (120Hz)", cam: "200 MP Quad", bat: "5000 mAh", price: "$2,199" },
+            { id: "zf8", name: "Samsung Galaxy Z Fold 8", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual/Triple", bat: "4800 mAh", price: "$1,899" },
+            { id: "zflip8", name: "Samsung Galaxy Z Flip 8", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.9-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Dual", bat: "4300 mAh", price: "$1,099" },
+            { id: "zf7", name: "Samsung Galaxy Z Fold 7", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh", price: "$1,799" },
+            { id: "zf6", name: "Samsung Galaxy Z Fold 6", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh", price: "$1,799" },
+            { id: "zf5", name: "Samsung Galaxy Z Fold 5", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh", price: "$1,799" },
+            { id: "zf4", name: "Samsung Galaxy Z Fold 4", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8+ Gen 1", ram: "12GB", storage: "256GB/512GB/1TB", screen: "7.6-inch Foldable Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4400 mAh", price: "$1,799" },
+            { id: "zf3", name: "Samsung Galaxy Z Fold 3", subCat: "fold", brand: "samsung", cpu: "Snapdragon 888", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4400 mAh", price: "$1,799" },
+            { id: "zf2", name: "Samsung Galaxy Z Fold 2", subCat: "fold", brand: "samsung", cpu: "Snapdragon 865+", ram: "12GB", storage: "256GB/512GB", screen: "7.6-inch Foldable AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh", price: "$1,999" },
+            { id: "zforg", name: "Samsung Galaxy Fold (Original)", subCat: "fold", brand: "samsung", cpu: "Snapdragon 855", ram: "12GB", storage: "512GB", screen: "7.3-inch Foldable Dynamic AMOLED", cam: "12 MP Triple", bat: "4380 mAh", price: "$1,980" },
+            { id: "zflip7", name: "Samsung Galaxy Z Flip 7", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Elite / Exynos", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh", price: "$1,099" },
+            { id: "zflip6", name: "Samsung Galaxy Z Flip 6", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "50 MP Dual", bat: "4000 mAh", price: "$1,099" },
+            { id: "zflip5", name: "Samsung Galaxy Z Flip 5", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh", price: "$999" },
+            { id: "zflip4", name: "Samsung Galaxy Z Flip 4", subCat: "fold", brand: "samsung", cpu: "Snapdragon 8+ Gen 1", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3700 mAh", price: "$999" },
+            { id: "zflip3", name: "Samsung Galaxy Z Flip 3", subCat: "fold", brand: "samsung", cpu: "Snapdragon 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Foldable AMOLED 2X", cam: "12 MP Dual", bat: "3300 mAh", price: "$999" },
+            { id: "s26p", name: "Samsung Galaxy S26 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh", price: "$999" },
+            { id: "s26", name: "Samsung Galaxy S26", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 5 / Exynos 2600", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh", price: "$799" },
+            { id: "s25p", name: "Samsung Galaxy S25 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh", price: "$999" },
+            { id: "s25", name: "Samsung Galaxy S25", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Elite", ram: "12GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh", price: "$799" },
+            { id: "s24p", name: "Samsung Galaxy S24 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "12GB", storage: "256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4900 mAh", price: "$999" },
+            { id: "s24", name: "Samsung Galaxy S24", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400 / SD 8 Gen 3", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4000 mAh", price: "$799" },
+            { id: "s24fe", name: "Samsung Galaxy S24 FE", subCat: "s-series", brand: "samsung", cpu: "Exynos 2400e", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh", price: "$649" },
+            { id: "s23p", name: "Samsung Galaxy S23 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "256GB/512GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4700 mAh", price: "$999" },
+            { id: "s23", name: "Samsung Galaxy S23", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 2", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3900 mAh", price: "$799" },
+            { id: "s23fe", name: "Samsung Galaxy S23 FE", subCat: "s-series", brand: "samsung", cpu: "Exynos 2200 / SD 8 Gen 1", ram: "8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh", price: "$599" },
+            { id: "s22p", name: "Samsung Galaxy S22 Plus", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.6-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "4500 mAh", price: "$999" },
+            { id: "s22", name: "Samsung Galaxy S22", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 8 Gen 1 / Exynos 2200", ram: "8GB", storage: "128GB/256GB", screen: "6.1-inch Dynamic AMOLED 2X", cam: "50 MP Triple", bat: "3700 mAh", price: "$799" },
+            { id: "s21fe", name: "Samsung Galaxy S21 FE 5G", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 888 / Exynos 2100", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Dynamic AMOLED 2X", cam: "12 MP Triple", bat: "4500 mAh", price: "$699" },
+            { id: "s21p", name: "Samsung Galaxy S21 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4800 mAh", price: "$999" },
+            { id: "s21", name: "Samsung Galaxy S21", subCat: "s-series", brand: "samsung", cpu: "Exynos 2100 / SD 888", ram: "8GB", storage: "128GB/256GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh", price: "$799" },
+            { id: "s20fe", name: "Samsung Galaxy S20 FE 5G", subCat: "s-series", brand: "samsung", cpu: "Snapdragon 865", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh", price: "$699" },
+            { id: "s20p", name: "Samsung Galaxy S20 Plus", subCat: "s-series", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB/512GB", screen: "6.7-inch Dynamic AMOLED 2X", cam: "64 MP Quad", bat: "4500 mAh", price: "$999" },
+            { id: "s20", name: "Samsung Galaxy S20", subCat: "s-series", brand: "samsung", cpu: "Exynos 990 / SD 865", ram: "8GB/12GB", storage: "128GB", screen: "6.2-inch Dynamic AMOLED 2X", cam: "64 MP Triple", bat: "4000 mAh", price: "$999" },
+            { id: "s10p", name: "Samsung Galaxy S10+", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "8GB/12GB", storage: "128GB/512GB/1TB", screen: "6.4-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh", price: "$999" },
+            { id: "s10", name: "Samsung Galaxy S10", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "8GB", storage: "128GB/512GB", screen: "6.1-inch Dynamic AMOLED", cam: "16 MP Triple", bat: "3400 mAh", price: "$899" },
+            { id: "s10e", name: "Samsung Galaxy S10e", subCat: "s-series", brand: "samsung", cpu: "Exynos 9820 / SD 855", ram: "6GB/8GB", storage: "128GB/256GB", screen: "5.8-inch Dynamic AMOLED", cam: "16 MP Dual", bat: "3100 mAh", price: "$749" },
+            { id: "n20u", name: "Samsung Galaxy Note 20 Ultra", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 990 / SD 865+", ram: "12GB", storage: "128GB/256GB/512GB", screen: "6.9-inch Dynamic AMOLED 2X", cam: "108 MP Triple", bat: "4500 mAh", price: "$1,299" },
+            { id: "n20", name: "Samsung Galaxy Note 20", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 990 / SD 865+", ram: "8GB", storage: "256GB", screen: "6.7-inch Super AMOLED Plus", cam: "64 MP Triple", bat: "4300 mAh", price: "$999" },
+            { id: "n10p", name: "Samsung Galaxy Note 10+", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9825 / SD 855", ram: "12GB", storage: "256GB/512GB", screen: "6.8-inch Dynamic AMOLED", cam: "12 MP Quad", bat: "4300 mAh", price: "$1,099" },
+            { id: "n10", name: "Samsung Galaxy Note 10", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9825 / SD 855", ram: "8GB", storage: "256GB", screen: "6.3-inch Dynamic AMOLED", cam: "12 MP Triple", bat: "3500 mAh", price: "$949" },
+            { id: "n10l", name: "Samsung Galaxy Note 10 Lite", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9810", ram: "6GB/8GB", storage: "128GB", screen: "6.7-inch Super AMOLED", cam: "12 MP Triple", bat: "4500 mAh", price: "$549" },
+            { id: "n9", name: "Samsung Galaxy Note 9", subCat: "note-legacy", brand: "samsung", cpu: "Exynos 9810 / SD 845", ram: "6GB/8GB", storage: "128GB/512GB", screen: "6.4-inch Super AMOLED", cam: "12 MP Dual", bat: "4000 mAh", price: "$999" },
+            { id: "a57", name: "Samsung Galaxy A57 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1680 (4nm)", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super AMOLED+ (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)", price: "$349" },
+            { id: "a56", name: "Samsung Galaxy A56 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1580", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED (120Hz)", cam: "50 MP Triple", bat: "5000 mAh", price: "$449" },
+            { id: "a55", name: "Samsung Galaxy A55 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1480", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$399" },
+            { id: "a54", name: "Samsung Galaxy A54 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$349" },
+            { id: "a53", name: "Samsung Galaxy A53 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "5000 mAh", price: "$349" },
+            { id: "a52s", name: "Samsung Galaxy A52s 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "64 MP Quad", bat: "4500 mAh", price: "$399" },
+            { id: "a37", name: "Samsung Galaxy A37 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1480 / SD 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (45W)", price: "$249" },
+            { id: "a36", name: "Samsung Galaxy A36 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 7s Gen 2", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$349" },
+            { id: "a35", name: "Samsung Galaxy A35 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$299" },
+            { id: "a34", name: "Samsung Galaxy A34 5G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "48 MP Triple", bat: "5000 mAh", price: "$299" },
+            { id: "a25", name: "Samsung Galaxy A25 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$249" },
+            { id: "a27", name: "Samsung Galaxy A27 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 6 Gen 3 (4nm)", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch FHD+ Super AMOLED (120Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh (25W)", price: "$329" },
+            { id: "a17", name: "Samsung Galaxy A17 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1330 (5nm)", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED (90Hz)", cam: "50 MP Triple OIS", bat: "5000 mAh", price: "$199" },
+            { id: "a16", name: "Samsung Galaxy A16 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1330 / Dimensity 6300", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$179" },
+            { id: "a15", name: "Samsung Galaxy A15 5G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "5000 mAh", price: "$199" },
+            { id: "a07", name: "Samsung Galaxy A07 4G", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G99 (6nm)", ram: "4GB/6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.7-inch PLS LCD (90Hz)", cam: "50 MP Dual", bat: "5000 mAh (25W)", price: "$139" },
+            { id: "a06", name: "Samsung Galaxy A06", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G85", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD", cam: "50 MP Dual", bat: "5000 mAh", price: "$119" },
+            { id: "a05s", name: "Samsung Galaxy A05s", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 680", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.7-inch PLS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh", price: "$149" },
+            { id: "a13", name: "Samsung Galaxy A13", subCat: "a-series", brand: "samsung", cpu: "MediaTek Helio G80 / Exynos 850", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.6-inch PLS LCD 90Hz", cam: "50 MP Quad", bat: "5000 mAh", price: "$229" },
+            { id: "a23", name: "Samsung Galaxy A23 5G", subCat: "a-series", brand: "samsung", cpu: "Snapdragon 695", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.6-inch PLS LCD 90Hz", cam: "50 MP Quad", bat: "5000 mAh", price: "$299" },
+            { id: "a33", name: "Samsung Galaxy A33 5G", subCat: "a-series", brand: "samsung", cpu: "Exynos 1280", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.4-inch Super AMOLED 90Hz", cam: "48 MP Quad OIS", bat: "5000 mAh", price: "$319" },
+            { id: "m55", name: "Samsung Galaxy M55 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh", price: "$349" },
+            { id: "m54", name: "Samsung Galaxy M54 5G", subCat: "m-series", brand: "samsung", cpu: "Exynos 1380", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "108 MP Triple", bat: "6000 mAh", price: "$349" },
+            { id: "m35", name: "Samsung Galaxy M35 5G", subCat: "m-series", brand: "samsung", cpu: "Exynos 1380", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.6-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh", price: "$249" },
+            { id: "m15", name: "Samsung Galaxy M15 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh", price: "$199" },
+            { id: "f55", name: "Samsung Galaxy F55 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 7 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.7-inch Super AMOLED+", cam: "50 MP Triple", bat: "5000 mAh", price: "$329" },
+            { id: "f15", name: "Samsung Galaxy F15 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB", storage: "128GB", screen: "6.5-inch Super AMOLED", cam: "50 MP Triple", bat: "6000 mAh", price: "$199" },
+            { id: "m13", name: "Samsung Galaxy M13", subCat: "m-series", brand: "samsung", cpu: "Exynos 850", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.6-inch PLS LCD 90Hz", cam: "50 MP Triple", bat: "6000 mAh", price: "$179" },
+            { id: "m23", name: "Samsung Galaxy M23 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 750G", ram: "4GB/6GB/8GB", storage: "128GB", screen: "6.6-inch Super AMOLED 120Hz", cam: "50 MP Triple", bat: "5000 mAh", price: "$259" },
+            { id: "m53", name: "Samsung Galaxy M53 5G", subCat: "m-series", brand: "samsung", cpu: "MediaTek Dimensity 900", ram: "6GB/8GB", storage: "128GB", screen: "6.7-inch Super AMOLED 120Hz", cam: "108 MP Quad", bat: "5000 mAh", price: "$349" },
+            { id: "f23", name: "Samsung Galaxy F23 5G", subCat: "m-series", brand: "samsung", cpu: "Snapdragon 750G", ram: "4GB/6GB", storage: "128GB", screen: "6.6-inch PLS LCD 120Hz", cam: "48 MP Quad", bat: "5000 mAh", price: "$299" }
         ];
 
         const iphoneList = [
-            { id: "i17pm", name: "iPhone 17 Pro Max", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB/2TB", screen: "6.9-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4850 mAh" },
-            { id: "i17p", name: "iPhone 17 Pro", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3700 mAh" },
-            { id: "i17air", name: "iPhone 17 Air / Slim", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.6-inch Super Retina XDR OLED", cam: "48 MP Single Fusion", bat: "3150 mAh" },
-            { id: "i17", name: "iPhone 17", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3600 mAh" },
-            { id: "i16pm", name: "iPhone 16 Pro Max", subCat: "iphone-16", brand: "apple", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.9-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "4685 mAh" },
-            { id: "i16p", name: "iPhone 16 Pro", subCat: "iphone-16", brand: "apple", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "3582 mAh" },
-            { id: "i16plus", name: "iPhone 16 Plus", subCat: "iphone-16", brand: "apple", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4674 mAh" },
-            { id: "i16", name: "iPhone 16", subCat: "iphone-16", brand: "apple", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3561 mAh" },
-            { id: "i15pm", name: "iPhone 15 Pro Max", subCat: "iphone-15", brand: "apple", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4422 mAh" },
-            { id: "i15p", name: "iPhone 15 Pro", subCat: "iphone-15", brand: "apple", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3274 mAh" },
-            { id: "i15plus", name: "iPhone 15 Plus", subCat: "iphone-15", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4383 mAh" },
-            { id: "i15", name: "iPhone 15", subCat: "iphone-15", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3349 mAh" },
-            { id: "i14pm", name: "iPhone 14 Pro Max", subCat: "iphone-14", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4323 mAh" },
-            { id: "i14p", name: "iPhone 14 Pro", subCat: "iphone-14", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3200 mAh" },
-            { id: "i14plus", name: "iPhone 14 Plus", subCat: "iphone-14", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "4325 mAh" },
-            { id: "i14", name: "iPhone 14", subCat: "iphone-14", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3279 mAh" },
-            { id: "i13pm", name: "iPhone 13 Pro Max", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "4352 mAh" },
-            { id: "i13p", name: "iPhone 13 Pro", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "3095 mAh" },
-            { id: "i13", name: "iPhone 13", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3240 mAh" },
-            { id: "i13mini", name: "iPhone 13 mini", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2438 mAh" },
-            { id: "i12pm", name: "iPhone 12 Pro Max", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3687 mAh" },
-            { id: "i12p", name: "iPhone 12 Pro", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "2815 mAh" },
-            { id: "i12", name: "iPhone 12", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2815 mAh" },
-            { id: "i12mini", name: "iPhone 12 mini", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2227 mAh" },
-            { id: "ise3", name: "iPhone SE (3rd Gen - 2022)", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "2018 mAh" },
-            { id: "ise2", name: "iPhone SE (2nd Gen - 2020)", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "1821 mAh" },
-            { id: "i11pm", name: "iPhone 11 Pro Max", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3969 mAh" },
-            { id: "i11p", name: "iPhone 11 Pro", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3046 mAh" },
-            { id: "i11", name: "iPhone 11", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Dual", bat: "3110 mAh" },
-            { id: "ixsmax", name: "iPhone XS Max", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina OLED", cam: "12 MP Dual", bat: "3174 mAh" },
-            { id: "ixs", name: "iPhone XS", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2658 mAh" },
-            { id: "ixr", name: "iPhone XR", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Single", bat: "2942 mAh" },
-            { id: "ix", name: "iPhone X", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A11 Bionic", ram: "3GB", storage: "64GB/256GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2716 mAh" }
+            { id: "i17pm", name: "iPhone 17 Pro Max", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB/2TB", screen: "6.9-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4850 mAh", price: "$1,199" },
+            { id: "i17p", name: "iPhone 17 Pro", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Pro (2nm)", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3700 mAh", price: "$1,099" },
+            { id: "i17air", name: "iPhone 17 Air / Slim", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.6-inch Super Retina XDR OLED", cam: "48 MP Single Fusion", bat: "3150 mAh", price: "$999" },
+            { id: "i17", name: "iPhone 17", subCat: "iphone-17", brand: "apple", cpu: "Apple A19 Bionic", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3600 mAh", price: "$829" },
+            { id: "i16pm", name: "iPhone 16 Pro Max", subCat: "iphone-16", brand: "apple", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.9-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "4685 mAh", price: "$1,199" },
+            { id: "i16p", name: "iPhone 16 Pro", subCat: "iphone-16", brand: "apple", cpu: "Apple A18 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.3-inch Super Retina XDR OLED", cam: "48 MP Triple", bat: "3582 mAh", price: "$999" },
+            { id: "i16plus", name: "iPhone 16 Plus", subCat: "iphone-16", brand: "apple", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4674 mAh", price: "$899" },
+            { id: "i16", name: "iPhone 16", subCat: "iphone-16", brand: "apple", cpu: "Apple A18", ram: "8GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3561 mAh", price: "$799" },
+            { id: "i15pm", name: "iPhone 15 Pro Max", subCat: "iphone-15", brand: "apple", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4422 mAh", price: "$1,199" },
+            { id: "i15p", name: "iPhone 15 Pro", subCat: "iphone-15", brand: "apple", cpu: "Apple A17 Pro (3nm)", ram: "8GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3274 mAh", price: "$999" },
+            { id: "i15plus", name: "iPhone 15 Plus", subCat: "iphone-15", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "4383 mAh", price: "$899" },
+            { id: "i15", name: "iPhone 15", subCat: "iphone-15", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "48 MP Dual", bat: "3349 mAh", price: "$799" },
+            { id: "i14pm", name: "iPhone 14 Pro Max", subCat: "iphone-14", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "4323 mAh", price: "$1,099" },
+            { id: "i14p", name: "iPhone 14 Pro", subCat: "iphone-14", brand: "apple", cpu: "Apple A16 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "48 MP Triple", bat: "3200 mAh", price: "$999" },
+            { id: "i14plus", name: "iPhone 14 Plus", subCat: "iphone-14", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "4325 mAh", price: "$899" },
+            { id: "i14", name: "iPhone 14", subCat: "iphone-14", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3279 mAh", price: "$799" },
+            { id: "i13pm", name: "iPhone 13 Pro Max", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.7-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "4352 mAh", price: "$1,099" },
+            { id: "i13p", name: "iPhone 13 Pro", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "6GB", storage: "128GB/256GB/512GB/1TB", screen: "6.1-inch Super Retina XDR OLED (120Hz)", cam: "12 MP Triple", bat: "3095 mAh", price: "$999" },
+            { id: "i13", name: "iPhone 13", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "3240 mAh", price: "$799" },
+            { id: "i13mini", name: "iPhone 13 mini", subCat: "iphone-13", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "128GB/256GB/512GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2438 mAh", price: "$699" },
+            { id: "i12pm", name: "iPhone 12 Pro Max", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.7-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3687 mAh", price: "$1,099" },
+            { id: "i12p", name: "iPhone 12 Pro", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "6GB", storage: "128GB/256GB/512GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "2815 mAh", price: "$999" },
+            { id: "i12", name: "iPhone 12", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2815 mAh", price: "$799" },
+            { id: "i12mini", name: "iPhone 12 mini", subCat: "iphone-12", brand: "apple", cpu: "Apple A14 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "5.4-inch Super Retina XDR OLED", cam: "12 MP Dual", bat: "2227 mAh", price: "$699" },
+            { id: "ise3", name: "iPhone SE (3rd Gen - 2022)", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A15 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "2018 mAh", price: "$429" },
+            { id: "ise2", name: "iPhone SE (2nd Gen - 2020)", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "4.7-inch Retina HD Display", cam: "12 MP Single", bat: "1821 mAh", price: "$399" },
+            { id: "i11pm", name: "iPhone 11 Pro Max", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3969 mAh", price: "$1,099" },
+            { id: "i11p", name: "iPhone 11 Pro", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina XDR OLED", cam: "12 MP Triple", bat: "3046 mAh", price: "$999" },
+            { id: "i11", name: "iPhone 11", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A13 Bionic", ram: "4GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Dual", bat: "3110 mAh", price: "$699" },
+            { id: "ixsmax", name: "iPhone XS Max", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "6.5-inch Super Retina OLED", cam: "12 MP Dual", bat: "3174 mAh", price: "$1,099" },
+            { id: "ixs", name: "iPhone XS", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "4GB", storage: "64GB/256GB/512GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2658 mAh", price: "$999" },
+            { id: "ixr", name: "iPhone XR", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A12 Bionic", ram: "3GB", storage: "64GB/128GB/256GB", screen: "6.1-inch Liquid Retina HD LCD", cam: "12 MP Single", bat: "2942 mAh", price: "$749" },
+            { id: "ix", name: "iPhone X", subCat: "iphone-legacy", brand: "apple", cpu: "Apple A11 Bionic", ram: "3GB", storage: "64GB/256GB", screen: "5.8-inch Super Retina OLED", cam: "12 MP Dual", bat: "2716 mAh", price: "$999" }
         ];
 
         const xiaomiList = [
-            { id: "x15u", name: "Xiaomi 15 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite (3nm)", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED (120Hz)", cam: "50 MP Quad Leica", bat: "6000 mAh (90W Wired / 80W Wireless)" },
-            { id: "x15p", name: "Xiaomi 15 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "6100 mAh" },
-            { id: "x15", name: "Xiaomi 15", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "5400 mAh" },
-            { id: "x14u", name: "Xiaomi 14 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "16GB", storage: "512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh" },
-            { id: "x14p", name: "Xiaomi 14 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4880 mAh" },
-            { id: "x14", name: "Xiaomi 14", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "4610 mAh" },
-            { id: "x13u", name: "Xiaomi 13 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh" },
-            { id: "x13p", name: "Xiaomi 13 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4820 mAh" },
-            { id: "x13", name: "Xiaomi 13", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.36-inch AMOLED", cam: "50 MP Triple Leica", bat: "4500 mAh" },
-            { id: "x14tpro", name: "Xiaomi 14T Pro", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 9300+", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "x14t", name: "Xiaomi 14T", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 8300 Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "x13tpro", name: "Xiaomi 13T Pro", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 9200+", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "x13t", name: "Xiaomi 13T", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 8200 Ultra", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh" },
-            { id: "rn14proplus", name: "Redmi Note 14 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 7s Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple OIS", bat: "6200 mAh (90W)" },
-            { id: "rn14pro", name: "Redmi Note 14 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7300 Ultra", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh" },
-            { id: "rn14_5g", name: "Redmi Note 14 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh" },
-            { id: "rn13proplus", name: "Redmi Note 13 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7200 Ultra", ram: "8GB/12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
-            { id: "rn13pro", name: "Redmi Note 13 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5100 mAh" },
-            { id: "rn13", name: "Redmi Note 13 4G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 685", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh" },
-            { id: "rn12proplus", name: "Redmi Note 12 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 1080", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch OLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)" },
-            { id: "rn12pro", name: "Redmi Note 12 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh" },
-            { id: "rn12", name: "Redmi Note 12 4G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 685", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5000 mAh" },
-            { id: "pocof7pro", name: "POCO F7 Pro", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch OLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (120W)" },
-            { id: "pocof7", name: "POCO F7 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8s Gen 3 / Dimensity 8400", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh" },
-            { id: "pocof6pro", name: "POCO F6 Pro", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh (120W)" },
-            { id: "pocof6", name: "POCO F6 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8s Gen 3", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Dual OIS", bat: "5000 mAh (90W)" },
-            { id: "pocox7pro", name: "POCO X7 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 8400 (4nm)", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (90W)" },
-            { id: "pocox7", name: "POCO X7 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 7300 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "5110 mAh" },
-            { id: "pocox6pro", name: "POCO X6 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 8300 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
-            { id: "pocox6", name: "POCO X6 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5100 mAh" },
-            { id: "pocox5pro", name: "POCO X5 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh" },
-            { id: "pocom7pro", name: "POCO M7 Pro 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh (45W)" },
-            { id: "pocom6pro", name: "POCO M6 Pro 4G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Helio G99 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch Flow AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)" },
-            { id: "pocom6", name: "POCO M6 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "redmi14c", name: "Redmi 14C", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G81 Ultra", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.88-inch IPS LCD 120Hz", cam: "50 MP Dual", bat: "5160 mAh (18W)" },
-            { id: "redmi13c", name: "Redmi 13C 5G", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" },
-            { id: "redmi13", name: "Redmi 13 4G", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G91 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.79-inch IPS LCD 90Hz", cam: "108 MP Dual", bat: "5030 mAh (33W)" },
-            { id: "redmia3", name: "Redmi A3", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G36", ram: "3GB/4GB/6GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD 90Hz", cam: "8 MP Dual", bat: "5000 mAh" }
+            { id: "x15u", name: "Xiaomi 15 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite (3nm)", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED (120Hz)", cam: "50 MP Quad Leica", bat: "6000 mAh (90W Wired / 80W Wireless)", price: "$1,299" },
+            { id: "x15p", name: "Xiaomi 15 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "6100 mAh", price: "$899" },
+            { id: "x15", name: "Xiaomi 15", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Elite", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "5400 mAh", price: "$749" },
+            { id: "x14u", name: "Xiaomi 14 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "16GB", storage: "512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh", price: "$1,299" },
+            { id: "x14p", name: "Xiaomi 14 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4880 mAh", price: "$899" },
+            { id: "x14", name: "Xiaomi 14", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.36-inch LTPO OLED", cam: "50 MP Triple Leica", bat: "4610 mAh", price: "$749" },
+            { id: "x13u", name: "Xiaomi 13 Ultra", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Quad Leica", bat: "5000 mAh", price: "$1,199" },
+            { id: "x13p", name: "Xiaomi 13 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.73-inch LTPO AMOLED", cam: "50 MP Triple Leica", bat: "4820 mAh", price: "$749" },
+            { id: "x13", name: "Xiaomi 13", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.36-inch AMOLED", cam: "50 MP Triple Leica", bat: "4500 mAh", price: "$649" },
+            { id: "x12pro", name: "Xiaomi 12 Pro", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.73-inch LTPO AMOLED 120Hz", cam: "50 MP Triple", bat: "4600 mAh", price: "$899" },
+            { id: "x12", name: "Xiaomi 12", subCat: "xiaomi-flagship", brand: "xiaomi", cpu: "Snapdragon 8 Gen 1", ram: "8GB/12GB", storage: "128GB/256GB", screen: "6.28-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "4500 mAh", price: "$749" },
+            { id: "x14tpro", name: "Xiaomi 14T Pro", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 9300+", ram: "12GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh", price: "$649" },
+            { id: "x14t", name: "Xiaomi 14T", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 8300 Ultra", ram: "12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh", price: "$499" },
+            { id: "x13tpro", name: "Xiaomi 13T Pro", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 9200+", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh", price: "$649" },
+            { id: "x13t", name: "Xiaomi 13T", subCat: "xiaomi-t", brand: "xiaomi", cpu: "MediaTek Dimensity 8200 Ultra", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch AMOLED 144Hz", cam: "50 MP Triple Leica", bat: "5000 mAh", price: "$499" },
+            { id: "rn14proplus", name: "Redmi Note 14 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 7s Gen 3", ram: "12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple OIS", bat: "6200 mAh (90W)", price: "$349" },
+            { id: "rn14pro", name: "Redmi Note 14 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7300 Ultra", ram: "8GB/12GB", storage: "128GB/256GB/512GB", screen: "6.67-inch Curved OLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh", price: "$299" },
+            { id: "rn14_5g", name: "Redmi Note 14 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh", price: "$229" },
+            { id: "rn13proplus", name: "Redmi Note 13 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 7200 Ultra", ram: "8GB/12GB/16GB", storage: "256GB/512GB", screen: "6.67-inch Curved AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)", price: "$329" },
+            { id: "rn13pro", name: "Redmi Note 13 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB/16GB", storage: "128GB/256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "200 MP Triple OIS", bat: "5100 mAh", price: "$279" },
+            { id: "rn13", name: "Redmi Note 13 4G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 685", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh", price: "$199" },
+            { id: "rn12proplus", name: "Redmi Note 12 Pro+", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 1080", ram: "8GB/12GB", storage: "256GB", screen: "6.67-inch OLED 120Hz", cam: "200 MP Triple OIS", bat: "5000 mAh (120W)", price: "$299" },
+            { id: "rn12pro", name: "Redmi Note 12 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 1080", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh", price: "$259" },
+            { id: "rn12", name: "Redmi Note 12 4G", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 685", ram: "4GB/6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5000 mAh", price: "$199" },
+            { id: "rn11proplus", name: "Redmi Note 11 Pro+ 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 920", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple OIS", bat: "5000 mAh (67W)", price: "$329" },
+            { id: "rn11pro", name: "Redmi Note 11 Pro 5G", subCat: "redmi-note", brand: "xiaomi", cpu: "MediaTek Dimensity 920", ram: "6GB/8GB", storage: "64GB/128GB", screen: "6.67-inch AMOLED 90Hz", cam: "108 MP Triple", bat: "5000 mAh", price: "$279" },
+            { id: "rn11", name: "Redmi Note 11", subCat: "redmi-note", brand: "xiaomi", cpu: "Snapdragon 680", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.43-inch AMOLED 90Hz", cam: "50 MP Quad", bat: "5000 mAh", price: "$199" },
+            { id: "pocof7pro", name: "POCO F7 Pro", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8 Gen 3", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch OLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (120W)", price: "$499" },
+            { id: "pocof7", name: "POCO F7 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8s Gen 3 / Dimensity 8400", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple", bat: "5500 mAh", price: "$349" },
+            { id: "pocof6pro", name: "POCO F6 Pro", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8 Gen 2", ram: "12GB/16GB", storage: "256GB/512GB/1TB", screen: "6.67-inch AMOLED 2K 120Hz", cam: "50 MP Triple OIS", bat: "5000 mAh (120W)", price: "$449" },
+            { id: "pocof6", name: "POCO F6 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 8s Gen 3", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Dual OIS", bat: "5000 mAh (90W)", price: "$349" },
+            { id: "pocox7pro", name: "POCO X7 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 8400 (4nm)", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "6000 mAh (90W)", price: "$299" },
+            { id: "pocox7", name: "POCO X7 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 7300 Ultra", ram: "6GB/8GB/12GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "50 MP Triple OIS", bat: "5110 mAh", price: "$249" },
+            { id: "pocox6pro", name: "POCO X6 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "MediaTek Dimensity 8300 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)", price: "$349" },
+            { id: "pocox6", name: "POCO X6 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 7s Gen 2", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5100 mAh", price: "$269" },
+            { id: "pocox5pro", name: "POCO X5 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 778G", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh", price: "$299" },
+            { id: "pocom7pro", name: "POCO M7 Pro 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 7025 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch OLED 120Hz", cam: "50 MP Dual OIS", bat: "5110 mAh (45W)", price: "$199" },
+            { id: "pocom6pro", name: "POCO M6 Pro 4G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Helio G99 Ultra", ram: "8GB/12GB", storage: "256GB/512GB", screen: "6.67-inch Flow AMOLED 120Hz", cam: "64 MP Triple OIS", bat: "5000 mAh (67W)", price: "$179" },
+            { id: "pocom6", name: "POCO M6 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh", price: "$149" },
+            { id: "pocox4pro", name: "POCO X4 Pro 5G", subCat: "poco-x-f", brand: "xiaomi", cpu: "Snapdragon 695", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (67W)", price: "$299" },
+            { id: "pocom4pro", name: "POCO M4 Pro 5G", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Dimensity 810", ram: "4GB/6GB/8GB", storage: "64GB/128GB/256GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh", price: "$249" },
+            { id: "pococ40", name: "POCO C40", subCat: "poco-m-c", brand: "xiaomi", cpu: "MediaTek Helio G35", ram: "3GB/4GB", storage: "32GB/64GB", screen: "6.71-inch IPS LCD 60Hz", cam: "13 MP Single", bat: "6000 mAh", price: "$109" },
+            { id: "redmi14c", name: "Redmi 14C", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G81 Ultra", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.88-inch IPS LCD 120Hz", cam: "50 MP Dual", bat: "5160 mAh (18W)", price: "$129" },
+            { id: "redmi13c", name: "Redmi 13C 5G", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Dimensity 6100+", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.74-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh", price: "$119" },
+            { id: "redmi13", name: "Redmi 13 4G", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G91 Ultra", ram: "6GB/8GB", storage: "128GB/256GB", screen: "6.79-inch IPS LCD 90Hz", cam: "108 MP Dual", bat: "5030 mAh (33W)", price: "$169" },
+            { id: "redmia3", name: "Redmi A3", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G36", ram: "3GB/4GB/6GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD 90Hz", cam: "8 MP Dual", bat: "5000 mAh", price: "$99" },
+            { id: "redmi10c", name: "Redmi 10C", subCat: "redmi-entry", brand: "xiaomi", cpu: "Snapdragon 680", ram: "3GB/4GB/6GB", storage: "64GB/128GB", screen: "6.71-inch IPS LCD 60Hz", cam: "50 MP Single", bat: "5000 mAh", price: "$129" },
+            { id: "redmi10", name: "Redmi 10", subCat: "redmi-entry", brand: "xiaomi", cpu: "MediaTek Helio G88", ram: "4GB/6GB", storage: "64GB/128GB", screen: "6.5-inch IPS LCD 90Hz", cam: "50 MP Quad", bat: "5000 mAh", price: "$149" }
         ];
 
         const infinixList = [
-            { id: "inf_z50u", name: "Infinix Zero 5G Ultra (2026)", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8300 (4nm)", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (144Hz)", cam: "200 MP OIS Triple", bat: "5000 mAh (180W SuperCharge)" },
-            { id: "inf_z40", name: "Infinix Zero 40 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_z30", name: "Infinix Zero 30 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (68W)" },
-            { id: "inf_zflip", name: "Infinix Zero Flip 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8020", ram: "8GB", storage: "512GB", screen: "6.9-inch Foldable LTPO AMOLED (120Hz)", cam: "50 MP Dual OIS", bat: "4720 mAh (70W)" },
-            { id: "inf_n50pro", name: "Infinix Note 50 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7300 (4nm)", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "108 MP Triple OIS", bat: "5000 mAh (100W)" },
-            { id: "inf_n40proplus", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "4600 mAh (100W + 20W MagCharge)" },
-            { id: "inf_n40pro", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_gt20pro", name: "Infinix GT 20 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_gt10pro", name: "Infinix GT 10 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)" },
-            { id: "inf_h50", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)" },
-            { id: "inf_h40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)" },
-            { id: "inf_sm8pro", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh" }
+            { id: "inf_z50u", name: "Infinix Zero 5G Ultra (2026)", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8300 (4nm)", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (144Hz)", cam: "200 MP OIS Triple", bat: "5000 mAh (180W SuperCharge)", price: "$399" },
+            { id: "inf_z40", name: "Infinix Zero 40 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)", price: "$349" },
+            { id: "inf_z30", name: "Infinix Zero 30 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (68W)", price: "$329" },
+            { id: "inf_zflip", name: "Infinix Zero Flip 5G", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Dimensity 8020", ram: "8GB", storage: "512GB", screen: "6.9-inch Foldable LTPO AMOLED (120Hz)", cam: "50 MP Dual OIS", bat: "4720 mAh (70W)", price: "$499" },
+            { id: "inf_z20", name: "Infinix Zero 20", subCat: "infinix-zero", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch AMOLED Curved 90Hz", cam: "108 MP OIS Dual", bat: "5000 mAh (33W)", price: "$229" },
+            { id: "inf_n50pro", name: "Infinix Note 50 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7300 (4nm)", ram: "12GB", storage: "256GB/512GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "108 MP Triple OIS", bat: "5000 mAh (100W)", price: "$299" },
+            { id: "inf_n40proplus", name: "Infinix Note 40 Pro+ 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "4600 mAh (100W + 20W MagCharge)", price: "$279" },
+            { id: "inf_n40pro", name: "Infinix Note 40 Pro 5G", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Dimensity 7020", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch Curved AMOLED 120Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)", price: "$249" },
+            { id: "inf_n12pro", name: "Infinix Note 12 Pro", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Helio G96", ram: "8GB", storage: "128GB/256GB", screen: "6.7-inch AMOLED Curved 60Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (33W)", price: "$209" },
+            { id: "inf_n12", name: "Infinix Note 12", subCat: "infinix-note", brand: "infinix", cpu: "MediaTek Helio G88", ram: "4GB/6GB/8GB", storage: "128GB/256GB", screen: "6.7-inch IPS LCD 90Hz", cam: "50 MP Triple", bat: "5000 mAh (33W)", price: "$179" },
+            { id: "inf_gt20pro", name: "Infinix GT 20 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8200 Ultimate", ram: "8GB/12GB", storage: "256GB", screen: "6.78-inch AMOLED 144Hz", cam: "108 MP OIS Triple", bat: "5000 mAh (45W)", price: "$299" },
+            { id: "inf_gt10pro", name: "Infinix GT 10 Pro 5G", subCat: "infinix-gt", brand: "infinix", cpu: "MediaTek Dimensity 8050", ram: "8GB", storage: "256GB", screen: "6.67-inch AMOLED 120Hz", cam: "108 MP Triple", bat: "5000 mAh (45W)", price: "$249" },
+            { id: "inf_h50", name: "Infinix Hot 50 Pro+ 4G", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G100 (6nm)", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch Curved AMOLED (120Hz)", cam: "50 MP Dual", bat: "5000 mAh (33W)", price: "$179" },
+            { id: "inf_h40pro", name: "Infinix Hot 40 Pro", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G99", ram: "8GB", storage: "128GB/256GB", screen: "6.78-inch IPS LCD 120Hz", cam: "108 MP Triple", bat: "5000 mAh (33W)", price: "$159" },
+            { id: "inf_h20s", name: "Infinix Hot 20S", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G88", ram: "4GB/8GB", storage: "128GB", screen: "6.78-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (18W)", price: "$149" },
+            { id: "inf_h20", name: "Infinix Hot 20", subCat: "infinix-hot", brand: "infinix", cpu: "MediaTek Helio G88", ram: "4GB/8GB", storage: "128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh (18W)", price: "$139" },
+            { id: "inf_sm8pro", name: "Infinix Smart 8 Pro", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio G36", ram: "4GB/8GB", storage: "64GB/128GB", screen: "6.6-inch IPS LCD 90Hz", cam: "50 MP Dual", bat: "5000 mAh", price: "$109" },
+            { id: "inf_sm6", name: "Infinix Smart 6", subCat: "infinix-smart", brand: "infinix", cpu: "MediaTek Helio A22", ram: "2GB/3GB", storage: "32GB/64GB", screen: "6.6-inch IPS LCD 60Hz", cam: "13 MP Dual", bat: "5000 mAh", price: "$89" }
         ];
 
         const allPhones = [...samsungList, ...iphoneList, ...xiaomiList, ...infinixList];
@@ -1630,6 +1699,7 @@
                         <div>
                             <span class="category-tag">${i18n[currentLang].categories[phone.brand] || phone.brand}</span>
                             <h3>${phone.name}</h3>
+                            <div class="price-tag">${phone.price}<span class="price-approx-star">*</span></div>
                         </div>
                         <div class="card-actions">
                             <button class="view-details-btn" onclick="openSpecsModal('${phone.id}')">${i18n[currentLang].detailsBtn}</button>
@@ -1715,6 +1785,11 @@
                     <strong>${i18n[currentLang].specs.bat}</strong>
                     <span>${phone.bat}</span>
                 </div>
+                <div class="spec-group">
+                    <strong>${i18n[currentLang].specs.price}</strong>
+                    <span>${phone.price} <span class="price-approx-star">*</span></span>
+                </div>
+                <p class="price-note" style="margin-top:10px;">${i18n[currentLang].priceNote}</p>
             `;
 
             document.getElementById('specsModal').classList.add('active');
@@ -1762,20 +1837,22 @@
                     `;
                 }
 
-                const specsKeys = ['cpu', 'ram', 'storage', 'screen', 'cam', 'bat'];
+                const specsKeys = ['cpu', 'ram', 'storage', 'screen', 'cam', 'bat', 'price'];
                 
                 let tableRows = '';
                 specsKeys.forEach(key => {
                     const comp = compareSpec(key, p1[key], p2[key]);
+                    const displayVal1 = key === 'price' ? `${p1[key]} *` : p1[key];
+                    const displayVal2 = key === 'price' ? `${p2[key]} *` : p2[key];
                     tableRows += `
                         <tr>
                             <td class="feature-title">${i18n[currentLang].specs[key]}</td>
                             <td class="${comp.winner === 1 ? 'winner-cell' : ''}">
-                                ${p1[key]}
+                                ${displayVal1}
                                 ${comp.winner === 1 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages[key]}</span>` : ''}
                             </td>
                             <td class="${comp.winner === 2 ? 'winner-cell' : ''}">
-                                ${p2[key]}
+                                ${displayVal2}
                                 ${comp.winner === 2 ? `<br><span class="winner-badge">${i18n[currentLang].winnerText}</span><span class="advantage-text">${i18n[currentLang].advantages[key]}</span>` : ''}
                             </td>
                         </tr>
@@ -1798,6 +1875,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <p class="price-note" style="margin-top:14px;">${i18n[currentLang].priceNote}</p>
                 `;
             }
 
@@ -1854,6 +1932,15 @@
                 if (mp2 > mp1) return { winner: 2 };
             }
 
+            if (key === 'price') {
+                const n1 = parseInt(v1.replace(/[^0-9]/g, '')) || 0;
+                const n2 = parseInt(v2.replace(/[^0-9]/g, '')) || 0;
+                if (n1 > 0 && n2 > 0) {
+                    if (n1 < n2) return { winner: 1 };
+                    if (n2 < n1) return { winner: 2 };
+                }
+            }
+
             return { winner: 0 };
         }
 
@@ -1883,6 +1970,7 @@
             document.getElementById('pageTitle').innerText = i18n[currentLang].pageTitle;
             document.getElementById('headerTitle').innerText = i18n[currentLang].headerTitle;
             document.getElementById('headerDesc').innerText = i18n[currentLang].headerDesc;
+            document.getElementById('priceNoteText').innerText = i18n[currentLang].priceNote;
             document.getElementById('searchInput').placeholder = i18n[currentLang].searchPlaceholder;
 
             document.getElementById('samsungMainBtn').innerText = i18n[currentLang].samsungMainBtn;
